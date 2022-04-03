@@ -1,0 +1,29 @@
+[debug] [2022-04-03T18:02:52.813Z] ----------------------------------------------------------------------
+[debug] [2022-04-03T18:02:52.815Z] Command:       D:\Programy\nvm\v16.13.2\node.exe D:\Programy\nvm\v16.13.2\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2022-04-03T18:02:52.816Z] CLI Version:   10.5.0
+[debug] [2022-04-03T18:02:52.816Z] Platform:      win32
+[debug] [2022-04-03T18:02:52.816Z] Node Version:  v16.13.2
+[debug] [2022-04-03T18:02:52.817Z] Time:          Sun Apr 03 2022 20:02:52 GMT+0200 (czas środkowoeuropejski letni)
+[debug] [2022-04-03T18:02:52.817Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-04-03T18:02:52.897Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-04-03T18:02:52.898Z] > authorizing via signed-in user (monika.krella@gmail.com)
+[debug] [2022-04-03T18:02:52.898Z] [iam] checking project sparalige for permissions ["firebase.projects.get"]
+[debug] [2022-04-03T18:02:52.901Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/sparalige:testIamPermissions [none]
+[debug] [2022-04-03T18:02:52.901Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/sparalige:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-04-03T18:02:53.837Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/sparalige:testIamPermissions 200
+[debug] [2022-04-03T18:02:53.837Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/sparalige:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-04-03T18:02:53.839Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/sparalige [none]
+[debug] [2022-04-03T18:02:54.265Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/sparalige 200
+[debug] [2022-04-03T18:02:54.265Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/sparalige {"projectId":"sparalige","projectNumber":"200121234428","displayName":"SPAralige ","name":"projects/sparalige","resources":{"hostingSite":"sparalige","storageBucket":"sparalige.appspot.com","locationId":"europe-west3"},"state":"ACTIVE"}
+[info] 
+[info] === Serving from 'C:\Users\Monika\Desktop\PROJEKT\sparalige'...
+[info] 
+[debug] [2022-04-03T18:02:54.269Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/sparalige/sites 
+[debug] [2022-04-03T18:02:55.414Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/sparalige/sites 200
+[debug] [2022-04-03T18:02:55.414Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/sparalige/sites {"sites":[{"name":"projects/200121234428/sites/sparalige","defaultUrl":"https://sparalige.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2022-04-03T18:02:55.414Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/sparalige/webApps/-/config [none]
+[debug] [2022-04-03T18:02:56.396Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/sparalige/webApps/-/config 200
+[debug] [2022-04-03T18:02:56.396Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/sparalige/webApps/-/config {"projectId":"sparalige","appId":"1:200121234428:web:da10b02207634cc3ccb879","storageBucket":"sparalige.appspot.com","locationId":"europe-west3","apiKey":"AIzaSyCAhvXYkyDboVbqIGZkp-lB58wPogwjnzk","authDomain":"sparalige.firebaseapp.com","messagingSenderId":"200121234428","measurementId":"G-GX9LB4FHMZ"}
+[info] i  hosting: Serving hosting files from: build {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mbuild\u001b[22m"}}
+[info] +  hosting: Local server: http://localhost:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5000\u001b[22m\u001b[24m"}}
