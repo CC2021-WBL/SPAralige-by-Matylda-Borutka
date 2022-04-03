@@ -1,0 +1,13 @@
+[debug] [2022-04-03T18:02:52.813Z] ----------------------------------------------------------------------
+[debug] [2022-04-03T18:02:52.815Z] Command:       D:\Programy\nvm\v16.13.2\node.exe D:\Programy\nvm\v16.13.2\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2022-04-03T18:02:52.816Z] CLI Version:   10.5.0
+[debug] [2022-04-03T18:02:52.816Z] Platform:      win32
+[debug] [2022-04-03T18:02:52.816Z] Node Version:  v16.13.2
+[debug] [2022-04-03T18:02:52.817Z] Time:          Sun Apr 03 2022 20:02:52 GMT+0200 (czas środkowoeuropejski letni)
+[debug] [2022-04-03T18:02:52.817Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-04-03T18:02:52.897Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-04-03T18:02:52.898Z] > authorizing via signed-in user (monika.krella@gmail.com)
+[debug] [2022-04-03T18:02:52.898Z] [iam] checking project sparalige for permissions ["firebase.projects.get"]
+[debug] [2022-04-03T18:02:52.901Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/sparalige:testIamPermissions [none]
+[debug] [2022-04-03T18:02:52.901Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/sparalige:testIamPermissions {"permissions":["firebase.projects.get"]}
