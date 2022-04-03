@@ -15,3 +15,4 @@
 - [ ] element ma odpowiednio oznaczony focus (np. tło, border)
 - [ ] teksty są czytelne (mają odpowiedni kontrast)
 - [ ] inputy używają autocomplete gdzie to możliwe
+- [ ] tekst napisany jest prostym, zrozumiałym językiem (w tym komunikaty dodatkowe, błędy, itd
