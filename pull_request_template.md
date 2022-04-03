@@ -10,5 +10,8 @@
 - [ ] da się potwierdzić wybór elementu enterem
 - [ ] linki wyróżnione są nie tylko przez kolor
 - [ ] elementy mają przypisaną odpowiednią rolę (atrybut role)
-- [ ] nagłówki w odpowiedniej kolejności
+- [ ] nagłówki w odpowiedniej kolejności (tylko jedno h1)
 - [ ] strona ma logiczną kolejność tabów
+- [ ] element ma odpowiednio oznaczony focus (np. tło, border)
+- [ ] teksty są czytelne (mają odpowiedni kontrast)
+- [ ] inputy używają autocomplete gdzie to możliwe
