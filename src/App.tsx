@@ -1,11 +1,7 @@
-import React from "react";
-
 function App() {
-
   return (
-    <div className='App'>
-      <h1>SPAralige</h1>
-
+    <div className="App">
+      <h1>SPAralige od Matylde</h1>
     </div>
   );
 }
