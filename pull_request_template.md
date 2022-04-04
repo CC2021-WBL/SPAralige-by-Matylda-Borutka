@@ -20,6 +20,7 @@
 
 
 ### inne
+- [ ] Build/deploy przechodzi
 - [ ] Kod jest zrozumiały
 - [ ] Branch działa lokalnie bez błędów
 - [ ] PR nie popsuł czyjejś pracy (trzeba przeklikać się przez apkę)
