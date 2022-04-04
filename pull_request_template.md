@@ -16,3 +16,23 @@
 - [ ] teksty są czytelne (mają odpowiedni kontrast)
 - [ ] inputy używają autocomplete gdzie to możliwe
 - [ ] tekst napisany jest prostym, zrozumiałym językiem (w tym komunikaty dodatkowe, błędy, itd
+
+
+
+### inne
+- [ ] Build/deploy przechodzi
+- [ ] Kod jest zrozumiały
+- [ ] Branch działa lokalnie bez błędów
+- [ ] PR nie popsuł czyjejś pracy (trzeba przeklikać się przez apkę)
+- [ ] Brak błędów w konsoli
+- [ ] Nazwa funkcji pokrywa się z nazwą pliku
+- [ ] Nazwy zmiennych/obiektów jasno mówią czego dotyczą
+- [ ] lintery nie pokazują błędów
+- [ ] eslint-disable nie jest na początku pliku (chyba, że jest ważny powód do tego)
+- [ ] nie ma zbędnych console.log
+- [ ] sprawdź czy za długi kod da się rozdzielić na moduły
+- [ ] usunięto zbędne importy i nieużywane zmienne oraz komentarze
+- [ ] kolejność komponentu: importy, nazwa komponentu, zmienne, funkcje pomocnicze, hooki, jsx
+- [ ] pr z ui zawiera screen oraz opis co zostało zmienione
+- [ ] pr ma przypisanego autora
+- [ ] pliki są umieszczone w odpowiednich folderach, zgodnie z Atomic Design
