@@ -2,11 +2,11 @@ import ResponsiveGrid from '../../Layout/ResponsiveGrid';
 
 const LandingPage = () => {
   return (
-    <div>
+    <main>
       I AM A LANDING PAGE
       <ResponsiveGrid />
       <h1 style={{ textAlign: 'center' }}>SPAralige od Matylde</h1>
-    </div>
+    </main>
   );
 };
 
