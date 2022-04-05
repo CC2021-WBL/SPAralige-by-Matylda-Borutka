@@ -32,6 +32,7 @@ const ServiceCard = () => {
         }}
       >
         <Button
+          aria-label="more details"
           size="medium"
           sx={{ borderRadius: 50, minWidth: 200, paddingTop: '9px' }}
           onClick={() => {
@@ -41,6 +42,7 @@ const ServiceCard = () => {
           Więcej Szczegółów
         </Button>
         <Button
+          aria-label="make reservation"
           variant="contained"
           size="medium"
           startIcon={<CreateIcon fontSize="small" />}
