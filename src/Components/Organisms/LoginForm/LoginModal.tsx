@@ -57,7 +57,7 @@ export default function LoginModal(prop: {
         }}
       >
         <Stack spacing={'1.4375rem'}>
-          <LoginTitle />
+          <LoginTitle aria-label="Sign in to SPAralige" />
           <EmailAndPasswordInput {...loginProps} />
           <LoginButton email={email} password={password} />
           <Typography

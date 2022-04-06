@@ -8,6 +8,7 @@ export default function EmailAndPasswordInput(loginProps: LoginInputsProps) {
       <TextField
         label="Email"
         type={'email'}
+        aria-label="Input for email to sign in"
         value={loginProps.email}
         onChange={loginProps.handleEmailChange}
         sx={{
@@ -17,6 +18,7 @@ export default function EmailAndPasswordInput(loginProps: LoginInputsProps) {
       <TextField
         label="Password"
         type={'password'}
+        aria-label="Input for password to sign in"
         value={loginProps.password}
         onChange={loginProps.handlePasswordChange}
         sx={{

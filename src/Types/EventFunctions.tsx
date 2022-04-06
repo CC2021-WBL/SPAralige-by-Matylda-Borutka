@@ -9,3 +9,7 @@ export interface HandleInputChangeType {
 export interface HandleOnClickButtonType {
   (event: React.MouseEvent<HTMLElement>): void;
 }
+
+export interface HandleKeyboardClick {
+  (event: React.KeyboardEvent<HTMLElement>): void;
+}

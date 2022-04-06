@@ -1,7 +1,10 @@
 import { Button } from '@mui/material';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
-import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
+import {
+  HandleKeyboardClick,
+  HandleOnClickButtonType,
+} from '../../../Types/EventFunctions';
 import { auth } from '../../../Firebase/firebase';
 
 function LoginButton(prop: { email: string; password: string }) {
@@ -21,6 +24,7 @@ function LoginButton(prop: { email: string; password: string }) {
   };
   return (
     <Button
+      type="button"
       variant="contained"
       color="primary"
       sx={{ height: '2.9375rem' }}
