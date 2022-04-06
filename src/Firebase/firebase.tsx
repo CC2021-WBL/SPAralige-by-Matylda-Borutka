@@ -21,7 +21,7 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 
 //google analytics
-const analytics = getAnalytics(app);
+export const analytics = getAnalytics(app);
 
 // init services
 // databse
