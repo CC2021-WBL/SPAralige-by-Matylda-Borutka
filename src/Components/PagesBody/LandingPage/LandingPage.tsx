@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import ResponsiveGrid from '../../Layout/ResponsiveGrid';
+import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
 
 const serviceDataMock = {
   name: 'Masaż Gorącymi Kamieniami',
