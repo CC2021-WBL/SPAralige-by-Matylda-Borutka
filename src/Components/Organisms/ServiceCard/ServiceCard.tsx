@@ -7,11 +7,12 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import CreateIcon from '@mui/icons-material/Create';
 import Typography from '@mui/material/Typography';
-import { Stack } from '@mui/material';
+import { Box } from '@mui/system';
+import { Modal, Stack } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useEffect, useState } from 'react';
 
-import { serviceData } from '../../Pages/LandingPage/LandingPage';
+import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
 
 const useStyles = makeStyles({
   btnsPosition: {
@@ -41,6 +42,10 @@ const useStyles = makeStyles({
 
 const ServiceCard = (prop: { serviceObject: serviceData }) => {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const [imgUrl, setImgUrl] = useState<any | null>(null);
 
   useEffect(() => {
@@ -65,77 +70,100 @@ const ServiceCard = (prop: { serviceObject: serviceData }) => {
     getImg();
   }, []);
   return (
-    <Card>
-      <CardMedia
-        component="img"
-        height="210"
-        image={imgUrl}
-        alt={prop.serviceObject.altText}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h6" component="div">
-          {prop.serviceObject.name}
-        </Typography>
-        <Stack direction="row" spacing={2}>
-          <Stack
-            spacing={0.8}
-            direction="row"
-            className={classes.durationAndPrice}
-          >
-            <AccessTimeIcon sx={{ color: 'text.disabled' }} />
-            <Typography
-              variant="subtitle2"
-              component="div"
-              color="text.disabled"
+    <>
+      <Card>
+        <CardMedia
+          component="img"
+          height="210"
+          image={imgUrl}
+          alt={prop.serviceObject.altText}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h6" component="div">
+            {prop.serviceObject.name}
+          </Typography>
+          <Stack direction="row" spacing={2}>
+            <Stack
+              spacing={0.8}
+              direction="row"
+              className={classes.durationAndPrice}
             >
-              {`${prop.serviceObject.duration} h`}
-            </Typography>
-          </Stack>
-          <Stack
-            spacing={0.4}
-            direction="row"
-            className={classes.durationAndPrice}
-          >
-            <AttachMoneyIcon sx={{ color: 'text.disabled' }} />
-            <Typography
-              variant="subtitle2"
-              component="div"
-              color="text.disabled"
+              <AccessTimeIcon
+                sx={{ color: 'text.disabled' }}
+                aria-hidden="true"
+              />
+              <Typography
+                variant="subtitle2"
+                component="div"
+                color="text.disabled"
+              >
+                {`${prop.serviceObject.duration} h`}
+              </Typography>
+            </Stack>
+            <Stack
+              spacing={0.4}
+              direction="row"
+              className={classes.durationAndPrice}
             >
-              {`${prop.serviceObject.price} zł`}
-            </Typography>
+              <AttachMoneyIcon
+                sx={{ color: 'text.disabled' }}
+                aria-hidden="true"
+              />
+              <Typography
+                variant="subtitle2"
+                component="div"
+                color="text.disabled"
+              >
+                {`${prop.serviceObject.price} zł`}
+              </Typography>
+            </Stack>
           </Stack>
-        </Stack>
-        <Typography variant="body2" color="text.secondary">
-          {prop.serviceObject.description}
-        </Typography>
-      </CardContent>
-      <CardActions className={classes.btnsPosition} disableSpacing>
-        <Button
-          aria-label="more details"
-          size="medium"
-          className={classes.btnStyles}
-          onClick={() => {
-            console.log('clicked');
-          }}
-        >
-          Więcej Szczegółów
-        </Button>
-        <Button
-          aria-label="make reservation"
-          variant="contained"
-          disableElevation
-          size="medium"
-          startIcon={<CreateIcon fontSize="small" />}
-          className={classes.btnStyles}
-          onClick={() => {
-            console.log('clicked');
-          }}
-        >
-          Rezerwuj Zabieg
-        </Button>
-      </CardActions>
-    </Card>
+          <Typography variant="body2" color="text.secondary">
+            {prop.serviceObject.description}
+          </Typography>
+        </CardContent>
+        <CardActions className={classes.btnsPosition} disableSpacing>
+          <Button
+            aria-label="more details"
+            size="medium"
+            className={classes.btnStyles}
+            onClick={() => {
+              console.log('clicked');
+            }}
+          >
+            Więcej Szczegółów
+          </Button>
+          <Button
+            aria-label="make reservation"
+            variant="contained"
+            disableElevation
+            size="medium"
+            startIcon={<CreateIcon fontSize="small" />}
+            className={classes.btnStyles}
+            onClick={() => {
+              handleOpen();
+            }}
+          >
+            Rezerwuj Zabieg
+          </Button>
+        </CardActions>
+      </Card>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            MODAL MOCK
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            MODAL MOCK
+          </Typography>
+        </Box>
+      </Modal>
+    </>
   );
 };
 
