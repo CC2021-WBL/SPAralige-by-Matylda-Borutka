@@ -25,7 +25,6 @@ export default function LoginModal(prop: {
   const handlePasswordChange: HandleInputChangeType = (event) => {
     event.preventDefault();
     setPassword(event.target.value);
-    console.log(event.target.value);
   };
 
   const loginProps: LoginInputsProps = {
@@ -39,7 +38,6 @@ export default function LoginModal(prop: {
     <Modal
       open={prop.open}
       onClose={prop.handleClose}
-      aria-labelledby="modal-modal-login"
       aria-describedby="modal-modal-signin-by-email-facebook-or-google"
     >
       <Box
