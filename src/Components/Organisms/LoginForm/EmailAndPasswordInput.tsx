@@ -1,0 +1,28 @@
+import { Stack, TextField } from '@mui/material';
+
+import { LoginInputsProps } from './LoginTypes';
+
+export default function EmailAndPasswordInput(loginProps: LoginInputsProps) {
+  return (
+    <Stack spacing={'1.4375rem'}>
+      <TextField
+        label="Email"
+        type={'email'}
+        value={loginProps.email}
+        onChange={loginProps.handleEmailChange}
+        sx={{
+          height: '3.5rem',
+        }}
+      ></TextField>
+      <TextField
+        label="Password"
+        type={'password'}
+        value={loginProps.password}
+        onChange={loginProps.handlePasswordChange}
+        sx={{
+          height: '3.5rem',
+        }}
+      ></TextField>
+    </Stack>
+  );
+}
