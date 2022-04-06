@@ -46,8 +46,8 @@ const ServiceCard = (prop: { serviceObject: serviceData }) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  // TODO: find solution to put different type than for imgUrl
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @TODO: // find solution to put different type than any for imgUrl
   const [imgUrl, setImgUrl] = useState<any | null>(null);
 
   useEffect(() => {
