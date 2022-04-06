@@ -1,4 +1,4 @@
-import ResponsiveGrid from '../../Layout/ResponsiveGrid';
+import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
 
 const LandingPage = () => {
   return (

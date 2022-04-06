@@ -1,7 +1,7 @@
 import { AppBar, Box, Container } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 
-import FooterStyled from '../Organisms/FooterStyled';
+import FooterStyled from '../Footer/FooterStyled';
 import MainWrapper from './MainWrapper';
 
 const Layout = () => {
