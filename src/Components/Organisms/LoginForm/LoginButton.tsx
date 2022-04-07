@@ -1,10 +1,7 @@
 import { Button } from '@mui/material';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
-import {
-  HandleKeyboardClick,
-  HandleOnClickButtonType,
-} from '../../../Types/EventFunctions';
+import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
 import { auth } from '../../../Firebase/firebase';
 
 function LoginButton(prop: { email: string; password: string }) {
@@ -26,6 +23,7 @@ function LoginButton(prop: { email: string; password: string }) {
     <Button
       type="button"
       variant="contained"
+      aria-label="accept email and password to sign in"
       color="primary"
       sx={{ height: '2.9375rem' }}
       onClick={handleLoginClick}

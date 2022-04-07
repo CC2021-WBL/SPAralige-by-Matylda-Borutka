@@ -18,6 +18,7 @@ function FacebookAndGoogleBox() {
     <Stack spacing={'0.6875rem'}>
       <Button
         variant="contained"
+        aria-label="sig in with facebook"
         sx={{ height: '2.9375rem', background: '#01579B' }}
         onClick={onFbClick}
       >
@@ -25,6 +26,7 @@ function FacebookAndGoogleBox() {
       </Button>
       <Button
         variant="contained"
+        aria-label="sig in with google"
         sx={{
           height: '2.9375rem',
           background: '#FB8C00',
