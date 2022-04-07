@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import AboutPage from './Components/PagesBody/AboutPage/AboutPage';
 import AccountPage from './Components/PagesBody/AccountPage/AccountPage';
+import BurgerTest from './Components/PagesBody/BurgerTest';
 import LandingPage from './Components/PagesBody/LandingPage/LandingPage';
 import Layout from './Components/Template/Layout/Layout';
 import ReservationsPage from './Components/PagesBody/ReservationsPage/ReservationsPage';
@@ -21,6 +22,8 @@ function App() {
           <Route path="/account" element={<AccountPage />} />
 
           <Route path="/reservations" element={<ReservationsPage />} />
+
+          <Route path="/burger" element={<BurgerTest />} />
         </Route>
       </Routes>
     </div>
