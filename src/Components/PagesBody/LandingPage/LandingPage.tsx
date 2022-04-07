@@ -48,10 +48,10 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <div>
+    <main>
       <h1 style={{ textAlign: 'center' }}>SPAralige od Matylde</h1>
       {serviceObject && <ResponsiveGrid serviceObjectArray={serviceObject} />}
-    </div>
+    </main>
   );
 };
 
