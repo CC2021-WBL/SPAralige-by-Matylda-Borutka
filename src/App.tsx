@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 
-import AboutPage from './Components/Pages/AboutPage/AboutPage';
-import AccountPage from './Components/Pages/AccountPage/AccountPage';
-import LandingPage from './Components/Pages/LandingPage/LandingPage';
-import Layout from './Components/Layout/Layout';
-import ReservationsPage from './Components/Pages/ReservationsPage/ReservationsPage';
-import TreatmentsPage from './Components/Pages/TreatmentsPage/TreatmentsPage';
+import AboutPage from './Components/PagesBody/AboutPage/AboutPage';
+import AccountPage from './Components/PagesBody/AccountPage/AccountPage';
+import LandingPage from './Components/PagesBody/LandingPage/LandingPage';
+import Layout from './Components/Template/Layout/Layout';
+import ReservationsPage from './Components/PagesBody/ReservationsPage/ReservationsPage';
+import TreatmentsPage from './Components/PagesBody/TreatmentsPage/TreatmentsPage';
 
 function App() {
   return (
