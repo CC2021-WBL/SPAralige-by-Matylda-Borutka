@@ -70,16 +70,16 @@ export default function LoginModal(prop: {
               letterSpacing: '0.5px',
             }}
           >
-            or
+            lub
           </Typography>
           <FacebookAndGoogleBox />
           <SignOrResetLink
-            issueText="Don't have account? "
-            linkText="Sign Up"
+            issueText="Nie masz konta? "
+            linkText="Zarejestruj się"
           />
           <SignOrResetLink
-            issueText="Forgot your password? "
-            linkText="Reset It"
+            issueText="Zapomniałeś hasła? "
+            linkText="Zresetuj hasło"
           />
         </Stack>
       </Box>

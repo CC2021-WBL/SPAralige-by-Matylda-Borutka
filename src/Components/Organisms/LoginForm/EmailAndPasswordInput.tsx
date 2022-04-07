@@ -16,7 +16,7 @@ export default function EmailAndPasswordInput(loginProps: LoginInputsProps) {
         }}
       ></TextField>
       <TextField
-        label="Password"
+        label="Hasło"
         type={'password'}
         aria-label="Input for password to sign in"
         value={loginProps.password}

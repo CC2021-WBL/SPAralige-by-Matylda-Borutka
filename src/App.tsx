@@ -4,8 +4,8 @@ import AboutPage from './Components/PagesBody/AboutPage/AboutPage';
 import AccountPage from './Components/PagesBody/AccountPage/AccountPage';
 import LandingPage from './Components/PagesBody/LandingPage/LandingPage';
 import Layout from './Components/Template/Layout/Layout';
-import TestingBody from './Components/Pages/TestingBody/TestingBody';
 import ReservationsPage from './Components/PagesBody/ReservationsPage/ReservationsPage';
+import TestingBody from './Components/PagesBody/TestingBody';
 import TreatmentsPage from './Components/PagesBody/TreatmentsPage/TreatmentsPage';
 
 function App() {

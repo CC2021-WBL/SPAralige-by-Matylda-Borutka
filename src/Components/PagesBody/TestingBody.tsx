@@ -1,7 +1,7 @@
 import { Button, Stack } from '@mui/material';
 import { useState } from 'react';
 
-import LoginModal from '../../Organisms/LoginForm/LoginModal';
+import LoginModal from '../Organisms/LoginForm/LoginModal';
 
 export default function TestingBody() {
   const [open, setOpen] = useState(false);

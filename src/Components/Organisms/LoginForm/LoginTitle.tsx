@@ -18,7 +18,7 @@ export default function LoginTitle() {
         }}
         variant="h5"
       >
-        Welcome to Sparalige!
+        Witamy w SPAralige!
       </Typography>
       <Typography
         sx={{
@@ -27,7 +27,7 @@ export default function LoginTitle() {
         }}
         variant="subtitle1"
       >
-        Login with email and password
+        Zaloguj się wpisując login i hasło
       </Typography>
     </Box>
   );

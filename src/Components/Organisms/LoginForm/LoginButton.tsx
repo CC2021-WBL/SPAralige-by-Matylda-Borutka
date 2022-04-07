@@ -21,14 +21,14 @@ function LoginButton(prop: { email: string; password: string }) {
   };
   return (
     <Button
-      type="button"
       variant="contained"
+      disableElevation={true}
       aria-label="accept email and password to sign in"
       color="primary"
       sx={{ height: '2.9375rem' }}
       onClick={handleLoginClick}
     >
-      LOGIN
+      ZALOGUJ
     </Button>
   );
 }

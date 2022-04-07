@@ -14,7 +14,14 @@ function SignOrResetLink(prop: SignOrResetPropType) {
       >
         {prop.issueText}
       </Typography>
-      <Link>{prop.linkText}</Link>
+      <Link
+        role="link"
+        aria-label={`link to ${prop.linkText}`}
+        underline="none"
+        sx={{ cursor: 'pointer' }}
+      >
+        {prop.linkText}
+      </Link>
     </Stack>
   );
 }

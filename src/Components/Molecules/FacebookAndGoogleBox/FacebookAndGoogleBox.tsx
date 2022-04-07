@@ -18,14 +18,16 @@ function FacebookAndGoogleBox() {
     <Stack spacing={'0.6875rem'}>
       <Button
         variant="contained"
+        disableElevation={true}
         aria-label="sig in with facebook"
         sx={{ height: '2.9375rem', background: '#01579B' }}
         onClick={onFbClick}
       >
-        CONTINUE WITH FACEBOOK
+        ZALOGUJ PRZEZ FACEBOOK&apos;A
       </Button>
       <Button
         variant="contained"
+        disableElevation={true}
         aria-label="sig in with google"
         sx={{
           height: '2.9375rem',
@@ -34,7 +36,7 @@ function FacebookAndGoogleBox() {
         }}
         onClick={onGoogleClick}
       >
-        CONTINUE WITH GOOGLE
+        ZALOGUJ PRZEZ GOOGLE
       </Button>
     </Stack>
   );
