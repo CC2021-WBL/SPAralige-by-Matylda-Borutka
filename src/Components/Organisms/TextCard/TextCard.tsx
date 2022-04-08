@@ -1,5 +1,11 @@
 import Card from '@mui/material/Card';
-import { Button, CardActions, CardContent, CardHeader } from '@mui/material';
+import {
+  Button,
+  CardActions,
+  CardContent,
+  CardHeader,
+  Typography,
+} from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
@@ -10,13 +16,11 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'space-between',
   },
+
   title: {
-    margin: '0 0.5rem',
     lineHeight: '2rem',
   },
-  cardContent: {
-    fontSize: '0.875rem',
-  },
+
   cardActions: {
     justifyContent: 'center',
     marginBottom: '1rem',
@@ -36,12 +40,14 @@ const TextCard = () => {
         className={classes.title}
       />
 
-      <CardContent className={classes.cardContent}>
-        Nazywam się Matylda Borutka, założyłam własny gabinet 7 lat temu.
-        Sparalige to miejsce wyciszenia i, relaksacji i regeneracji fizycznej i
-        psychicznej. Stawiamy na indywidualne podejście i głębokie rozpoznanie
-        problemu pacjenta. Nie wiesz od czego zacząć? Skontaktuj się ze mną,
-        doradzę:
+      <CardContent>
+        <Typography variant="subtitle2">
+          Nazywam się Matylda Borutka, założyłam własny gabinet 7 lat temu.
+          Sparalige to miejsce wyciszenia i, relaksacji i regeneracji fizycznej
+          i psychicznej. Stawiamy na indywidualne podejście i głębokie
+          rozpoznanie problemu pacjenta. Nie wiesz od czego zacząć? Skontaktuj
+          się ze mną, doradzę:
+        </Typography>
       </CardContent>
 
       <CardActions className={classes.cardActions}>
