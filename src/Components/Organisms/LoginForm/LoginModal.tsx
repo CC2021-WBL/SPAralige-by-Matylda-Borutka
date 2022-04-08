@@ -8,7 +8,6 @@ import LoginButton from './LoginButton';
 import LoginTitle from './LoginTitle';
 import SignOrResetLink from './SignOrResetLink';
 import { HandleInputChangeType } from '../../../Types/EventFunctions';
-import { LoginInputsProps } from './LoginTypes';
 
 export default function LoginModal(prop: {
   open: boolean;
