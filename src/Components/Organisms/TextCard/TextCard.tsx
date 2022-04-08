@@ -20,6 +20,7 @@ const useStyles = makeStyles({
   cardActions: {
     justifyContent: 'center',
     marginBottom: '1rem',
+    gap: '0.5rem',
   },
 });
 
@@ -34,6 +35,7 @@ const TextCard = () => {
         }}
         className={classes.title}
       />
+
       <CardContent className={classes.cardContent}>
         Nazywam się Matylda Borutka, założyłam własny gabinet 7 lat temu.
         Sparalige to miejsce wyciszenia i, relaksacji i regeneracji fizycznej i
@@ -43,8 +45,23 @@ const TextCard = () => {
       </CardContent>
 
       <CardActions className={classes.cardActions}>
-        <Button variant="outlined">Napisz maila</Button>
-        <Button variant="outlined">Zadzwoń</Button>
+        <Button
+          variant="outlined"
+          role="link"
+          title="aaa@wp.pl"
+          href="mailto:aaa@wp.pl"
+        >
+          Napisz maila
+        </Button>
+
+        <Button
+          variant="outlined"
+          role="link"
+          title="+48666-666-666"
+          href="tel:+48666666666"
+        >
+          Zadzwoń
+        </Button>
       </CardActions>
     </Card>
   );
