@@ -15,6 +15,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
+    border: '1px solid #00000061',
   },
 
   title: {
@@ -31,7 +32,7 @@ const useStyles = makeStyles({
 const TextCard = () => {
   const classes = useStyles();
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} elevation={0}>
       <CardHeader
         title="Sparalige By Matylda Borutka"
         titleTypographyProps={{
