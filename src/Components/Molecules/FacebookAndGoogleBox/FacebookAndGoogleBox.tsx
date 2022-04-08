@@ -1,4 +1,4 @@
-import { Button, Stack } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 
 import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
 import { loginWithFacebook } from '../../../Firebase/facebookLogin';
@@ -15,7 +15,7 @@ function FacebookAndGoogleBox() {
   };
 
   return (
-    <Stack spacing={'0.6875rem'}>
+    <Stack spacing={1.5}>
       <Button
         variant="contained"
         disableElevation={true}
@@ -23,12 +23,14 @@ function FacebookAndGoogleBox() {
         sx={{ height: '2.9375rem', background: '#01579B' }}
         onClick={onFbClick}
       >
-        ZALOGUJ PRZEZ FACEBOOK&apos;A
+        <Typography sx={{ fontSize: '14px', paddingTop: '1px' }}>
+          ZALOGUJ PRZEZ FACEBOOK&apos;A
+        </Typography>
       </Button>
       <Button
         variant="contained"
         disableElevation={true}
-        aria-label="sig in with google"
+        aria-label="sign in with google"
         sx={{
           height: '2.9375rem',
           background: '#FB8C00',
@@ -36,7 +38,7 @@ function FacebookAndGoogleBox() {
         }}
         onClick={onGoogleClick}
       >
-        ZALOGUJ PRZEZ GOOGLE
+        <Typography sx={{ paddingTop: '1px' }}>ZALOGUJ PRZEZ GOOGLE</Typography>
       </Button>
     </Stack>
   );

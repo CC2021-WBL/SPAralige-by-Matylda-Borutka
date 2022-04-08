@@ -1,6 +1,7 @@
 import { Box, Modal, Stack, Typography } from '@mui/material';
 import { useState } from 'react';
 
+import ClosingIcon from './CloseIcon';
 import EmailAndPasswordInput from './EmailAndPasswordInput';
 import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
 import LoginButton from './LoginButton';
@@ -27,13 +28,6 @@ export default function LoginModal(prop: {
     setPassword(event.target.value);
   };
 
-  const loginProps: LoginInputsProps = {
-    email: email,
-    password: password,
-    handleEmailChange: handleEmailChange,
-    handlePasswordChange: handlePasswordChange,
-  };
-
   return (
     <Modal
       open={prop.open}
@@ -57,8 +51,14 @@ export default function LoginModal(prop: {
         }}
       >
         <Stack spacing={'1.4375rem'}>
+          <ClosingIcon handleClose={prop.handleClose} />
           <LoginTitle aria-label="Sign in to SPAralige" />
-          <EmailAndPasswordInput {...loginProps} />
+          <EmailAndPasswordInput
+            email={email}
+            password={password}
+            handleEmailChange={handleEmailChange}
+            handlePasswordChange={handlePasswordChange}
+          />
           <LoginButton email={email} password={password} />
           <Typography
             variant="body1"
