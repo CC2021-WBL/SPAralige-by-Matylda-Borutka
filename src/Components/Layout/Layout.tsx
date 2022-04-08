@@ -1,7 +1,7 @@
 import { AppBar, Box, Container } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 
-import FooterStyled from '../Organisms/FooterStyled';
+import Footer from './../Organisms/Footer/Footer';
 import MainWrapper from './MainWrapper';
 
 const Layout = () => {
@@ -16,8 +16,7 @@ const Layout = () => {
           poniżej przykłądowy komponent z respo -  */}
         <Outlet />
       </Container>
-      {/* Miejsce na footer - można użyć stworzonego komponentu lub zamienić na własny */}
-      <FooterStyled />
+      <Footer />
     </MainWrapper>
   );
 };
