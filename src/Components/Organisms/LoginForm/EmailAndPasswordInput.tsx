@@ -14,7 +14,7 @@ export default function EmailAndPasswordInput(loginProps: LoginInputsProps) {
         sx={{
           height: '3.5rem',
         }}
-      ></TextField>
+      />
       <TextField
         label="Hasło"
         type={'password'}
@@ -24,7 +24,7 @@ export default function EmailAndPasswordInput(loginProps: LoginInputsProps) {
         sx={{
           height: '3.5rem',
         }}
-      ></TextField>
+      />
     </Stack>
   );
 }

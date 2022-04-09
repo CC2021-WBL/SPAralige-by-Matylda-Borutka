@@ -19,6 +19,7 @@ function LoginButton(prop: { email: string; password: string }) {
       console.log(error.message);
     }
   };
+
   return (
     <Button
       variant="contained"

@@ -1,4 +1,4 @@
-import { Box, Modal, Stack, Typography } from '@mui/material';
+import { Box, Modal, Stack, Typography, TextField } from '@mui/material';
 import { useState } from 'react';
 
 import EmailAndPasswordInput from './EmailAndPasswordInput';
@@ -8,6 +8,7 @@ import LoginTitle from './LoginTitle';
 import SignOrResetLink from './SignOrResetLink';
 import { HandleInputChangeType } from '../../../Types/EventFunctions';
 import { LoginInputsProps } from './LoginTypes';
+import FormTitle from '../Form/FormTitle';
 
 export default function LoginModal(prop: {
   open: boolean;
@@ -57,7 +58,11 @@ export default function LoginModal(prop: {
         }}
       >
         <Stack spacing={'1.4375rem'}>
-          <LoginTitle aria-label="Sign in to SPAralige" />
+          <FormTitle
+            aria-label="Sign in to SPAralige"
+            text1="Witamy w SPAralige!"
+            text2="Zaloguij się wpisując login i hasło"
+          />
           <EmailAndPasswordInput {...loginProps} />
           <LoginButton email={email} password={password} />
           <Typography
@@ -72,10 +77,10 @@ export default function LoginModal(prop: {
           >
             lub
           </Typography>
-          <FacebookAndGoogleBox />
+          <FacebookAndGoogleBox loginOrRegister="register" />
           <SignOrResetLink
-            issueText="Nie masz konta? "
-            linkText="Zarejestruj się"
+            issueText="Masz już konto? "
+            linkText="Zaloguj się"
           />
           <SignOrResetLink
             issueText="Zapomniałeś hasła? "

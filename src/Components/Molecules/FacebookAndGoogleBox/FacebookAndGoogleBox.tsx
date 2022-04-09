@@ -3,8 +3,10 @@ import { Button, Stack } from '@mui/material';
 import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
 import { loginWithFacebook } from '../../../Firebase/facebookLogin';
 import { loginWithGoogle } from '../../../Firebase/googleLogin';
+import PropTypes from 'prop-types';
+import FormTitle from '../../Organisms/Form/FormTitle';
 
-function FacebookAndGoogleBox() {
+function FacebookAndGoogleBox({ loginOrRegister }) {
   const onGoogleClick: HandleOnClickButtonType = async (event) => {
     event.preventDefault();
     await loginWithGoogle();
@@ -23,7 +25,8 @@ function FacebookAndGoogleBox() {
         sx={{ height: '2.9375rem', background: '#01579B' }}
         onClick={onFbClick}
       >
-        ZALOGUJ PRZEZ FACEBOOK&apos;A
+        {loginOrRegister === 'register' ? 'ZAREJESTRUJ' : 'ZALOGUJ'} SIĘ PRZEZ
+        FACEBOOK&#39;A
       </Button>
       <Button
         variant="contained"
@@ -36,10 +39,15 @@ function FacebookAndGoogleBox() {
         }}
         onClick={onGoogleClick}
       >
-        ZALOGUJ PRZEZ GOOGLE
+        {loginOrRegister === 'register' ? 'ZAREJESTRUJ' : 'ZALOGUJ'} SIĘ PRZEZ
+        KONTO GOOGLE
       </Button>
     </Stack>
   );
 }
+
+FacebookAndGoogleBox.propTypes = {
+  loginOrRegister: PropTypes.string,
+};
 
 export default FacebookAndGoogleBox;
