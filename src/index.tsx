@@ -7,6 +7,8 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import i18n from './i18n.js';
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

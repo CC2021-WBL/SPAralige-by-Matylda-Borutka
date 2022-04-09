@@ -1,0 +1,8 @@
+{
+    "title": "Siema react using react-i18next",
+    "description": {
+      "part1": "Zaczynamy, edit <1>src/App.js</1> and save to reload.",
+      "part2": "Zmien between english and german using buttons above."
+    },
+    "Welcome to React": "Siemaneczko"
+  }
