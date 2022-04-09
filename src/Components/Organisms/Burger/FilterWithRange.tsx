@@ -1,4 +1,10 @@
-import { FormControl, FormLabel, Stack } from '@mui/material';
+import {
+  FormControl,
+  FormLabel,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material';
 
 type RangePropType<T> = {
   name: string;
@@ -6,11 +12,42 @@ type RangePropType<T> = {
   maxValue: T;
 };
 
+function genTypeOfInput(value: any) {
+  if (typeof value === 'number') {
+    return 'number';
+  } else if (value instanceof Date) {
+    return 'date';
+  }
+  return 'text';
+}
+
 function FilterWithRange<T>(prop: RangePropType<T>) {
   return (
-    <FormControl>
-      <FormLabel>{prop.name}</FormLabel>
-      <Stack direction={'row'}>od ... do ...</Stack>
+    <FormControl sx={{ paddingTop: '1.5rem' }}>
+      <FormLabel sx={{ fontSize: '20px', color: '#000000' }}>
+        {prop.name}
+      </FormLabel>
+      <Stack
+        direction={'row'}
+        spacing={1}
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Typography>od</Typography>
+        <TextField
+          type={genTypeOfInput(prop.minValue)}
+          InputProps={{
+            sx: { width: '95.5px', height: '24px' },
+          }}
+        ></TextField>
+        <Typography>do</Typography>
+        <TextField
+          type={genTypeOfInput(prop.minValue)}
+          InputProps={{
+            sx: { width: '95.5px', height: '24px' },
+          }}
+        ></TextField>
+      </Stack>
     </FormControl>
   );
 }

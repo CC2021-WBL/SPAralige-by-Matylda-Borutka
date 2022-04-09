@@ -10,7 +10,12 @@ const Layout = () => {
       <Box sx={{ height: 80 }}>
         <AppBar sx={{ height: 80 }} />
       </Box>
-      <Container maxWidth="lg" sx={{ flexGrow: 1 }}>
+      <Container
+        component="div"
+        id="body-page"
+        maxWidth="lg"
+        sx={{ flexGrow: 1 }}
+      >
         <Outlet />
       </Container>
       <FooterStyled />

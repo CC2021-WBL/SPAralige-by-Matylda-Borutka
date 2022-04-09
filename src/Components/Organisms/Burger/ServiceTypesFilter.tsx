@@ -10,10 +10,11 @@ import { burgerCheckboxStyle, checkboxControlLabelStyle } from './BurgerStyles';
 
 function ServiceTypesFilter() {
   return (
-    <FormControl>
+    <FormControl sx={{ paddingTop: '1.5rem' }}>
       <FormLabel
         sx={{
           fontSize: '1.4375rem',
+          color: '#000000',
           lineHeight: '2rem',
           display: 'flex',
           alignItems: 'center',

@@ -8,8 +8,10 @@ import {
 
 function RehabilitatorFilter() {
   return (
-    <FormControl>
-      <FormLabel>Rehabilitant</FormLabel>
+    <FormControl sx={{ paddingTop: '1.5rem' }}>
+      <FormLabel sx={{ fontSize: '20px', color: '#000000' }}>
+        Rehabilitant
+      </FormLabel>
       <FormGroup>
         <FormControlLabel label="Matylda Borutka" control={<Checkbox />} />
         <FormControlLabel label="Zbigniew Żebro" control={<Checkbox />} />
