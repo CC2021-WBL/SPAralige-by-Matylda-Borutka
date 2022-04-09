@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-const LanguageButton = ({ children }: { children: ReactNode }) => {
+const LanguageButton = ({ children  }: { children: ReactNode }) => {
   const classes = useStyles();
   return (
     <Button className={classes.button} variant="contained">
