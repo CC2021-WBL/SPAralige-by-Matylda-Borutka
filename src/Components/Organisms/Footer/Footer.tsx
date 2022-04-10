@@ -1,25 +1,10 @@
-import {
-  Button,
-  Container,
-  Grid,
-  Link,
-  Stack,
-  Typography,
-} from '@mui/material';
+import { Container, Grid, Link, Stack, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
   footer: {
     padding: '0',
     margin: '0',
-    outline: '1px solid red',
-  },
-  langButton: {
-    padding: '0',
-    margin: '0 0rem',
-    borderRadius: '50%',
-    width: '40px',
-    height: '40px',
   },
 });
 
@@ -56,24 +41,14 @@ const Footer = () => {
               DevsOnTheWaves <br /> @2022
             </Typography>
           </Link>
-          <Grid item sx={{ border: '2px dotted grey' }}>
-            <Button variant="contained" className={classes.langButton}>
-              P
-            </Button>
-            <Button variant="contained" className={classes.langButton}>
-              E
-            </Button>
-            Mock container
-          </Grid>
+          <Grid item>Mock buttons container</Grid>
         </Grid>
         <Grid
           container
           className="rightSide"
           flexDirection="column"
-          alignItems="flex-end"
-          justifyContent="space-around"
-          // whiteSpace="nowrap"
-          sx={{ marginBottom: '2rem', textAlign: 'right' }}
+          justifyContent="space-between"
+          sx={{ marginBottom: '2rem', textAlign: 'right', padding: '1rem 0' }}
         >
           <Link
             href="https://github.com/orgs/CC2021-WBL/people"
