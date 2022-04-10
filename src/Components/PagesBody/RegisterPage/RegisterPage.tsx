@@ -5,6 +5,7 @@ import FormTitle from '../../Organisms/Form/FormTitle';
 import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
 import SignOrResetLink from '../../Organisms/LoginForm/SignOrResetLink';
 import * as Yup from 'yup';
+import React from 'react';
 
 const RegisterValidation = Yup.object().shape({
   name: Yup.string().required('Nazwa użytkownika jest wymagana'),
