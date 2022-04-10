@@ -4,8 +4,6 @@ import { Outlet } from 'react-router-dom';
 import Footer from '../../Organisms/Footer/Footer';
 import MainWrapper from './MainWrapper';
 
-Footer;
-
 const Layout = () => {
   return (
     <MainWrapper>
