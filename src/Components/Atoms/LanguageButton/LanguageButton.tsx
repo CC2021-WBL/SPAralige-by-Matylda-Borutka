@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     color: '#00000094',
     borderRadius: '50%',
     boxShadow: 'none',
-    '&:active, &:hover': {
+    '&:active, &:hover, &:focus': {
       background: '#01579B',
       color: '#FFFFFF',
       border: '0.0625rem solid #82B1FF',
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-const LanguageButton = ({ children  }: { children: ReactNode }) => {
+const LanguageButton = ({ children }: { children: ReactNode }) => {
   const classes = useStyles();
   return (
     <Button className={classes.button} variant="contained">
