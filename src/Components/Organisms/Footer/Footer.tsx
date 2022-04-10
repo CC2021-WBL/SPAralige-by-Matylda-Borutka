@@ -33,7 +33,7 @@ const Footer = () => {
         >
           <Link
             href="https://github.com/orgs/CC2021-WBL/people"
-            color="white"
+            color="primary.contrastText"
             underline="none"
             target="_blank"
           >
@@ -52,7 +52,7 @@ const Footer = () => {
         >
           <Link
             href="https://github.com/orgs/CC2021-WBL/people"
-            color={'#fff'}
+            color={'primary.contrastText'}
             underline="none"
             variant="h6"
             target="_blank"
@@ -61,7 +61,7 @@ const Footer = () => {
           </Link>
           <Link
             href="https://github.com/orgs/CC2021-WBL/people"
-            color={'#fff'}
+            color={'primary.contrastText'}
             underline="none"
             variant="h6"
             target="_blank"
@@ -70,7 +70,7 @@ const Footer = () => {
           </Link>
           <Link
             href="https://github.com/orgs/CC2021-WBL/people"
-            color={'#fff'}
+            color={'primary.contrastText'}
             underline="none"
             variant="h6"
             target="_blank"
@@ -79,7 +79,7 @@ const Footer = () => {
           </Link>
           <Link
             href="https://github.com/orgs/CC2021-WBL/people"
-            color={'#fff'}
+            color={'primary.contrastText'}
             underline="none"
             variant="h6"
             target="_blank"
