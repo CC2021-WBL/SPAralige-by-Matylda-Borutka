@@ -1,18 +1,10 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { TextField, CheckboxWithLabel } from 'formik-mui';
-import {
-  Button,
-  LinearProgress,
-  Box,
-  Stack,
-  Typography,
-  Box,
-} from '@mui/material';
+import { Button, LinearProgress, Stack, Typography, Box } from '@mui/material';
 import FormTitle from '../../Organisms/Form/FormTitle';
 import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
 import SignOrResetLink from '../../Organisms/LoginForm/SignOrResetLink';
 import * as Yup from 'yup';
-import React from 'react';
 
 const RegisterValidation = Yup.object().shape({
   name: Yup.string().required('Nazwa użytkownika jest wymagana'),

@@ -34,8 +34,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "tsc": "npx tsc",
-    "lint-staged": "lint-staged --config .lintstaged.json",
-    "husky-install": "husky install"
+    "lint-staged": "lint-staged",
+    "husky-install": "husky install",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -72,5 +73,12 @@
   },
   "peerDependencies": {
     "@babel/core": "^7.0.0"
+  },
+  "lint-staged": {
+    "*.js": "eslint --max-warnings=0",
+    "*.jsx": "eslint --max-warnings=0",
+    "*.ts": "eslint --max-warnings=0",
+    "*.tsx": "eslint --max-warnings=0",
+    ".{js,jsx,ts,tsx,json,css,js}": "prettier --write"
   }
 }
