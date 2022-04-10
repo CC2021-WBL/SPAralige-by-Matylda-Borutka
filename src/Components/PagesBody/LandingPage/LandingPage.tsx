@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import MainGraphic from '../../Organisms/Main-Graphic/MainGraphic';
 import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
 
 const serviceDataMock = [
@@ -49,6 +50,7 @@ const LandingPage = () => {
 
   return (
     <main>
+      <MainGraphic></MainGraphic>
       <h1 style={{ textAlign: 'center' }}>SPAralige od Matylde</h1>
       {serviceObject && <ResponsiveGrid serviceObjectArray={serviceObject} />}
     </main>
