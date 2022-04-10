@@ -12,13 +12,14 @@ const useStyles = makeStyles({
   footer: {
     padding: '0',
     margin: '0',
+    outline: '1px solid red',
   },
   langButton: {
     padding: '0',
-    margin: '0 .5rem',
+    margin: '0 0rem',
     borderRadius: '50%',
-    width: '4rem',
-    height: '4rem',
+    width: '40px',
+    height: '40px',
   },
 });
 
@@ -47,7 +48,7 @@ const Footer = () => {
         >
           <Link
             href="https://github.com/orgs/CC2021-WBL/people"
-            color={'white'}
+            color="white"
             underline="none"
             target="_blank"
           >
@@ -57,10 +58,10 @@ const Footer = () => {
           </Link>
           <Grid item sx={{ border: '2px dotted grey' }}>
             <Button variant="contained" className={classes.langButton}>
-              PL
+              P
             </Button>
             <Button variant="contained" className={classes.langButton}>
-              EN
+              E
             </Button>
             Mock container
           </Grid>
@@ -71,8 +72,8 @@ const Footer = () => {
           flexDirection="column"
           alignItems="flex-end"
           justifyContent="space-around"
-          whiteSpace="nowrap"
-          sx={{ marginBottom: '2rem' }}
+          // whiteSpace="nowrap"
+          sx={{ marginBottom: '2rem', textAlign: 'right' }}
         >
           <Link
             href="https://github.com/orgs/CC2021-WBL/people"
