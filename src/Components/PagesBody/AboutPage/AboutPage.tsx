@@ -1,4 +1,5 @@
 import TextCard from '../../Organisms/TextCard/TextCard';
+import React from 'react';
 
 const AboutPage = () => {
   return (
