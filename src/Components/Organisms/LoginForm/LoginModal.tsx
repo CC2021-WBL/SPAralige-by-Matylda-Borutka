@@ -1,10 +1,9 @@
-import { Box, Modal, Stack, Typography, TextField } from '@mui/material';
+import { Box, Modal, Stack, Typography } from '@mui/material';
 import { useState } from 'react';
 
 import EmailAndPasswordInput from './EmailAndPasswordInput';
 import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
 import LoginButton from './LoginButton';
-import LoginTitle from './LoginTitle';
 import SignOrResetLink from './SignOrResetLink';
 import { HandleInputChangeType } from '../../../Types/EventFunctions';
 import { LoginInputsProps } from './LoginTypes';

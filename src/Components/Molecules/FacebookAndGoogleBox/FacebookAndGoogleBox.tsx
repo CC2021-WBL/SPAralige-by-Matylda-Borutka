@@ -4,7 +4,6 @@ import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
 import { loginWithFacebook } from '../../../Firebase/facebookLogin';
 import { loginWithGoogle } from '../../../Firebase/googleLogin';
 import PropTypes from 'prop-types';
-import FormTitle from '../../Organisms/Form/FormTitle';
 
 function FacebookAndGoogleBox({ loginOrRegister }) {
   const onGoogleClick: HandleOnClickButtonType = async (event) => {
