@@ -33,7 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "tsc": "npx tsc",
-    "lint-staged": "lint-staged --config lint-staged.js",
+    "lint-staged": "lint-staged",
     "husky-install": "husky install"
   },
   "eslintConfig": {
@@ -71,5 +71,14 @@
   },
   "peerDependencies": {
     "@babel/core": "^7.0.0"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint --max-warnings=0",
+      "tsc-files --noEmit"
+    ],
+    "**/*.{js,jsx,ts,tsx,json,css,js}": [
+      "prettier --write"
+    ]
   }
 }
