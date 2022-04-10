@@ -1,3 +1,4 @@
+import styled from '@emotion/styled/types/base';
 import { Button } from '@mui/material';
 import { ReactNode } from 'react';
 import { makeStyles } from '@mui/styles';
