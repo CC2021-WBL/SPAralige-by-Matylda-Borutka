@@ -1,43 +1,26 @@
-import { Formik, Form, Field } from 'formik';
-import { TextField } from 'formik-mui';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { TextField, CheckboxWithLabel } from 'formik-mui';
 import { Button, LinearProgress, Box, Stack, Typography } from '@mui/material';
 import FormTitle from '../../Organisms/Form/FormTitle';
 import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
 import SignOrResetLink from '../../Organisms/LoginForm/SignOrResetLink';
+import * as Yup from 'yup';
 
-interface Values {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-  toggle: boolean;
-}
-
-function validateEmail(value) {
-  let error;
-  if (!value) {
-    error = 'Adres e-mail wymagany';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-    error = 'Niepoprawny adres e-mail';
-  }
-  return error;
-}
-
-function validateName(value) {
-  let error;
-  if (!value) {
-    error = 'Nazwa użytkownika jest wymagana';
-  }
-  return error;
-}
-
-function validateToggle(value) {
-  let error;
-  if (!value) {
-    error = 'Zaakceptowanie warunków jest koniecznie.';
-  }
-  return error;
-}
+const RegisterValidation = Yup.object().shape({
+  name: Yup.string().required('Nazwa użytkownika jest wymagana'),
+  email: Yup.string()
+    .required('Adres e-mail wymagany')
+    .email('Niepoprawny adres e-mail'),
+  password: Yup.string()
+    .min(4, 'Hasło jest wymagane')
+    .required('Hasło jest wymagane'),
+  confirmPassword: Yup.string()
+    .required('Wpisz hasło')
+    .oneOf([Yup.ref('password')], 'Podane hasła różnią się'),
+  termsOfService: Yup.boolean()
+    .required('* Warunki użytkowania muszę zostać zaakceptowane.')
+    .oneOf([true], '* Warunki użytkowania muszę zostać zaakceptowane.'),
+});
 
 const RegisterPage = () => {
   return (
@@ -63,8 +46,9 @@ const RegisterPage = () => {
           email: '',
           password: '',
           confirmPassword: '',
-          toggle: false,
+          termsOfService: false,
         }}
+        validationSchema={RegisterValidation}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             setSubmitting(false);
@@ -85,14 +69,14 @@ const RegisterPage = () => {
                 name="name"
                 type="name"
                 label="Nazwa użytkownika"
-                validate={validateName}
+                // validate={validateName}
               />
               <Field
                 component={TextField}
                 name="email"
                 type="email"
                 label="Email"
-                validate={validateEmail}
+                // validate={validateEmail}
               />
               <Field
                 component={TextField}
@@ -106,8 +90,19 @@ const RegisterPage = () => {
                 label="Powtórz hasło"
                 name="confirmPassword"
               />
-              <Field type="checkbox" name="toggle" validate={validateToggle} />
-              Wyrażam zgodę na warunki korzystania z serwisu
+              <Field
+                component={CheckboxWithLabel}
+                type="checkbox"
+                name="termsOfService"
+                Label={{
+                  label: 'Wyrażam zgodę na warunki korzystania z serwisu',
+                }}
+              />
+              <ErrorMessage
+                name="termsOfService"
+                component="div"
+                className="MuiFormHelperText-root MuiFormHelperText-contained Mui-error"
+              />
               {isSubmitting && <LinearProgress />}
               <Button
                 variant="contained"
