@@ -99,7 +99,7 @@ const ServiceCard = (prop: { serviceObject: serviceData }) => {
                 component="div"
                 color="text.disabled"
               >
-                {`${prop.serviceObject.duration} h`}
+                {`${prop.serviceObject.durationInHours} h`}
               </Typography>
             </Stack>
             <Stack
@@ -116,7 +116,7 @@ const ServiceCard = (prop: { serviceObject: serviceData }) => {
                 component="div"
                 color="text.disabled"
               >
-                {`${prop.serviceObject.price} zł`}
+                {`${prop.serviceObject.priceInZloty} zł`}
               </Typography>
             </Stack>
           </Stack>
