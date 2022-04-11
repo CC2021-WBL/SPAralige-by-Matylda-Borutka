@@ -1,8 +1,8 @@
 import { Button, Stack, Typography } from '@mui/material';
 
 import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
-import { loginWithFacebook } from '../../../Firebase/facebookLogin';
-import { loginWithGoogle } from '../../../Firebase/googleLogin';
+import { loginWithFacebook } from '../../../Firebase/firebase';
+import { loginWithGoogle } from '../../../Firebase/firebase';
 
 function FacebookAndGoogleBox() {
   const onGoogleClick: HandleOnClickButtonType = async (event) => {
