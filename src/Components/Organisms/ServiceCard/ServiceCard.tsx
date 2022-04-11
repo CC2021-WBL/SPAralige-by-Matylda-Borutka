@@ -65,7 +65,18 @@ const ServiceCard = (prop: { serviceObject: serviceData }) => {
           alt={prop.serviceObject.altText}
         />
         <ServiceCardContent serviceObject={prop.serviceObject} />
-        <CardActions disableSpacing>
+        <CardActions
+          sx={{
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'center',
+            paddingBottom: '10px',
+            '@media screen and (min-width: 600px)': {
+              justifyContent: 'flex-end',
+            },
+          }}
+          disableSpacing
+        >
           <Button
             aria-label="more details"
             size="medium"
