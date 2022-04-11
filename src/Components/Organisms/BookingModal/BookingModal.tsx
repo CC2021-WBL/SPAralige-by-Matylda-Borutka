@@ -154,6 +154,9 @@ const BookingModal = () => {
     event: React.MouseEvent<HTMLElement>,
     newAlignment: number,
   ) => {
+    setChosenHourAfternoon('');
+    setChosenHourEvening('');
+    setChosenHourMorning('');
     setChosenDateNumber(newAlignment);
   };
 
@@ -311,9 +314,7 @@ const BookingModal = () => {
               service,
               price,
               chosenDate,
-              chosenHourMorning,
-              chosenHourAfternoon,
-              chosenHourEvening,
+              chosenHour: `${chosenHourMorning}${chosenHourAfternoon}${chosenHourEvening}`,
             });
           }}
         >
