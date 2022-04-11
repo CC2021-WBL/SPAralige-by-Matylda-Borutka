@@ -3,7 +3,6 @@ import { useState } from 'react';
 
 import ClosingIcon from './CloseIcon';
 import EmailAndPasswordInput from './EmailAndPasswordInput';
-import FacebookAndGoogleBox from './FacebookAndGoogleBox';
 import LoginButton from './LoginButton';
 import LoginTitle from './LoginTitle';
 import SignOrResetLink from './SignOrResetLink';
@@ -71,7 +70,6 @@ export default function LoginModal(prop: {
           >
             lub
           </Typography>
-          <FacebookAndGoogleBox />
           <SignOrResetLink
             issueText="Nie masz konta? "
             linkText="Zarejestruj się"
