@@ -1,48 +1,28 @@
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import CreateIcon from '@mui/icons-material/Create';
-import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
-import { Modal, Stack } from '@mui/material';
-import { makeStyles } from '@mui/styles';
+import { Modal } from '@mui/material';
 import { useEffect, useState } from 'react';
 
+import ServiceCardContent from './ServiceCardContent';
 import ServiceDetailsModal from './ServiceDetailsModal';
 import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
 
-const useStyles = makeStyles({
-  btnsPosition: {
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingBottom: 10,
-    '@media screen and (min-width: 600px)': {
-      justifyContent: 'flex-end',
+const btnStyles = {
+  borderRadius: '3.125rem',
+  minWidth: '12.5rem',
+  paddingTop: '0.5625rem',
+  '@media screen and (min-width: 450px)': {
+    '&:first-of-type': {
+      marginRight: '0.5rem',
     },
   },
-  btnStyles: {
-    borderRadius: 50,
-    minWidth: 200,
-    paddingTop: 9,
-    '@media screen and (min-width: 450px)': {
-      '&:first-child': {
-        marginRight: 8,
-      },
-    },
-  },
-  durationAndPrice: {
-    alignItems: 'center',
-    paddingBottom: 10,
-  },
-});
+};
 
 const ServiceCard = (prop: { serviceObject: serviceData }) => {
-  const classes = useStyles();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -84,55 +64,12 @@ const ServiceCard = (prop: { serviceObject: serviceData }) => {
           image={imgUrl}
           alt={prop.serviceObject.altText}
         />
-        <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
-            {prop.serviceObject.name}
-          </Typography>
-          <Stack direction="row" spacing={2}>
-            <Stack
-              spacing={0.8}
-              direction="row"
-              className={classes.durationAndPrice}
-            >
-              <AccessTimeIcon
-                sx={{ color: 'text.disabled' }}
-                aria-hidden="true"
-              />
-              <Typography
-                variant="subtitle2"
-                component="div"
-                color="text.disabled"
-              >
-                {`${prop.serviceObject.duration} h`}
-              </Typography>
-            </Stack>
-            <Stack
-              spacing={0.4}
-              direction="row"
-              className={classes.durationAndPrice}
-            >
-              <AttachMoneyIcon
-                sx={{ color: 'text.disabled' }}
-                aria-hidden="true"
-              />
-              <Typography
-                variant="subtitle2"
-                component="div"
-                color="text.disabled"
-              >
-                {`${prop.serviceObject.price} zł`}
-              </Typography>
-            </Stack>
-          </Stack>
-          <Typography variant="body2" color="text.secondary">
-            {prop.serviceObject.description}
-          </Typography>
-        </CardContent>
-        <CardActions className={classes.btnsPosition} disableSpacing>
+        <ServiceCardContent serviceObject={prop.serviceObject} />
+        <CardActions disableSpacing>
           <Button
             aria-label="more details"
             size="medium"
-            className={classes.btnStyles}
+            sx={{ ...btnStyles }}
             onClick={() => {
               handleOpenDetails();
             }}
@@ -144,8 +81,10 @@ const ServiceCard = (prop: { serviceObject: serviceData }) => {
             variant="contained"
             disableElevation
             size="medium"
-            startIcon={<CreateIcon fontSize="small" />}
-            className={classes.btnStyles}
+            startIcon={
+              <CreateIcon fontSize="small" sx={{ marginBottom: '4px' }} />
+            }
+            sx={{ ...btnStyles }}
             onClick={() => {
               handleOpen();
             }}
@@ -164,14 +103,7 @@ const ServiceCard = (prop: { serviceObject: serviceData }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            MODAL MOCK
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            MODAL MOCK
-          </Typography>
-        </Box>
+        <Box />
       </Modal>
     </>
   );

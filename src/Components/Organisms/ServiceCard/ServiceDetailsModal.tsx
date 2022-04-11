@@ -12,7 +12,17 @@ const ServiceDetailsModal = (prop: {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box>
+      <Box
+        sx={{
+          width: 300,
+          height: 300,
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          backgroundColor: 'white',
+        }}
+      >
         <Typography id="modal-modal-title" variant="h6" component="h2">
           MODAL MOCK DETAILS
         </Typography>
