@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5444485f-f13e-43a0-9f32-49250daf0765" name="Changes" comment="initial commit">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_04_2022_17_23_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_04_2022_17_23__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Organisms/BookingModal/BookingModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Organisms/BookingModal/DateButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Organisms/LoginForm/CloseIcon.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Organisms/ServiceCard/ServiceCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Organisms/ServiceCard/ServiceCard.tsx" afterDir="false" />
+    <list default="true" id="5444485f-f13e-43a0-9f32-49250daf0765" name="Changes" comment="added hours">
+      <change afterPath="$PROJECT_DIR$/src/Components/Organisms/BookingModal/HourButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Organisms/BookingModal/BookingModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Organisms/BookingModal/BookingModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.53k7vnxhval.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +48,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/coderscamp/SPAralige-by-Matylda-Borutka/src/Components/Organisms/BookingModal&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -64,6 +62,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\coderscamp\SPAralige-by-Matylda-Borutka\src\Components\Organisms\BookingModal" />
       <recent name="C:\coderscamp\SPAralige-by-Matylda-Borutka\src\Components\Organisms\Form" />
     </key>
   </component>
@@ -148,6 +147,7 @@
       <workItem from="1649599051376" duration="4094000" />
       <workItem from="1649694578881" duration="573000" />
       <workItem from="1649695165109" duration="15627000" />
+      <workItem from="1649716090566" duration="3754000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1649417029961</created>
@@ -246,7 +246,8 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="fix" />
     <MESSAGE value="initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+    <MESSAGE value="added hours" />
+    <option name="LAST_COMMIT_MESSAGE" value="added hours" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -254,6 +255,11 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/Components/Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox.tsx</url>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/Components/Organisms/BookingModal/HourButton.tsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
