@@ -1,0 +1,11 @@
+{
+  "nav1": "Our services",
+  "nav2": "About us",
+  "heading": "Popular services",
+  "footer": {
+    "about": "About us",
+    "faq": "FAQ ",
+    "terms": "Terms of use",
+    "privacy": "Privacy policy"
+  }
+}
