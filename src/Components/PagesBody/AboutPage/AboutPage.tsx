@@ -9,7 +9,7 @@ const AboutPage = () => {
       <h1>Tu będą informacje o nas</h1>
       {/*textCard and buttons are here just for test*/}
       <LanguageButton>
-        <Typography variant="body1">PL</Typography>
+        <Typography variant="body1">PL PL</Typography>
       </LanguageButton>
       <LanguageButton>
         <Typography variant="body1">EN</Typography>
