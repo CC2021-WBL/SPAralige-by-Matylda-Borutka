@@ -7,12 +7,12 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import CreateIcon from '@mui/icons-material/Create';
 import Typography from '@mui/material/Typography';
-import { Box } from '@mui/system';
 import { Modal, Stack } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useEffect, useState } from 'react';
 
 import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
+import BookingModal from '../BookingModal/BookingModal';
 
 const useStyles = makeStyles({
   btnsPosition: {
@@ -156,14 +156,7 @@ const ServiceCard = (prop: { serviceObject: serviceData }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            MODAL MOCK
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            MODAL MOCK
-          </Typography>
-        </Box>
+        <BookingModal />
       </Modal>
     </>
   );

@@ -1,0 +1,41 @@
+Index: package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n  \"name\": \"sparalige\",\r\n  \"version\": \"0.1.0\",\r\n  \"private\": true,\r\n  \"dependencies\": {\r\n    \"@emotion/react\": \"^11.8.2\",\r\n    \"@emotion/styled\": \"^11.8.1\",\r\n    \"@mui/icons-material\": \"^5.5.1\",\r\n    \"@mui/material\": \"^5.5.3\",\r\n    \"@mui/styles\": \"^5.5.3\",\r\n    \"@testing-library/jest-dom\": \"^5.16.3\",\r\n    \"@testing-library/react\": \"^12.1.4\",\r\n    \"@testing-library/user-event\": \"^13.5.0\",\r\n    \"@types/jest\": \"^27.4.1\",\r\n    \"@types/node\": \"^16.11.26\",\r\n    \"@types/react\": \"^17.0.43\",\r\n    \"@types/react-dom\": \"^17.0.14\",\r\n    \"firebase\": \"^9.6.10\",\r\n    \"formik\": \"^2.2.9\",\r\n    \"formik-mui\": \"^4.0.0-alpha.3\",\r\n    \"i18next\": \"^21.6.14\",\r\n    \"react\": \"^17.0.2\",\r\n    \"react-dom\": \"^17.0.2\",\r\n    \"react-i18next\": \"^11.16.2\",\r\n    \"react-router-dom\": \"^6.3.0\",\r\n    \"react-scripts\": \"5.0.0\",\r\n    \"typescript\": \"^4.6.3\",\r\n    \"web-vitals\": \"^2.1.4\",\r\n    \"yup\": \"^0.32.11\"\r\n  },\r\n  \"scripts\": {\r\n    \"start\": \"react-scripts start\",\r\n    \"build\": \"react-scripts build\",\r\n    \"test\": \"react-scripts test\",\r\n    \"eject\": \"react-scripts eject\",\r\n    \"tsc\": \"npx tsc\",\r\n    \"lint-staged\": \"lint-staged\",\r\n    \"husky-install\": \"husky install\",\r\n    \"prepare\": \"husky install\"\r\n  },\r\n  \"eslintConfig\": {\r\n    \"extends\": [\r\n      \"react-app\",\r\n      \"react-app/jest\"\r\n    ]\r\n  },\r\n  \"browserslist\": {\r\n    \"production\": [\r\n      \">0.2%\",\r\n      \"not dead\",\r\n      \"not op_mini all\"\r\n    ],\r\n    \"development\": [\r\n      \"last 1 chrome version\",\r\n      \"last 1 firefox version\",\r\n      \"last 1 safari version\"\r\n    ]\r\n  },\r\n  \"devDependencies\": {\r\n    \"@typescript-eslint/eslint-plugin\": \"^5.17.0\",\r\n    \"@typescript-eslint/parser\": \"^5.17.0\",\r\n    \"eslint\": \"^8.12.0\",\r\n    \"eslint-config-prettier\": \"^8.5.0\",\r\n    \"eslint-plugin-import\": \"^2.25.4\",\r\n    \"eslint-plugin-jsx-a11y\": \"^6.5.1\",\r\n    \"eslint-plugin-prettier\": \"^4.0.0\",\r\n    \"eslint-plugin-react\": \"^7.29.4\",\r\n    \"eslint-plugin-react-hooks\": \"^4.4.0\",\r\n    \"husky\": \"^7.0.4\",\r\n    \"lint-staged\": \"^12.3.7\",\r\n    \"prettier\": \"^2.6.1\",\r\n    \"tsc-files\": \"^1.1.3\"\r\n  },\r\n  \"peerDependencies\": {\r\n    \"@babel/core\": \"^7.0.0\"\r\n  },\r\n  \"lint-staged\": {\r\n    \"*.js\": \"eslint --max-warnings=0\",\r\n    \"*.jsx\": \"eslint --max-warnings=0\",\r\n    \"*.ts\": \"eslint --max-warnings=0\",\r\n    \"*.tsx\": \"eslint --max-warnings=0\",\r\n    \".{js,jsx,ts,tsx,json,css,js}\": \"prettier --write\"\r\n  }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/package.json b/package.json
+--- a/package.json	(revision f75362c95637e8d14e97178e07e3a1eac23d3873)
++++ b/package.json	(date 1649603869578)
+@@ -66,19 +66,10 @@
+     "eslint-plugin-prettier": "^4.0.0",
+     "eslint-plugin-react": "^7.29.4",
+     "eslint-plugin-react-hooks": "^4.4.0",
+-    "husky": "^7.0.4",
+-    "lint-staged": "^12.3.7",
+     "prettier": "^2.6.1",
+     "tsc-files": "^1.1.3"
+   },
+   "peerDependencies": {
+     "@babel/core": "^7.0.0"
+-  },
+-  "lint-staged": {
+-    "*.js": "eslint --max-warnings=0",
+-    "*.jsx": "eslint --max-warnings=0",
+-    "*.ts": "eslint --max-warnings=0",
+-    "*.tsx": "eslint --max-warnings=0",
+-    ".{js,jsx,ts,tsx,json,css,js}": "prettier --write"
+   }
+ }
+Index: .lintstaged.json
+===================================================================
+diff --git a/.lintstaged.json b/.lintstaged.json
+deleted file mode 100644
+--- a/.lintstaged.json	(revision f75362c95637e8d14e97178e07e3a1eac23d3873)
++++ /dev/null	(revision f75362c95637e8d14e97178e07e3a1eac23d3873)
+@@ -1,4 +0,0 @@
+-{
+-  ".{js,jsx,ts,tsx}": "eslint --max-warnings=0",
+-  ".{js,jsx,ts,tsx,json,css,js}": "prettier --write"
+-}
