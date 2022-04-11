@@ -1,26 +1,13 @@
-import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardMedia from '@mui/material/CardMedia';
-import CreateIcon from '@mui/icons-material/Create';
 import { Box } from '@mui/system';
 import { Modal } from '@mui/material';
 import { useEffect, useState } from 'react';
 
+import ServiceCardActions from './ServiceCardActions';
 import ServiceCardContent from './ServiceCardContent';
 import ServiceDetailsModal from './ServiceDetailsModal';
 import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
-
-const btnStyles = {
-  borderRadius: '3.125rem',
-  minWidth: '12.5rem',
-  paddingTop: '0.5625rem',
-  '@media screen and (min-width: 450px)': {
-    '&:first-of-type': {
-      marginRight: '0.5rem',
-    },
-  },
-};
 
 const ServiceCard = (prop: { serviceObject: serviceData }) => {
   const [open, setOpen] = useState(false);
@@ -65,44 +52,10 @@ const ServiceCard = (prop: { serviceObject: serviceData }) => {
           alt={prop.serviceObject.altText}
         />
         <ServiceCardContent serviceObject={prop.serviceObject} />
-        <CardActions
-          sx={{
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'center',
-            paddingBottom: '10px',
-            '@media screen and (min-width: 600px)': {
-              justifyContent: 'flex-end',
-            },
-          }}
-          disableSpacing
-        >
-          <Button
-            aria-label="more details"
-            size="medium"
-            sx={{ ...btnStyles }}
-            onClick={() => {
-              handleOpenDetails();
-            }}
-          >
-            Więcej Szczegółów
-          </Button>
-          <Button
-            aria-label="make reservation"
-            variant="contained"
-            disableElevation
-            size="medium"
-            startIcon={
-              <CreateIcon fontSize="small" sx={{ marginBottom: '4px' }} />
-            }
-            sx={{ ...btnStyles }}
-            onClick={() => {
-              handleOpen();
-            }}
-          >
-            Rezerwuj Zabieg
-          </Button>
-        </CardActions>
+        <ServiceCardActions
+          handleOpenDetails={handleOpenDetails}
+          handleOpen={handleOpen}
+        />
       </Card>
       <ServiceDetailsModal
         handleCloseDetails={handleCloseDetails}
