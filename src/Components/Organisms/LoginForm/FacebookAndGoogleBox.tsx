@@ -23,7 +23,7 @@ function FacebookAndGoogleBox() {
         sx={{ height: '2.9375rem', background: '#01579B' }}
         onClick={onFbClick}
       >
-        <Typography sx={{ fontSize: '14px', paddingTop: '1px' }}>
+        <Typography sx={{ fontSize: '0.875rem', paddingTop: '1px' }}>
           ZALOGUJ PRZEZ FACEBOOK&apos;A
         </Typography>
       </Button>

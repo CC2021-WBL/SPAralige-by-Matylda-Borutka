@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import ClosingIcon from './CloseIcon';
 import EmailAndPasswordInput from './EmailAndPasswordInput';
-import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
+import FacebookAndGoogleBox from './FacebookAndGoogleBox';
 import LoginButton from './LoginButton';
 import LoginTitle from './LoginTitle';
 import SignOrResetLink from './SignOrResetLink';
