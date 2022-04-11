@@ -34,17 +34,27 @@ function FilterWithRange<T>(prop: RangePropType<T>) {
         alignItems="center"
       >
         <Typography>od</Typography>
+
         <TextField
           type={genTypeOfInput(prop.minValue)}
           InputProps={{
             sx: { width: '95.5px', height: '24px' },
           }}
+          inputProps={{
+            min: prop.minValue,
+            max: prop.maxValue,
+          }}
         ></TextField>
+
         <Typography>do</Typography>
         <TextField
           type={genTypeOfInput(prop.minValue)}
           InputProps={{
             sx: { width: '95.5px', height: '24px' },
+          }}
+          inputProps={{
+            min: prop.minValue,
+            max: prop.maxValue,
           }}
         ></TextField>
       </Stack>

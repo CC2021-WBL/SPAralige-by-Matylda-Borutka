@@ -25,6 +25,7 @@ function ServiceTypesFilter() {
       <FormGroup>
         <FormControlLabel
           label="Masaże twarz"
+          checked={}
           sx={checkboxControlLabelStyle}
           control={<Checkbox value="face-massage" sx={burgerCheckboxStyle} />}
         />
