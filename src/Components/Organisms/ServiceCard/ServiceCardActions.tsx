@@ -34,7 +34,7 @@ const ServiceCardActions = (prop: actionsProps) => {
       <Button
         aria-label="more details"
         size="medium"
-        sx={{ ...btnStyles }}
+        sx={btnStyles}
         onClick={() => {
           prop.handleOpenDetails();
         }}
@@ -49,7 +49,7 @@ const ServiceCardActions = (prop: actionsProps) => {
         startIcon={
           <CreateIcon fontSize="small" sx={{ marginBottom: '0.25rem' }} />
         }
-        sx={{ ...btnStyles }}
+        sx={btnStyles}
         onClick={() => {
           prop.handleOpen();
         }}
