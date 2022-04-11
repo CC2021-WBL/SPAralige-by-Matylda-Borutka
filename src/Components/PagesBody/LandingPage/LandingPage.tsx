@@ -2,21 +2,12 @@ import { getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 
 import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
+import { serviceDataType } from '../../../Types/dbDataTypes';
 import { servicesRef } from '../../../Firebase/firebase';
-
-export interface serviceData {
-  id?: string;
-  name: string;
-  description: string;
-  priceInZloty: number;
-  durationInHours: number;
-  image: string;
-  altText: string;
-}
 
 const LandingPage = () => {
   const [serviceObjectArray, setServiceObjectArray] = useState<
-    serviceData[] | null
+    serviceDataType[] | null
   >(null);
 
   useEffect(() => {
@@ -26,12 +17,17 @@ const LandingPage = () => {
         if (!snapshot) {
           throw new Error();
         } else {
-          const serviceArray: serviceData[] = [];
+          const serviceArray: serviceDataType[] = [];
           snapshot.forEach((service) => {
-            const convertedData = service.data() as serviceData;
+            const convertedData = service.data() as serviceDataType;
             convertedData.id = service.id;
+            console.log(convertedData.therapist);
+            const therapistObject = convertedData.therapist;
+            console.log(therapistObject);
+
             serviceArray.push(convertedData);
           });
+          console.log(serviceArray);
           setServiceObjectArray(serviceArray);
         }
       } catch (error) {

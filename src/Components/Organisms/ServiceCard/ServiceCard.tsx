@@ -12,7 +12,7 @@ import { Modal, Stack } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useEffect, useState } from 'react';
 
-import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
+import { serviceDataType } from '../../../Types/dbDataTypes';
 
 const useStyles = makeStyles({
   btnsPosition: {
@@ -40,7 +40,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ServiceCard = (prop: { serviceObject: serviceData }) => {
+const ServiceCard = (prop: { serviceObject: serviceDataType }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
