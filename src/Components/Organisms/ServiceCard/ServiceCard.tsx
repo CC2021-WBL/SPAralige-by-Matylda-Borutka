@@ -12,6 +12,7 @@ import { Modal, Stack } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useEffect, useState } from 'react';
 
+import ServiceDetailsModal from './ServiceDetailsModal';
 import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
 
 const useStyles = makeStyles({
@@ -45,6 +46,9 @@ const ServiceCard = (prop: { serviceObject: serviceData }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [openDetails, setOpenDetails] = useState(false);
+  const handleOpenDetails = () => setOpenDetails(true);
+  const handleCloseDetails = () => setOpenDetails(false);
 
   // TODO: find solution to put different type than for image
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -130,7 +134,7 @@ const ServiceCard = (prop: { serviceObject: serviceData }) => {
             size="medium"
             className={classes.btnStyles}
             onClick={() => {
-              console.log('clicked');
+              handleOpenDetails();
             }}
           >
             Więcej Szczegółów
@@ -150,6 +154,10 @@ const ServiceCard = (prop: { serviceObject: serviceData }) => {
           </Button>
         </CardActions>
       </Card>
+      <ServiceDetailsModal
+        handleCloseDetails={handleCloseDetails}
+        openDetails={openDetails}
+      />
       <Modal
         open={open}
         onClose={handleClose}
