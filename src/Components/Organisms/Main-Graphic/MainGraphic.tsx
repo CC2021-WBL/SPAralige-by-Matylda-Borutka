@@ -1,5 +1,7 @@
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import { Grid, Paper, Typography } from '@mui/material';
+import { blue } from '@mui/material/colors';
 
 // import { favicon } from '../../../../public/';
 
@@ -7,14 +9,27 @@ function MainGraphic() {
   return (
     <Box
       sx={{
-        width: '100%',
-        backgroundImage: 'url(https://source.unsplash.com/random/1024x768?sky)',
+        backgroundImage: 'url(https://source.unsplash.com/random/?sky)',
         backgroundRepeat: 'no-repeat',
-        height: 500,
+        height: 600,
+        width: '100%',
       }}
     >
-      lalalay
-      <Button variant="contained">Znajdź idealny zabieg</Button>
+      <Grid container spacing={1} height={'100%'}>
+        <Grid item md={6}></Grid>
+        <Grid item sx={{ margin: 'auto', textAlign: 'center' }}>
+          <Typography
+            sx={{ color: 'primary.main' }}
+            paddingBottom={2}
+            variant="h2"
+          >
+            Zadbaj o siebie
+          </Typography>
+          <Button variant="contained" disableElevation>
+            Znajdź idealny zabieg
+          </Button>
+        </Grid>
+      </Grid>
     </Box>
   );
 }
