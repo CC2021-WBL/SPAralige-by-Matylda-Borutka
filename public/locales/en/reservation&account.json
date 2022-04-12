@@ -1,0 +1,18 @@
+{
+  "title1": "reservation",
+  "title2": "your account",
+  "date": "the date of the service",
+  "futureDate": "days to visit",
+  "pastDate": "completed visit",
+  "edit": "edit",
+  "data": "your data",
+  "name": "name",
+  "email": "email",
+  "password": "password",
+  "settings": "settings",
+  "language": "language version",
+  "languageContent": "english",
+  "theme": "colors version",
+  "themeContent1": "default",
+  "themeContent2": "delicate"
+}
