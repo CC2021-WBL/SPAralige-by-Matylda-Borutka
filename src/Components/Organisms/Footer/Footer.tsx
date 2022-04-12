@@ -1,28 +1,23 @@
-import { Container, Grid, Link, Stack, Typography } from '@mui/material';
-import { makeStyles } from '@mui/styles';
-
-const useStyles = makeStyles({
-  footer: {
-    padding: '0',
-    margin: '0',
-  },
-});
+import { Container, Grid, Link, Stack } from '@mui/material';
 
 const Footer = () => {
-  const classes = useStyles();
+  const mediaXM = {
+    '@media screen and (max-width: 600px)': {
+      fontSize: '14px',
+    },
+  };
   return (
     <Container
       maxWidth={false}
-      className={classes.footer}
+      className="footer"
       sx={{ backgroundColor: 'primary.main' }}
     >
       <Stack
-        bgcolor="primary.main"
         flexDirection="row"
-        height="266px"
+        height="276px"
         className="wrapper"
         maxWidth="lg"
-        sx={{ padding: '0 1rem', margin: '0 auto', flexGrow: '1' }}
+        sx={{ padding: '0 0rem', margin: '0 auto' }}
       >
         <Grid
           container
@@ -35,13 +30,17 @@ const Footer = () => {
             href="https://github.com/orgs/CC2021-WBL/people"
             color="primary.contrastText"
             underline="none"
+            variant="subtitle2"
+            sx={{
+              '@media screen and (max-width: 600px)': {
+                fontSize: '12px',
+              },
+            }}
             target="_blank"
           >
-            <Typography variant="subtitle1">
-              DevsOnTheWaves <br /> @2022
-            </Typography>
+            DevsOnTheWaves <br /> @2022
           </Link>
-          <Grid item>Mock buttons container</Grid>
+          <Grid item></Grid>
         </Grid>
         <Grid
           container
@@ -54,16 +53,19 @@ const Footer = () => {
             href="https://github.com/orgs/CC2021-WBL/people"
             color={'primary.contrastText'}
             underline="none"
-            variant="h6"
+            variant="body1"
+            sx={mediaXM}
             target="_blank"
           >
             O nas
+            {/* TODO: router link to about us*/}
           </Link>
           <Link
             href="https://github.com/orgs/CC2021-WBL/people"
             color={'primary.contrastText'}
             underline="none"
-            variant="h6"
+            variant="body1"
+            sx={mediaXM}
             target="_blank"
           >
             FAQ
@@ -72,7 +74,8 @@ const Footer = () => {
             href="https://github.com/orgs/CC2021-WBL/people"
             color={'primary.contrastText'}
             underline="none"
-            variant="h6"
+            variant="body1"
+            sx={mediaXM}
             target="_blank"
           >
             Warunki korzystania z serwisu
@@ -81,7 +84,8 @@ const Footer = () => {
             href="https://github.com/orgs/CC2021-WBL/people"
             color={'primary.contrastText'}
             underline="none"
-            variant="h6"
+            variant="body1"
+            sx={mediaXM}
             target="_blank"
           >
             Polityka prywatności
