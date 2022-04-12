@@ -31,6 +31,7 @@ const Footer = () => {
             color="primary.contrastText"
             underline="none"
             variant="subtitle2"
+            tabIndex={0}
             sx={{
               '@media screen and (max-width: 600px)': {
                 fontSize: '12px',
@@ -56,6 +57,7 @@ const Footer = () => {
             variant="body1"
             sx={mediaXM}
             target="_blank"
+            tabIndex={0}
           >
             O nas
             {/* TODO: router link to about us*/}
@@ -67,6 +69,7 @@ const Footer = () => {
             variant="body1"
             sx={mediaXM}
             target="_blank"
+            tabIndex={0}
           >
             FAQ
           </Link>
@@ -77,6 +80,7 @@ const Footer = () => {
             variant="body1"
             sx={mediaXM}
             target="_blank"
+            tabIndex={0}
           >
             Warunki korzystania z serwisu
           </Link>
@@ -87,6 +91,7 @@ const Footer = () => {
             variant="body1"
             sx={mediaXM}
             target="_blank"
+            tabIndex={0}
           >
             Polityka prywatności
           </Link>
