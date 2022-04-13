@@ -6,41 +6,47 @@ const btnStyles = {
   minWidth: '12.5rem',
   paddingTop: '0.5625rem',
   '@media screen and (min-width: 450px)': {
-    '&:first-child': {
+    '&:first-of-type': {
       marginRight: '0.5rem',
     },
   },
 };
 
-type actionsProps = {
+const btnsPosition = {
+  flexWrap: 'wrap',
+  alignItems: 'center',
+  justifyContent: 'center',
+  paddingBottom: '0.625rem',
+  '@media screen and (min-width: 600px)': {
+    justifyContent: 'flex-end',
+  },
+  '&.modal-service-details': {
+    justifyContent: 'center',
+    padding: '3.125rem',
+  },
+};
+
+export type actionsProps = {
   handleOpenDetails: () => void;
   handleOpen: () => void;
+  className: string;
 };
 
 const ServiceCardActions = (prop: actionsProps) => {
   return (
-    <CardActions
-      disableSpacing
-      sx={{
-        flexWrap: 'wrap',
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingBottom: '0.625rem',
-        '@media screen and (min-width: 600px)': {
-          justifyContent: 'flex-end',
-        },
-      }}
-    >
-      <Button
-        aria-label="more details"
-        size="medium"
-        sx={btnStyles}
-        onClick={() => {
-          prop.handleOpenDetails();
-        }}
-      >
-        Więcej Szczegółów
-      </Button>
+    <CardActions className={prop.className} disableSpacing sx={btnsPosition}>
+      {prop.className !== 'modal-service-details' && (
+        <Button
+          aria-label="more details"
+          size="medium"
+          sx={btnStyles}
+          onClick={() => {
+            prop.handleOpenDetails();
+          }}
+        >
+          Więcej Szczegółów
+        </Button>
+      )}
       <Button
         aria-label="make reservation"
         variant="contained"

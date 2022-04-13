@@ -20,9 +20,18 @@ const serviceDataMock = [
         'Absolwent Wyższej Szkoły Rehabilitacji w Warszawie. Jako magister fizjoterapii kontynuuje wieloletnią, rodzinną tradycję pomocy osobom z dolegliwościami kręgosłupa. Pasjonat chiropraktyki. Posiada ponad 10-letnie doświadczenie zawodowe, wypracowane w centrach rehabilitacji i odnowy biologicznej. Skutecznie łączy zdobytą wiedzę i doświadczenie, z niezwykłymi umiejętnościami wyczucia tkanki. Do każdego klienta podchodzi indywidualnie, dostosowując technikę zabiegu.',
       therapistImage:
         'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII',
+      therapistAltText: "Damian's smiling face",
     },
   },
 ];
+
+export interface therapistTypes {
+  firstname: string;
+  surname: string;
+  shortBio: string;
+  therapistImage: string;
+  therapistAltText: string;
+}
 
 export interface serviceData {
   name: string;
@@ -32,12 +41,15 @@ export interface serviceData {
   duration: number;
   image: string;
   altText: string;
+  therapist: therapistTypes;
 }
 
 const LandingPage = () => {
-  const [serviceObject, setServiceObject] = useState<serviceData[] | null>(
-    null,
-  );
+  const [serviceObject, setServiceObject] = useState<
+    // TODO: type problems
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    serviceData[] | null | any
+  >(null);
   useEffect(() => {
     const getServiceObject = async () => {
       try {

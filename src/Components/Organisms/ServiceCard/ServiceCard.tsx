@@ -9,7 +9,10 @@ import ServiceCardContent from './ServiceCardContent';
 import ServiceDetailsModal from './ServiceDetailsModal';
 import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
 
-const ServiceCard = (prop: { serviceObject: serviceData }) => {
+const ServiceCard = (prop: {
+  serviceObject: serviceData;
+  className?: string;
+}) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -53,6 +56,7 @@ const ServiceCard = (prop: { serviceObject: serviceData }) => {
         />
         <ServiceCardContent serviceObject={prop.serviceObject} />
         <ServiceCardActions
+          className="service-card"
           handleOpenDetails={handleOpenDetails}
           handleOpen={handleOpen}
         />
@@ -61,6 +65,7 @@ const ServiceCard = (prop: { serviceObject: serviceData }) => {
         handleCloseDetails={handleCloseDetails}
         openDetails={openDetails}
         serviceObject={prop.serviceObject}
+        handleOpen={handleOpen}
       />
       <Modal
         open={open}
