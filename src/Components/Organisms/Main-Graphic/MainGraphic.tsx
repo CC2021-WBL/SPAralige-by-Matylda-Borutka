@@ -18,7 +18,7 @@ function MainGraphic() {
             backgroundImage: `url(${BannerLG})`,
             backgroundSize: '100%',
             backgroundRepeat: 'no-repeat',
-            height: 513,
+            height: { xs: 200, sm: 513 },
           }}
         ></Grid>
         <Grid item md={5} xs={12} sx={{ margin: 'auto', textAlign: 'center' }}>
