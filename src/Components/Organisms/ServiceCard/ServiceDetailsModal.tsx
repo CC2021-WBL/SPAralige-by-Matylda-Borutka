@@ -1,6 +1,8 @@
 import { Box } from '@mui/system';
 import { Modal, Typography } from '@mui/material';
 
+import ClosingIcon from './ClosingIcon';
+
 const containerStyles = {
   width: '700px',
   height: '85vh',
@@ -24,6 +26,7 @@ const ServiceDetailsModal = (prop: {
       aria-describedby="modal-more-service-data"
     >
       <Box sx={containerStyles}>
+        <ClosingIcon handleCloseDetails={prop.handleCloseDetails} />
         <Typography id="modal-modal-title" variant="h6" component="h2">
           MODAL MOCK DETAILS
         </Typography>
