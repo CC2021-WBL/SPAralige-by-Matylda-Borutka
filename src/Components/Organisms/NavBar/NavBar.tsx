@@ -1,34 +1,21 @@
+import * as React from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { AppBar, IconButton, Toolbar } from '@mui/material';
+import { AppBar, IconButton, MenuItem, Toolbar } from '@mui/material';
+import { Menu } from '@mui/material';
 import { Typography } from '@mui/material';
-import { makeStyles } from '@mui/styles';
 import { useState } from 'react';
 
-const useStyles = makeStyles({
-  open: {
-    transform: 'scale(1, 1)',
-    background: 'grey',
-    width: '100%',
-    height: '100%',
-    position: 'absolute',
-  },
-  closed: {
-    transform: 'scale(1, 0)',
-    position: 'absolute',
-  },
-});
-
 const NavBar = () => {
-  const classes = useStyles();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const toggleHandler = () => {
-    setMenuOpen(!menuOpen);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
-  // let domNode = useClickOutside(() => {
-  //   setMenuOpen(false);
-  // });
   return (
     <AppBar
       position="static"
@@ -52,21 +39,25 @@ const NavBar = () => {
         >
           SPARALIGE
         </Typography>
-        <div
-          onClick={toggleHandler}
-          onKeyPress={() => console.log('keyDown')}
-          role="button"
-          tabIndex={0}
+        <IconButton
+          onClick={handleClick}
+          sx={{ ml: 2, color: 'primary.contrastText' }}
         >
-          <IconButton sx={{ ml: 2, color: 'primary.contrastText' }}>
-            <MoreVertIcon />
-          </IconButton>
-          <div className={menuOpen ? classes.open : classes.closed}>
-            <div>tutaj</div>
-            <div>bedzie</div>
-            <div>menu</div>
-          </div>
-        </div>
+          <MoreVertIcon />
+        </IconButton>
+
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            'aria-labelledby': 'basic-button',
+          }}
+        >
+          <MenuItem onClick={handleClose}>Zaloguj</MenuItem>
+          <MenuItem onClick={handleClose}>Zarejestruj</MenuItem>
+        </Menu>
       </Toolbar>
     </AppBar>
   );
