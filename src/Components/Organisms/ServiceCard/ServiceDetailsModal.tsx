@@ -1,10 +1,12 @@
 import { Box } from '@mui/system';
-import { Modal, Typography } from '@mui/material';
+import { Modal } from '@mui/material';
 
 import ClosingIcon from './ClosingIcon';
+import ServiceCardContent from './ServiceCardContent';
+import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
 
 const containerStyles = {
-  width: '700px',
+  width: '620px',
   height: '85vh',
   position: 'absolute',
   top: '50%',
@@ -12,11 +14,13 @@ const containerStyles = {
   transform: 'translate(-50%, -50%)',
   backgroundColor: 'white',
   borderRadius: '1rem',
+  padding: '30px',
 };
 
 const ServiceDetailsModal = (prop: {
   openDetails: boolean;
   handleCloseDetails: () => void;
+  serviceObject: serviceData;
 }) => {
   return (
     <Modal
@@ -27,12 +31,10 @@ const ServiceDetailsModal = (prop: {
     >
       <Box sx={containerStyles}>
         <ClosingIcon handleCloseDetails={prop.handleCloseDetails} />
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          MODAL MOCK DETAILS
-        </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          MODAL MOCK DETAILS
-        </Typography>
+        <ServiceCardContent
+          serviceObject={prop.serviceObject}
+          className="modal-service-title"
+        />
       </Box>
     </Modal>
   );

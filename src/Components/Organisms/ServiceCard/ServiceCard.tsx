@@ -60,6 +60,7 @@ const ServiceCard = (prop: { serviceObject: serviceData }) => {
       <ServiceDetailsModal
         handleCloseDetails={handleCloseDetails}
         openDetails={openDetails}
+        serviceObject={prop.serviceObject}
       />
       <Modal
         open={open}

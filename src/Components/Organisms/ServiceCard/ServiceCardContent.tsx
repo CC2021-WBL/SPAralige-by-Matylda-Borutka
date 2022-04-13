@@ -4,12 +4,30 @@ import { CardContent, Stack, Typography } from '@mui/material';
 
 import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
 
-const ServiceCardContent = (prop: { serviceObject: serviceData }) => {
+const styles = {
+  '&.modal-service-title': {
+    fontSize: '2rem',
+  },
+};
+
+const ServiceCardContent = (prop: {
+  serviceObject: serviceData;
+  className?: string;
+}) => {
   return (
     <CardContent>
-      <Typography gutterBottom variant="h6" component="div">
+      <Typography
+        gutterBottom
+        variant="h6"
+        component="div"
+        className={prop.className}
+        sx={styles}
+      >
         {prop.serviceObject.name}
       </Typography>
+      {prop.className === 'modal-service-title' && (
+        <Typography>{`Rodzaj zabiegu: ${prop.serviceObject.type}`}</Typography>
+      )}
       <Stack direction="row" spacing={2} sx={{ paddingBottom: '10px' }}>
         <Stack spacing={0.8} direction="row" sx={{ alignItems: 'center' }}>
           <AccessTimeIcon sx={{ color: 'text.disabled' }} aria-hidden="true" />

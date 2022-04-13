@@ -26,6 +26,7 @@ const serviceDataMock = [
 
 export interface serviceData {
   name: string;
+  type: string;
   description: string;
   price: number;
   duration: number;
