@@ -8,32 +8,30 @@ import BannerLG from '../Main-Graphic/bannerLG.png';
 function MainGraphic() {
   return (
     <Box>
-      <Grid
-        item
-        md={12}
-        sx={{
-          marginTop: 5,
-          backgroundImage: `url(${BannerLG})`,
-          backgroundSize: '60%',
-          backgroundRepeat: 'no-repeat',
-          height: 513,
-          width: '100%',
-        }}
-      >
-        <Grid container spacing={1} height={'100%'}>
-          <Grid item md={7}></Grid>
-          <Grid item sx={{ margin: 'auto', textAlign: 'center' }}>
-            <Typography
-              sx={{ color: 'primary.main' }}
-              paddingBottom={2}
-              variant="h2"
-            >
-              Zadbaj o siebie
-            </Typography>
-            <Button variant="contained" disableElevation>
-              Znajdź idealny zabieg
-            </Button>
-          </Grid>
+      <Grid container height={'100%'}>
+        <Grid
+          item
+          xs={12}
+          md={7}
+          sx={{
+            marginTop: 5,
+            backgroundImage: `url(${BannerLG})`,
+            backgroundSize: '100%',
+            backgroundRepeat: 'no-repeat',
+            height: 513,
+          }}
+        ></Grid>
+        <Grid item md={5} xs={12} sx={{ margin: 'auto', textAlign: 'center' }}>
+          <Typography
+            sx={{ color: 'primary.main' }}
+            paddingBottom={2}
+            variant="h2"
+          >
+            Zadbaj o siebie
+          </Typography>
+          <Button variant="contained" disableElevation>
+            Znajdź idealny zabieg
+          </Button>
         </Grid>
       </Grid>
     </Box>
