@@ -1,20 +1,21 @@
 import CloseIcon from '@mui/icons-material/Close';
-import { IconButton, Stack } from '@mui/material';
+import { IconButton } from '@mui/material';
 
 function ClosingIcon(prop: { handleCloseDetails: () => void }) {
   return (
-    <Stack direction="row" justifyContent="flex-end">
-      <IconButton
-        sx={{
-          display: 'flex',
-          width: 'fit-content',
-          justifyContent: 'flex-end',
-        }}
-        onClick={prop.handleCloseDetails}
-      >
-        <CloseIcon />
-      </IconButton>
-    </Stack>
+    <IconButton
+      sx={{
+        display: 'inline-flex',
+        width: 'fit-content',
+        alignSelf: 'flex-end',
+        position: 'absolute',
+        right: '0.3125rem',
+        top: '0.3125rem',
+      }}
+      onClick={prop.handleCloseDetails}
+    >
+      <CloseIcon />
+    </IconButton>
   );
 }
 

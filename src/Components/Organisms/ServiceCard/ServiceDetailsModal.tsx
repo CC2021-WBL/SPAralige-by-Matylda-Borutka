@@ -1,4 +1,4 @@
-import { Avatar, Modal, Stack, Typography } from '@mui/material';
+import { Avatar, Modal, Stack, Typography, useMediaQuery } from '@mui/material';
 import { Box } from '@mui/system';
 import { useEffect, useState } from 'react';
 
@@ -8,8 +8,9 @@ import ServiceCardContent from './ServiceCardContent';
 import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
 
 const containerStyles = {
-  width: '38.75rem',
+  maxWidth: '38.75rem',
   height: 'fit-content',
+  maxHeight: '100%',
   position: 'absolute',
   top: '50%',
   left: '50%',
@@ -17,6 +18,13 @@ const containerStyles = {
   backgroundColor: 'white',
   borderRadius: '1rem',
   padding: '1.875rem',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  gap: '0.3125rem',
+  '@media screen and (max-width: 800px)': {
+    padding: '1rem',
+  },
 };
 
 const ServiceDetailsModal = (prop: {
@@ -28,6 +36,7 @@ const ServiceDetailsModal = (prop: {
   // TODO: find solution to put different type than for image
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [imgUrl, setImgUrl] = useState<any | null>(null);
+  const matches = useMediaQuery('(min-width:800px)');
 
   useEffect(() => {
     const getTherapistImg = async () => {
@@ -66,23 +75,38 @@ const ServiceDetailsModal = (prop: {
           serviceObject={prop.serviceObject}
           className="modal-service"
         />
-        <Stack flexDirection="row" sx={{ paddingTop: '2.5rem' }}>
-          <Avatar
-            sx={{
-              height: '9.375rem',
-              width: '9.375rem',
-              margin: '0 1.25rem',
-              alignSelf: 'center',
-            }}
-            src={imgUrl}
-            alt={prop.serviceObject.therapist.therapistAltText}
-          />
+        <Stack
+          flexDirection={{ sm: 'column', lg: 'row' }}
+          sx={{
+            paddingTop: '2rem',
+            '@media screen and (max-width: 1200px)': {
+              paddingTop: '0',
+            },
+          }}
+        >
+          {matches && (
+            <Avatar
+              sx={{
+                height: '9.375rem',
+                width: '9.375rem',
+                margin: '0 1.25rem',
+                alignSelf: 'center',
+                '@media screen and (max-width: 1200px)': {
+                  height: '7.1875rem',
+                  width: '7.1875rem',
+                  margin: '1rem 0 1.5rem',
+                },
+              }}
+              src={imgUrl}
+              alt={prop.serviceObject.therapist.therapistAltText}
+            />
+          )}
           <Stack>
             <Typography
-              gutterBottom
               variant="subtitle2"
               component="div"
               fontSize="1rem"
+              sx={{ padding: '0.3125rem' }}
             >
               {`Terapeuta:  ${prop.serviceObject.therapist.firstname} ${prop.serviceObject.therapist.surname}`}
             </Typography>
@@ -93,6 +117,11 @@ const ServiceDetailsModal = (prop: {
               variant="subtitle2"
               component="div"
               align="justify"
+              sx={{
+                maxHeight: '9.375rem',
+                overflow: 'scroll',
+                padding: '0.3125rem',
+              }}
             >
               {prop.serviceObject.therapist.shortBio}
             </Typography>

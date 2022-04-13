@@ -6,7 +6,10 @@ import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
 
 const styles = {
   '&.modal-service': {
-    fontSize: '2rem',
+    padding: '0.3125rem',
+    '@media screen and (min-width: 1200px)': {
+      fontSize: '2rem',
+    },
   },
 };
 
@@ -15,7 +18,7 @@ const ServiceCardContent = (prop: {
   className?: string;
 }) => {
   return (
-    <CardContent>
+    <CardContent className={prop.className} sx={styles}>
       <Typography
         gutterBottom
         variant="h6"
@@ -30,7 +33,7 @@ const ServiceCardContent = (prop: {
           {`Rodzaj zabiegu: ${prop.serviceObject.type}`}
         </Typography>
       )}
-      <Stack direction="row" spacing={2} sx={{ paddingBottom: '10px' }}>
+      <Stack direction="row" spacing={2} sx={{ paddingBottom: '0.625rem' }}>
         <Stack spacing={0.8} direction="row" sx={{ alignItems: 'center' }}>
           <AccessTimeIcon
             sx={{ color: 'text.disabled', height: 1 }}

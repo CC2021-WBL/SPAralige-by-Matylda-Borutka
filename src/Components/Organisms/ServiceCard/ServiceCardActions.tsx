@@ -5,11 +5,6 @@ const btnStyles = {
   borderRadius: '3.125rem',
   minWidth: '12.5rem',
   paddingTop: '0.5625rem',
-  '@media screen and (min-width: 450px)': {
-    '&:first-of-type': {
-      marginRight: '0.5rem',
-    },
-  },
 };
 
 const btnsPosition = {
@@ -22,7 +17,7 @@ const btnsPosition = {
   },
   '&.modal-service-details': {
     justifyContent: 'center',
-    padding: '3.125rem',
+    padding: '0 2.125rem',
   },
 };
 
