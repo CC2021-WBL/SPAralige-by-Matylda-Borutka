@@ -3,7 +3,7 @@ import { Container, Grid, Link, Stack } from '@mui/material';
 const Footer = () => {
   const mediaXM = {
     '@media screen and (max-width: 600px)': {
-      fontSize: '14px',
+      fontSize: '0.875rem',
     },
   };
   return (
@@ -14,7 +14,7 @@ const Footer = () => {
     >
       <Stack
         flexDirection="row"
-        height="276px"
+        height="17.25rem"
         className="wrapper"
         maxWidth="lg"
         sx={{ padding: '0 0rem', margin: '0 auto' }}
@@ -34,14 +34,14 @@ const Footer = () => {
             tabIndex={0}
             sx={{
               '@media screen and (max-width: 600px)': {
-                fontSize: '12px',
+                fontSize: '0.75rem',
               },
             }}
             target="_blank"
+            aria-label="link to Devs On The Waves"
           >
             DevsOnTheWaves <br /> @2022
           </Link>
-          <Grid item></Grid>
         </Grid>
         <Grid
           container
@@ -58,6 +58,7 @@ const Footer = () => {
             sx={mediaXM}
             target="_blank"
             tabIndex={0}
+            aria-label="about us"
           >
             O nas
             {/* TODO: router link to about us*/}
@@ -70,6 +71,7 @@ const Footer = () => {
             sx={mediaXM}
             target="_blank"
             tabIndex={0}
+            aria-label="frequently asked questions"
           >
             FAQ
           </Link>
@@ -81,6 +83,7 @@ const Footer = () => {
             sx={mediaXM}
             target="_blank"
             tabIndex={0}
+            aria-label="term and conditions"
           >
             Warunki korzystania z serwisu
           </Link>
@@ -92,6 +95,7 @@ const Footer = () => {
             sx={mediaXM}
             target="_blank"
             tabIndex={0}
+            aria-label="privacy policy"
           >
             Polityka prywatności
           </Link>
