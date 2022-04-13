@@ -9,13 +9,13 @@ import React, { useEffect } from 'react';
 import DateButton from './DateButton';
 import HourButton from './HourButton';
 import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
+import CloseIcon from '../LoginForm/CloseIcon';
 
 function hourFromString(hour: string): number {
   return Number(hour.substr(0, hour.indexOf(':')));
 }
 
-const sevenDays = [0, 1, 2, 3, 4, 5, 6];
+const sevenDays = [0, 1, 2, 3, 4, 5];
 const mockService = {
   name: 'Masaż Gorącymi Kamieniami',
   priceInPLN: 150,
@@ -86,24 +86,29 @@ const mockService = {
 };
 
 const paperStyle = {
-  width: 150,
-  height: 215,
-  padding: 4,
-  margin: 1,
+  width: 10,
+  '@media screen and (min-width: 450px)': {
+    width: 150,
+    height: 215,
+    padding: 4,
+    borderRadius: 4,
+  },
 };
 const hourButtonStyle = {
-  width: 150,
+  width: 100,
   height: 32,
   padding: 4,
-  margin: 2,
   borderRadius: 4,
+  marginTop: 2,
+  marginBottom: 2,
 };
 const hourButtonTitleStyle = {
-  width: 150,
+  width: 180,
   height: 32,
   padding: 4,
-  margin: 2,
   borderRadius: 4,
+  marginTop: 2,
+  marginBottom: 2,
 };
 
 const style = {
@@ -123,8 +128,6 @@ const style = {
 
 const stackStyle = {
   border: 'none',
-  direction: 'row',
-  justifyContent: 'center',
   alignItems: 'center',
 };
 
@@ -203,7 +206,8 @@ const BookingModal = () => {
 
   return (
     <Box sx={style}>
-      <Stack sx={stackStyle}>
+      <CloseIcon handleClose={() => console.log('gowno')} />
+      <Stack spacing={2} sx={stackStyle}>
         <Typography variant="h4" component="h4">
           Wybierz datę i godzinę
         </Typography>
@@ -215,21 +219,25 @@ const BookingModal = () => {
             year: 'numeric',
           })}
         </Typography>
-
-        <ToggleButtonGroup
-          color="primary"
-          value={chosenDateNumber}
-          exclusive
-          onChange={handleDayChange}
+        <Stack
+          direction={{ xs: 'column', sm: 'row' }}
+          spacing={{ xs: 1, sm: 2, md: 4 }}
         >
-          {sevenDays.map((item) => (
-            <ToggleButton sx={paperStyle} key={item} value={item}>
-              <DateButton
-                dateToday={new Date(Date.now() + item * 3600 * 1000 * 24)}
-              />
-            </ToggleButton>
-          ))}
-        </ToggleButtonGroup>
+          <ToggleButtonGroup
+            color="primary"
+            value={chosenDateNumber}
+            exclusive
+            onChange={handleDayChange}
+          >
+            {sevenDays.map((item) => (
+              <ToggleButton sx={paperStyle} key={item} value={item}>
+                <DateButton
+                  dateToday={new Date(Date.now() + item * 3600 * 1000 * 24)}
+                />
+              </ToggleButton>
+            ))}
+          </ToggleButtonGroup>
+        </Stack>
 
         <ToggleButtonGroup
           color="primary"
@@ -238,7 +246,9 @@ const BookingModal = () => {
           onChange={handleHourMorningChange}
         >
           <ToggleButton value={'LOL'} disabled sx={hourButtonTitleStyle}>
-            PORANEK
+            <Typography variant="subtitle1" color="black">
+              PORANEK
+            </Typography>
           </ToggleButton>
           {hoursOfService
             .filter((item) => hourFromString(item) < 12)
@@ -256,7 +266,9 @@ const BookingModal = () => {
           onChange={handleHourAfternoonChange}
         >
           <ToggleButton value={'LOL'} disabled sx={hourButtonTitleStyle}>
-            POPOPŁUDNIE
+            <Typography variant="subtitle1" color="black">
+              POPOPŁUDNIE
+            </Typography>
           </ToggleButton>
           {hoursOfService
             .filter(
@@ -276,7 +288,9 @@ const BookingModal = () => {
           onChange={handleHourEveningChange}
         >
           <ToggleButton value={'LOL'} disabled sx={hourButtonTitleStyle}>
-            WIECZÓR
+            <Typography variant="subtitle1" color="black">
+              WIECZÓR
+            </Typography>
           </ToggleButton>
           {hoursOfService
             .filter((item) => hourFromString(item) >= 17)
@@ -286,29 +300,45 @@ const BookingModal = () => {
               </ToggleButton>
             ))}
         </ToggleButtonGroup>
-
-        <Card sx={{ width: '100%' }}>
-          <Stack>
-            <Typography variant="h4">{service}</Typography>
-            <Typography variant="h4">{price} PLN</Typography>
-            <Typography variant="h5">
-              {chosenDate.toLocaleDateString('pl', {
-                weekday: 'long',
-              })}
-              ,{' '}
-              {chosenDate.toLocaleDateString('pl', {
-                month: '2-digit',
-                day: '2-digit',
-              })}{' '}
-              {chosenHourMorning}
-              {chosenHourAfternoon}
-              {chosenHourEvening}
-            </Typography>
+        <Box
+          sx={{
+            width: '100%',
+            border: '1px solid rgba(0, 0, 0, 0.12)',
+            borderRadius: '1rem',
+          }}
+        >
+          <Stack
+            flexDirection="row"
+            justifyContent="space-between"
+            sx={{ padding: '1rem' }}
+          >
+            <Stack>
+              <Typography variant="h4">{service}</Typography>
+            </Stack>
+            <Stack>
+              <Typography variant="h4">{price.toFixed(2)} PLN</Typography>
+              <Typography variant="h5">
+                {chosenDate.toLocaleDateString('pl', {
+                  weekday: 'long',
+                })}
+                ,{' '}
+                {chosenDate.toLocaleDateString('pl', {
+                  month: '2-digit',
+                  day: '2-digit',
+                })}{' '}
+                {chosenHourMorning}
+                {chosenHourAfternoon}
+                {chosenHourEvening}
+              </Typography>
+            </Stack>
           </Stack>
-        </Card>
+        </Box>
 
         <Button
           variant="contained"
+          size="large"
+          sx={{ minWidth: 200, height: 50, borderRadius: 50 }}
+          aria-label="make reservation"
           onClick={() => {
             console.log({
               service,
