@@ -1,6 +1,17 @@
 import { Box } from '@mui/system';
 import { Modal, Typography } from '@mui/material';
 
+const containerStyles = {
+  width: '700px',
+  height: '85vh',
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  backgroundColor: 'white',
+  borderRadius: '1rem',
+};
+
 const ServiceDetailsModal = (prop: {
   openDetails: boolean;
   handleCloseDetails: () => void;
@@ -9,20 +20,10 @@ const ServiceDetailsModal = (prop: {
     <Modal
       open={prop.openDetails}
       onClose={prop.handleCloseDetails}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
+      aria-labelledby="modal-service-details"
+      aria-describedby="modal-more-service-data"
     >
-      <Box
-        sx={{
-          width: 300,
-          height: 300,
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          backgroundColor: 'white',
-        }}
-      >
+      <Box sx={containerStyles}>
         <Typography id="modal-modal-title" variant="h6" component="h2">
           MODAL MOCK DETAILS
         </Typography>
