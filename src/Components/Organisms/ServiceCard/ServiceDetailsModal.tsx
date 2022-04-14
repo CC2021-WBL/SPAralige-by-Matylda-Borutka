@@ -119,7 +119,7 @@ const ServiceDetailsModal = (prop: {
               align="justify"
               sx={{
                 maxHeight: '9.375rem',
-                overflow: 'scroll',
+                overflow: 'auto',
                 padding: '0.3125rem',
               }}
             >
