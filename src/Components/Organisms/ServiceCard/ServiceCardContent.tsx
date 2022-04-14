@@ -19,7 +19,7 @@ const ServiceCardContent = (prop: { serviceObject: serviceData }) => {
             color="text.disabled"
             sx={{ alignSelf: 'end' }}
           >
-            {`${prop.serviceObject.duration} h`}
+            {`${prop.serviceObject.durationInHours} h`}
           </Typography>
         </Stack>
         <Stack spacing={0.4} direction="row">
@@ -30,7 +30,7 @@ const ServiceCardContent = (prop: { serviceObject: serviceData }) => {
             color="text.disabled"
             sx={{ alignSelf: 'end' }}
           >
-            {`${prop.serviceObject.price} zł`}
+            {`${prop.serviceObject.priceInZloty} zł`}
           </Typography>
         </Stack>
       </Stack>
