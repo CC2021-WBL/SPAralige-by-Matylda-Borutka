@@ -45,11 +45,9 @@ export interface serviceData {
 }
 
 const LandingPage = () => {
-  const [serviceObject, setServiceObject] = useState<
-    // TODO: type problems
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    serviceData[] | null | any
-  >(null);
+  const [serviceObject, setServiceObject] = useState<serviceData[] | null>(
+    null,
+  );
   useEffect(() => {
     const getServiceObject = async () => {
       try {
