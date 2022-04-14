@@ -6,10 +6,13 @@ import {
   Typography,
 } from '@mui/material';
 
-type RangePropType<T> = {
+import { useState } from 'react';
+
+type RangeType = number | Date
+type RangePropType<RangeType> = {
   name: string;
-  minValue: T;
-  maxValue: T;
+  minValue: RangeType;
+  maxValue: RangeType;
 };
 
 function genTypeOfInput(value: any) {
@@ -17,11 +20,19 @@ function genTypeOfInput(value: any) {
     return 'number';
   } else if (value instanceof Date) {
     return 'date';
-  }
-  return 'text';
 }
 
-function FilterWithRange<T>(prop: RangePropType<T>) {
+function FilterWithRange<RangeType>(prop: RangePropType<RangeType>) {
+  const [valueRange, setValueRange] = useState({
+    minValue: prop.minValue,
+    maxValue: prop.maxValue,
+  });
+
+  function handleOnMinChange (event: React.ChangeEvent<HTMLInputElement> ) {
+    event.preventDefault()
+
+
+  }
   return (
     <FormControl sx={{ paddingTop: '1.5rem' }}>
       <FormLabel sx={{ fontSize: '20px', color: '#000000' }}>
@@ -44,6 +55,9 @@ function FilterWithRange<T>(prop: RangePropType<T>) {
             min: prop.minValue,
             max: prop.maxValue,
           }}
+          value={valueRange.minValue}
+          onChange={handleOnMinChange
+          }
         ></TextField>
 
         <Typography>do</Typography>
@@ -56,6 +70,7 @@ function FilterWithRange<T>(prop: RangePropType<T>) {
             min: prop.minValue,
             max: prop.maxValue,
           }}
+          value={valueRange.maxValue}
         ></TextField>
       </Stack>
     </FormControl>

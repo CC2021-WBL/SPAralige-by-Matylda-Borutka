@@ -1,9 +1,10 @@
 import { Box } from '@mui/material';
-
 import CloseFiltersButton from './CloseFiltersButton';
 import FilterWithRange from './FilterWithRange';
 import RehabilitatorFilter from './RehabilitatorFilter';
 import ServiceTypesFilter from './ServiceTypesFilter';
+
+//import { useReducer } from 'react';
 
 type burgerProp = {
   handleFilter?: () => void;
@@ -11,6 +12,7 @@ type burgerProp = {
 };
 
 function Burger(prop: burgerProp) {
+  //const [filterState, filterDispatch] = useReducer(filterReducer, {})
   return (
     <Box
       sx={{
@@ -27,7 +29,7 @@ function Burger(prop: burgerProp) {
       )}
       <ServiceTypesFilter />
       <FilterWithRange<number> name="Cena" minValue={0} maxValue={1500} />
-      <RehabilitatorFilter />
+      <RehabilitatorFilter therapistNameArr={['Maja', 'Rosól']} />
       <FilterWithRange<Date>
         name="Dostępność"
         minValue={new Date()}

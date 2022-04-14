@@ -5,7 +5,6 @@ import {
   FormGroup,
   FormLabel,
 } from '@mui/material';
-
 import { burgerCheckboxStyle, checkboxControlLabelStyle } from './BurgerStyles';
 
 function ServiceTypesFilter() {
@@ -24,15 +23,14 @@ function ServiceTypesFilter() {
       </FormLabel>
       <FormGroup>
         <FormControlLabel
-          label="Masaże twarz"
-          checked={}
+          label="Kosmetyka twarzy"
           sx={checkboxControlLabelStyle}
-          control={<Checkbox value="face-massage" sx={burgerCheckboxStyle} />}
+          control={<Checkbox value="Kosmetyka twarzy" sx={burgerCheckboxStyle} />}
         />
         <FormControlLabel
-          label="Masaże ciała"
+          label="Masaże relaksacyjne"
           sx={checkboxControlLabelStyle}
-          control={<Checkbox value="body-massage" sx={burgerCheckboxStyle} />}
+          control={<Checkbox value="Masaże relaksacyjne" sx={burgerCheckboxStyle} />}
         />
         <FormControlLabel
           label="Peelingi"
@@ -40,9 +38,9 @@ function ServiceTypesFilter() {
           control={<Checkbox value="peels" sx={burgerCheckboxStyle} />}
         />
         <FormControlLabel
-          label="Kąpiele"
+          label="Medycyna estetyczna"
           sx={checkboxControlLabelStyle}
-          control={<Checkbox value="baths" sx={burgerCheckboxStyle} />}
+          control={<Checkbox value="Medycyna estetyczna" sx={burgerCheckboxStyle} />}
         />
         <FormControlLabel
           label="Zabiegi rehabilitacyjne"

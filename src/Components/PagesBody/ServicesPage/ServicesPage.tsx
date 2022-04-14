@@ -1,15 +1,15 @@
 import { Box, Button, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 
+import { FullServiceDataType } from '../../../Types/dbDataTypes';
 import PermanentFilterDrawer from '../../Organisms/Burger/PermanentFilterDrawer';
 import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
 import TemporaryFilterDrawer from '../../Organisms/Burger/TemporaryFilterDrawer';
-import { ServiceDataType } from '../../../Types/dbDataTypes';
 import { getAllServices } from '../../../Firebase/queries';
 
 const ServicesPage = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [services, setServices] = useState<ServiceDataType[] | null>(null);
+  const [services, setServices] = useState<FullServiceDataType[] | null>(null);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);

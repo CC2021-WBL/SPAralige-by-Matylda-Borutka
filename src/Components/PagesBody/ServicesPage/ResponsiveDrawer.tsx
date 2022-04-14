@@ -1,15 +1,15 @@
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 
+import Box from '@mui/material/Box';
 import Burger from '../../Organisms/Burger/Burger';
+import CssBaseline from '@mui/material/CssBaseline';
+import Drawer from '@mui/material/Drawer';
+import { FullServiceDataType } from '../../../Types/dbDataTypes';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
-import { ServiceDataType } from '../../../Types/dbDataTypes';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import { bodyPage } from '../../../Tools/htmlElements';
 import { getAllServices } from '../../../Firebase/queries';
 
@@ -17,7 +17,7 @@ const drawerWidth = '22.5rem';
 
 export default function ResponsiveDrawer() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [services, setServices] = useState<ServiceDataType[] | null>(null);
+  const [services, setServices] = useState<FullServiceDataType[] | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,7 +50,7 @@ export default function ResponsiveDrawer() {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
