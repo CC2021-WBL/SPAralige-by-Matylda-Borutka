@@ -1,25 +1,7 @@
 import CreateIcon from '@mui/icons-material/Create';
 import { Button, CardActions } from '@mui/material';
 
-const btnStyles = {
-  borderRadius: '3.125rem',
-  minWidth: '12.5rem',
-  paddingTop: '0.5625rem',
-};
-
-const btnsPosition = {
-  flexWrap: 'wrap',
-  alignItems: 'center',
-  justifyContent: 'center',
-  paddingBottom: '0.625rem',
-  '@media screen and (min-width: 600px)': {
-    justifyContent: 'flex-end',
-  },
-  '&.modal-service-details': {
-    justifyContent: 'center',
-    padding: '0 2.125rem',
-  },
-};
+import { btnStyles, btnsPosition } from './ServiceCardStyles';
 
 export type actionsProps = {
   handleOpenDetails: () => void;

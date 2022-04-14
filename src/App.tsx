@@ -5,6 +5,7 @@ import AccountPage from './Components/PagesBody/AccountPage/AccountPage';
 import LandingPage from './Components/PagesBody/LandingPage/LandingPage';
 import Layout from './Components/Template/Layout/Layout';
 import ReservationsPage from './Components/PagesBody/ReservationsPage/ReservationsPage';
+import TestingBody from './Components/PagesBody/TestingBody';
 import TreatmentsPage from './Components/PagesBody/TreatmentsPage/TreatmentsPage';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/test" element={<TestingBody />} />
 
           <Route path="/treatments" element={<TreatmentsPage />} />
 

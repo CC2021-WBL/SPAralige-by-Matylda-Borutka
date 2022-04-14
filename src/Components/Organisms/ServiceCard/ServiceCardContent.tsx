@@ -2,29 +2,21 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { CardContent, Stack, Typography } from '@mui/material';
 
+import { contentContainerStyles, contentTextStyles } from './ServiceCardStyles';
 import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
-
-const styles = {
-  '&.modal-service': {
-    padding: '0.3125rem',
-    '@media screen and (min-width: 1200px)': {
-      fontSize: '2rem',
-    },
-  },
-};
 
 const ServiceCardContent = (prop: {
   serviceObject: serviceData;
   className?: string;
 }) => {
   return (
-    <CardContent className={prop.className} sx={styles}>
+    <CardContent className={prop.className} sx={contentContainerStyles}>
       <Typography
         gutterBottom
         variant="h6"
         component="div"
         className={prop.className}
-        sx={styles}
+        sx={contentContainerStyles}
       >
         {prop.serviceObject.name}
       </Typography>
@@ -43,7 +35,7 @@ const ServiceCardContent = (prop: {
             variant="subtitle2"
             component="div"
             color="text.disabled"
-            sx={{ ...styles, alignSelf: 'end' }}
+            sx={{ ...contentContainerStyles, alignSelf: 'end' }}
             className={prop.className}
           >
             {`${prop.serviceObject.durationInHours} h`}
@@ -58,14 +50,19 @@ const ServiceCardContent = (prop: {
             variant="subtitle2"
             component="div"
             color="text.disabled"
-            sx={{ ...styles, alignSelf: 'end' }}
+            sx={{ ...contentContainerStyles, alignSelf: 'end' }}
             className={prop.className}
           >
             {`${prop.serviceObject.priceInZloty} zł`}
           </Typography>
         </Stack>
       </Stack>
-      <Typography variant="body2" color="text.secondary">
+      <Typography
+        variant="body2"
+        color="text.secondary"
+        className={prop.className}
+        sx={contentTextStyles}
+      >
         {prop.serviceObject.description}
       </Typography>
     </CardContent>

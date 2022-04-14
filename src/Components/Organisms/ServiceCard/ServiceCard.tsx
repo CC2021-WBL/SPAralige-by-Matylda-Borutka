@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import ServiceCardActions from './ServiceCardActions';
 import ServiceCardContent from './ServiceCardContent';
 import ServiceDetailsModal from './ServiceDetailsModal';
+import { cardStyles } from './ServiceCardStyles';
 import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
 
 const ServiceCard = (prop: {
@@ -47,7 +48,7 @@ const ServiceCard = (prop: {
   }, []);
   return (
     <>
-      <Card>
+      <Card sx={cardStyles}>
         <CardMedia
           component="img"
           height="210"

@@ -16,7 +16,8 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "watch": true,
-    "removeComments": true
+    "removeComments": true,
+    "noImplicitAny": false
   },
   "include": ["./src"]
 }
