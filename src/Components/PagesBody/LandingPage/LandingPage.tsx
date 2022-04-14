@@ -7,7 +7,7 @@ const serviceDataMock = [
     name: 'Masaż Gorącymi Kamieniami',
     type: 'Masaż',
     description:
-      'Odpręż się chłopie, to tutaj znajdziesz ukojenie. Zapomnij o troskach, zapomnij o brzemieniu.. Połóż się i nie myśl o niczym. Odpocznij,',
+      'Odpręż się chłopie, to tutaj znajdziesz ukojenie. Zapomnij o troskach, zapomnij o brzemieniu.. Połóż się i nie myśl o niczym. Odpocznij loremLorem ipsum dolor sit amet consectetur adipisicing elit.',
     price: 150,
     duration: 1.5,
     image:
