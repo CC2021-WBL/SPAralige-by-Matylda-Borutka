@@ -1,34 +1,137 @@
+import { Avatar, Modal, Stack, Typography, useMediaQuery } from '@mui/material';
 import { Box } from '@mui/system';
-import { Modal, Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
+
+import ClosingIcon from './ClosingIcon';
+import ServiceCardActions from './ServiceCardActions';
+import ServiceCardContent from './ServiceCardContent';
+import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
+
+const containerStyles = {
+  maxWidth: '38.75rem',
+  height: 'fit-content',
+  maxHeight: '100%',
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  backgroundColor: 'white',
+  borderRadius: '1rem',
+  padding: '1.875rem',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  gap: '0.3125rem',
+  '@media screen and (max-width: 800px)': {
+    padding: '1rem',
+  },
+};
 
 const ServiceDetailsModal = (prop: {
   openDetails: boolean;
   handleCloseDetails: () => void;
+  serviceObject: serviceData;
+  handleOpen: () => void;
 }) => {
+  // TODO: find solution to put different type than for image
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [imgUrl, setImgUrl] = useState<any | null>(null);
+  const matches = useMediaQuery('(min-width:800px)');
+
+  useEffect(() => {
+    const getTherapistImg = async () => {
+      try {
+        const response = await fetch(
+          prop.serviceObject.therapist.therapistImage,
+        );
+        if (!response.ok) {
+          throw new Error();
+        } else {
+          const imageBlob = await response.blob();
+          const reader = new FileReader();
+          reader.readAsDataURL(imageBlob);
+          reader.onloadend = () => {
+            const base64data = reader.result;
+            setImgUrl(base64data);
+          };
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getTherapistImg();
+  }, []);
+
   return (
     <Modal
       open={prop.openDetails}
       onClose={prop.handleCloseDetails}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
+      aria-labelledby="modal-service-details"
+      aria-describedby="modal-more-service-data"
     >
-      <Box
-        sx={{
-          width: 300,
-          height: 300,
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          backgroundColor: 'white',
-        }}
-      >
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          MODAL MOCK DETAILS
-        </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          MODAL MOCK DETAILS
-        </Typography>
+      <Box sx={containerStyles}>
+        <ClosingIcon handleCloseDetails={prop.handleCloseDetails} />
+        <ServiceCardContent
+          serviceObject={prop.serviceObject}
+          className="modal-service"
+        />
+        <Stack
+          flexDirection={{ sm: 'column', lg: 'row' }}
+          sx={{
+            paddingTop: '2rem',
+            '@media screen and (max-width: 1200px)': {
+              paddingTop: '0',
+            },
+          }}
+        >
+          {matches && (
+            <Avatar
+              sx={{
+                height: '9.375rem',
+                width: '9.375rem',
+                margin: '0 1.25rem',
+                alignSelf: 'center',
+                '@media screen and (max-width: 1200px)': {
+                  height: '7.1875rem',
+                  width: '7.1875rem',
+                  margin: '1rem 0 1.5rem',
+                },
+              }}
+              src={imgUrl}
+              alt={prop.serviceObject.therapist.therapistAltText}
+            />
+          )}
+          <Stack>
+            <Typography
+              variant="subtitle2"
+              component="div"
+              fontSize="1rem"
+              sx={{ padding: '0.3125rem' }}
+            >
+              {`Terapeuta:  ${prop.serviceObject.therapist.firstname} ${prop.serviceObject.therapist.surname}`}
+            </Typography>
+            <Typography
+              paragraph
+              color="text.secondary"
+              gutterBottom
+              variant="subtitle2"
+              component="div"
+              align="justify"
+              sx={{
+                maxHeight: '9.375rem',
+                overflow: 'auto',
+                padding: '0.3125rem',
+              }}
+            >
+              {prop.serviceObject.therapist.shortBio}
+            </Typography>
+          </Stack>
+        </Stack>
+        <ServiceCardActions
+          className="modal-service-details"
+          handleOpen={prop.handleOpen}
+          handleOpenDetails={() => console.log()}
+        />
       </Box>
     </Modal>
   );
