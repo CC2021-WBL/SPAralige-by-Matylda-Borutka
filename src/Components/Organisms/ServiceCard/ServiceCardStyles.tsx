@@ -72,7 +72,8 @@ export const btnsPosition = {
 // Service Card Modal
 
 export const modalContainerStyles = {
-  maxWidth: '38.75rem',
+  maxWidth: '41.75rem',
+  width: '80%',
   height: 'fit-content',
   maxHeight: '100%',
   position: 'absolute',
