@@ -7,6 +7,7 @@ import Layout from './Components/Template/Layout/Layout';
 import ReservationsPage from './Components/PagesBody/ReservationsPage/ReservationsPage';
 import ResponsiveDrawer from './Components/PagesBody/ServicesPage/ResponsiveDrawer';
 import ServicesPage from './Components/PagesBody/ServicesPage/ServicesPage';
+import TestingBody from './Components/PagesBody/TestingBody';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/test" element={<TestingBody />} />
 
           <Route path="/services" element={<ServicesPage />} />
 
