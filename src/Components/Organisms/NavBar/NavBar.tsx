@@ -4,7 +4,8 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { AppBar, IconButton, MenuItem, Toolbar } from '@mui/material';
 import { Menu } from '@mui/material';
 import { Typography } from '@mui/material';
-import { useState } from 'react';
+
+import TemporaryDrawer from './BurgerMenuL';
 
 const NavBar = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -25,10 +26,11 @@ const NavBar = () => {
         <IconButton
           className="IconButton"
           edge="start"
-          aria-label="menu"
+          aria-label="burger menu"
           sx={{ mr: 1, color: 'primary.contrastText' }}
         >
           <MenuIcon />
+          <TemporaryDrawer />
         </IconButton>
         <Typography
           variant="h6"
@@ -45,7 +47,6 @@ const NavBar = () => {
         >
           <MoreVertIcon />
         </IconButton>
-
         <Menu
           id="basic-menu"
           anchorEl={anchorEl}
