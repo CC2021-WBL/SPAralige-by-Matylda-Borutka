@@ -41,7 +41,7 @@ function ReservationCard(prop: ReservationCardPropTypes) {
         <Typography
           variant="h5"
           sx={{
-            fontSize: '20px',
+            fontSize: '1.25rem',
             fontWeight: 500,
             lineHeight: '2rem',
             marginBottom: '1rem',

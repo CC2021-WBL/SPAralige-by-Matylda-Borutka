@@ -1,7 +1,7 @@
-import { calcDaysToDate } from './timeFunctions';
+import { calcDaysToEventDate } from './timeFunctions';
 
 export function generateDateProps(date: Date) {
-  const days = calcDaysToDate(date);
+  const days = calcDaysToEventDate(date);
   if (days < 0) {
     return {
       chipLabel: 'zrealizowana wizyta',
