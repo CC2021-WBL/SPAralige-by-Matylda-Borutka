@@ -9,7 +9,7 @@
 - [ ] da się przejść przez aplikację tabem
 - [ ] da się potwierdzić wybór elementu enterem
 - [ ] linki wyróżnione są nie tylko przez kolor
-- [ ] elementy mają przypisaną odpowiednią rolę (atrybut role)
+- [ ] jeśli element nie spełnia swojej podstawowej funkcji (np. button staje się linkiem)- przypisz mu odpowiedni atrybut role
 - [ ] nagłówki w odpowiedniej kolejności (tylko jedno h1)
 - [ ] strona ma logiczną kolejność tabów
 - [ ] element ma odpowiednio oznaczony focus (np. tło, border)
@@ -35,4 +35,4 @@
 - [ ] kolejność komponentu: importy, nazwa komponentu, zmienne, funkcje pomocnicze, hooki, jsx
 - [ ] pr z ui zawiera screen oraz opis co zostało zmienione
 - [ ] pr ma przypisanego autora
-- [ ] pliki są umieszczone w odpowiednich folderach, zgodnie z Atomic Design
+- [ ] pliki są umieszczone w odpowiednich folderach
