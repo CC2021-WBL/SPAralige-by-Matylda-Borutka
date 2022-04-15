@@ -1,4 +1,5 @@
-import { Container, Grid, Link, Stack } from '@mui/material';
+import { Container, Link, Stack } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -10,12 +11,12 @@ const Footer = () => {
       <Stack
         flexDirection="row"
         height="17.25rem"
+        justifyContent="space-between"
         className="wrapper"
         maxWidth="lg"
         sx={{ padding: '0 0rem', margin: '0 auto' }}
       >
-        <Grid
-          container
+        <Stack
           flexDirection="column"
           className="leftSide"
           justifyContent="space-between"
@@ -37,17 +38,18 @@ const Footer = () => {
           >
             DevsOnTheWaves <br /> @2022
           </Link>
-        </Grid>
-        <Grid
-          container
+        </Stack>
+        <Stack
           className="rightSide"
           flexDirection="column"
+          alignItems="flex-end"
           justifyContent="space-between"
-          sx={{ marginBottom: '2rem', textAlign: 'right', padding: '1rem 0' }}
+          sx={{ marginBottom: '2rem', padding: '1rem 0' }}
         >
           <Link
-            href="https://github.com/orgs/CC2021-WBL/people"
-            color={'primary.contrastText'}
+            component={RouterLink}
+            to="/about"
+            color="primary.contrastText"
             underline="none"
             variant="body1"
             target="_blank"
@@ -55,11 +57,11 @@ const Footer = () => {
             aria-label="about us"
           >
             O nas
-            {/* TODO: router link to about us*/}
           </Link>
           <Link
-            href="https://github.com/orgs/CC2021-WBL/people"
-            color={'primary.contrastText'}
+            component={RouterLink}
+            to="https://github.com/orgs/CC2021-WBL/people"
+            color="primary.contrastText"
             underline="none"
             variant="body1"
             target="_blank"
@@ -70,7 +72,7 @@ const Footer = () => {
           </Link>
           <Link
             href="https://github.com/orgs/CC2021-WBL/people"
-            color={'primary.contrastText'}
+            color="primary.contrastText"
             underline="none"
             variant="body1"
             target="_blank"
@@ -81,16 +83,17 @@ const Footer = () => {
           </Link>
           <Link
             href="https://github.com/orgs/CC2021-WBL/people"
-            color={'primary.contrastText'}
+            color="primary.contrastText"
             underline="none"
             variant="body1"
             target="_blank"
             tabIndex={0}
             aria-label="privacy policy"
+            sx={{ outline: '2px dotted red' }}
           >
             Polityka prywatności
           </Link>
-        </Grid>
+        </Stack>
       </Stack>
     </Container>
   );
