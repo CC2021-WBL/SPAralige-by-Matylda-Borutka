@@ -19,10 +19,16 @@ const useStyles = makeStyles({
   },
 });
 
-const LanguageButton = ({ children }: { children: ReactNode }) => {
+const LanguageButton = ({
+  children,
+  onClick,
+}: {
+  children: ReactNode;
+  onClick: () => void;
+}) => {
   const classes = useStyles();
   return (
-    <Button className={classes.button} variant="contained">
+    <Button className={classes.button} variant="contained" onClick={onClick}>
       {children}
     </Button>
   );

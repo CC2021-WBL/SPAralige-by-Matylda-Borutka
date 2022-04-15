@@ -1,9 +1,16 @@
 import { Container, Link, Stack } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import LanguageButton from '../../Atoms/LanguageButton/LanguageButton';
 
+// import i18n from '../../../../i18n';
+
 const Footer = () => {
+  const { t, i18n } = useTranslation('navFooter');
+  const changeLanguage = (lng: any) => {
+    i18n.changeLanguage(lng);
+  };
   return (
     <Container
       maxWidth={false}
@@ -50,8 +57,12 @@ const Footer = () => {
               },
             }}
           >
-            <LanguageButton>PL</LanguageButton>
-            <LanguageButton>EN</LanguageButton>
+            <LanguageButton onClick={() => changeLanguage('pl')}>
+              PL
+            </LanguageButton>
+            <LanguageButton onClick={() => changeLanguage('en')}>
+              EN
+            </LanguageButton>
           </Container>
         </Stack>
         <Stack
@@ -71,7 +82,7 @@ const Footer = () => {
             tabIndex={0}
             aria-label="about us"
           >
-            O nas
+            {t('footer.about')}
           </Link>
           <Link
             component={RouterLink}
@@ -94,7 +105,7 @@ const Footer = () => {
             tabIndex={0}
             aria-label="term and conditions"
           >
-            Warunki korzystania z serwisu
+            {t('footer.terms')}
           </Link>
           <Link
             href="https://github.com/orgs/CC2021-WBL/people"
@@ -105,7 +116,7 @@ const Footer = () => {
             tabIndex={0}
             aria-label="privacy policy"
           >
-            Polityka prywatności
+            {t('footer.privacy')}
           </Link>
         </Stack>
       </Stack>
