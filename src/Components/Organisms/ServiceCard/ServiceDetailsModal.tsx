@@ -10,12 +10,12 @@ import {
   modalContainerStyles,
   modalShortBioStyles,
 } from './ServiceCardStyles';
-import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
+import { serviceDataType } from '../../../Types/dbDataTypes';
 
 const ServiceDetailsModal = (prop: {
   openDetails: boolean;
   handleCloseDetails: () => void;
-  serviceObject: serviceData;
+  serviceObject: serviceDataType;
   handleOpen: () => void;
 }) => {
   // TODO: find solution to put different type than for image

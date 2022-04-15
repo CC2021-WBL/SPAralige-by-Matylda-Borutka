@@ -1,12 +1,20 @@
-import { DocumentReference } from 'firebase/firestore';
-
 export interface serviceDataType {
-  id?: string;
+  id: string;
   name: string;
+  type: string;
   description: string;
   priceInZloty: number;
   durationInHours: number;
   image: string;
   altText: string;
-  therapist: DocumentReference;
+  therapist: therapistTypes;
+}
+
+export interface therapistTypes {
+  id: string;
+  firstname: string;
+  surname: string;
+  shortBio: string;
+  therapistImage: string;
+  therapistAltText: string;
 }
