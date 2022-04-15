@@ -4,12 +4,12 @@ import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
 import { generateDateProps } from '../../../Tools/reservationCardTools';
 import { getDateFormatDdMmYyyy } from '../../../Tools/timeFunctions';
 
-type ReservationCardPropTypes = {
+export type ReservationCardTypes = {
   serviceName: string;
   serviceDate: Date;
 };
 
-function ReservationCard(prop: ReservationCardPropTypes) {
+function ReservationCard(prop: ReservationCardTypes) {
   const dateObj = generateDateProps(prop.serviceDate);
 
   const onEditClick: HandleOnClickButtonType = (event) => {
