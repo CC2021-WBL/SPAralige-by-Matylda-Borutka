@@ -1,11 +1,6 @@
 import { Container, Grid, Link, Stack } from '@mui/material';
 
 const Footer = () => {
-  const mediaXM = {
-    '@media screen and (max-width: 600px)': {
-      fontSize: '0.875rem',
-    },
-  };
   return (
     <Container
       maxWidth={false}
@@ -55,7 +50,6 @@ const Footer = () => {
             color={'primary.contrastText'}
             underline="none"
             variant="body1"
-            sx={mediaXM}
             target="_blank"
             tabIndex={0}
             aria-label="about us"
@@ -68,7 +62,6 @@ const Footer = () => {
             color={'primary.contrastText'}
             underline="none"
             variant="body1"
-            sx={mediaXM}
             target="_blank"
             tabIndex={0}
             aria-label="frequently asked questions"
@@ -80,7 +73,6 @@ const Footer = () => {
             color={'primary.contrastText'}
             underline="none"
             variant="body1"
-            sx={mediaXM}
             target="_blank"
             tabIndex={0}
             aria-label="term and conditions"
@@ -92,7 +84,6 @@ const Footer = () => {
             color={'primary.contrastText'}
             underline="none"
             variant="body1"
-            sx={mediaXM}
             target="_blank"
             tabIndex={0}
             aria-label="privacy policy"
