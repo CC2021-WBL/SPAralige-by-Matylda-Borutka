@@ -3,10 +3,10 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { CardContent, Stack, Typography } from '@mui/material';
 
 import { contentContainerStyles, contentTextStyles } from './ServiceCardStyles';
-import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
+import { serviceDataType } from '../../../Types/dbDataTypes';
 
 const ServiceCardContent = (prop: {
-  serviceObject: serviceData;
+  serviceObject: serviceDataType;
   className?: string;
 }) => {
   return (
@@ -38,7 +38,7 @@ const ServiceCardContent = (prop: {
             sx={{ ...contentContainerStyles, alignSelf: 'end' }}
             className={prop.className}
           >
-            {`${prop.serviceObject.duration} h`}
+            {`${prop.serviceObject.durationInHours} h`}
           </Typography>
         </Stack>
         <Stack spacing={0.4} direction="row">
@@ -53,7 +53,7 @@ const ServiceCardContent = (prop: {
             sx={{ ...contentContainerStyles, alignSelf: 'end' }}
             className={prop.className}
           >
-            {`${prop.serviceObject.price} zł`}
+            {`${prop.serviceObject.priceInZloty} zł`}
           </Typography>
         </Stack>
       </Stack>

@@ -3,8 +3,8 @@ import {
   GoogleAuthProvider,
   getAuth,
 } from 'firebase/auth';
+import { collection, getFirestore } from 'firebase/firestore';
 import { getAnalytics } from 'firebase/analytics';
-import { getFirestore } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
@@ -26,7 +26,11 @@ export const analytics = getAnalytics(app);
 // init services
 // databse
 export const db = getFirestore();
+
 //authentication
 export const auth = getAuth();
 export const googleProvider = new GoogleAuthProvider();
 export const facebookProvider = new FacebookAuthProvider();
+
+// collection ref
+export const servicesRef = collection(db, 'services');

@@ -8,10 +8,10 @@ import ServiceCardActions from './ServiceCardActions';
 import ServiceCardContent from './ServiceCardContent';
 import ServiceDetailsModal from './ServiceDetailsModal';
 import { cardStyles } from './ServiceCardStyles';
-import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
+import { serviceDataType } from '../../../Types/dbDataTypes';
 
 const ServiceCard = (prop: {
-  serviceObject: serviceData;
+  serviceObject: serviceDataType;
   className?: string;
 }) => {
   const [open, setOpen] = useState(false);
