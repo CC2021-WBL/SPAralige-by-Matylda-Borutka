@@ -21,13 +21,8 @@ const LandingPage = () => {
           snapshot.forEach((service) => {
             const convertedData = service.data() as serviceDataType;
             convertedData.id = service.id;
-            console.log(convertedData.therapist);
-            const therapistObject = convertedData.therapist;
-            console.log(therapistObject);
-
             serviceArray.push(convertedData);
           });
-          console.log(serviceArray);
           setServiceObjectArray(serviceArray);
         }
       } catch (error) {
