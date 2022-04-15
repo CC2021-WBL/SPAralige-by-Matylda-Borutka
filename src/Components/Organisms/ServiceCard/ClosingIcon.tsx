@@ -4,6 +4,7 @@ import { IconButton } from '@mui/material';
 function ClosingIcon(prop: { handleCloseDetails: () => void }) {
   return (
     <IconButton
+      aria-label="close modal"
       sx={{
         display: 'inline-flex',
         width: 'fit-content',
