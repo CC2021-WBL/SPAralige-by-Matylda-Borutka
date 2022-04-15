@@ -1,6 +1,8 @@
 import { Container, Link, Stack } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 
+import LanguageButton from '../../Atoms/LanguageButton/LanguageButton';
+
 const Footer = () => {
   return (
     <Container
@@ -20,7 +22,7 @@ const Footer = () => {
           flexDirection="column"
           className="leftSide"
           justifyContent="space-between"
-          sx={{ padding: '1rem 0' }}
+          sx={{ padding: '1rem 0 25px 0' }}
         >
           <Link
             href="https://github.com/orgs/CC2021-WBL/people"
@@ -38,6 +40,19 @@ const Footer = () => {
           >
             DevsOnTheWaves <br /> @2022
           </Link>
+          <Container
+            sx={{
+              display: 'flex',
+              gap: '0.625rem',
+              padding: 0,
+              '@media screen and (min-width: 600px)': {
+                padding: 0,
+              },
+            }}
+          >
+            <LanguageButton>PL</LanguageButton>
+            <LanguageButton>EN</LanguageButton>
+          </Container>
         </Stack>
         <Stack
           className="rightSide"
