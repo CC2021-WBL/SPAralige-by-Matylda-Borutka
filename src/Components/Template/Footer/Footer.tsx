@@ -6,7 +6,7 @@ const Footer = () => {
     <Container
       maxWidth={false}
       className="footer"
-      sx={{ backgroundColor: 'primary.main' }}
+      sx={{ backgroundColor: 'primary.main', margin: '24px' }}
     >
       <Stack
         flexDirection="row"
