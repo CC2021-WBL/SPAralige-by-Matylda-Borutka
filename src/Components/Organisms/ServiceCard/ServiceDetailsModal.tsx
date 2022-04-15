@@ -84,11 +84,11 @@ const ServiceDetailsModal = (prop: {
             },
           }}
         >
-          {matchesMedia && (
+          {matchesMedia && therapistObject && (
             <Avatar
               sx={avatarStyles}
               src={imgUrl}
-              alt={prop.serviceObject.therapist.therapistAltText}
+              alt={therapistObject.therapistAltText}
             />
           )}
           <Stack>
