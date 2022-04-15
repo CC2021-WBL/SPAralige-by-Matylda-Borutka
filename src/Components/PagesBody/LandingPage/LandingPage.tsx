@@ -4,30 +4,8 @@ import { useEffect, useState } from 'react';
 import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
 import { servicesRef } from '../../../Firebase/firebase';
 
-// const serviceDataMock = [
-//   {
-//     name: 'Masaż Gorącymi Kamieniami',
-//     type: 'Masaż',
-//     description:
-//       'Odpręż się chłopie, to tutaj znajdziesz ukojenie. Zapomnij o troskach, zapomnij o brzemieniu.. Połóż się i nie myśl o niczym. Odpocznij,',
-//     price: 150,
-//     duration: 1.5,
-//     image:
-//       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII',
-//     altText: 'massage with stones',
-//     therapist: {
-//       firstname: 'Damian',
-//       surname: 'Twardoręki',
-//       shortBio:
-//         'Absolwent Wyższej Szkoły Rehabilitacji w Warszawie. Jako magister fizjoterapii kontynuuje wieloletnią, rodzinną tradycję pomocy osobom z dolegliwościami kręgosłupa. Pasjonat chiropraktyki. Posiada ponad 10-letnie doświadczenie zawodowe, wypracowane w centrach rehabilitacji i odnowy biologicznej. Skutecznie łączy zdobytą wiedzę i doświadczenie, z niezwykłymi umiejętnościami wyczucia tkanki. Do każdego klienta podchodzi indywidualnie, dostosowując technikę zabiegu.',
-//       therapistImage:
-//         'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII',
-//       therapistAltText: "Damian's smiling face",
-//     },
-//   },
-// ];
-
 export interface therapistTypes {
+  id: string;
   firstname: string;
   surname: string;
   shortBio: string;
