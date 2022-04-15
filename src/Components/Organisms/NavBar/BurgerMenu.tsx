@@ -47,7 +47,7 @@ const BurgerMenu = ({ open }) => {
 };
 
 BurgerMenu.propTypes = {
-  open: propTypes.any,
+  open: propTypes.bool,
 };
 
 export default BurgerMenu;

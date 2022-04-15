@@ -24,69 +24,124 @@ const NavBar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const [openDrawer, setOpenDrawer] = React.useState(false);
-  const toggleDrawer = () => {
-    setOpenDrawer(!openDrawer);
-  };
+
   return (
     <AppBar
       position="static"
-      sx={{ height: '80px', m: 0, p: 0, justifyContent: 'center' }}
+      sx={{
+        height: '80px',
+        m: 0,
+        p: 0,
+        justifyContent: 'center',
+      }}
     >
-      <Toolbar variant="regular">
+      <Toolbar variant="regular" sx={{ outline: '2px dotted blue' }}>
         <Box
           sx={{
-            display: { xs: 'none', md: 'block' },
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'space-between',
+            justifyItems: 'center',
             color: 'contrastText',
+            outline: '2px dotted olive',
           }}
         >
-          Logo
-        </Box>
-        <IconButton
-          className="burger"
-          edge="start"
-          aria-label="burger menu"
-          sx={{ mr: 1, color: 'primary.contrastText', display: { md: 'none' } }}
-          onClick={toggleDrawer}
-        >
-          <MenuIcon />
-          <BurgerMenu open={openDrawer} />
-        </IconButton>
-        <Typography
-          variant="h6"
-          color="primary.contrastText"
-          component="div"
-          textAlign="center"
-          sx={{ width: '100%', userSelect: 'none', display: { md: 'none' } }}
-        >
-          SPARALIGE
-        </Typography>
-        <Link>1</Link>
-        <Link>2</Link>
-        <IconButton
-          className="rightMenu"
-          onClick={handleClick}
-          sx={{ ml: 2, color: 'primary.contrastText' }}
-        >
-          <MoreVertIcon sx={{ display: { sm: 'none' } }} />
-          <Avatar
-            sx={{ display: { xs: 'none', sm: 'flex', bgcolor: '#82B1FF' } }}
+          <Typography
+            sx={{
+              display: {
+                xs: 'none',
+                md: 'block',
+                outline: '4px dotted tomato',
+              },
+            }}
           >
-            MB
-          </Avatar>
-        </IconButton>
-        <Menu
-          id="basic-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          MenuListProps={{
-            'aria-labelledby': 'basic-button',
-          }}
-        >
-          <MenuItem onClick={handleClose}>Zaloguj</MenuItem>
-          <MenuItem onClick={handleClose}>Zarejestruj</MenuItem>
-        </Menu>
+            Logo
+          </Typography>
+          <IconButton
+            className="burger"
+            edge="start"
+            aria-label="burger menu"
+            sx={{
+              mr: 1,
+              color: 'primary.contrastText',
+              display: { md: 'none' },
+              outline: '2px dotted red',
+            }}
+            onClick={handleClick}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            variant="h6"
+            color="primary.contrastText"
+            component="div"
+            textAlign="center"
+            sx={{
+              width: '100%',
+              userSelect: 'none',
+              display: { md: 'none' },
+              outline: '4px dotted tomato',
+            }}
+          >
+            SPARALIGE
+          </Typography>
+          <Link
+            color="primary.contrastText"
+            target="_blank"
+            underline="none"
+            sx={{
+              display: {
+                xs: 'none',
+                md: 'block',
+                outline: '4px dotted tomato',
+              },
+            }}
+          >
+            Nasze zabiegi
+          </Link>
+          <Link
+            color="primary.contrastText"
+            target="_blank"
+            underline="none"
+            sx={{
+              display: {
+                xs: 'none',
+                md: 'block',
+                outline: '4px dotted tomato',
+              },
+            }}
+          >
+            O nas
+          </Link>
+          <IconButton
+            className="rightMenu"
+            onClick={handleClick}
+            sx={{
+              ml: 2,
+              color: 'primary.contrastText',
+              outline: '4px dotted tomato',
+            }}
+          >
+            <MoreVertIcon sx={{ display: { sm: 'none' } }} />
+            <Avatar
+              sx={{ display: { xs: 'none', sm: 'flex', bgcolor: '#82B1FF' } }}
+            >
+              MB
+            </Avatar>
+          </IconButton>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              'aria-labelledby': 'basic-button',
+            }}
+          >
+            <MenuItem onClick={handleClose}>Zaloguj</MenuItem>
+            <MenuItem onClick={handleClose}>Zarejestruj</MenuItem>
+          </Menu>
+        </Box>
       </Toolbar>
     </AppBar>
   );
