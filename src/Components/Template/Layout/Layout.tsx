@@ -1,7 +1,7 @@
 import { AppBar, Box, Container } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 
-import FooterStyled from '../Footer/FooterStyled';
+import Footer from '../../Template/Footer/Footer';
 import MainWrapper from './MainWrapper';
 
 const Layout = () => {
@@ -13,7 +13,7 @@ const Layout = () => {
       <Container maxWidth="lg" sx={{ flexGrow: 1 }}>
         <Outlet />
       </Container>
-      <FooterStyled />
+      <Footer />
     </MainWrapper>
   );
 };
