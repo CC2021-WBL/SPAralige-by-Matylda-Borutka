@@ -1,7 +1,24 @@
+import { Box, Tab, Tabs } from '@mui/material';
+
+import ReservationCard from '../../Organisms/ReservationCard/ReservationCard';
+
 const ReservationsPage = () => {
   return (
     <main>
-      <h1>Tu będą informacje o rezerwacjach</h1>
+      <Tabs>
+        <Tab label="REZERWACJE" />
+        <Tab label="TWOJE KONTO" />
+      </Tabs>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          maxWidth: '35.875rem',
+          minWidrh: '20.5rem',
+        }}
+      >
+        <ReservationCard serviceName="Lewatywa z parafiny" />
+      </Box>
     </main>
   );
 };
