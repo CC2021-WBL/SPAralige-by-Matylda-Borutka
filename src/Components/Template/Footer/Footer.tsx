@@ -89,7 +89,6 @@ const Footer = () => {
             target="_blank"
             tabIndex={0}
             aria-label="privacy policy"
-            sx={{ outline: '2px dotted red' }}
           >
             Polityka prywatności
           </Link>
