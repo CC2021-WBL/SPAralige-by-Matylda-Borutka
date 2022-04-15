@@ -26,7 +26,7 @@ const ServiceDetailsModal = (prop: {
   const [therapistObject, setTherapistObject] = useState<therapistTypes | null>(
     null,
   );
-  const matchesMedia = useMediaQuery('(min-width:800px)');
+  const matchesMedia = useMediaQuery('(min-width:650px)');
 
   useEffect(() => {
     const getTherapistObject = async () => {
