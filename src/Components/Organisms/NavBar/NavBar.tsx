@@ -1,30 +1,56 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import MenuIcon from '@mui/icons-material/Menu';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import {
   AppBar,
   Avatar,
+  Container,
   IconButton,
   Link,
   MenuItem,
   Toolbar,
 } from '@mui/material';
 import { Menu } from '@mui/material';
+import { NavLink as RouterLink } from 'react-router-dom';
 import { Typography } from '@mui/material';
 
-import BurgerMenu from './BurgerMenu';
+const LinkStyle = {
+  userSelect: 'none',
+  '&.active': {
+    fontWeight: 'bold',
+  },
+};
+
+const LinkRespoStyle = {
+  display: {
+    xs: 'none',
+    md: 'flex',
+  },
+};
 
 const NavBar = () => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const [anchorElRight, setAnchorElRight] = React.useState<null | HTMLElement>(
+    null,
+  );
+  const [anchorElLeft, setAnchorElLeft] = React.useState<null | HTMLElement>(
+    null,
+  );
+  const openRightMenu = Boolean(anchorElRight);
+  const openLeftMenu = Boolean(anchorElLeft);
 
+  // TODO: in order to close the menu after clicking MenuItem there I need to add second command to onClick
+  const handleClickRight = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorElRight(event.currentTarget);
+  };
+  const handleClickLeft = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorElLeft(event.currentTarget);
+  };
+  const handleCloseLeft = () => {
+    setAnchorElLeft(null);
+  };
+  const handleCloseRight = () => {
+    setAnchorElRight(null);
+  };
   return (
     <AppBar
       position="static"
@@ -35,28 +61,27 @@ const NavBar = () => {
         justifyContent: 'center',
       }}
     >
-      <Toolbar variant="regular" sx={{ outline: '2px dotted blue' }}>
-        <Box
+      <Toolbar variant="regular" sx={{ bgcolor: 'none' }}>
+        <Container
+          style={{ padding: '0' }}
           sx={{
+            m: '0 auto',
             display: 'flex',
             flexDirection: 'row',
-            alignItems: 'space-between',
-            justifyItems: 'center',
-            color: 'contrastText',
-            outline: '2px dotted olive',
+            alignItems: 'center',
+            justifyContent: 'space-between',
           }}
         >
-          <Typography
-            sx={{
-              display: {
-                xs: 'none',
-                md: 'block',
-                outline: '4px dotted tomato',
-              },
-            }}
+          <Link
+            component={RouterLink}
+            to="/"
+            variant="button"
+            color="primary.contrastText"
+            underline="none"
+            sx={Object.assign(LinkStyle, LinkRespoStyle)}
           >
-            Logo
-          </Typography>
+            LOGO
+          </Link>
           <IconButton
             className="burger"
             edge="start"
@@ -65,9 +90,8 @@ const NavBar = () => {
               mr: 1,
               color: 'primary.contrastText',
               display: { md: 'none' },
-              outline: '2px dotted red',
             }}
-            onClick={handleClick}
+            onClick={handleClickLeft}
           >
             <MenuIcon />
           </IconButton>
@@ -80,68 +104,77 @@ const NavBar = () => {
               width: '100%',
               userSelect: 'none',
               display: { md: 'none' },
-              outline: '4px dotted tomato',
             }}
           >
             SPARALIGE
           </Typography>
+
           <Link
+            component={RouterLink}
+            to="/treatments"
+            variant="button"
             color="primary.contrastText"
-            target="_blank"
             underline="none"
-            sx={{
-              display: {
-                xs: 'none',
-                md: 'block',
-                outline: '4px dotted tomato',
-              },
-            }}
+            sx={Object.assign(LinkStyle, LinkRespoStyle)}
           >
-            Nasze zabiegi
+            NASZE ZABIEGI
           </Link>
           <Link
+            component={RouterLink}
+            to="/about"
             color="primary.contrastText"
-            target="_blank"
             underline="none"
-            sx={{
-              display: {
-                xs: 'none',
-                md: 'block',
-                outline: '4px dotted tomato',
-              },
-            }}
+            sx={Object.assign(LinkStyle, LinkRespoStyle)}
           >
-            O nas
+            O NAS
           </Link>
           <IconButton
             className="rightMenu"
-            onClick={handleClick}
+            onClick={handleClickRight}
             sx={{
               ml: 2,
               color: 'primary.contrastText',
-              outline: '4px dotted tomato',
             }}
           >
             <MoreVertIcon sx={{ display: { sm: 'none' } }} />
-            <Avatar
-              sx={{ display: { xs: 'none', sm: 'flex', bgcolor: '#82B1FF' } }}
-            >
+            <Avatar sx={{ display: { xs: 'none', sm: 'flex' } }}>
+              {/* TODO: {userName[0], userSurname[0]} */}
               MB
             </Avatar>
           </IconButton>
           <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
+            id="rightMenu"
+            anchorEl={anchorElRight}
+            open={openRightMenu}
+            onClose={handleCloseRight}
             MenuListProps={{
-              'aria-labelledby': 'basic-button',
+              'aria-labelledby': 'rightMenu',
             }}
           >
-            <MenuItem onClick={handleClose}>Zaloguj</MenuItem>
-            <MenuItem onClick={handleClose}>Zarejestruj</MenuItem>
+            <MenuItem component={RouterLink} to="/login">
+              Zaloguj
+            </MenuItem>
+            <MenuItem component={RouterLink} to="/register">
+              Zarejestruj
+            </MenuItem>
           </Menu>
-        </Box>
+          <Menu
+            id="leftMenu"
+            anchorEl={anchorElLeft}
+            open={openLeftMenu}
+            onClose={handleCloseLeft}
+            MenuListProps={{
+              'aria-labelledby': 'leftMenu',
+            }}
+          >
+            <MenuItem component={RouterLink} to="/treatments">
+              Katalog zabiegów
+            </MenuItem>
+            <MenuItem component={RouterLink} to="/about">
+              O nas
+            </MenuItem>
+          </Menu>
+        </Container>
       </Toolbar>
     </AppBar>
   );

@@ -5,8 +5,6 @@ import Footer from '../../Template/Footer/Footer';
 import MainWrapper from './MainWrapper';
 import NavBar from './../../Organisms/NavBar/NavBar';
 
-NavBar;
-
 const Layout = () => {
   return (
     <MainWrapper>
