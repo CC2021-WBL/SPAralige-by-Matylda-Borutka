@@ -1,5 +1,6 @@
 import { Avatar, Modal, Stack, Typography, useMediaQuery } from '@mui/material';
 import { Box } from '@mui/system';
+import { doc, getDoc } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 
 import ClosingIcon from './ClosingIcon';
@@ -10,41 +11,55 @@ import {
   modalContainerStyles,
   modalShortBioStyles,
 } from './ServiceCardStyles';
-import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
+import { db } from '../../../Firebase/firebase';
+import { serviceDataType, therapistTypes } from '../../../Types/dbDataTypes';
 
 const ServiceDetailsModal = (prop: {
   openDetails: boolean;
   handleCloseDetails: () => void;
-  serviceObject: serviceData;
+  serviceObject: serviceDataType;
   handleOpen: () => void;
 }) => {
   // TODO: find solution to put different type than for image
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [imgUrl, setImgUrl] = useState<any | null>(null);
-  const matchesMedia = useMediaQuery('(min-width:800px)');
+  const [therapistObject, setTherapistObject] = useState<therapistTypes | null>(
+    null,
+  );
+  const matchesMedia = useMediaQuery('(min-width:650px)');
 
   useEffect(() => {
-    const getTherapistImg = async () => {
+    const getTherapistObject = async () => {
+      const therapistsRef = doc(
+        db,
+        'therapists',
+        prop.serviceObject.therapist.id,
+      );
       try {
-        const response = await fetch(
-          prop.serviceObject.therapist.therapistImage,
-        );
-        if (!response.ok) {
+        const snapshot = await getDoc(therapistsRef);
+        if (!snapshot) {
           throw new Error();
         } else {
-          const imageBlob = await response.blob();
-          const reader = new FileReader();
-          reader.readAsDataURL(imageBlob);
-          reader.onloadend = () => {
-            const base64data = reader.result;
-            setImgUrl(base64data);
-          };
+          const therapist = snapshot.data() as therapistTypes;
+          setTherapistObject(therapist);
+          const response = await fetch(therapist.therapistImage);
+          if (!response.ok) {
+            throw new Error();
+          } else {
+            const imageBlob = await response.blob();
+            const reader = new FileReader();
+            reader.readAsDataURL(imageBlob);
+            reader.onloadend = () => {
+              const base64data = reader.result;
+              setImgUrl(base64data);
+            };
+          }
         }
       } catch (error) {
         console.log(error);
       }
     };
-    getTherapistImg();
+    getTherapistObject();
   }, []);
 
   return (
@@ -69,11 +84,11 @@ const ServiceDetailsModal = (prop: {
             },
           }}
         >
-          {matchesMedia && (
+          {matchesMedia && therapistObject && (
             <Avatar
               sx={avatarStyles}
               src={imgUrl}
-              alt={prop.serviceObject.therapist.therapistAltText}
+              alt={therapistObject.therapistAltText}
             />
           )}
           <Stack>
@@ -83,7 +98,8 @@ const ServiceDetailsModal = (prop: {
               fontSize="1rem"
               sx={{ padding: '0.3125rem' }}
             >
-              {`Terapeuta:  ${prop.serviceObject.therapist.firstname} ${prop.serviceObject.therapist.surname}`}
+              {therapistObject &&
+                `Terapeuta:  ${therapistObject.firstname} ${therapistObject.surname}`}
             </Typography>
             <Typography
               paragraph
@@ -93,7 +109,7 @@ const ServiceDetailsModal = (prop: {
               component="div"
               sx={modalShortBioStyles}
             >
-              {prop.serviceObject.therapist.shortBio}
+              {therapistObject && therapistObject.shortBio}
             </Typography>
           </Stack>
         </Stack>

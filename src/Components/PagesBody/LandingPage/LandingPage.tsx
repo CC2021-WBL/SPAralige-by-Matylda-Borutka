@@ -1,76 +1,43 @@
+import { getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 
 import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
-
-const serviceDataMock = [
-  {
-    name: 'Masaż Gorącymi Kamieniami',
-    type: 'Masaż',
-    description:
-      'Odpręż się chłopie, to tutaj znajdziesz ukojenie. Zapomnij o troskach, zapomnij o brzemieniu.. Połóż się i nie myśl o niczym. Odpocznij loremLorem ipsum dolor sit amet consectetur adipisicing elit.',
-    price: 150,
-    duration: 1.5,
-    image:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII',
-    altText: 'massage with stones',
-    therapist: {
-      firstname: 'Damian',
-      surname: 'Twardoręki',
-      shortBio:
-        'Absolwent Wyższej Szkoły Rehabilitacji w Warszawie. Jako magister fizjoterapii kontynuuje wieloletnią, rodzinną tradycję pomocy osobom z dolegliwościami kręgosłupa. Pasjonat chiropraktyki. Posiada ponad 10-letnie doświadczenie zawodowe, wypracowane w centrach rehabilitacji i odnowy biologicznej. Skutecznie łączy zdobytą wiedzę i doświadczenie, z niezwykłymi umiejętnościami wyczucia tkanki. Do każdego klienta podchodzi indywidualnie, dostosowując technikę zabiegu.',
-      therapistImage:
-        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII',
-      therapistAltText: "Damian's smiling face",
-    },
-  },
-];
-
-export interface therapistTypes {
-  firstname: string;
-  surname: string;
-  shortBio: string;
-  therapistImage: string;
-  therapistAltText: string;
-}
-
-export interface serviceData {
-  name: string;
-  type: string;
-  description: string;
-  price: number;
-  duration: number;
-  image: string;
-  altText: string;
-  therapist: therapistTypes;
-}
+import { serviceDataType } from '../../../Types/dbDataTypes';
+import { servicesRef } from '../../../Firebase/firebase';
 
 const LandingPage = () => {
-  const [serviceObject, setServiceObject] = useState<serviceData[] | null>(
-    null,
-  );
+  const [serviceObjectArray, setServiceObjectArray] = useState<
+    serviceDataType[] | null
+  >(null);
+
   useEffect(() => {
-    const getServiceObject = async () => {
+    const getServiceObjectArray = async () => {
       try {
-        // const response = await fetch(serviceDataMock);
-        const response = { ok: 'true' };
-        if (!response.ok) {
+        const snapshot = await getDocs(servicesRef);
+        if (!snapshot) {
           throw new Error();
         } else {
-          // const service = await response.json();
-          const service = serviceDataMock;
-          setServiceObject(service);
+          const serviceArray: serviceDataType[] = [];
+          snapshot.forEach((service) => {
+            const convertedData = service.data() as serviceDataType;
+            convertedData.id = service.id;
+            serviceArray.push(convertedData);
+          });
+          setServiceObjectArray(serviceArray);
         }
       } catch (error) {
         console.log(error);
       }
     };
-    getServiceObject();
+    getServiceObjectArray();
   }, []);
 
   return (
     <main>
       <h1 style={{ textAlign: 'center' }}>SPAralige od Matylde</h1>
-      {serviceObject && <ResponsiveGrid serviceObjectArray={serviceObject} />}
+      {serviceObjectArray && (
+        <ResponsiveGrid serviceObjectArray={serviceObjectArray} />
+      )}
     </main>
   );
 };
