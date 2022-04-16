@@ -11,8 +11,10 @@ import {
   Toolbar,
 } from '@mui/material';
 import { Menu } from '@mui/material';
-import { NavLink as RouterLink } from 'react-router-dom';
+import { NavLink as RouterLink, useNavigate } from 'react-router-dom';
 import { Typography } from '@mui/material';
+
+import LoginModal from '../LoginForm/LoginModal';
 
 const LinkStyle = {
   userSelect: 'none',
@@ -20,15 +22,19 @@ const LinkStyle = {
     fontWeight: 'bold',
   },
 };
-
 const LinkRespoStyle = {
   display: {
     xs: 'none',
     md: 'flex',
   },
 };
+let ModalOpen;
+function returnOpen() {
+  if (ModalOpen == 'open') return open;
+}
 
 const NavBar = () => {
+  const navigate = useNavigate();
   const [anchorElRight, setAnchorElRight] = React.useState<null | HTMLElement>(
     null,
   );
@@ -51,6 +57,7 @@ const NavBar = () => {
   const handleCloseRight = () => {
     setAnchorElRight(null);
   };
+
   return (
     <AppBar
       position="static"
@@ -83,7 +90,7 @@ const NavBar = () => {
             LOGO
           </Link>
           <IconButton
-            className="burger"
+            className="burgerMenu"
             edge="start"
             aria-label="burger menu"
             sx={{
@@ -106,7 +113,7 @@ const NavBar = () => {
               display: { md: 'none' },
             }}
           >
-            SPARALIGE
+            SPARALIGÉ
           </Typography>
 
           <Link
@@ -151,10 +158,20 @@ const NavBar = () => {
               'aria-labelledby': 'rightMenu',
             }}
           >
-            <MenuItem component={RouterLink} to="/login">
+            <MenuItem
+              onClick={() => {
+                handleCloseRight();
+                ModalOpen = 'open';
+              }}
+            >
               Zaloguj
             </MenuItem>
-            <MenuItem component={RouterLink} to="/register">
+            <MenuItem
+              onClick={() => {
+                handleCloseRight();
+                navigate('/register');
+              }}
+            >
               Zarejestruj
             </MenuItem>
           </Menu>
@@ -167,13 +184,33 @@ const NavBar = () => {
               'aria-labelledby': 'leftMenu',
             }}
           >
-            <MenuItem component={RouterLink} to="/treatments">
+            <MenuItem
+              onClick={() => {
+                handleCloseLeft();
+                navigate('/treatments');
+              }}
+            >
               Katalog zabiegów
             </MenuItem>
-            <MenuItem component={RouterLink} to="/about">
+            <MenuItem
+              onClick={() => {
+                handleCloseLeft();
+                navigate('/about');
+              }}
+            >
               O nas
             </MenuItem>
           </Menu>
+          {ModalOpen == 'open' ? (
+            <LoginModal
+              open
+              handleClose={() => {
+                console.log('handleModalClose');
+              }}
+            />
+          ) : (
+            ''
+          )}
         </Container>
       </Toolbar>
     </AppBar>
