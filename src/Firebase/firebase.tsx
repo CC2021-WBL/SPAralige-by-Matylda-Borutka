@@ -33,4 +33,4 @@ export const googleProvider = new GoogleAuthProvider();
 export const facebookProvider = new FacebookAuthProvider();
 
 // collection ref
-export const servicesRef = collection(db, 'services');
+export const servicesRef = collection(db, 'test');

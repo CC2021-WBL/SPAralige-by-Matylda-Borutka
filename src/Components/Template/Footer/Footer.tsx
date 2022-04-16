@@ -1,8 +1,14 @@
+// import LanguageDetector from 'i18next-browser-languagedetector';
+
 import { Container, Link, Stack } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import LanguageButton from '../../Atoms/LanguageButton/LanguageButton';
+
+// import { useState } from 'react';
+
+// import { boolean } from 'yup';
 
 // import i18n from '../../../../i18n';
 
@@ -11,6 +17,7 @@ const Footer = () => {
   const changeLanguage = (lng: any) => {
     i18n.changeLanguage(lng);
   };
+
   return (
     <Container
       maxWidth={false}
@@ -57,10 +64,18 @@ const Footer = () => {
               },
             }}
           >
-            <LanguageButton onClick={() => changeLanguage('pl')}>
+            <LanguageButton
+              onClick={() => {
+                changeLanguage('pl');
+              }}
+            >
               PL
             </LanguageButton>
-            <LanguageButton onClick={() => changeLanguage('en')}>
+            <LanguageButton
+              onClick={() => {
+                changeLanguage('en');
+              }}
+            >
               EN
             </LanguageButton>
           </Container>
@@ -83,6 +98,8 @@ const Footer = () => {
             aria-label="about us"
           >
             {t('footer.about')}
+            {/* {onLanguageDetected === 'pl' ? <h1>ssss</h1> : <h1>bb</h1>} */}
+            {i18n.language === 'pl' ? <p>aaa</p> : <p>fff</p>}
           </Link>
           <Link
             component={RouterLink}

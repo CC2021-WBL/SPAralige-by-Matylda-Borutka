@@ -8,6 +8,7 @@ export interface serviceDataType {
   image: string;
   altText: string;
   therapist: therapistTypes;
+  text: string[];
 }
 
 export interface therapistTypes {

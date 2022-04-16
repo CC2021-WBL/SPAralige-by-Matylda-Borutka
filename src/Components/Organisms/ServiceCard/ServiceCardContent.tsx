@@ -1,6 +1,7 @@
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { CardContent, Stack, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 import { contentContainerStyles, contentTextStyles } from './ServiceCardStyles';
 import { serviceDataType } from '../../../Types/dbDataTypes';
@@ -9,6 +10,10 @@ const ServiceCardContent = (prop: {
   serviceObject: serviceDataType;
   className?: string;
 }) => {
+  const { i18n } = useTranslation('navFooter');
+  // const changeLanguage = (lng: any) => {
+  //   i18n.changeLanguage(lng);
+  // };
   return (
     <CardContent className={prop.className} sx={contentContainerStyles}>
       <Typography
@@ -18,11 +23,18 @@ const ServiceCardContent = (prop: {
         className={prop.className}
         sx={contentContainerStyles}
       >
-        {prop.serviceObject.name}
+        {/* {prop.serviceObject.name} */}
+        {prop.serviceObject.text[i18n.language]}
+        {/* {i18n.language === 'pl' ? (
+          <p>{prop.serviceObject.text[0]}</p>
+        ) : (
+          <p>{prop.serviceObject.text[1]}</p>
+        )} */}
       </Typography>
       {prop.className === 'modal-service' && (
         <Typography gutterBottom color="text.disabled">
-          {`Rodzaj zabiegu: ${prop.serviceObject.type}`}
+          {/* {`Rodzaj zabiegu: ${prop.serviceObject.type}`} */}
+          {i18n.language === 'pl' ? <p>aaa</p> : <p>fff</p>}
         </Typography>
       )}
       <Stack direction="row" spacing={2} sx={{ paddingBottom: '0.625rem' }}>
