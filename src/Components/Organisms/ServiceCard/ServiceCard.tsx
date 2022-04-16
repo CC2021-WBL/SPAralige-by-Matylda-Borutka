@@ -1,50 +1,26 @@
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import CreateIcon from '@mui/icons-material/Create';
-import Typography from '@mui/material/Typography';
-import { Modal, Stack } from '@mui/material';
-import { makeStyles } from '@mui/styles';
+import { Modal } from '@mui/material';
+import { Box } from '@mui/system';
 import { useEffect, useState } from 'react';
 
-import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
+import ServiceCardActions from './ServiceCardActions';
+import ServiceCardContent from './ServiceCardContent';
+import ServiceDetailsModal from './ServiceDetailsModal';
+import { cardStyles } from './ServiceCardStyles';
+import { serviceDataType } from '../../../Types/dbDataTypes';
 import BookingModal from '../BookingModal/BookingModal';
 
-const useStyles = makeStyles({
-  btnsPosition: {
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingBottom: 10,
-    '@media screen and (min-width: 600px)': {
-      justifyContent: 'flex-end',
-    },
-  },
-  btnStyles: {
-    borderRadius: 50,
-    minWidth: 200,
-    paddingTop: 9,
-    '@media screen and (min-width: 450px)': {
-      '&:first-child': {
-        marginRight: 8,
-      },
-    },
-  },
-  durationAndPrice: {
-    alignItems: 'center',
-    paddingBottom: 10,
-  },
-});
-
-const ServiceCard = (prop: { serviceObject: serviceData }) => {
-  const classes = useStyles();
+const ServiceCard = (prop: {
+  serviceObject: serviceDataType;
+  className?: string;
+}) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [openDetails, setOpenDetails] = useState(false);
+  const handleOpenDetails = () => setOpenDetails(true);
+  const handleCloseDetails = () => setOpenDetails(false);
 
   // TODO: find solution to put different type than for image
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -73,89 +49,33 @@ const ServiceCard = (prop: { serviceObject: serviceData }) => {
   }, []);
   return (
     <>
-      <Card>
+      <Card sx={cardStyles}>
         <CardMedia
           component="img"
           height="210"
           image={imgUrl}
           alt={prop.serviceObject.altText}
         />
-        <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
-            {prop.serviceObject.name}
-          </Typography>
-          <Stack direction="row" spacing={2}>
-            <Stack
-              spacing={0.8}
-              direction="row"
-              className={classes.durationAndPrice}
-            >
-              <AccessTimeIcon
-                sx={{ color: 'text.disabled' }}
-                aria-hidden="true"
-              />
-              <Typography
-                variant="subtitle2"
-                component="div"
-                color="text.disabled"
-              >
-                {`${prop.serviceObject.duration} h`}
-              </Typography>
-            </Stack>
-            <Stack
-              spacing={0.4}
-              direction="row"
-              className={classes.durationAndPrice}
-            >
-              <AttachMoneyIcon
-                sx={{ color: 'text.disabled' }}
-                aria-hidden="true"
-              />
-              <Typography
-                variant="subtitle2"
-                component="div"
-                color="text.disabled"
-              >
-                {`${prop.serviceObject.price} zł`}
-              </Typography>
-            </Stack>
-          </Stack>
-          <Typography variant="body2" color="text.secondary">
-            {prop.serviceObject.description}
-          </Typography>
-        </CardContent>
-        <CardActions className={classes.btnsPosition} disableSpacing>
-          <Button
-            aria-label="more details"
-            size="medium"
-            className={classes.btnStyles}
-            onClick={() => {
-              console.log('clicked');
-            }}
-          >
-            Więcej Szczegółów
-          </Button>
-          <Button
-            aria-label="make reservation"
-            variant="contained"
-            disableElevation
-            size="medium"
-            startIcon={<CreateIcon fontSize="small" />}
-            className={classes.btnStyles}
-            onClick={() => {
-              handleOpen();
-            }}
-          >
-            Rezerwuj Zabieg
-          </Button>
-        </CardActions>
+        <ServiceCardContent serviceObject={prop.serviceObject} />
+        <ServiceCardActions
+          className="service-card"
+          handleOpenDetails={handleOpenDetails}
+          handleOpen={handleOpen}
+        />
       </Card>
+      <ServiceDetailsModal
+        handleCloseDetails={handleCloseDetails}
+        openDetails={openDetails}
+        serviceObject={prop.serviceObject}
+        handleOpen={handleOpen}
+      />
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
+        <Box />
         <BookingModal />
       </Modal>
     </>
