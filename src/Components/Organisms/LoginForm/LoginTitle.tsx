@@ -23,7 +23,7 @@ export default function LoginTitle() {
       <Typography
         sx={{
           height: '1.313rem',
-          fontSize: '15px',
+          fontSize: '0.9375rem',
         }}
         variant="subtitle1"
       >

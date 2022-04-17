@@ -1,39 +1,57 @@
-import { Box, Stack, TextField } from '@mui/material';
-import FormTitle from '../../Organisms/Form/FormTitle';
+import { Box, Tab, Tabs } from '@mui/material';
+
+import ReservationCard from '../../Organisms/ReservationCard/ReservationCard';
+import TabPanel from '../../Organisms/ReservationCard/TabPanel';
+import { useState } from 'react';
 
 const ReservationsPage = () => {
-  return (
-    <Box
-      sx={{
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        bgcolor: '#FFFFFF',
-        width: '31.25rem',
-        height: '40.813rem',
-        padding: ['2.5rem', '2.125rem'],
-        '@media screen and (max-width: 600px)': {
-          width: '19.625rem',
-          padding: ['2.5rem', '2.125rem'],
-        },
-      }}
-    >
-      <Stack spacing={'1.4375rem'}>
-        <form action="">
-          <FormTitle
-            aria-label="Sign in to SPAralige"
-            text1="Stwórz konto"
-            text2="Uzupełnij formularz aby założyć konto"
-          />
+  const [value, setValue] = useState(0);
 
-          <TextField id="outlined-name" label="Imię" value={name} />
-          <TextField id="outlined-name" label="Email" value={name} />
-          <TextField id="outlined-name" label="Hasło" value={name} />
-          <TextField id="outlined-name" label="Powtórz hasło" value={name} />
-        </form>
-      </Stack>
-    </Box>
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+
+  return (
+    <main>
+      <Box
+        sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+      >
+        <Box
+          sx={{
+            width: '20,5rem',
+            '@media screen and (min-width: 600px)': {
+              width: '35.875rem',
+            },
+          }}
+        >
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            sx={{ height: '3rem' }}
+            aria-label="tabs-to-choose"
+          >
+            <Tab label="REZERWACJE" />
+            <Tab label="TWOJE KONTO" />
+          </Tabs>
+          <TabPanel value={value} index={0}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              <ReservationCard
+                serviceName="Lewatywa z parafiny"
+                serviceDate={new Date(2022, 6, 15)}
+              />
+            </Box>
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            YOUR ACCOUNT
+          </TabPanel>
+        </Box>
+      </Box>
+    </main>
   );
 };
 

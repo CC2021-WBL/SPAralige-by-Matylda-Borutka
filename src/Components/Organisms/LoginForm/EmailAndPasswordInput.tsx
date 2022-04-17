@@ -14,7 +14,13 @@ export default function EmailAndPasswordInput(loginProps: LoginInputsProps) {
         sx={{
           height: '3.5rem',
         }}
+        InputLabelProps={{
+          sx: {
+            paddingTop: '1px',
+          },
+        }}
       />
+
       <TextField
         label="Hasło"
         type={'password'}
@@ -23,6 +29,11 @@ export default function EmailAndPasswordInput(loginProps: LoginInputsProps) {
         onChange={loginProps.handlePasswordChange}
         sx={{
           height: '3.5rem',
+        }}
+        InputLabelProps={{
+          sx: {
+            paddingTop: '1px',
+          },
         }}
       />
     </Stack>

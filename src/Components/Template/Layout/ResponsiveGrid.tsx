@@ -2,10 +2,10 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
 import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
-import { serviceData } from '../../PagesBody/LandingPage/LandingPage';
+import { serviceDataType } from '../../../Types/dbDataTypes';
 
 export default function ResponsiveGrid(prop: {
-  serviceObjectArray: serviceData[];
+  serviceObjectArray: serviceDataType[];
 }) {
   return (
     <Box sx={{ flexGrow: 1 }}>

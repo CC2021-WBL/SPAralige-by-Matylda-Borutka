@@ -19,6 +19,7 @@ function SignOrResetLink(prop: SignOrResetPropType) {
         aria-label={`link to ${prop.linkText}`}
         underline="none"
         sx={{ cursor: 'pointer' }}
+        tabIndex={0}
       >
         {prop.linkText}
       </Link>

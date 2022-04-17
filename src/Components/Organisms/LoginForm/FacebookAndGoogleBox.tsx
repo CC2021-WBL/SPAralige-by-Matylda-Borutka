@@ -1,4 +1,4 @@
-import { Button, Stack } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 
 import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
 import { loginWithFacebook } from '../../../Firebase/facebookLogin';
@@ -16,7 +16,7 @@ function FacebookAndGoogleBox({ loginOrRegister }) {
   };
 
   return (
-    <Stack spacing={'0.6875rem'}>
+    <Stack spacing={1.5}>
       <Button
         variant="contained"
         disableElevation={true}
@@ -24,13 +24,15 @@ function FacebookAndGoogleBox({ loginOrRegister }) {
         sx={{ height: '2.9375rem', background: '#01579B' }}
         onClick={onFbClick}
       >
-        {loginOrRegister === 'register' ? 'ZAREJESTRUJ' : 'ZALOGUJ'} SIĘ PRZEZ
-        FACEBOOK&#39;A
+        <Typography sx={{ fontSize: '0.875rem', paddingTop: '1px' }}>
+          {loginOrRegister === 'register' ? 'ZAREJESTRUJ' : 'ZALOGUJ'} SIĘ PRZEZ
+          FACEBOOK&#39;A
+        </Typography>
       </Button>
       <Button
         variant="contained"
         disableElevation={true}
-        aria-label="sig in with google"
+        aria-label="sign in with google"
         sx={{
           height: '2.9375rem',
           background: '#FB8C00',
@@ -38,8 +40,11 @@ function FacebookAndGoogleBox({ loginOrRegister }) {
         }}
         onClick={onGoogleClick}
       >
-        {loginOrRegister === 'register' ? 'ZAREJESTRUJ' : 'ZALOGUJ'} SIĘ PRZEZ
-        KONTO GOOGLE
+        <Typography sx={{ paddingTop: '1px' }}>
+          {' '}
+          {loginOrRegister === 'register' ? 'ZAREJESTRUJ' : 'ZALOGUJ'} SIĘ PRZEZ
+          KONTO GOOGLE
+        </Typography>
       </Button>
     </Stack>
   );

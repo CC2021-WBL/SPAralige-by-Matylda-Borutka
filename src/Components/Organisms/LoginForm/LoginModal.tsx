@@ -1,8 +1,9 @@
 import { Box, Modal, Stack, Typography } from '@mui/material';
 import { useState } from 'react';
 
+import ClosingIcon from './CloseIcon';
 import EmailAndPasswordInput from './EmailAndPasswordInput';
-import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
+import FacebookAndGoogleBox from './FacebookAndGoogleBox';
 import LoginButton from './LoginButton';
 import SignOrResetLink from './SignOrResetLink';
 import { HandleInputChangeType } from '../../../Types/EventFunctions';
@@ -25,13 +26,6 @@ export default function LoginModal(prop: {
   const handlePasswordChange: HandleInputChangeType = (event) => {
     event.preventDefault();
     setPassword(event.target.value);
-  };
-
-  const loginProps: LoginInputsProps = {
-    email: email,
-    password: password,
-    handleEmailChange: handleEmailChange,
-    handlePasswordChange: handlePasswordChange,
   };
 
   return (
@@ -57,12 +51,18 @@ export default function LoginModal(prop: {
         }}
       >
         <Stack spacing={'1.4375rem'}>
+          <ClosingIcon handleClose={prop.handleClose} />
           <FormTitle
             aria-label="Sign in to SPAralige"
             text1="Witamy w SPAralige!"
             text2="Zaloguij się wpisując login i hasło"
           />
-          <EmailAndPasswordInput {...loginProps} />
+          <EmailAndPasswordInput
+            email={email}
+            password={password}
+            handleEmailChange={handleEmailChange}
+            handlePasswordChange={handlePasswordChange}
+          />
           <LoginButton email={email} password={password} />
           <Typography
             variant="body1"
@@ -78,8 +78,8 @@ export default function LoginModal(prop: {
           </Typography>
           <FacebookAndGoogleBox loginOrRegister="register" />
           <SignOrResetLink
-            issueText="Masz już konto? "
-            linkText="Zaloguj się"
+            issueText="Nie masz konta? "
+            linkText="Zarejestruj się"
           />
           <SignOrResetLink
             issueText="Zapomniałeś hasła? "

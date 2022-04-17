@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
@@ -26,10 +26,12 @@ function LoginButton(prop: { email: string; password: string }) {
       disableElevation={true}
       aria-label="accept email and password to sign in"
       color="primary"
-      sx={{ height: '2.9375rem' }}
+      sx={{
+        height: '2.9375rem',
+      }}
       onClick={handleLoginClick}
     >
-      ZALOGUJ
+      <Typography sx={{ paddingTop: '1px' }}>ZALOGUJ</Typography>
     </Button>
   );
 }
