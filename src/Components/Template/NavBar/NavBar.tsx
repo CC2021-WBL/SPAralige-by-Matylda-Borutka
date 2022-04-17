@@ -14,7 +14,7 @@ import { Menu } from '@mui/material';
 import { NavLink as RouterLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-import LoginModal from '../LoginForm/LoginModal';
+import LoginModal from '../../Organisms/LoginForm/LoginModal';
 import SPALogoNav from '../../../Assets/SPA-Logo-Nav.svg';
 
 const LinkStyle = {
@@ -73,7 +73,7 @@ const NavBar = () => {
       <Toolbar variant="regular" sx={{ bgcolor: 'none' }}>
         {/* // note no color stated */}
         <Container
-          style={{ padding: '0' }}
+          style={{ padding: '0', maxWidth: '1152px' }}
           sx={{
             m: '0 auto',
             display: 'flex',
@@ -85,7 +85,6 @@ const NavBar = () => {
           <IconButton
             className="burgerMenu"
             edge="start"
-            aria-label="burger menu"
             sx={{
               // mr: 1,
               color: 'primary.contrastText',
@@ -93,6 +92,7 @@ const NavBar = () => {
             }}
             onClick={handleClickLeft}
             tabIndex={0}
+            aria-label="burger menu"
           >
             <MenuIcon />
           </IconButton>
@@ -111,6 +111,7 @@ const NavBar = () => {
               textAlign: { xs: 'center', md: 'left' },
             }}
             tabIndex={0}
+            aria-label="Landing Page"
           >
             <img src={SPALogoNav} alt="SPA logo for Nav" aria-hidden={true} />
           </Link>
@@ -127,13 +128,13 @@ const NavBar = () => {
           >
             <Link
               component={RouterLink}
-              to="/treatments"
+              to="services"
               variant="inherit"
               color="primary.contrastText"
               underline="none"
               sx={Object.assign(LinkStyle, LinkRespoStyle)}
               tabIndex={0}
-              ml="10rem"
+              aria-label="services"
             >
               NASZE ZABIEGI
             </Link>
@@ -144,6 +145,7 @@ const NavBar = () => {
               underline="none"
               sx={Object.assign(LinkStyle, LinkRespoStyle)}
               tabIndex={0}
+              aria-label="about"
             >
               O NAS
             </Link>
@@ -155,6 +157,7 @@ const NavBar = () => {
               color: 'primary.contrastText',
             }}
             tabIndex={0}
+            aria-label="Right Menu"
           >
             {isAuthenticated ? (
               <Avatar sx={{ display: { xs: 'flex', sm: 'flex' } }}>
@@ -179,6 +182,7 @@ const NavBar = () => {
                 handleCloseRight();
                 setModalOpen('open');
               }}
+              aria-label="Log in"
             >
               Zaloguj
             </MenuItem>
@@ -187,6 +191,7 @@ const NavBar = () => {
                 handleCloseRight();
                 navigate('/register');
               }}
+              aria-label="Register"
             >
               Zarejestruj
             </MenuItem>
@@ -203,8 +208,9 @@ const NavBar = () => {
             <MenuItem
               onClick={() => {
                 handleCloseLeft();
-                navigate('/treatments');
+                navigate('/services');
               }}
+              aria-label="Services Catalogue"
             >
               Katalog zabiegów
             </MenuItem>
@@ -213,6 +219,7 @@ const NavBar = () => {
                 handleCloseLeft();
                 navigate('/about');
               }}
+              aria-label="About Us"
             >
               O nas
             </MenuItem>
