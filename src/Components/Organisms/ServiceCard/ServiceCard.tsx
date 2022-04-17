@@ -68,7 +68,6 @@ const ServiceCard = (prop: {
         serviceObject={prop.serviceObject}
         handleOpen={handleOpen}
       />
-
       <BookingModal
         open={open}
         handleClose={handleClose}
