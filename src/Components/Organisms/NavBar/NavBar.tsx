@@ -36,7 +36,7 @@ const NavBar = () => {
   // const { state } = useContext(UserDataContext);
   // const { isAuthenticated } = state;
   //
-  const isAuthenticated = 'false'; // temporary manually assigned false in order to simulate used not logged in
+  const isAuthenticated = ''; // temporary manually assigned const in order to simulate user not logged in
   const navigate = useNavigate();
   const [anchorElRight, setAnchorElRight] = React.useState<null | HTMLElement>(
     null,
@@ -85,12 +85,13 @@ const NavBar = () => {
           <Link
             component={RouterLink}
             to="/"
-            variant="button"
+            variant="inherit"
             color="primary.contrastText"
             underline="none"
             sx={Object.assign(LinkStyle, LinkRespoStyle)}
+            tabIndex={-3}
           >
-            <img src={SPALogoNav} alt="SPA Logo Nav" />
+            <img src={SPALogoNav} alt="SPA logo for Nav" aria-hidden={true} />
           </Link>
           <IconButton
             className="burgerMenu"
@@ -102,6 +103,7 @@ const NavBar = () => {
               display: { md: 'none' },
             }}
             onClick={handleClickLeft}
+            tabIndex={-3}
           >
             <MenuIcon />
           </IconButton>
@@ -115,6 +117,7 @@ const NavBar = () => {
               userSelect: 'none',
               display: { md: 'none' },
             }}
+            tabIndex={-3}
           >
             <img src={SPALogoNav} alt="SPA Logo Nav" />
           </Typography>
@@ -122,10 +125,11 @@ const NavBar = () => {
           <Link
             component={RouterLink}
             to="/treatments"
-            variant="button"
+            variant="inherit"
             color="primary.contrastText"
             underline="none"
             sx={Object.assign(LinkStyle, LinkRespoStyle)}
+            tabIndex={-2}
           >
             NASZE ZABIEGI
           </Link>
@@ -135,6 +139,7 @@ const NavBar = () => {
             color="primary.contrastText"
             underline="none"
             sx={Object.assign(LinkStyle, LinkRespoStyle)}
+            tabIndex={-1}
           >
             O NAS
           </Link>
@@ -145,6 +150,7 @@ const NavBar = () => {
               ml: 2,
               color: 'primary.contrastText',
             }}
+            tabIndex={0}
           >
             {isAuthenticated ? (
               <Avatar sx={{ display: { xs: 'flex', sm: 'flex' } }}>
