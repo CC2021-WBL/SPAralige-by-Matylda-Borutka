@@ -5,6 +5,7 @@ import {
   AppBar,
   Avatar,
   Container,
+  Grid,
   IconButton,
   Link,
   MenuItem,
@@ -90,6 +91,7 @@ const NavBar = () => {
             underline="none"
             sx={Object.assign(LinkStyle, LinkRespoStyle)}
             tabIndex={0}
+            flexGrow="1"
           >
             <img src={SPALogoNav} alt="SPA logo for Nav" aria-hidden={true} />
           </Link>
@@ -121,28 +123,37 @@ const NavBar = () => {
           >
             <img src={SPALogoNav} alt="SPA Logo Nav" />
           </Typography>
-
-          <Link
-            component={RouterLink}
-            to="/treatments"
-            variant="inherit"
-            color="primary.contrastText"
-            underline="none"
-            sx={Object.assign(LinkStyle, LinkRespoStyle)}
-            tabIndex={0}
+          <Container
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              gap: '5rem',
+              justifyContent: 'center',
+            }}
           >
-            NASZE ZABIEGI
-          </Link>
-          <Link
-            component={RouterLink}
-            to="/about"
-            color="primary.contrastText"
-            underline="none"
-            sx={Object.assign(LinkStyle, LinkRespoStyle)}
-            tabIndex={0}
-          >
-            O NAS
-          </Link>
+            <Link
+              component={RouterLink}
+              to="/treatments"
+              variant="inherit"
+              color="primary.contrastText"
+              underline="none"
+              sx={Object.assign(LinkStyle, LinkRespoStyle)}
+              tabIndex={0}
+              ml="10rem"
+            >
+              NASZE ZABIEGI
+            </Link>
+            <Link
+              component={RouterLink}
+              to="/about"
+              color="primary.contrastText"
+              underline="none"
+              sx={Object.assign(LinkStyle, LinkRespoStyle)}
+              tabIndex={0}
+            >
+              O NAS
+            </Link>
+          </Container>
           <IconButton
             className="rightMenu"
             onClick={handleClickRight}
