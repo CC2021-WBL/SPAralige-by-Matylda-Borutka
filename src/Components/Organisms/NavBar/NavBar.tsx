@@ -89,7 +89,7 @@ const NavBar = () => {
             color="primary.contrastText"
             underline="none"
             sx={Object.assign(LinkStyle, LinkRespoStyle)}
-            tabIndex={-3}
+            tabIndex={0}
           >
             <img src={SPALogoNav} alt="SPA logo for Nav" aria-hidden={true} />
           </Link>
@@ -103,7 +103,7 @@ const NavBar = () => {
               display: { md: 'none' },
             }}
             onClick={handleClickLeft}
-            tabIndex={-3}
+            tabIndex={0}
           >
             <MenuIcon />
           </IconButton>
@@ -117,7 +117,7 @@ const NavBar = () => {
               userSelect: 'none',
               display: { md: 'none' },
             }}
-            tabIndex={-3}
+            tabIndex={0}
           >
             <img src={SPALogoNav} alt="SPA Logo Nav" />
           </Typography>
@@ -129,7 +129,7 @@ const NavBar = () => {
             color="primary.contrastText"
             underline="none"
             sx={Object.assign(LinkStyle, LinkRespoStyle)}
-            tabIndex={-2}
+            tabIndex={0}
           >
             NASZE ZABIEGI
           </Link>
@@ -139,7 +139,7 @@ const NavBar = () => {
             color="primary.contrastText"
             underline="none"
             sx={Object.assign(LinkStyle, LinkRespoStyle)}
-            tabIndex={-1}
+            tabIndex={0}
           >
             O NAS
           </Link>
