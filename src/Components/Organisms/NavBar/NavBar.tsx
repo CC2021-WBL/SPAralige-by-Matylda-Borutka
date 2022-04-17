@@ -5,7 +5,6 @@ import {
   AppBar,
   Avatar,
   Container,
-  Grid,
   IconButton,
   Link,
   MenuItem,
@@ -13,7 +12,6 @@ import {
 } from '@mui/material';
 import { Menu } from '@mui/material';
 import { NavLink as RouterLink, useNavigate } from 'react-router-dom';
-import { Typography } from '@mui/material';
 import { useState } from 'react';
 
 import LoginModal from '../LoginForm/LoginModal';
@@ -45,9 +43,9 @@ const NavBar = () => {
   const [anchorElLeft, setAnchorElLeft] = React.useState<null | HTMLElement>(
     null,
   );
+  const [modalOpen, setModalOpen] = useState('closed');
   const openRightMenu = Boolean(anchorElRight);
   const openLeftMenu = Boolean(anchorElLeft);
-  const [modalOpen, setModalOpen] = useState('closed');
 
   const handleClickRight = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorElRight(event.currentTarget);
@@ -73,6 +71,7 @@ const NavBar = () => {
       }}
     >
       <Toolbar variant="regular" sx={{ bgcolor: 'none' }}>
+        {/* // note no color stated */}
         <Container
           style={{ padding: '0' }}
           sx={{
@@ -83,24 +82,12 @@ const NavBar = () => {
             justifyContent: 'space-between',
           }}
         >
-          <Link
-            component={RouterLink}
-            to="/"
-            variant="inherit"
-            color="primary.contrastText"
-            underline="none"
-            sx={Object.assign(LinkStyle, LinkRespoStyle)}
-            tabIndex={0}
-            flexGrow="1"
-          >
-            <img src={SPALogoNav} alt="SPA logo for Nav" aria-hidden={true} />
-          </Link>
           <IconButton
             className="burgerMenu"
             edge="start"
             aria-label="burger menu"
             sx={{
-              mr: 1,
+              // mr: 1,
               color: 'primary.contrastText',
               display: { md: 'none' },
             }}
@@ -109,26 +96,33 @@ const NavBar = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
+          <Link
+            component={RouterLink}
+            to="/"
+            variant="inherit"
             color="primary.contrastText"
-            component="p"
-            textAlign="center"
             sx={{
-              width: '100%',
-              userSelect: 'none',
-              display: { md: 'none' },
+              display: 'inline-block',
+              justifyItems: 'center',
+              justifyContent: 'center',
+              alignItems: 'center',
+              alignSelf: 'center',
+              width: { xs: '100%', md: 'auto' },
+              textAlign: { xs: 'center', md: 'left' },
             }}
             tabIndex={0}
           >
-            <img src={SPALogoNav} alt="SPA Logo Nav" />
-          </Typography>
+            <img src={SPALogoNav} alt="SPA logo for Nav" aria-hidden={true} />
+          </Link>
           <Container
             sx={{
-              display: 'flex',
+              display: { xs: 'none', md: 'flex' },
               flexDirection: 'row',
               gap: '5rem',
               justifyContent: 'center',
+              width: 'auto',
+              padding: '0 0',
+              margin: '0 0',
             }}
           >
             <Link
@@ -158,7 +152,6 @@ const NavBar = () => {
             className="rightMenu"
             onClick={handleClickRight}
             sx={{
-              ml: 2,
               color: 'primary.contrastText',
             }}
             tabIndex={0}
