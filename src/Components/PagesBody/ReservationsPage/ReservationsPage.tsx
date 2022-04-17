@@ -1,8 +1,9 @@
 import { Box, Tab, Tabs } from '@mui/material';
+import { useState } from 'react';
 
 import ReservationCard from '../../Organisms/ReservationCard/ReservationCard';
 import TabPanel from '../../Organisms/ReservationCard/TabPanel';
-import { useState } from 'react';
+import YourAccountTab from './../../Organisms/YourAccountTab/YourAccountTab';
 
 const ReservationsPage = () => {
   const [value, setValue] = useState(0);
@@ -47,7 +48,7 @@ const ReservationsPage = () => {
             </Box>
           </TabPanel>
           <TabPanel value={value} index={1}>
-            YOUR ACCOUNT
+            <YourAccountTab />
           </TabPanel>
         </Box>
       </Box>
