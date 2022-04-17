@@ -36,6 +36,7 @@ const NavBar = () => {
   // const { state } = useContext(UserDataContext);
   // const { isAuthenticated } = state;
   //
+  const isAuthenticated = 'false'; // temporary manually assigned false in order to simulate used not logged in
   const navigate = useNavigate();
   const [anchorElRight, setAnchorElRight] = React.useState<null | HTMLElement>(
     null,
@@ -145,14 +146,14 @@ const NavBar = () => {
               color: 'primary.contrastText',
             }}
           >
-            {/* {isAuthenticated ? ( */}
-            <Avatar sx={{ display: { xs: 'flex', sm: 'flex' } }}>
-              {/* TODO: {userName[0], userSurname[0]} */}
-              MB
-            </Avatar>
-            {/* ) : ( */}
-            <MoreVertIcon />
-            {/* )} */}
+            {isAuthenticated ? (
+              <Avatar sx={{ display: { xs: 'flex', sm: 'flex' } }}>
+                {/* TODO: {userName[0], userSurname[0]} */}
+                MB
+              </Avatar>
+            ) : (
+              <MoreVertIcon />
+            )}
           </IconButton>
           <Menu
             id="rightMenu"
