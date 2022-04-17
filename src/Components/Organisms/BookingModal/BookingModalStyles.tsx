@@ -1,5 +1,12 @@
 export const paperStyle = {
   width: 60,
+  height: 215,
+  '@media screen and (min-width: 600px)': {
+    width: 95,
+    height: 215,
+    padding: 4,
+    borderRadius: 4,
+  },
   '@media screen and (min-width: 970px)': {
     width: 150,
     height: 215,
