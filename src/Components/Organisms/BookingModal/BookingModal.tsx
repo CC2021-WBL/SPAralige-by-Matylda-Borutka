@@ -10,6 +10,14 @@ import DateButton from './DateButton';
 import HourButton from './HourButton';
 import Button from '@mui/material/Button';
 import CloseIcon from '../LoginForm/CloseIcon';
+import {
+  hourButtonStyle,
+  hourButtonTitleStyle,
+  paperStyle,
+  stackStyle,
+  style,
+} from './BookingModalStyles';
+import { serviceDataType } from '../../../Types/dbDataTypes';
 
 function hourFromString(hour: string): number {
   return Number(hour.substr(0, hour.indexOf(':')));
@@ -85,53 +93,7 @@ const mockService = {
   ],
 };
 
-const paperStyle = {
-  width: 10,
-  '@media screen and (min-width: 450px)': {
-    width: 150,
-    height: 215,
-    padding: 4,
-    borderRadius: 4,
-  },
-};
-const hourButtonStyle = {
-  width: 100,
-  height: 32,
-  padding: 4,
-  borderRadius: 4,
-  marginTop: 2,
-  marginBottom: 2,
-};
-const hourButtonTitleStyle = {
-  width: 180,
-  height: 32,
-  padding: 4,
-  borderRadius: 4,
-  marginTop: 2,
-  marginBottom: 2,
-};
-
-const style = {
-  position: 'absolute' as const,
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: '90vw',
-  maxWidth: 1168,
-  height: '90vh',
-  maxHeight: 1012,
-  bgcolor: 'background.paper',
-  boxShadow: 24,
-  p: 4,
-  borderRadius: 8,
-};
-
-const stackStyle = {
-  border: 'none',
-  alignItems: 'center',
-};
-
-const BookingModal = () => {
+const BookingModal = (prop: { serviceObject: serviceDataType }) => {
   const today = new Date();
   const [chosenDateNumber, setChosenDateNumber] = React.useState(0);
   const [chosenDate, setChosenDate] = React.useState(today);
@@ -145,12 +107,12 @@ const BookingModal = () => {
     '13:00',
     '14:00',
   ]);
-  const [service, setService] = React.useState(mockService.name);
-  const [price, setPrice] = React.useState(mockService.priceInPLN);
+  const [service, setService] = React.useState(prop.serviceObject.name);
+  const [price, setPrice] = React.useState(prop.serviceObject.priceInZloty);
 
   useEffect(() => {
-    setService(mockService.name);
-    setPrice(mockService.priceInPLN);
+    setService(prop.serviceObject.name);
+    setPrice(prop.serviceObject.priceInZloty);
   });
 
   const handleDayChange = (

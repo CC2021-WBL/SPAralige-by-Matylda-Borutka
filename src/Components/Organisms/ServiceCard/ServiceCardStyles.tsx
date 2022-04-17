@@ -1,5 +1,3 @@
-// ServiceCard
-
 export const cardStyles = {
   display: 'flex',
   flexDirection: 'column',
