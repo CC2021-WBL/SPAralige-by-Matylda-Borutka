@@ -47,7 +47,6 @@ const NavBar = () => {
   const openLeftMenu = Boolean(anchorElLeft);
   const [modalOpen, setModalOpen] = useState('closed');
 
-  // TODO: in order to close the menu after clicking MenuItem there I need to add second command to onClick
   const handleClickRight = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorElRight(event.currentTarget);
   };
