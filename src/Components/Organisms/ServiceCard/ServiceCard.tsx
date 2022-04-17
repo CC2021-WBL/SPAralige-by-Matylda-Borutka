@@ -1,7 +1,7 @@
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-import { Modal } from '@mui/material';
 import { Box } from '@mui/system';
+import { Modal } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 import ServiceCardActions from './ServiceCardActions';
@@ -9,7 +9,6 @@ import ServiceCardContent from './ServiceCardContent';
 import ServiceDetailsModal from './ServiceDetailsModal';
 import { cardStyles } from './ServiceCardStyles';
 import { serviceDataType } from '../../../Types/dbDataTypes';
-import BookingModal from '../BookingModal/BookingModal';
 
 const ServiceCard = (prop: {
   serviceObject: serviceDataType;
@@ -76,7 +75,6 @@ const ServiceCard = (prop: {
         aria-describedby="modal-modal-description"
       >
         <Box />
-        <BookingModal />
       </Modal>
     </>
   );
