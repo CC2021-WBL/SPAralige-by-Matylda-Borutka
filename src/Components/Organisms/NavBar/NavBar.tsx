@@ -13,8 +13,10 @@ import {
 import { Menu } from '@mui/material';
 import { NavLink as RouterLink, useNavigate } from 'react-router-dom';
 import { Typography } from '@mui/material';
+import { useState } from 'react';
 
 import LoginModal from '../LoginForm/LoginModal';
+import SPALogoNav from '../../../Assets/SPA-Logo-Nav.svg';
 
 const LinkStyle = {
   userSelect: 'none',
@@ -28,12 +30,12 @@ const LinkRespoStyle = {
     md: 'flex',
   },
 };
-let ModalOpen;
-function returnOpen() {
-  if (ModalOpen == 'open') return open;
-}
 
 const NavBar = () => {
+  //
+  // const { state } = useContext(UserDataContext);
+  // const { isAuthenticated } = state;
+  //
   const navigate = useNavigate();
   const [anchorElRight, setAnchorElRight] = React.useState<null | HTMLElement>(
     null,
@@ -43,6 +45,7 @@ const NavBar = () => {
   );
   const openRightMenu = Boolean(anchorElRight);
   const openLeftMenu = Boolean(anchorElLeft);
+  const [modalOpen, setModalOpen] = useState('closed');
 
   // TODO: in order to close the menu after clicking MenuItem there I need to add second command to onClick
   const handleClickRight = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -87,7 +90,7 @@ const NavBar = () => {
             underline="none"
             sx={Object.assign(LinkStyle, LinkRespoStyle)}
           >
-            LOGO
+            <img src={SPALogoNav} alt="SPA Logo Nav" />
           </Link>
           <IconButton
             className="burgerMenu"
@@ -105,7 +108,7 @@ const NavBar = () => {
           <Typography
             variant="h6"
             color="primary.contrastText"
-            component="div"
+            component="p"
             textAlign="center"
             sx={{
               width: '100%',
@@ -113,7 +116,7 @@ const NavBar = () => {
               display: { md: 'none' },
             }}
           >
-            SPARALIGÉ
+            <img src={SPALogoNav} alt="SPA Logo Nav" />
           </Typography>
 
           <Link
@@ -143,11 +146,14 @@ const NavBar = () => {
               color: 'primary.contrastText',
             }}
           >
-            <MoreVertIcon sx={{ display: { sm: 'none' } }} />
-            <Avatar sx={{ display: { xs: 'none', sm: 'flex' } }}>
+            {/* {isAuthenticated ? ( */}
+            <Avatar sx={{ display: { xs: 'flex', sm: 'flex' } }}>
               {/* TODO: {userName[0], userSurname[0]} */}
               MB
             </Avatar>
+            {/* ) : ( */}
+            <MoreVertIcon />
+            {/* )} */}
           </IconButton>
           <Menu
             id="rightMenu"
@@ -161,7 +167,7 @@ const NavBar = () => {
             <MenuItem
               onClick={() => {
                 handleCloseRight();
-                ModalOpen = 'open';
+                setModalOpen('open');
               }}
             >
               Zaloguj
@@ -201,15 +207,13 @@ const NavBar = () => {
               O nas
             </MenuItem>
           </Menu>
-          {ModalOpen == 'open' ? (
+          {modalOpen == 'open' && (
             <LoginModal
               open
               handleClose={() => {
-                console.log('handleModalClose');
+                setModalOpen('closed');
               }}
             />
-          ) : (
-            ''
           )}
         </Container>
       </Toolbar>
