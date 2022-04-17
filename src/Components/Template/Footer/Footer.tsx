@@ -6,15 +6,20 @@ const Footer = () => {
     <Container
       maxWidth={false}
       className="footer"
-      sx={{ backgroundColor: 'primary.main', margin: '24px' }}
+      disableGutters
+      sx={{
+        backgroundColor: 'primary.main',
+        marginTop: '1.5rem',
+      }}
     >
-      <Stack
-        flexDirection="row"
-        height="17.25rem"
-        justifyContent="space-between"
+      <Container
         className="wrapper"
-        maxWidth="lg"
-        sx={{ padding: '0 0rem', margin: '0 auto' }}
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          flexDirection: 'row',
+          height: '17.25rem',
+        }}
       >
         <Stack
           flexDirection="column"
@@ -52,7 +57,6 @@ const Footer = () => {
             color="primary.contrastText"
             underline="none"
             variant="body1"
-            target="_blank"
             tabIndex={0}
             aria-label="about us"
           >
@@ -93,7 +97,7 @@ const Footer = () => {
             Polityka prywatności
           </Link>
         </Stack>
-      </Stack>
+      </Container>
     </Container>
   );
 };
