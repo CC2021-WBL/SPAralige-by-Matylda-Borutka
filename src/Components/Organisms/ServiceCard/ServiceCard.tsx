@@ -1,6 +1,5 @@
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-import { Modal } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 import ServiceCardActions from './ServiceCardActions';
@@ -69,14 +68,12 @@ const ServiceCard = (prop: {
         serviceObject={prop.serviceObject}
         handleOpen={handleOpen}
       />
-      <Modal
+
+      <BookingModal
         open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <BookingModal serviceObject={prop.serviceObject} />
-      </Modal>
+        handleClose={handleClose}
+        serviceObject={prop.serviceObject}
+      />
     </>
   );
 };
