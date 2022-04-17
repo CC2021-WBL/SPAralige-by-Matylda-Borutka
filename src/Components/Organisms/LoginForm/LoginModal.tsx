@@ -7,7 +7,6 @@ import FacebookAndGoogleBox from './FacebookAndGoogleBox';
 import LoginButton from './LoginButton';
 import SignOrResetLink from './SignOrResetLink';
 import { HandleInputChangeType } from '../../../Types/EventFunctions';
-import { LoginInputsProps } from './LoginTypes';
 import FormTitle from '../Form/FormTitle';
 
 export default function LoginModal(prop: {
@@ -55,7 +54,7 @@ export default function LoginModal(prop: {
           <FormTitle
             aria-label="Sign in to SPAralige"
             text1="Witamy w SPAralige!"
-            text2="Zaloguij się wpisując login i hasło"
+            text2="Zaloguj się wpisując login i hasło"
           />
           <EmailAndPasswordInput
             email={email}
@@ -76,7 +75,7 @@ export default function LoginModal(prop: {
           >
             lub
           </Typography>
-          <FacebookAndGoogleBox loginOrRegister="register" />
+          <FacebookAndGoogleBox loginOrRegister="login" />
           <SignOrResetLink
             issueText="Nie masz konta? "
             linkText="Zarejestruj się"
