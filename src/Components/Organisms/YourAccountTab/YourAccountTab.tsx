@@ -1,48 +1,111 @@
-import { Box, Button, Stack } from '@mui/material';
+import * as Yup from 'yup';
+import { Box, Stack } from '@mui/material';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { useState } from 'react';
 
+import BasicSelect from './BasicSelect';
 import FormCard from './FormCard';
 
-const Header = () => {
+// =========== header ============ //
+type HeaderPropTypes = {
+  text: string;
+};
+const Header = (prop: HeaderPropTypes) => {
   return (
     <Box component="h6" sx={{ fontSize: '20px', color: '#616161' }}>
-      Twoje dane
+      {prop.text}
     </Box>
   );
 };
+// =========== /header =========== //
 
-const YourAccountFormFrame = () => {
+const initialValues = {
+  name: 'Katarynka',
+  email: 'ebacis@wp.pl',
+  password: '******',
+};
+const onSubmit = () => {
+  console.log('onSubmit');
+};
+
+const YourAccountFrame = () => {
+  const [formMode, setFormMode] = useState('display');
+  const clickHandler = (e) => {
+    console.log(e.target);
+
+    formMode == 'display' && setFormMode('edit');
+    formMode == 'edit' && setFormMode('display');
+  };
   return (
-    <>
-      <FormCard title="imię" name="Krystyna" />
-      <FormCard title="email" name="cristal@out.it" />
-      <FormCard title="hasło" name="********" />
-    </>
+    <div className="yourAccountFrame" style={{ outline: '3px dotted red' }}>
+      <Header text="Twoje dane" />
+      <FormCard
+        title="imię"
+        name="name"
+        id="name"
+        mode={formMode}
+        placeholder="imię"
+        initialValues={{ initialValues }}
+        onSubmit={onSubmit}
+        onClick={clickHandler}
+        type="text"
+      />
+      <FormCard
+        title="email"
+        name="cristal@out.it"
+        id="email"
+        mode={formMode}
+        placeholder="email"
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        onClick={clickHandler}
+        type="text"
+      />
+      <FormCard
+        title="hasło"
+        name="password"
+        id="password"
+        mode={formMode}
+        placeholder="hasło"
+        initialValues={{ initialValues }}
+        onSubmit={onSubmit}
+        onClick={clickHandler}
+        type="text"
+      />
+    </div>
   );
 };
 
+// settingsFrame
 const SettingsFrame = () => {
   return (
-    <>
-      <Box component="h6" sx={{ fontSize: '20px', color: '#616161' }}>
-        Ustawienia
-      </Box>
-      <Stack flexDirection="row" justifyContent="space-between">
+    <div className="settingsFrame" style={{ outline: '3px dotted red' }}>
+      <Header text="Ustawienia" />
+      <Stack
+        className="settingsFormCard"
+        flexDirection="row"
+        justifyContent="space-between"
+        sx={{ padding: '1rem', outline: '1px dotted grey' }}
+      >
         <Box>Wersja językowa</Box>
-        <Button>polska</Button>
+        <BasicSelect langSelect />
       </Stack>
-      <Stack flexDirection="row" justifyContent="space-between">
+      <Stack
+        flexDirection="row"
+        justifyContent="space-between"
+        sx={{ padding: '1rem' }}
+      >
         <Box>Zestaw kolorów</Box>
-        <Button>domyslny</Button>
+        <BasicSelect colorsSelect />
       </Stack>
-    </>
+    </div>
   );
 };
 
 const YourAccountTab = () => {
   return (
     <>
-      <Header />
-      <YourAccountFormFrame />
+      <YourAccountFrame />
       <SettingsFrame />
     </>
   );
