@@ -30,7 +30,7 @@ function MainGraphic() {
           >
             Zadbaj o siebie
           </Typography>
-          <Button variant="contained" disableElevation>
+          <Button variant="contained" disableElevation href="services">
             Znajdź idealny zabieg
           </Button>
         </Grid>

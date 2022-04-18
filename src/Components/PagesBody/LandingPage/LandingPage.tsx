@@ -35,8 +35,8 @@ const LandingPage = () => {
 
   return (
     <main>
-      <MainGraphic></MainGraphic>
-      <h1 style={{ textAlign: 'center' }}>SPAralige od Matylde</h1>
+      <MainGraphic />
+      <h4>Popularne zabiegi</h4>
       {serviceObjectArray && (
         <ResponsiveGrid serviceObjectArray={serviceObjectArray} />
       )}
