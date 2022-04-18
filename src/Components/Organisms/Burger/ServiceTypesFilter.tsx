@@ -7,12 +7,21 @@ import {
 } from '@mui/material';
 import { burgerCheckboxStyle, checkboxControlLabelStyle } from './BurgerStyles';
 
-function ServiceTypesFilter() {
+export interface ServicesFilterType {
+  serviceType: string;
+  serviceFilterCat: string;
+}
+
+type propType = {
+  servicesDataArr: ServicesFilterType[]
+}
+
+function ServiceTypesFilter(prop: propType) {
   return (
     <FormControl sx={{ paddingTop: '1.5rem' }}>
       <FormLabel
         sx={{
-          fontSize: '1.4375rem',
+          fontSize: '1.25rem',
           color: '#000000',
           lineHeight: '2rem',
           display: 'flex',
@@ -22,31 +31,19 @@ function ServiceTypesFilter() {
         Typy zabiegów
       </FormLabel>
       <FormGroup>
-        <FormControlLabel
-          label="Kosmetyka twarzy"
-          sx={checkboxControlLabelStyle}
-          control={<Checkbox value="Kosmetyka twarzy" sx={burgerCheckboxStyle} />}
-        />
-        <FormControlLabel
-          label="Masaże relaksacyjne"
-          sx={checkboxControlLabelStyle}
-          control={<Checkbox value="Masaże relaksacyjne" sx={burgerCheckboxStyle} />}
-        />
-        <FormControlLabel
-          label="Peelingi"
-          sx={checkboxControlLabelStyle}
-          control={<Checkbox value="peels" sx={burgerCheckboxStyle} />}
-        />
-        <FormControlLabel
-          label="Medycyna estetyczna"
-          sx={checkboxControlLabelStyle}
-          control={<Checkbox value="Medycyna estetyczna" sx={burgerCheckboxStyle} />}
-        />
-        <FormControlLabel
-          label="Zabiegi rehabilitacyjne"
-          sx={checkboxControlLabelStyle}
-          control={<Checkbox value="rehabilitation" sx={burgerCheckboxStyle} />}
-        />
+        {prop.servicesDataArr.map((service, index) => (
+          <FormControlLabel
+            key={index}
+            label={service.serviceType}
+            sx={checkboxControlLabelStyle}
+            control={
+              <Checkbox
+                value={service.serviceFilterCat}
+                sx={burgerCheckboxStyle}
+              />
+            }
+          />
+        ))}
         <FormControlLabel
           label="Wszystkie zabiegi"
           sx={checkboxControlLabelStyle}

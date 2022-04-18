@@ -1,18 +1,22 @@
+import ServiceTypesFilter, { ServicesFilterType } from './ServiceTypesFilter';
+
 import { Box } from '@mui/material';
 import CloseFiltersButton from './CloseFiltersButton';
 import FilterWithRange from './FilterWithRange';
 import RehabilitatorFilter from './RehabilitatorFilter';
-import ServiceTypesFilter from './ServiceTypesFilter';
 
 //import { useReducer } from 'react';
-
-type burgerProp = {
+export type BurgerProp = {
   handleFilter?: () => void;
   handleClose?: () => void;
+  therapists?: string[];
+  servicesData?: ServicesFilterType[];
+  maxPrice?: number;
 };
 
-function Burger(prop: burgerProp) {
+function Burger(prop: BurgerProp) {
   //const [filterState, filterDispatch] = useReducer(filterReducer, {})
+  console.log(prop.servicesData);
   return (
     <Box
       sx={{
@@ -27,14 +31,23 @@ function Burger(prop: burgerProp) {
       {prop.handleClose && (
         <CloseFiltersButton handleClose={prop.handleClose} />
       )}
-      <ServiceTypesFilter />
-      <FilterWithRange<number> name="Cena" minValue={0} maxValue={1500} />
-      <RehabilitatorFilter therapistNameArr={['Maja', 'Rosól']} />
-      <FilterWithRange<Date>
-        name="Dostępność"
-        minValue={new Date()}
-        maxValue={new Date(new Date().setDate(new Date().getDate() + 7))}
-      />
+      {prop.servicesData && (
+        <ServiceTypesFilter servicesDataArr={prop.servicesData} />
+      )}
+      {prop.maxPrice && (
+        <FilterWithRange<number> name="Cena" minValue={0} maxValue={1500} />
+      )}
+
+      {prop.therapists && (
+        <RehabilitatorFilter therapistNameArr={prop.therapists} />
+      )}
+      {prop.servicesData && (
+        <FilterWithRange<Date>
+          name="Dostępność"
+          minValue={new Date()}
+          maxValue={new Date(new Date().setDate(new Date().getDate() + 7))}
+        />
+      )}
     </Box>
   );
 }

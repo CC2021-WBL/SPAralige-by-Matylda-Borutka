@@ -76,13 +76,24 @@ export default function ResponsiveDrawer() {
             maxPrice={serviceBurgerData?.maxPrice}
           />
         </Drawer>
-        <Box>
+        <Drawer
+          container={container}
+          variant="permanent"
+          sx={{
+            display: { xs: 'none', sm: 'block' },
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
+              width: drawerWidth,
+            },
+          }}
+          open
+        >
           <Burger
             therapists={serviceBurgerData?.therapists}
             servicesData={serviceBurgerData?.servicesData}
             maxPrice={serviceBurgerData?.maxPrice}
           />
-        </Box>
+        </Drawer>
       </Box>
       <Box
         component="main"

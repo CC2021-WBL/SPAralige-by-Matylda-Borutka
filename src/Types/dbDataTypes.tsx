@@ -13,25 +13,14 @@ export interface serviceDataType {
   id: string;
   name: string;
   type: string;
+  filterCategory: string;
   description: string;
   priceInZloty: number;
   durationInHours: number;
   image: string;
   altText: string;
   therapist: therapistTypes;
-}
-export interface FullServiceDataType {
-  id?: string;
-  name: string;
-  description: string;
-  duration: number;
-  price: number;
-  priceInZloty: number;
-  durationInHours: number;
-  image: string;
-  altText: string;
-  therapist: string;
-  type: string;
+  therapistFullName: string;
 }
 export interface therapistTypes {
   id: string;

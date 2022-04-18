@@ -8,7 +8,7 @@ import {
 
 import { useState } from 'react';
 
-type RangeType = number | Date
+// type RangeType = number | Date;
 type RangePropType<RangeType> = {
   name: string;
   minValue: RangeType;
@@ -20,6 +20,7 @@ function genTypeOfInput(value: any) {
     return 'number';
   } else if (value instanceof Date) {
     return 'date';
+  }
 }
 
 function FilterWithRange<RangeType>(prop: RangePropType<RangeType>) {
@@ -28,10 +29,8 @@ function FilterWithRange<RangeType>(prop: RangePropType<RangeType>) {
     maxValue: prop.maxValue,
   });
 
-  function handleOnMinChange (event: React.ChangeEvent<HTMLInputElement> ) {
-    event.preventDefault()
-
-
+  function handleOnMinChange(event: React.ChangeEvent<HTMLInputElement>) {
+    event.preventDefault();
   }
   return (
     <FormControl sx={{ paddingTop: '1.5rem' }}>
@@ -56,8 +55,7 @@ function FilterWithRange<RangeType>(prop: RangePropType<RangeType>) {
             max: prop.maxValue,
           }}
           value={valueRange.minValue}
-          onChange={handleOnMinChange
-          }
+          onChange={handleOnMinChange}
         ></TextField>
 
         <Typography>do</Typography>
