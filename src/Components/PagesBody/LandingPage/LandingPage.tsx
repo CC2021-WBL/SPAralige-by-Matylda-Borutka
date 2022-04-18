@@ -1,6 +1,7 @@
 import { getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 
+import CookiesBanner from '../../Organisms/CookiesBanner/CookiesBanner';
 import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 import { servicesRef } from '../../../Firebase/firebase';
@@ -38,6 +39,7 @@ const LandingPage = () => {
       {serviceObjectArray && (
         <ResponsiveGrid serviceObjectArray={serviceObjectArray} />
       )}
+      <CookiesBanner />
     </main>
   );
 };
