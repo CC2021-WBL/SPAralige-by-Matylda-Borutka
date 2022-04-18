@@ -16,6 +16,7 @@ import { useState } from 'react';
 
 import LoginModal from '../../Organisms/LoginForm/LoginModal';
 import SPALogoNav from '../../../Assets/SPA-Logo-Nav.svg';
+import RegisterModal from '../../PagesBody/RegisterPage/RegisterModal';
 
 const LinkStyle = {
   userSelect: 'none',
@@ -43,7 +44,8 @@ const NavBar = () => {
   const [anchorElLeft, setAnchorElLeft] = React.useState<null | HTMLElement>(
     null,
   );
-  const [modalOpen, setModalOpen] = useState('closed');
+  const [loginModalOpen, setLoginModalOpen] = useState('closed');
+  const [registerModalOpen, setRegisterModalOpen] = useState('closed');
   const openRightMenu = Boolean(anchorElRight);
   const openLeftMenu = Boolean(anchorElLeft);
 
@@ -180,7 +182,7 @@ const NavBar = () => {
             <MenuItem
               onClick={() => {
                 handleCloseRight();
-                setModalOpen('open');
+                setLoginModalOpen('open');
               }}
               aria-label="Log in"
             >
@@ -189,7 +191,7 @@ const NavBar = () => {
             <MenuItem
               onClick={() => {
                 handleCloseRight();
-                navigate('/register');
+                setRegisterModalOpen('open');
               }}
               aria-label="Register"
             >
@@ -224,11 +226,19 @@ const NavBar = () => {
               O nas
             </MenuItem>
           </Menu>
-          {modalOpen == 'open' && (
+          {loginModalOpen == 'open' && (
             <LoginModal
               open
               handleClose={() => {
-                setModalOpen('closed');
+                setLoginModalOpen('closed');
+              }}
+            />
+          )}
+          {registerModalOpen == 'open' && (
+            <RegisterModal
+              open
+              handleClose={() => {
+                setRegisterModalOpen('closed');
               }}
             />
           )}

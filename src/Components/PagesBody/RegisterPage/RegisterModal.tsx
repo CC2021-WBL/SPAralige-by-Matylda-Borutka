@@ -30,7 +30,7 @@ const RegisterValidation = Yup.object().shape({
     .oneOf([true], '* Warunki użytkowania muszę zostać zaakceptowane.'),
 });
 
-const RegisterPage = (prop: { open: boolean; handleClose: () => void }) => {
+const RegisterModal = (prop: { open: boolean; handleClose: () => void }) => {
   return (
     <Modal
       open={prop.open}
@@ -156,4 +156,4 @@ const RegisterPage = (prop: { open: boolean; handleClose: () => void }) => {
   );
 };
 
-export default RegisterPage;
+export default RegisterModal;

@@ -2,7 +2,7 @@ import { Button, Stack } from '@mui/material';
 import { useState } from 'react';
 
 import LoginModal from '../Organisms/LoginForm/LoginModal';
-import RegisterPage from './RegisterPage/RegisterPage';
+import RegisterModal from './RegisterPage/RegisterModal';
 
 export default function TestingBody() {
   const [openLoginModal, setOpenLoginModal] = useState(false);
@@ -38,7 +38,7 @@ export default function TestingBody() {
         Open register modal
       </Button>
       <LoginModal open={openLoginModal} handleClose={handleCloseLoginModal} />
-      <RegisterPage
+      <RegisterModal
         open={openRegisterModal}
         handleClose={handleCloseRegisterModal}
       />

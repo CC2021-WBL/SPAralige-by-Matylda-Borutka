@@ -15,7 +15,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<LandingPage />} />
           <Route path="/test" element={<TestingBody />} />
-          {/*<Route path="/register" element={<RegisterPage />} />*/}
+          {/*<Route path="/register" element={<RegisterModal />} />*/}
 
           <Route path="/services" element={<ServicesPage />} />
 
