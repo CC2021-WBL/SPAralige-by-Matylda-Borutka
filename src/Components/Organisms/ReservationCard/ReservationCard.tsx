@@ -1,8 +1,11 @@
 import { Box, Button, Card, Chip, Typography } from '@mui/material';
+import {
+  getDateFormatDdMmYyyy,
+  getDayName,
+} from '../../../Tools/timeFunctions';
 
 import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
 import { generateDateProps } from '../../../Tools/reservationCardTools';
-import { getDateFormatDdMmYyyy } from '../../../Tools/timeFunctions';
 
 export type ReservationCardTypes = {
   serviceName: string;
@@ -55,7 +58,9 @@ function ReservationCard(prop: ReservationCardTypes) {
         variant="subtitle2"
         sx={{ fontSize: '0.875rem', fontWeight: 400, marginBottom: '1rem' }}
       >
-        {`Termin zabiegu: ${getDateFormatDdMmYyyy(prop.serviceDate)}`}
+        {`Termin zabiegu: ${getDateFormatDdMmYyyy(
+          prop.serviceDate,
+        )} (${getDayName(prop.serviceDate)})`}
       </Typography>
       <Button
         variant="text"

@@ -1,20 +1,20 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-vars */
-
 import { Box, Tab, Tabs, Typography } from '@mui/material';
 import ReservationCard, {
   ReservationCardTypes,
 } from '../../Organisms/ReservationCard/ReservationCard';
+import { getDocs, orderBy, query, where } from 'firebase/firestore';
 import {
-  createServiceRef,
-  reservationsRef,
-  servicesRef,
-} from '../../../Firebase/firebase';
-import { getDoc, getDocs, query, where } from 'firebase/firestore';
+  innerContainerStyle,
+  reservationCardsBoxStyle,
+  reservationWrapperStyle,
+  tabStyle,
+} from './ReservationPageStyles';
 import { useEffect, useState } from 'react';
 
 import TabPanel from '../../Organisms/ReservationCard/TabPanel';
+import { reservationsRef } from '../../../Firebase/firebase';
 
+//mock for userId
 const userId = 'Pk1ORdo4QSDzwCet2nT7';
 
 const ReservationsPage = () => {
@@ -27,7 +27,11 @@ const ReservationsPage = () => {
     async function fetchReservations() {
       try {
         const snapshot = await getDocs(
-          query(reservationsRef, where('userId', '==', userId)),
+          query(
+            reservationsRef,
+            where('userId', '==', userId),
+            orderBy('serviceDate', 'desc'),
+          ),
         );
         if (!snapshot) {
           setReservations(null);
@@ -35,28 +39,22 @@ const ReservationsPage = () => {
           const reservationsArr: ReservationCardTypes[] = [];
           snapshot.forEach((reservation) => {
             const reservationData = reservation.data();
-            const serviceId = reservationData.serviceRef.id;
-            // const serviceSnapshot = await getDoc(createServiceRef(serviceId));
             const reservationObj = {
-              serviceName: 'Lewatywa z parafiny',
+              serviceName: reservationData.serviceName as string,
               serviceDate: reservationData.serviceDate.toDate() as Date,
             };
             reservationsArr.push(reservationObj);
-
-            console.log(reservationObj);
           });
 
           setReservations(reservationsArr);
         }
       } catch (error) {
-        console.log(error);
+        alert('Oops, coś poszło nie tak, odśwież stronę');
       }
     }
 
     fetchReservations();
   }, []);
-
-  console.log(reservations);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -64,34 +62,19 @@ const ReservationsPage = () => {
 
   return (
     <main>
-      <Box
-        sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-      >
-        <Box
-          sx={{
-            width: '20,5rem',
-            '@media screen and (min-width: 600px)': {
-              width: '35.875rem',
-            },
-          }}
-        >
+      <Box sx={reservationWrapperStyle}>
+        <Box sx={innerContainerStyle}>
           <Tabs
             value={value}
             onChange={handleChange}
             sx={{ height: '3rem' }}
             aria-label="tabs-to-choose"
           >
-            <Tab label="REZERWACJE" />
-            <Tab label="TWOJE KONTO" />
+            <Tab sx={tabStyle} label="REZERWACJE" />
+            <Tab sx={tabStyle} label="TWOJE KONTO" />
           </Tabs>
           <TabPanel value={value} index={0}>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '1rem',
-              }}
-            >
+            <Box sx={reservationCardsBoxStyle}>
               {reservations ? (
                 reservations.map((reservation, index) => (
                   <ReservationCard
