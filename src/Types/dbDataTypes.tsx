@@ -9,6 +9,8 @@ export interface serviceDataType {
   altText: string;
   therapist: therapistTypes;
   text: string[];
+  text2: { pl: string; en: string };
+  // [key: string]: boolean
 }
 
 export interface therapistTypes {

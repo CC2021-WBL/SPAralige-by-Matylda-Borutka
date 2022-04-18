@@ -2,22 +2,33 @@
 
 import { Container, Link, Stack } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
+import { makeStyles } from '@mui/styles';
 import { useTranslation } from 'react-i18next';
 
 import LanguageButton from '../../Atoms/LanguageButton/LanguageButton';
 
-// import { useState } from 'react';
-
-// import { boolean } from 'yup';
-
-// import i18n from '../../../../i18n';
-
+const useStyles = makeStyles({
+  button: {
+    minWidth: '2.5rem',
+    maxWidth: '2.5rem',
+    height: '2.5rem',
+    background: '#FFFFFF',
+    color: '#00000094',
+    borderRadius: '50%',
+    boxShadow: 'none',
+  },
+  active: {
+    background: '#01579B',
+    color: '#FFFFFF',
+    border: '0.0625rem solid #82B1FF',
+  },
+});
 const Footer = () => {
   const { t, i18n } = useTranslation('navFooter');
   const changeLanguage = (lng: any) => {
     i18n.changeLanguage(lng);
   };
-
+  const classes = useStyles();
   return (
     <Container
       maxWidth={false}
@@ -64,20 +75,34 @@ const Footer = () => {
               },
             }}
           >
-            <LanguageButton
-              onClick={() => {
-                changeLanguage('pl');
-              }}
-            >
-              PL
-            </LanguageButton>
-            <LanguageButton
-              onClick={() => {
-                changeLanguage('en');
-              }}
-            >
-              EN
-            </LanguageButton>
+            {
+              <>
+                <LanguageButton
+                  onClick={() => {
+                    changeLanguage('pl');
+                  }}
+                  className={
+                    i18n.language === 'pl'
+                      ? `${classes.active} ${classes.button}`
+                      : classes.button
+                  }
+                >
+                  PL
+                </LanguageButton>
+                <LanguageButton
+                  onClick={() => {
+                    changeLanguage('en');
+                  }}
+                  className={
+                    i18n.language === 'en'
+                      ? `${classes.active} ${classes.button}`
+                      : classes.button
+                  }
+                >
+                  EN
+                </LanguageButton>
+              </>
+            }
           </Container>
         </Stack>
         <Stack
@@ -98,8 +123,6 @@ const Footer = () => {
             aria-label="about us"
           >
             {t('footer.about')}
-            {/* {onLanguageDetected === 'pl' ? <h1>ssss</h1> : <h1>bb</h1>} */}
-            {i18n.language === 'pl' ? <p>aaa</p> : <p>fff</p>}
           </Link>
           <Link
             component={RouterLink}

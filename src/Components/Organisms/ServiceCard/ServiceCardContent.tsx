@@ -11,9 +11,10 @@ const ServiceCardContent = (prop: {
   className?: string;
 }) => {
   const { i18n } = useTranslation('navFooter');
-  // const changeLanguage = (lng: any) => {
-  //   i18n.changeLanguage(lng);
-  // };
+
+  console.log(prop.serviceObject);
+  console.log(i18n.language);
+
   return (
     <CardContent className={prop.className} sx={contentContainerStyles}>
       <Typography
@@ -24,12 +25,11 @@ const ServiceCardContent = (prop: {
         sx={contentContainerStyles}
       >
         {/* {prop.serviceObject.name} */}
-        {prop.serviceObject.text[i18n.language]}
-        {/* {i18n.language === 'pl' ? (
-          <p>{prop.serviceObject.text[0]}</p>
-        ) : (
-          <p>{prop.serviceObject.text[1]}</p>
-        )} */}
+
+        {localStorage.getItem('i18nextLng') === 'pl-PL' &&
+          localStorage.setItem('i18nextLng', 'pl')}
+
+        {prop.serviceObject.text2[i18n.language]}
       </Typography>
       {prop.className === 'modal-service' && (
         <Typography gutterBottom color="text.disabled">
