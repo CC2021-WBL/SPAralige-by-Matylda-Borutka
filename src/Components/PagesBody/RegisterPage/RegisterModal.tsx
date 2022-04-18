@@ -66,7 +66,8 @@ const RegisterModal = (prop: { open: boolean; handleClose: () => void }) => {
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
               setSubmitting(false);
-              console.log(JSON.stringify(values, null, 2));
+              const data = JSON.stringify(values, null, 2);
+              console.log(data);
             }, 500);
           }}
         >
