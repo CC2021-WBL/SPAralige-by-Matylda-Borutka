@@ -86,7 +86,6 @@ const NavBar = () => {
             className="burgerMenu"
             edge="start"
             sx={{
-              // mr: 1,
               color: 'primary.contrastText',
               display: { md: 'none' },
             }}
