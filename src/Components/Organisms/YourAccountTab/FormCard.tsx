@@ -61,9 +61,24 @@ const FormCard = (prop: FormCardPropTypes) => {
                 />
               </Box>
             </Box>
-            <Button onClick={prop.onClick}>
-              {prop.mode == 'display' && prop.name && 'zmień'}
-              {prop.mode == 'edit' && 'zapisz'}
+            <Button onClick={prop.onClick} className={prop.name}>
+              {prop.name == 'name' &&
+                prop.mode == 'display' &&
+                prop.name &&
+                'zmień imię'}
+              {prop.name == 'name' && prop.mode == 'edit' && 'zapisz imię'}
+
+              {prop.name == 'email' &&
+                prop.mode == 'display' &&
+                prop.name &&
+                'zmień email'}
+              {prop.name == 'email' && prop.mode == 'edit' && 'zapisz email'}
+
+              {prop.name == 'password' &&
+                prop.mode == 'display' &&
+                prop.name &&
+                'zmień hasło'}
+              {prop.name == 'password' && prop.mode == 'edit' && 'zapisz hasło'}
             </Button>
           </Stack>
         </Form>

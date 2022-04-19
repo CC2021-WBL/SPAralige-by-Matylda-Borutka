@@ -17,20 +17,11 @@ const Header = (prop: HeaderPropTypes) => {
     </Box>
   );
 };
-// =========== /header =========== //
 
-// const initialValues = {
-//   name: 'Katarynka',
-//   email: 'ebacis@wp.pl',
-//   password: '******',
-// };
-// const onSubmit = () => {
-//   console.log('onSubmit');
-// };
 const YourAccountFrame = () => {
   const [formMode, setFormMode] = useState('display');
   const clickHandler = (e) => {
-    console.log(e.target);
+    console.log(e.target.className);
     formMode == 'display' && setFormMode('edit');
     formMode == 'edit' && setFormMode('display');
   };
