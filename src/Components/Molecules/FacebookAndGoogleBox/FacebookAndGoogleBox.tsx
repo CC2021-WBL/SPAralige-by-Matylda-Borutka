@@ -17,7 +17,6 @@ function FacebookAndGoogleBox({ loginOrRegister }: loginOrRegisterOptions) {
     event.preventDefault();
     await loginWithFacebook();
   };
-
   return (
     <Stack spacing={'0.6875rem'}>
       <Button
