@@ -8,7 +8,6 @@ import LoginButton from './LoginButton';
 import SignOrResetLink from './SignOrResetLink';
 import { HandleInputChangeType } from '../../../Types/EventFunctions';
 import FormTitle from '../Form/FormTitle';
-import { LOGIN_REGISTER } from '../../../Types/loginOrRegisterTypes';
 
 export default function LoginModal(prop: {
   open: boolean;
@@ -76,7 +75,7 @@ export default function LoginModal(prop: {
           >
             lub
           </Typography>
-          <FacebookAndGoogleBox loginOrRegister={LOGIN_REGISTER.LOGIN} />
+          <FacebookAndGoogleBox loginOrRegister="login" />
           <SignOrResetLink
             issueText="Nie masz konta? "
             linkText="Zarejestruj się"

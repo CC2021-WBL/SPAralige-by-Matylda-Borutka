@@ -13,7 +13,6 @@ import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookA
 import SignOrResetLink from '../../Organisms/LoginForm/SignOrResetLink';
 import * as Yup from 'yup';
 import ClosingIcon from '../../Organisms/LoginForm/CloseIcon';
-import { LOGIN_REGISTER } from '../../../Types/loginOrRegisterTypes';
 
 const RegisterValidation = Yup.object().shape({
   name: Yup.string().required('Nazwa użytkownika jest wymagana'),
@@ -140,9 +139,7 @@ const RegisterModal = (prop: { open: boolean; handleClose: () => void }) => {
                 >
                   lub
                 </Typography>
-                <FacebookAndGoogleBox
-                  loginOrRegister={LOGIN_REGISTER.REGISTER}
-                />
+                <FacebookAndGoogleBox loginOrRegister="register" />
                 <SignOrResetLink
                   issueText="Masz już konto?"
                   linkText="Zaloguj się"
