@@ -3,7 +3,8 @@ import {
   GoogleAuthProvider,
   getAuth,
 } from 'firebase/auth';
-import { collection, getFirestore } from 'firebase/firestore';
+import { collection, doc, getFirestore } from 'firebase/firestore';
+
 import { getAnalytics } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
 
@@ -34,3 +35,15 @@ export const facebookProvider = new FacebookAuthProvider();
 
 // collection ref
 export const servicesRef = collection(db, 'services');
+export const reservationsRef = collection(db, 'reservations');
+
+//document ref
+export const createUserRef = (userId: string) => {
+  const userRef = doc(db, 'users', userId);
+  return userRef;
+};
+
+export const createServiceRef = (serviceId: string) => {
+  const serviceRef = doc(db, 'services', serviceId);
+  return serviceRef;
+};

@@ -1,6 +1,7 @@
 import { Button, Stack } from '@mui/material';
 import { useState } from 'react';
 
+import BuggyCounter from './ErrorTest';
 import LoginModal from '../Organisms/LoginForm/LoginModal';
 
 export default function TestingBody() {
@@ -17,6 +18,7 @@ export default function TestingBody() {
         Open modal
       </Button>
       <LoginModal open={open} handleClose={handleClose} />
+      <BuggyCounter />
     </Stack>
   );
 }
