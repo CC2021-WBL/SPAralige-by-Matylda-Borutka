@@ -68,6 +68,7 @@ const NavBar = () => {
         m: 0,
         p: 0,
         justifyContent: 'center',
+        boxShadow: 'none',
       }}
     >
       <Toolbar variant="regular" sx={{ bgcolor: 'none' }}>
