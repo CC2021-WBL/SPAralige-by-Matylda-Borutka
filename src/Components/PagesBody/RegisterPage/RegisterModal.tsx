@@ -13,6 +13,7 @@ import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookA
 import SignOrResetLink from '../../Organisms/LoginForm/SignOrResetLink';
 import * as Yup from 'yup';
 import ClosingIcon from '../../Organisms/LoginForm/CloseIcon';
+import { LOGIN_REGISTER } from '../../../Types/loginOrRegisterTypes';
 
 const RegisterValidation = Yup.object().shape({
   name: Yup.string().required('Nazwa użytkownika jest wymagana'),
@@ -20,7 +21,7 @@ const RegisterValidation = Yup.object().shape({
     .required('Adres e-mail wymagany')
     .email('Niepoprawny adres e-mail'),
   password: Yup.string()
-    .min(4, 'Hasło jest wymagane')
+    .min(4, 'Hasło musi składać się z conajmniej 4 znaków')
     .required('Hasło jest wymagane'),
   confirmPassword: Yup.string()
     .required('Wpisz hasło')
@@ -139,7 +140,9 @@ const RegisterModal = (prop: { open: boolean; handleClose: () => void }) => {
                 >
                   lub
                 </Typography>
-                <FacebookAndGoogleBox loginOrRegister="register" />
+                <FacebookAndGoogleBox
+                  loginOrRegister={LOGIN_REGISTER.REGISTER}
+                />
                 <SignOrResetLink
                   issueText="Masz już konto?"
                   linkText="Zaloguj się"
