@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import { Grid, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-import BannerLG from '../Main-Graphic/bannerLG.png';
+import BannerLG from '../../../Assets/bannerLG.png';
 import Lines from '../../../Assets/Lines.png';
 
 function MainGraphic() {
