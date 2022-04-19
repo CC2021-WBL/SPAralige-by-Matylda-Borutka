@@ -1,5 +1,4 @@
 import CookieConsent from 'react-cookie-consent';
-import { padding } from '@mui/system';
 
 const CookiesBanner = () => {
   return (
