@@ -1,19 +1,20 @@
-import { AppBar, Box, Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 
-import FooterStyled from '../Footer/FooterStyled';
+import Footer from '../../Template/Footer/Footer';
 import MainWrapper from './MainWrapper';
+import NavBar from '../NavBar/NavBar';
 
 const Layout = () => {
   return (
     <MainWrapper>
-      <Box sx={{ height: 80 }}>
-        <AppBar sx={{ height: 80 }} />
+      <Box>
+        <NavBar />
       </Box>
       <Container maxWidth="lg" sx={{ flexGrow: 1 }}>
         <Outlet />
       </Container>
-      <FooterStyled />
+      <Footer />
     </MainWrapper>
   );
 };
