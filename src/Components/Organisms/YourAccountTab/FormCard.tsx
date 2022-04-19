@@ -1,6 +1,6 @@
 import { Box } from '@mui/system';
 import { Button, Stack } from '@mui/material';
-import { Field, Form, Formik } from 'formik';
+import { Field, Form, Formik, useFormik } from 'formik';
 
 type FormCardPropTypes = {
   title: string;
@@ -16,10 +16,10 @@ type FormCardPropTypes = {
 };
 
 const whenDisplay = {
-  '& .display': {
+  ' .display': {
     display: 'bock',
   },
-  '& .edit': {
+  ' .edit': {
     display: 'none',
   },
 };

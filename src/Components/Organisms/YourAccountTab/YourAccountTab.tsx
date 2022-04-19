@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import { Box, Stack } from '@mui/material';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { ErrorMessage, Field, Form, Formik, useFormik } from 'formik';
 import { useState } from 'react';
 
 import BasicSelect from './BasicSelect';
@@ -19,23 +19,31 @@ const Header = (prop: HeaderPropTypes) => {
 };
 // =========== /header =========== //
 
-const initialValues = {
-  name: 'Katarynka',
-  email: 'ebacis@wp.pl',
-  password: '******',
-};
-const onSubmit = () => {
-  console.log('onSubmit');
-};
-
+// const initialValues = {
+//   name: 'Katarynka',
+//   email: 'ebacis@wp.pl',
+//   password: '******',
+// };
+// const onSubmit = () => {
+//   console.log('onSubmit');
+// };
 const YourAccountFrame = () => {
   const [formMode, setFormMode] = useState('display');
   const clickHandler = (e) => {
     console.log(e.target);
-
     formMode == 'display' && setFormMode('edit');
     formMode == 'edit' && setFormMode('display');
   };
+  const formik = useFormik({
+    initialValues: {
+      name: 'Katarynka',
+      email: 'ebacis@wp.pl',
+      password: '******',
+    },
+    onSubmit: (v) => {
+      console.log(v);
+    },
+  });
   return (
     <div className="yourAccountFrame" style={{ outline: '3px dotted red' }}>
       <Header text="Twoje dane" />
@@ -45,21 +53,21 @@ const YourAccountFrame = () => {
         id="name"
         mode={formMode}
         placeholder="imię"
-        initialValues={{ initialValues }}
-        onSubmit={onSubmit}
+        initialValues={formik.initialValues}
+        onSubmit={formik.handleSubmit}
         onClick={clickHandler}
         type="text"
       />
       <FormCard
         title="email"
-        name="cristal@out.it"
+        name="email"
         id="email"
         mode={formMode}
         placeholder="email"
-        initialValues={initialValues}
-        onSubmit={onSubmit}
+        initialValues={formik.initialValues}
+        onSubmit={formik.handleSubmit}
         onClick={clickHandler}
-        type="text"
+        type="email"
       />
       <FormCard
         title="hasło"
@@ -67,8 +75,8 @@ const YourAccountFrame = () => {
         id="password"
         mode={formMode}
         placeholder="hasło"
-        initialValues={{ initialValues }}
-        onSubmit={onSubmit}
+        initialValues={formik.initialValues}
+        onSubmit={formik.handleSubmit}
         onClick={clickHandler}
         type="text"
       />
