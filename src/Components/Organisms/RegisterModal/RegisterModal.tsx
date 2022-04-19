@@ -1,18 +1,21 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { TextField, CheckboxWithLabel } from 'formik-mui';
+import * as Yup from 'yup';
+
 import {
+  Box,
   Button,
   LinearProgress,
+  Modal,
   Stack,
   Typography,
-  Box,
-  Modal,
 } from '@mui/material';
-import FormTitle from '../../Organisms/Form/FormTitle';
+import { CheckboxWithLabel, TextField } from 'formik-mui';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+
+import { AuthModalPropTypes } from '../../../Types/loginOrRegisterTypes';
+import ClosingIcon from '../LoginForm/CloseIcon';
 import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
-import SignOrResetLink from '../../Organisms/LoginForm/SignOrResetLink';
-import * as Yup from 'yup';
-import ClosingIcon from '../../Organisms/LoginForm/CloseIcon';
+import FormTitle from '../Form/FormTitle';
+import SignOrResetLink from '../LoginForm/SignOrResetLink';
 
 const RegisterValidation = Yup.object().shape({
   name: Yup.string().required('Nazwa użytkownika jest wymagana'),
@@ -30,7 +33,7 @@ const RegisterValidation = Yup.object().shape({
     .oneOf([true], '* Warunki użytkowania muszę zostać zaakceptowane.'),
 });
 
-const RegisterModal = (prop: { open: boolean; handleClose: () => void }) => {
+const RegisterModal = (prop: AuthModalPropTypes) => {
   return (
     <Modal
       open={prop.open}
@@ -143,10 +146,12 @@ const RegisterModal = (prop: { open: boolean; handleClose: () => void }) => {
                 <SignOrResetLink
                   issueText="Masz już konto?"
                   linkText="Zaloguj się"
+                  handleOnClick={prop.handleLoginOrRegisterTransfer}
                 />
                 <SignOrResetLink
                   issueText="Zapomniałeś hasła? "
                   linkText="Zresetuj hasło"
+                  handleOnClick={prop.handleFrogetPasswordTransfer}
                 />
               </Stack>
             </Form>

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import MenuIcon from '@mui/icons-material/Menu';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+
 import {
   AppBar,
   Avatar,
@@ -10,13 +9,15 @@ import {
   MenuItem,
   Toolbar,
 } from '@mui/material';
-import { Menu } from '@mui/material';
 import { NavLink as RouterLink, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 
 import LoginModal from '../../Organisms/LoginForm/LoginModal';
+import { Menu } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import RegisterModal from '../../Organisms/RegisterModal/RegisterModal';
 import SPALogoNav from '../../../Assets/SPA-Logo-Nav.svg';
-import RegisterModal from '../../PagesBody/RegisterPage/RegisterModal';
+import { useState } from 'react';
 
 const LinkStyle = {
   userSelect: 'none',
@@ -230,12 +231,26 @@ const NavBar = () => {
               handleClose={() => {
                 setLoginModalOpen('closed');
               }}
+              handleFrogetPasswordTransfer={() => {
+                setLoginModalOpen('closed');
+              }}
+              handleLoginOrRegisterTransfer={() => {
+                setLoginModalOpen('closed');
+                setRegisterModalOpen('open');
+              }}
             />
           )}
           {registerModalOpen == 'open' && (
             <RegisterModal
               open
               handleClose={() => {
+                setRegisterModalOpen('closed');
+              }}
+              handleLoginOrRegisterTransfer={() => {
+                setRegisterModalOpen('closed');
+                setLoginModalOpen('open');
+              }}
+              handleFrogetPasswordTransfer={() => {
                 setRegisterModalOpen('closed');
               }}
             />
