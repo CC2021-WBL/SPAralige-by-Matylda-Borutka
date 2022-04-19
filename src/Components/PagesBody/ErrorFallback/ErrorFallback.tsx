@@ -25,7 +25,7 @@ function ErrorFallback() {
             width: '20rem',
             maxHeight: { xs: 233, md: 230 },
           }}
-          alt="surprised womaen with head towel"
+          alt="surprised woman with head towel"
           src={errorImg}
         />
         <Typography
