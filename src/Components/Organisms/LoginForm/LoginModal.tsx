@@ -3,11 +3,11 @@ import { useState } from 'react';
 
 import ClosingIcon from './CloseIcon';
 import EmailAndPasswordInput from './EmailAndPasswordInput';
-import FacebookAndGoogleBox from './FacebookAndGoogleBox';
+import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
 import LoginButton from './LoginButton';
-import LoginTitle from './LoginTitle';
 import SignOrResetLink from './SignOrResetLink';
 import { HandleInputChangeType } from '../../../Types/EventFunctions';
+import FormTitle from '../Form/FormTitle';
 
 export default function LoginModal(prop: {
   open: boolean;
@@ -51,7 +51,11 @@ export default function LoginModal(prop: {
       >
         <Stack spacing={'1.4375rem'}>
           <ClosingIcon handleClose={prop.handleClose} />
-          <LoginTitle aria-label="Sign in to SPAralige" />
+          <FormTitle
+            aria-label="Sign in to SPAralige"
+            text1="Witamy w SPAralige!"
+            text2="Zaloguj się wpisując login i hasło"
+          />
           <EmailAndPasswordInput
             email={email}
             password={password}
@@ -70,8 +74,8 @@ export default function LoginModal(prop: {
             }}
           >
             lub
-            <FacebookAndGoogleBox />
           </Typography>
+          <FacebookAndGoogleBox loginOrRegister="login" />
           <SignOrResetLink
             issueText="Nie masz konta? "
             linkText="Zarejestruj się"

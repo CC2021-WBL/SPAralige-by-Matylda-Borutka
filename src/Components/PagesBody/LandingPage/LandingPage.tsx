@@ -1,8 +1,8 @@
-import { getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 
 import MainGraphic from '../../Organisms/Main-Graphic/MainGraphic';
 import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
+import { getDocs } from 'firebase/firestore';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 import { servicesRef } from '../../../Firebase/firebase';
 
