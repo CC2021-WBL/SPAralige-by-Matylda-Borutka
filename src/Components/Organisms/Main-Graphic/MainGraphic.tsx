@@ -10,20 +10,22 @@ function MainGraphic() {
   return (
     <Box>
       <Grid container height={'100%'}>
-        <Box position="absolute" marginTop={29}>
-          {' '}
-          <Box
-            component="img"
-            sx={{
-              marginTop: 3,
+        <Grid item>
+          <Box position="absolute" marginTop={29} marginRight={2}>
+            {' '}
+            <Box
+              component="img"
+              sx={{
+                marginTop: 3,
 
-              height: '100%',
-              width: '100%',
-            }}
-            alt="relaxed woman."
-            src={Lines}
-          />
-        </Box>
+                height: '100%',
+                width: '100%',
+              }}
+              alt="vawy lines"
+              src={Lines}
+            />
+          </Box>
+        </Grid>
         <Grid item xs={12} md={7}>
           <Box
             component="img"
