@@ -13,3 +13,7 @@ export const getDateFormatDdMmYyyy = (date: Date) => {
     year: 'numeric',
   });
 };
+
+export const getDayName = (date: Date) => {
+  return date.toLocaleDateString('pl-PL', { weekday: 'long' });
+};

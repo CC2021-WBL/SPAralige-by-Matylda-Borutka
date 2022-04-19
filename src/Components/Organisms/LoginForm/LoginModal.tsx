@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import ClosingIcon from './CloseIcon';
 import EmailAndPasswordInput from './EmailAndPasswordInput';
-import FacebookAndGoogleBox from './FacebookAndGoogleBox';
+import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
 import LoginButton from './LoginButton';
 import SignOrResetLink from './SignOrResetLink';
 import { HandleInputChangeType } from '../../../Types/EventFunctions';

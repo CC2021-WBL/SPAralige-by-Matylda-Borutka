@@ -1,7 +1,11 @@
 import { Box, Typography } from '@mui/material';
-import PropTypes from 'prop-types';
 
-function FormTitle({ text1, text2 }) {
+interface TextInFormTitle {
+  text1: string;
+  text2: string;
+}
+
+function FormTitle({ text1, text2 }: TextInFormTitle) {
   return (
     <Box
       sx={{
@@ -33,10 +37,5 @@ function FormTitle({ text1, text2 }) {
     </Box>
   );
 }
-
-FormTitle.propTypes = {
-  text1: PropTypes.string,
-  text2: PropTypes.string,
-};
 
 export default FormTitle;

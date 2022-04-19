@@ -20,7 +20,7 @@ const RegisterValidation = Yup.object().shape({
     .required('Adres e-mail wymagany')
     .email('Niepoprawny adres e-mail'),
   password: Yup.string()
-    .min(4, 'Hasło jest wymagane')
+    .min(4, 'Hasło musi składać się z conajmniej 4 znaków')
     .required('Hasło jest wymagane'),
   confirmPassword: Yup.string()
     .required('Wpisz hasło')
@@ -30,7 +30,7 @@ const RegisterValidation = Yup.object().shape({
     .oneOf([true], '* Warunki użytkowania muszę zostać zaakceptowane.'),
 });
 
-const RegisterPage = (prop: { open: boolean; handleClose: () => void }) => {
+const RegisterModal = (prop: { open: boolean; handleClose: () => void }) => {
   return (
     <Modal
       open={prop.open}
@@ -45,7 +45,7 @@ const RegisterPage = (prop: { open: boolean; handleClose: () => void }) => {
           transform: 'translate(-50%, -50%)',
           bgcolor: '#FFFFFF',
           width: '31.25rem',
-          height: '51rem',
+          height: 'fit-content',
           padding: ['2.5rem', '2.125rem'],
           '@media screen and (max-width: 600px)': {
             width: '19.625rem',
@@ -66,7 +66,8 @@ const RegisterPage = (prop: { open: boolean; handleClose: () => void }) => {
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
               setSubmitting(false);
-              console.log(JSON.stringify(values, null, 2));
+              const data = JSON.stringify(values, null, 2);
+              console.log(data);
             }, 500);
           }}
         >
@@ -156,4 +157,4 @@ const RegisterPage = (prop: { open: boolean; handleClose: () => void }) => {
   );
 };
 
-export default RegisterPage;
+export default RegisterModal;
