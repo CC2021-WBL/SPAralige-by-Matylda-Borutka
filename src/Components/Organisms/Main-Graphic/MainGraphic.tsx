@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { Grid, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 import BannerLG from '../Main-Graphic/bannerLG.png';
 import Lines from '../../../Assets/Lines.png';
@@ -45,7 +46,15 @@ function MainGraphic() {
           >
             Zadbaj o siebie
           </Typography>
-          <Button variant="contained" disableElevation href="services">
+          <Button
+            sx={{ borderRadius: '50px', padding: '15px' }}
+            variant="contained"
+            disableElevation
+            component={Link}
+            to={'/services'}
+            tabIndex={0}
+            aria-label="Services Catalogue"
+          >
             Znajdź idealny zabieg
           </Button>
         </Grid>
