@@ -45,7 +45,7 @@ const RegisterModal = (prop: { open: boolean; handleClose: () => void }) => {
           transform: 'translate(-50%, -50%)',
           bgcolor: '#FFFFFF',
           width: '31.25rem',
-          height: '51rem',
+          height: 'fit-content',
           padding: ['2.5rem', '2.125rem'],
           '@media screen and (max-width: 600px)': {
             width: '19.625rem',
