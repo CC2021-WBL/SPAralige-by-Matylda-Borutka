@@ -68,6 +68,7 @@ const NavBar = () => {
         m: 0,
         p: 0,
         justifyContent: 'center',
+        boxShadow: 'none',
       }}
     >
       <Toolbar variant="regular" sx={{ bgcolor: 'none' }}>
@@ -86,7 +87,6 @@ const NavBar = () => {
             className="burgerMenu"
             edge="start"
             sx={{
-              // mr: 1,
               color: 'primary.contrastText',
               display: { md: 'none' },
             }}
@@ -120,10 +120,8 @@ const NavBar = () => {
               display: { xs: 'none', md: 'flex' },
               flexDirection: 'row',
               gap: '5rem',
-              justifyContent: 'center',
+              margin: '0 8.4375rem 0 0',
               width: 'auto',
-              padding: '0 0',
-              margin: '0 0',
             }}
           >
             <Link
