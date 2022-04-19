@@ -24,6 +24,8 @@ export default function ResponsiveDrawer() {
   const [serviceBurgerData, setServiceBurgerData] =
     useState<ForBurgerTypes | null>(null);
 
+  console.log(window.innerWidth);
+
   useEffect(() => {
     const fetchData = async () => {
       const gettedServices = await getAllServices();
@@ -76,13 +78,17 @@ export default function ResponsiveDrawer() {
             maxPrice={serviceBurgerData?.maxPrice}
           />
         </Drawer>
-        <Box>
-          <Burger
-            therapists={serviceBurgerData?.therapists}
-            servicesData={serviceBurgerData?.servicesData}
-            maxPrice={serviceBurgerData?.maxPrice}
-          />
-        </Box>
+        {window.innerWidth > 600 && (
+          <Box sx={{
+            marginTop: '1rem'
+          }}>
+            <Burger
+              therapists={serviceBurgerData?.therapists}
+              servicesData={serviceBurgerData?.servicesData}
+              maxPrice={serviceBurgerData?.maxPrice}
+            />
+          </Box>
+        )}
       </Box>
       <Box
         component="main"

@@ -1,5 +1,5 @@
 import Burger, { BurgerProp } from '../../Organisms/Burger/Burger';
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -10,6 +10,7 @@ import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { bodyPage } from '../../../Tools/htmlElements';
+import { filterReducer } from '../../../Reducers/filterReducer';
 import { getAllServices } from '../../../Firebase/queries';
 import { getDataForBurgerFromServices } from '../../../Tools/burgerHelperTools';
 import { serviceDataType } from '../../../Types/dbDataTypes';
@@ -18,7 +19,8 @@ const drawerWidth = '22.5rem';
 
 type ForBurgerTypes = Omit<BurgerProp, 'handleFilter' | 'handleClose'>;
 
-export default function ResponsiveDrawer() {
+export default function ResponsiveDrawerCopy() {
+  const [filterState, filterDispatch] = useReducer(filterReducer, {});
   const [mobileOpen, setMobileOpen] = useState(false);
   const [services, setServices] = useState<serviceDataType[] | null>(null);
   const [serviceBurgerData, setServiceBurgerData] =
@@ -77,7 +79,7 @@ export default function ResponsiveDrawer() {
           />
         </Drawer>
         <Drawer
-          container={container}
+          container={document.getElementById('body-page')}
           variant="permanent"
           sx={{
             display: { xs: 'none', sm: 'block' },
@@ -85,6 +87,7 @@ export default function ResponsiveDrawer() {
               boxSizing: 'border-box',
               width: drawerWidth,
             },
+            marginTop: '4rem'
           }}
           open
         >

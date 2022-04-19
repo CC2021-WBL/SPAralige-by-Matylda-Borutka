@@ -1,21 +1,28 @@
-// import { string } from "yup";
+// interface StateType {}
 
-// interface StateType {
+interface ActionType {
+  type: string;
+  payload: any;
+}
 
-// }
+export const filterReducer = (state: any, action: ActionType) => {
+  switch (action.type) {
+      case 'FILTER_SERVICES_TYPES':
+          const filteredTypes = state.filter((service) => {
+              return service.
+          })
+      break;
 
-// interface ActionType {
-//     type: string,
-//     payload: any
-// }
+    case 'FILTER_PRICE':
+      break;
 
-// export const filterReducer = (state: any, action: ActionType) => {
-//     switch (key) {
-//         case value:
+    case 'FILTER_THERAPISTS':
+      break;
 
-//             break;
+    case 'FILTER_AVAILABILITY':
+      break;
 
-//         default:
-//             break;
-//     }
-// }
+    default:
+      break;
+  }
+};

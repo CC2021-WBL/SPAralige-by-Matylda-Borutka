@@ -6,6 +6,7 @@ import LandingPage from './Components/PagesBody/LandingPage/LandingPage';
 import Layout from './Components/Template/Layout/Layout';
 import ReservationsPage from './Components/PagesBody/ReservationsPage/ReservationsPage';
 import ResponsiveDrawer from './Components/PagesBody/ServicesPage/ResponsiveDrawer';
+import ResponsiveDrawerCopy from './Components/PagesBody/ServicesPage/ResponsiveDrawerCopy';
 import ServicesPage from './Components/PagesBody/ServicesPage/ServicesPage';
 import TestingBody from './Components/PagesBody/TestingBody';
 
@@ -24,7 +25,7 @@ function App() {
           <Route path="/account" element={<AccountPage />} />
 
           <Route path="/reservations" element={<ReservationsPage />} />
-          <Route path="/burger" element={<ResponsiveDrawer />} />
+          <Route path="/burger" element={<ResponsiveDrawerCopy />} />
         </Route>
       </Routes>
     </div>

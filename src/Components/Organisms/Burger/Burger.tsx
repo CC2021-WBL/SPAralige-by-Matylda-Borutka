@@ -5,7 +5,6 @@ import CloseFiltersButton from './CloseFiltersButton';
 import FilterWithRange from './FilterWithRange';
 import RehabilitatorFilter from './RehabilitatorFilter';
 
-//import { useReducer } from 'react';
 export type BurgerProp = {
   handleFilter?: () => void;
   handleClose?: () => void;
@@ -15,8 +14,6 @@ export type BurgerProp = {
 };
 
 function Burger(prop: BurgerProp) {
-  //const [filterState, filterDispatch] = useReducer(filterReducer, {})
-  console.log(prop.servicesData);
   return (
     <Box
       sx={{

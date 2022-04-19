@@ -16,7 +16,6 @@ export function getDataForBurgerFromServices(services: serviceDataType[]) {
     }
   });
 
-  console.log(servicesSet);
   return {
     servicesData: [...servicesSet],
     therapists: [...therapistsSet],
