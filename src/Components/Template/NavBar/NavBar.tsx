@@ -119,7 +119,7 @@ const NavBar = () => {
               display: { xs: 'none', md: 'flex' },
               flexDirection: 'row',
               gap: '5rem',
-              margin: '0 135px 0 0',
+              margin: '0 8.4375rem 0 0',
               width: 'auto',
             }}
           >
