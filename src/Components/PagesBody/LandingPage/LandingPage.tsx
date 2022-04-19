@@ -1,6 +1,7 @@
 import { getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 
+import MainGraphic from '../../Organisms/Main-Graphic/MainGraphic';
 import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 import { servicesRef } from '../../../Firebase/firebase';
@@ -34,7 +35,8 @@ const LandingPage = () => {
 
   return (
     <main>
-      <h1 style={{ textAlign: 'center' }}>SPAralige od Matylde</h1>
+      <MainGraphic />
+      <h4>Popularne zabiegi</h4>
       {serviceObjectArray && (
         <ResponsiveGrid serviceObjectArray={serviceObjectArray} />
       )}
