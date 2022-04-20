@@ -28,6 +28,7 @@ const ServiceCardContent = (prop: {
 
         {localStorage.getItem('i18nextLng') === 'pl-PL' &&
           localStorage.setItem('i18nextLng', 'pl')}
+        {i18n.language === 'pl-PL' && window.location.reload()}
 
         {prop.serviceObject.text2[i18n.language]}
       </Typography>
