@@ -4,7 +4,11 @@ import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
 import { auth } from '../../../Firebase/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
-function LoginButton(prop: { email: string; password: string;  handleClose: ()=> void}) {
+function LoginButton(prop: {
+  email: string;
+  password: string;
+  handleClose: () => void;
+}) {
   const handleLoginClick: HandleOnClickButtonType = async (event) => {
     event.preventDefault();
     try {
