@@ -1,6 +1,8 @@
+import { Typography } from '@mui/material';
 import { getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 
+import MainGraphic from '../../Organisms/Main-Graphic/MainGraphic';
 import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 import { servicesRef } from '../../../Firebase/firebase';
@@ -34,7 +36,8 @@ const LandingPage = () => {
 
   return (
     <main>
-      <h1 style={{ textAlign: 'center' }}>SPAralige od Matylde</h1>
+      <MainGraphic />
+      <Typography variant="subtitle1">Popularne zabiegi</Typography>
       {serviceObjectArray && (
         <ResponsiveGrid serviceObjectArray={serviceObjectArray} />
       )}

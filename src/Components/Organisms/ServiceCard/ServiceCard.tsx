@@ -1,9 +1,8 @@
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-import { Box } from '@mui/system';
-import { Modal } from '@mui/material';
 import { useEffect, useState } from 'react';
 
+import BookingModal from '../BookingModal/BookingModal';
 import ServiceCardActions from './ServiceCardActions';
 import ServiceCardContent from './ServiceCardContent';
 import ServiceDetailsModal from './ServiceDetailsModal';
@@ -46,6 +45,7 @@ const ServiceCard = (prop: {
     };
     getImg();
   }, []);
+
   return (
     <>
       <Card sx={cardStyles}>
@@ -68,14 +68,11 @@ const ServiceCard = (prop: {
         serviceObject={prop.serviceObject}
         handleOpen={handleOpen}
       />
-      <Modal
+      <BookingModal
         open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box />
-      </Modal>
+        handleClose={handleClose}
+        serviceObject={prop.serviceObject}
+      />
     </>
   );
 };
