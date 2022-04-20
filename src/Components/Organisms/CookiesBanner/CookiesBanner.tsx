@@ -9,21 +9,21 @@ const CookiesBanner = () => {
       }}
       declineButtonText="Odrzuć ciasteczka"
       declineButtonStyle={{
-        borderRadius: '50px',
-        color: '#ffffff',
-        fontSize: '13px',
-        padding: '10px',
-        background: '#ba68c8',
+        borderRadius: '3.125rem',
+        color: '#565656',
+        fontSize: '0.8125rem',
+        padding: '0.625rem',
+        background: '#dddddd',
       }}
       location="bottom"
       buttonText="Akceptuj ciasteczka"
       cookieName="Ciasteczko"
       style={{ background: '#1565c0' }}
       buttonStyle={{
-        borderRadius: '50px',
+        borderRadius: '3.125rem',
         color: '#4e503b',
-        fontSize: '13px',
-        padding: '10px',
+        fontSize: '0.8125rem',
+        padding: '0.625rem',
       }}
       expires={150}
     >
