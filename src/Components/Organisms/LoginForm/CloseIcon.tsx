@@ -11,6 +11,7 @@ function ClosingIcon(prop: { handleClose: () => void }) {
           justifyContent: 'flex-end',
         }}
         onClick={prop.handleClose}
+        aria-label="close"
       >
         <CloseIcon />
       </IconButton>
