@@ -3,11 +3,7 @@ export function calcDaysToEventDate(eventDate: Date) {
   const actualDateinMs = Date.now();
   const eventDateinMs = eventDate.getTime();
 
-  const diffDays = Math.round(
-    Math.abs((eventDateinMs - actualDateinMs) / oneDay),
-  );
-
-  return diffDays;
+  return Math.round(Math.abs((eventDateinMs - actualDateinMs) / oneDay));
 }
 
 export const getDateFormatDdMmYyyy = (date: Date) => {
@@ -16,4 +12,8 @@ export const getDateFormatDdMmYyyy = (date: Date) => {
     month: 'numeric',
     year: 'numeric',
   });
+};
+
+export const getDayName = (date: Date) => {
+  return date.toLocaleDateString('pl-PL', { weekday: 'long' });
 };

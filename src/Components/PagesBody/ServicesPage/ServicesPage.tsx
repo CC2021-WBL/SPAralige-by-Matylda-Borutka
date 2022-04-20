@@ -26,9 +26,6 @@ const ServicesPage = () => {
   return (
     <Box>
       <Box sx={{ display: 'flex' }}>
-        <Button variant="contained" onClick={handleDrawerToggle}>
-          FILTER
-        </Button>
         <TemporaryFilterDrawer
           mobileOpen={mobileOpen}
           handleDrawerToggle={handleDrawerToggle}

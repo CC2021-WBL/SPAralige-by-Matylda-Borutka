@@ -1,10 +1,11 @@
-import { Button, Stack, Typography } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 
 import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
 import { loginWithFacebook } from '../../../Firebase/facebookLogin';
 import { loginWithGoogle } from '../../../Firebase/googleLogin';
+import { loginOrRegisterOptions } from '../../../Types/loginOrRegisterTypes';
 
-function FacebookAndGoogleBox() {
+function FacebookAndGoogleBox({ loginOrRegister }: loginOrRegisterOptions) {
   const onGoogleClick: HandleOnClickButtonType = async (event) => {
     event.preventDefault();
     await loginWithGoogle();
@@ -13,9 +14,8 @@ function FacebookAndGoogleBox() {
     event.preventDefault();
     await loginWithFacebook();
   };
-
   return (
-    <Stack spacing={1.5}>
+    <Stack spacing={'0.6875rem'}>
       <Button
         variant="contained"
         disableElevation={true}
@@ -23,14 +23,13 @@ function FacebookAndGoogleBox() {
         sx={{ height: '2.9375rem', background: '#01579B' }}
         onClick={onFbClick}
       >
-        <Typography sx={{ fontSize: '0.875rem', paddingTop: '1px' }}>
-          ZALOGUJ PRZEZ FACEBOOK&apos;A
-        </Typography>
+        {loginOrRegister === 'register' && 'ZAREJESTRUJ'}
+        {loginOrRegister === 'login' && 'ZALOGUJ'} SIĘ PRZEZ FACEBOOK&#39;A
       </Button>
       <Button
         variant="contained"
         disableElevation={true}
-        aria-label="sign in with google"
+        aria-label="sig in with google"
         sx={{
           height: '2.9375rem',
           background: '#FB8C00',
@@ -38,7 +37,8 @@ function FacebookAndGoogleBox() {
         }}
         onClick={onGoogleClick}
       >
-        <Typography sx={{ paddingTop: '1px' }}>ZALOGUJ PRZEZ GOOGLE</Typography>
+        {loginOrRegister === 'register' && 'ZAREJESTRUJ'}
+        {loginOrRegister === 'login' && 'ZALOGUJ'} SIĘ PRZEZ KONTO GOOGLE
       </Button>
     </Stack>
   );

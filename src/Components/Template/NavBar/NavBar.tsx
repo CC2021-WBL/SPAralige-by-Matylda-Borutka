@@ -16,6 +16,7 @@ import { useState } from 'react';
 
 import LoginModal from '../../Organisms/LoginForm/LoginModal';
 import SPALogoNav from '../../../Assets/SPA-Logo-Nav.svg';
+import RegisterModal from '../../PagesBody/RegisterPage/RegisterModal';
 
 const LinkStyle = {
   userSelect: 'none',
@@ -43,7 +44,8 @@ const NavBar = () => {
   const [anchorElLeft, setAnchorElLeft] = React.useState<null | HTMLElement>(
     null,
   );
-  const [modalOpen, setModalOpen] = useState('closed');
+  const [loginModalOpen, setLoginModalOpen] = useState('closed');
+  const [registerModalOpen, setRegisterModalOpen] = useState('closed');
   const openRightMenu = Boolean(anchorElRight);
   const openLeftMenu = Boolean(anchorElLeft);
 
@@ -68,6 +70,7 @@ const NavBar = () => {
         m: 0,
         p: 0,
         justifyContent: 'center',
+        boxShadow: 'none',
       }}
     >
       <Toolbar variant="regular" sx={{ bgcolor: 'none' }}>
@@ -86,7 +89,6 @@ const NavBar = () => {
             className="burgerMenu"
             edge="start"
             sx={{
-              // mr: 1,
               color: 'primary.contrastText',
               display: { md: 'none' },
             }}
@@ -120,10 +122,8 @@ const NavBar = () => {
               display: { xs: 'none', md: 'flex' },
               flexDirection: 'row',
               gap: '5rem',
-              justifyContent: 'center',
+              margin: '0 8.4375rem 0 0',
               width: 'auto',
-              padding: '0 0',
-              margin: '0 0',
             }}
           >
             <Link
@@ -180,7 +180,7 @@ const NavBar = () => {
             <MenuItem
               onClick={() => {
                 handleCloseRight();
-                setModalOpen('open');
+                setLoginModalOpen('open');
               }}
               aria-label="Log in"
             >
@@ -189,7 +189,7 @@ const NavBar = () => {
             <MenuItem
               onClick={() => {
                 handleCloseRight();
-                navigate('/register');
+                setRegisterModalOpen('open');
               }}
               aria-label="Register"
             >
@@ -224,11 +224,19 @@ const NavBar = () => {
               O nas
             </MenuItem>
           </Menu>
-          {modalOpen == 'open' && (
+          {loginModalOpen == 'open' && (
             <LoginModal
               open
               handleClose={() => {
-                setModalOpen('closed');
+                setLoginModalOpen('closed');
+              }}
+            />
+          )}
+          {registerModalOpen == 'open' && (
+            <RegisterModal
+              open
+              handleClose={() => {
+                setRegisterModalOpen('closed');
               }}
             />
           )}
