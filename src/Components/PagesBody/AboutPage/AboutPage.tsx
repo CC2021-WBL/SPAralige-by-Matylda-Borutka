@@ -13,15 +13,15 @@ const AboutPage = () => {
               Gabinet SPAralige
             </Typography>
             <Typography variant="h3">by Matylda Borutka</Typography>
-            <Typography paddingTop={4} paddingRight={10} variant="body1">
+            <Typography paddingTop={2} paddingRight={10} variant="body2">
               Gabinet Sparalige działa już do wielu lat. Od momentu założenia
               zadbaliśmy o kondycje tysięcy naszych klientów.{' '}
             </Typography>
-            <Typography paddingTop={4} paddingRight={10} variant="body1">
+            <Typography paddingTop={2} paddingRight={10} variant="body2">
               Naszą ambicją bylo awsze tworzyc relaksujący klimat i bezpieczną
               przestrzeń w której łatwo się zrelaksować i zregenerować.
             </Typography>
-            <Typography paddingTop={4} paddingRight={10} variant="body1">
+            <Typography paddingTop={2} paddingRight={10} variant="body2">
               Specjalizujemy się w głębokich masażach, terapii manualnej. W 2020
               rozszerzyliśmy naszą ofertę o autorskie zabiegi regenerujace ciało
               i duszę.{' '}
