@@ -39,11 +39,11 @@ export const style = {
   width: '90vw',
   maxWidth: 1168,
   height: '90vh',
-  maxHeight: 1012,
+  overflow: 'auto',
+  maxHeight: 'calc(100vh - 1.25rem)',
   bgcolor: 'background.paper',
   boxShadow: 24,
   p: 4,
-  borderRadius: 8,
 };
 
 export const stackStyle = {
