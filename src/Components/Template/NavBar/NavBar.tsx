@@ -10,13 +10,16 @@ import {
   Toolbar,
 } from '@mui/material';
 import { NavLink as RouterLink, useNavigate } from 'react-router-dom';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LoginModal from '../../Organisms/LoginForm/LoginModal';
 import { Menu } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import RegisterModal from '../../Organisms/RegisterModal/RegisterModal';
 import SPALogoNav from '../../../Assets/SPA-Logo-Nav.svg';
+import { auth } from '../../../Firebase/firebase';
 import { useState } from 'react';
 
 const LinkStyle = {
@@ -33,11 +36,20 @@ const LinkRespoStyle = {
 };
 
 const NavBar = () => {
-  //
-  // const { state } = useContext(UserDataContext);
-  // const { isAuthenticated } = state;
-  //
-  const isAuthenticated = ''; // temporary manually assigned const in order to simulate user not logged in
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  onAuthStateChanged(auth, (currentUser) => {
+    if (currentUser) {
+      setIsAuthenticated(true);
+    }
+  });
+
+  async function logout() {
+    await signOut(auth);
+    handleCloseRight();
+    setIsAuthenticated(false);
+  }
+
   const navigate = useNavigate();
   const [anchorElRight, setAnchorElRight] = React.useState<null | HTMLElement>(
     null,
@@ -62,7 +74,6 @@ const NavBar = () => {
   const handleCloseRight = () => {
     setAnchorElRight(null);
   };
-
   return (
     <AppBar
       position="static"
@@ -162,8 +173,7 @@ const NavBar = () => {
           >
             {isAuthenticated ? (
               <Avatar sx={{ display: { xs: 'flex', sm: 'flex' } }}>
-                {/* TODO: {userName[0], userSurname[0]} */}
-                MB
+                <AccountCircleIcon fontSize="large" />
               </Avatar>
             ) : (
               <MoreVertIcon />
@@ -181,20 +191,14 @@ const NavBar = () => {
             <MenuItem
               onClick={() => {
                 handleCloseRight();
-                setLoginModalOpen('open');
-              }}
-              aria-label="Log in"
-            >
-              Zaloguj
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                handleCloseRight();
                 setRegisterModalOpen('open');
               }}
               aria-label="Register"
             >
               Zarejestruj
+            </MenuItem>
+            <MenuItem onClick={logout} aria-label="Logout">
+              Wyloguj
             </MenuItem>
           </Menu>
           <Menu

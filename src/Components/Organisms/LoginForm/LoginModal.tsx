@@ -17,7 +17,6 @@ export default function LoginModal(prop: AuthModalPropTypes) {
   const handleEmailChange: HandleInputChangeType = (event) => {
     event.preventDefault();
     setEmail(event.target.value);
-    console.log(event.target.value);
   };
 
   const handlePasswordChange: HandleInputChangeType = (event) => {
@@ -60,7 +59,11 @@ export default function LoginModal(prop: AuthModalPropTypes) {
             handleEmailChange={handleEmailChange}
             handlePasswordChange={handlePasswordChange}
           />
-          <LoginButton email={email} password={password} />
+          <LoginButton
+            email={email}
+            password={password}
+            handleClose={prop.handleClose}
+          />
           <Typography
             variant="body1"
             sx={{

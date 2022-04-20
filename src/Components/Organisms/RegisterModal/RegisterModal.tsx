@@ -16,14 +16,15 @@ import ClosingIcon from '../LoginForm/CloseIcon';
 import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
 import FormTitle from '../Form/FormTitle';
 import SignOrResetLink from '../LoginForm/SignOrResetLink';
+import { auth } from '../../../Firebase/firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 const RegisterValidation = Yup.object().shape({
-  name: Yup.string().required('Nazwa użytkownika jest wymagana'),
   email: Yup.string()
     .required('Adres e-mail wymagany')
     .email('Niepoprawny adres e-mail'),
   password: Yup.string()
-    .min(4, 'Hasło musi składać się z conajmniej 4 znaków')
+    .min(6, 'Hasło musi składać się z conajmniej 6 znaków')
     .required('Hasło jest wymagane'),
   confirmPassword: Yup.string()
     .required('Wpisz hasło')
@@ -59,19 +60,26 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
         <ClosingIcon handleClose={prop.handleClose} />
         <Formik
           initialValues={{
-            name: '',
             email: '',
             password: '',
             confirmPassword: '',
             termsOfService: false,
           }}
           validationSchema={RegisterValidation}
-          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              setSubmitting(false);
-              const data = JSON.stringify(values, null, 2);
-              console.log(data);
-            }, 500);
+          onSubmit={async (values, { setSubmitting }) => {
+            setSubmitting(false);
+            try {
+              const credentialObj = await createUserWithEmailAndPassword(
+                auth,
+                values.email,
+                values.password,
+              );
+              console.log(credentialObj.user);
+              alert('Rejestracja udana');
+              prop.handleClose();
+            } catch (error: any) {
+              alert(error.message);
+            }
           }}
         >
           {({ submitForm, isSubmitting }) => (
@@ -81,13 +89,6 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
                   aria-label="Sign in to SPAralige"
                   text1="Witamy w SPAralige!"
                   text2="Uzupełnij formularz aby założyć konto."
-                />
-                <Field
-                  component={TextField}
-                  name="name"
-                  type="name"
-                  label="Nazwa użytkownika"
-                  // validate={validateName}
                 />
                 <Field
                   component={TextField}

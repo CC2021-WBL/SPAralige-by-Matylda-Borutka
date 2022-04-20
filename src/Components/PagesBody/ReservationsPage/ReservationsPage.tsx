@@ -2,6 +2,7 @@ import { Box, Tab, Tabs, Typography } from '@mui/material';
 import ReservationCard, {
   ReservationCardTypes,
 } from '../../Organisms/ReservationCard/ReservationCard';
+import { auth, reservationsRef } from '../../../Firebase/firebase';
 import { getDocs, orderBy, query, where } from 'firebase/firestore';
 import {
   innerContainerStyle,
@@ -12,16 +13,24 @@ import {
 import { useEffect, useState } from 'react';
 
 import TabPanel from '../../Organisms/ReservationCard/TabPanel';
-import { reservationsRef } from '../../../Firebase/firebase';
-
-//mock for userId
-const userId = 'Pk1ORdo4QSDzwCet2nT7';
+import { createReservationArray } from '../../../Tools/reservationTools';
+import { onAuthStateChanged } from 'firebase/auth';
 
 const ReservationsPage = () => {
+  const [pending, setIsPending] = useState(true);
+  const [uid, setUid] = useState<string | null>(null);
   const [value, setValue] = useState(0);
   const [reservations, setReservations] = useState<
     ReservationCardTypes[] | null
   >(null);
+
+  onAuthStateChanged(auth, async (currentUser) => {
+    if (!currentUser) {
+      setUid(null);
+    } else if (currentUser.uid !== uid) {
+      setUid(currentUser.uid);
+    }
+  });
 
   useEffect(() => {
     async function fetchReservations() {
@@ -29,37 +38,32 @@ const ReservationsPage = () => {
         const snapshot = await getDocs(
           query(
             reservationsRef,
-            where('userId', '==', userId),
+            where('uid', '==', uid),
             orderBy('serviceDate', 'desc'),
           ),
         );
-        if (!snapshot) {
-          setReservations(null);
-        } else {
-          const reservationsArr: ReservationCardTypes[] = [];
-          snapshot.forEach((reservation) => {
-            const reservationData = reservation.data();
-            const reservationObj = {
-              serviceName: reservationData.serviceName as string,
-              serviceDate: reservationData.serviceDate.toDate() as Date,
-            };
-            reservationsArr.push(reservationObj);
-          });
-
-          setReservations(reservationsArr);
-        }
+        console.log(snapshot);
+        const reservationsArr = createReservationArray(snapshot);
+        setReservations(reservationsArr);
       } catch (error) {
-        alert('Oops, coś poszło nie tak, odśwież stronę');
+        alert('Oops, coś poszło nie tak, spróbuj jescze raz');
       }
+      setIsPending(false);
     }
-
     fetchReservations();
-  }, []);
+  }, [uid]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
+  if (!uid) {
+    return (
+      <main>
+        <h1>Zaloguj się żeby wyświetlić</h1>
+      </main>
+    );
+  }
   return (
     <main>
       <Box sx={reservationWrapperStyle}>
@@ -75,15 +79,17 @@ const ReservationsPage = () => {
           </Tabs>
           <TabPanel value={value} index={0}>
             <Box sx={reservationCardsBoxStyle}>
-              {reservations ? (
+              {pending && <h2>Loading...</h2>}
+              {!pending &&
+                reservations &&
                 reservations.map((reservation, index) => (
                   <ReservationCard
                     key={index}
                     serviceName={reservation.serviceName}
                     serviceDate={reservation.serviceDate}
                   />
-                ))
-              ) : (
+                ))}
+              {!pending && !reservations && (
                 <Typography>Nie dokonano rezerwacji</Typography>
               )}
             </Box>
