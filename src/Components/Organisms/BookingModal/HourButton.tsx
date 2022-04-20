@@ -10,7 +10,7 @@ interface HourButtonProps {
 const HourButton = (props: HourButtonProps) => {
   return (
     <Stack>
-      <Typography variant="h6" sx={hourButtonTypographyStyle}>
+      <Typography variant="h6" sx={hourButtonTypographyStyle} color="#424242">
         {props.hour}
       </Typography>
     </Stack>

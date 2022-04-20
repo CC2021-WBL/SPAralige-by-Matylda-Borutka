@@ -1,11 +1,12 @@
-import { Stack, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
+import { Stack, Typography } from '@mui/material';
 
 interface DateButtonProps {
   dateToday: Date;
 }
 
 const dayStyle = {
+  color: '#424242',
   fontSize: '0.6rem',
   '@media screen and (min-width: 600px)': {
     fontSize: '0.9rem',
@@ -16,6 +17,7 @@ const dayStyle = {
 };
 
 const dateStyle = {
+  color: '#424242',
   fontSize: '1rem',
   '@media screen and (min-width: 600px)': {
     fontSize: '1.6rem',
@@ -28,12 +30,12 @@ const dateStyle = {
 const DateButton = (props: DateButtonProps) => {
   return (
     <Stack>
-      <Typography variant="h6" sx={dayStyle}>
+      <Typography sx={dayStyle}>
         {props.dateToday.toLocaleDateString('pl', {
           weekday: 'short',
         })}
       </Typography>
-      <Typography variant="h4" sx={dateStyle}>
+      <Typography sx={dateStyle}>
         {props.dateToday.toLocaleDateString('pl', {
           month: '2-digit',
           day: '2-digit',

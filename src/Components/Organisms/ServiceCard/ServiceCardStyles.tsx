@@ -20,13 +20,13 @@ export const contentContainerStyles = {
 
 export const contentTextStyles = {
   '@media screen and (min-width: 900px)': {
-    maxHeight: '80px',
+    maxHeight: '5rem',
     overflow: 'hidden',
     position: 'relative',
     '&::before': {
       content: '""',
       position: 'absolute',
-      height: '40px',
+      height: '2.5rem',
       bottom: '0',
       right: '0',
       width: '100%',
@@ -37,7 +37,7 @@ export const contentTextStyles = {
       maxHeight: 'none',
       '&::before': {
         content: '""',
-        height: '0px',
+        height: '0rem',
       },
     },
   },

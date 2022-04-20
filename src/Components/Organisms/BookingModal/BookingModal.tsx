@@ -113,7 +113,7 @@ const BookingModal = (prop: {
       <Box sx={bookingContainerStyle}>
         <CloseIcon handleClose={prop.handleClose} />
         <Stack spacing={2} sx={stackStyle}>
-          <Typography variant="h5" component="h4" sx={headerTypographyStyle}>
+          <Typography variant="h5" component="h5" sx={headerTypographyStyle}>
             Wybierz datę i godzinę
           </Typography>
           <Typography variant="h6" component="h6">
@@ -152,11 +152,7 @@ const BookingModal = (prop: {
             sx={{ maxWidth: 'calc(100vw - 10px)' }}
           >
             <ToggleButton value={'LOL'} disabled sx={hourButtonTitleStyle}>
-              <Typography
-                variant="subtitle1"
-                color="black"
-                sx={{ ...hourButtonTypographyStyle }}
-              >
+              <Typography color="black" sx={{ ...hourButtonTypographyStyle }}>
                 PORANEK
               </Typography>
             </ToggleButton>
