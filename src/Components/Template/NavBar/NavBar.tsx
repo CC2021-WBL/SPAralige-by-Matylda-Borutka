@@ -13,7 +13,10 @@ import { NavLink as RouterLink, useNavigate } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AuthedRightMenu from './AuthedRightMenu';
+import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
 import LoginModal from '../../Organisms/LoginForm/LoginModal';
+import LogoutRightMenu from './LogoutRightMenu';
 import { Menu } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -44,12 +47,6 @@ const NavBar = () => {
     }
   });
 
-  async function logout() {
-    await signOut(auth);
-    handleCloseRight();
-    setIsAuthenticated(false);
-  }
-
   const navigate = useNavigate();
   const [anchorElRight, setAnchorElRight] = React.useState<null | HTMLElement>(
     null,
@@ -74,6 +71,36 @@ const NavBar = () => {
   const handleCloseRight = () => {
     setAnchorElRight(null);
   };
+
+  const handleLoginClicked: HandleOnClickButtonType = (event) => {
+    event.preventDefault();
+    handleCloseRight();
+    setLoginModalOpen('open');
+  };
+
+  const handleRegisterClicked: HandleOnClickButtonType = (event) => {
+    event.preventDefault();
+    handleCloseRight();
+    setRegisterModalOpen('open');
+  };
+
+  const handleReservationsClicked: HandleOnClickButtonType = (event) => {
+    event.preventDefault();
+    handleCloseRight();
+    navigate('/reservations');
+  };
+
+  const handleYourAccountClicked: HandleOnClickButtonType = (event) => {
+    event.preventDefault();
+    handleCloseRight();
+    navigate('/reservations');
+  };
+
+  async function handleLogout() {
+    await signOut(auth);
+    handleCloseRight();
+    setIsAuthenticated(false);
+  }
   return (
     <AppBar
       position="static"
@@ -179,38 +206,25 @@ const NavBar = () => {
               <MoreVertIcon />
             )}
           </IconButton>
-          <Menu
-            id="rightMenu"
-            anchorEl={anchorElRight}
-            open={openRightMenu}
-            onClose={handleCloseRight}
-            MenuListProps={{
-              'aria-labelledby': 'rightMenu',
-            }}
-          >
-            {' '}
-            <MenuItem
-              onClick={() => {
-                handleCloseRight();
-                setLoginModalOpen('open');
-              }}
-              aria-label="Log in"
-            >
-              Zaloguj
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                handleCloseRight();
-                setRegisterModalOpen('open');
-              }}
-              aria-label="Register"
-            >
-              Zarejestruj
-            </MenuItem>
-            <MenuItem onClick={logout} aria-label="Register">
-              Wyloguj
-            </MenuItem>
-          </Menu>
+          {isAuthenticated ? (
+            <AuthedRightMenu
+              anchorElRight={anchorElRight}
+              openRightMenu={openRightMenu}
+              handleCloseRight={handleCloseRight}
+              handleLogout={handleLogout}
+              handleReservationsClicked={handleReservationsClicked}
+              handleYourAccountClicked={handleYourAccountClicked}
+            />
+          ) : (
+            <LogoutRightMenu
+              anchorElRight={anchorElRight}
+              openRightMenu={openRightMenu}
+              handleCloseRight={handleCloseRight}
+              handleLogInClicked={handleLoginClicked}
+              handleRegisterClicked={handleRegisterClicked}
+            />
+          )}
+
           <Menu
             id="leftMenu"
             anchorEl={anchorElLeft}
