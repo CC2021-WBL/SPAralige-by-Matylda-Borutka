@@ -2,6 +2,7 @@ import { getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 
 import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
+import SearchBar from '../../Atoms/SearchBar';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 import { servicesRef } from '../../../Firebase/firebase';
 
@@ -24,6 +25,7 @@ const LandingPage = () => {
             serviceArray.push(convertedData);
           });
           setServiceObjectArray(serviceArray);
+          // console.log(serviceArray);
         }
       } catch (error) {
         console.log(error);
@@ -34,10 +36,13 @@ const LandingPage = () => {
 
   return (
     <main>
+      <SearchBar />
+
       <h1 style={{ textAlign: 'center' }}>SPAralige od Matylde</h1>
       {serviceObjectArray && (
         <ResponsiveGrid serviceObjectArray={serviceObjectArray} />
       )}
+      {/* {console.log(serviceObjectArray)} */}
     </main>
   );
 };
