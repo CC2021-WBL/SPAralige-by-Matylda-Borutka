@@ -1,5 +1,7 @@
-import { Stack, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
+import { Stack, Typography } from '@mui/material';
+
+import { hourButtonTypographyStyle } from './BookingModalStyles';
 
 interface HourButtonProps {
   hour: string;
@@ -8,7 +10,9 @@ interface HourButtonProps {
 const HourButton = (props: HourButtonProps) => {
   return (
     <Stack>
-      <Typography variant="h6">{props.hour}</Typography>
+      <Typography variant="h6" sx={hourButtonTypographyStyle}>
+        {props.hour}
+      </Typography>
     </Stack>
   );
 };

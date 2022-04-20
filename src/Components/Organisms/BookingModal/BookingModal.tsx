@@ -1,26 +1,30 @@
+import Button from '@mui/material/Button';
+import React, { useEffect } from 'react';
 import {
   Box,
-  Typography,
+  Modal,
   Stack,
   ToggleButton,
   ToggleButtonGroup,
-  Modal,
+  Typography,
 } from '@mui/material';
-import React, { useEffect } from 'react';
+
+import CloseIcon from '../LoginForm/CloseIcon';
 import DateButton from './DateButton';
 import HourButton from './HourButton';
-import Button from '@mui/material/Button';
-import CloseIcon from '../LoginForm/CloseIcon';
 import {
+  bookingContainerStyle,
+  headerTypographyStyle,
   hourButtonStyle,
   hourButtonTitleStyle,
+  hourButtonTypographyStyle,
+  modalResTypographyStyle,
   paperStyle,
   stackStyle,
-  style,
 } from './BookingModalStyles';
-import { serviceDataType } from '../../../Types/dbDataTypes';
 import { hourFromString, sevenDays } from './BookingModalAddons';
 import { mockService } from './MockService';
+import { serviceDataType } from '../../../Types/dbDataTypes';
 
 const BookingModal = (prop: {
   serviceObject: serviceDataType;
@@ -106,10 +110,10 @@ const BookingModal = (prop: {
       onClose={prop.handleClose}
       aria-describedby="booking-modal"
     >
-      <Box sx={style}>
+      <Box sx={bookingContainerStyle}>
         <CloseIcon handleClose={prop.handleClose} />
         <Stack spacing={2} sx={stackStyle}>
-          <Typography variant="h4" component="h4">
+          <Typography variant="h5" component="h4" sx={headerTypographyStyle}>
             Wybierz datę i godzinę
           </Typography>
           <Typography variant="h6" component="h6">
@@ -145,9 +149,14 @@ const BookingModal = (prop: {
             value={chosenHourMorning}
             exclusive
             onChange={handleHourMorningChange}
+            sx={{ maxWidth: 'calc(100vw - 10px)' }}
           >
             <ToggleButton value={'LOL'} disabled sx={hourButtonTitleStyle}>
-              <Typography variant="subtitle1" color="black">
+              <Typography
+                variant="subtitle1"
+                color="black"
+                sx={{ ...hourButtonTypographyStyle }}
+              >
                 PORANEK
               </Typography>
             </ToggleButton>
@@ -167,7 +176,11 @@ const BookingModal = (prop: {
             onChange={handleHourAfternoonChange}
           >
             <ToggleButton value={'LOL'} disabled sx={hourButtonTitleStyle}>
-              <Typography variant="subtitle1" color="black">
+              <Typography
+                variant="subtitle1"
+                color="black"
+                sx={{ ...hourButtonTypographyStyle }}
+              >
                 POPOPŁUDNIE
               </Typography>
             </ToggleButton>
@@ -190,7 +203,11 @@ const BookingModal = (prop: {
             onChange={handleHourEveningChange}
           >
             <ToggleButton value={'LOL'} disabled sx={hourButtonTitleStyle}>
-              <Typography variant="subtitle1" color="black">
+              <Typography
+                variant="subtitle1"
+                color="black"
+                sx={{ ...hourButtonTypographyStyle }}
+              >
                 WIECZÓR
               </Typography>
             </ToggleButton>
@@ -215,11 +232,22 @@ const BookingModal = (prop: {
               sx={{ padding: '1rem' }}
             >
               <Stack>
-                <Typography variant="h4">{service}</Typography>
+                <Typography variant="h5" sx={modalResTypographyStyle}>
+                  {service}
+                </Typography>
               </Stack>
               <Stack>
-                <Typography variant="h4">{price.toFixed(2)} PLN</Typography>
-                <Typography variant="h5">
+                <Typography
+                  variant="h5"
+                  sx={{ ...modalResTypographyStyle, textAlign: 'right' }}
+                >
+                  {price.toFixed(2)} PLN
+                </Typography>
+
+                <Typography
+                  variant="h6"
+                  sx={{ ...modalResTypographyStyle, textAlign: 'right' }}
+                >
                   {chosenDate.toLocaleDateString('pl', {
                     weekday: 'long',
                   })}
@@ -239,7 +267,7 @@ const BookingModal = (prop: {
           <Button
             variant="contained"
             size="large"
-            sx={{ minWidth: 200, height: 50, borderRadius: 50 }}
+            sx={{ minWidth: 200, borderRadius: 50 }}
             aria-label="make reservation"
             onClick={() => {
               console.log({
