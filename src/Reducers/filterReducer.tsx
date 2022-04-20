@@ -1,28 +1,83 @@
 // interface StateType {}
 
+import { serviceDataType } from '../Types/dbDataTypes';
+
 interface ActionType {
   type: string;
-  payload: any;
+  payload: {
+    services: string[];
+    maxPrice: number;
+    minPrice: number;
+    therapists: string[];
+  };
 }
 
-export const filterReducer = (state: any, action: ActionType) => {
+export const filterReducer = (
+  state: serviceDataType[] | null,
+  action: ActionType,
+): serviceDataType[] | null => {
   switch (action.type) {
-      case 'FILTER_SERVICES_TYPES':
-          const filteredTypes = state.filter((service) => {
-              return service.
-          })
-      break;
+    case 'FILTER_SERVICES_TYPES': {
+      if (!state) {
+        return null;
+      }
+      if ('services' in action.payload) {
+        const filteredTypes = state.filter((service) => {
+          action.payload.services.forEach((category) => {
+            if (service.filterCategory === category) {
+              return service;
+            }
+          });
+        });
+        return filteredTypes;
+      } else {
+        return state;
+      }
+    }
 
-    case 'FILTER_PRICE':
-      break;
+    case 'FILTER_PRICE': {
+      if (!state) {
+        return null;
+      }
+      if (action.payload.maxPrice && action.payload.minPrice) {
+        const filteredTypes = state.filter((service) => {
+          if (
+            service.priceInZloty <= action.payload.maxPrice &&
+            service.priceInZloty >= action.payload.minPrice
+          )
+            return service;
+        });
 
-    case 'FILTER_THERAPISTS':
-      break;
+        return filteredTypes;
+      }
+      return state;
+    }
+
+    case 'FILTER_THERAPISTS': {
+      if (!state) {
+        return null;
+      }
+      const filteredTypes = state.filter((service) => {
+        action.payload.therapists.forEach((therapist) => {
+          if (service.therapistFullName === therapist) {
+            return service;
+          }
+        });
+      });
+      return filteredTypes;
+    }
 
     case 'FILTER_AVAILABILITY':
-      break;
+      return state;
 
-    default:
-      break;
+    case 'NO_FILTER':
+      return state;
+
+    default: {
+      if (!state) {
+        return null;
+      }
+      return state;
+    }
   }
 };

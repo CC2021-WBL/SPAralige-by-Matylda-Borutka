@@ -7,12 +7,7 @@ import ErrorFallback from './Components/PagesBody/ErrorFallback/ErrorFallback';
 import LandingPage from './Components/PagesBody/LandingPage/LandingPage';
 import Layout from './Components/Template/Layout/Layout';
 import ReservationsPage from './Components/PagesBody/ReservationsPage/ReservationsPage';
-import ResponsiveDrawerCopy from './Components/PagesBody/ServicesPage/ResponsiveDrawerCopy';
 import ServicesPage from './Components/PagesBody/ServicesPage/ServicesPage';
-
-// import ResponsiveDrawer from './Components/PagesBody/ServicesPage/ResponsiveDrawer';
-
-
 
 function App() {
   return (
@@ -25,7 +20,6 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/account" element={<AccountPage />} />
             <Route path="/reservations" element={<ReservationsPage />} />
-            <Route path="/burger" element={<ResponsiveDrawerCopy />} />
           </Route>
         </Routes>
       </ErrorBoundary>

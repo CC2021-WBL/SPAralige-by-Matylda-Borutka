@@ -1,39 +1,126 @@
-import { Box, Button, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
-import PermanentFilterDrawer from '../../Organisms/Burger/PermanentFilterDrawer';
+import Burger, { BurgerProp } from '../../Organisms/Burger/Burger';
+import { useEffect, useReducer, useState } from 'react';
+
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
-import TemporaryFilterDrawer from '../../Organisms/Burger/TemporaryFilterDrawer';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import { bodyPage } from '../../../Tools/htmlElements';
+import { filterReducer } from '../../../Reducers/filterReducer';
 import { getAllServices } from '../../../Firebase/queries';
+import { getDataForBurgerFromServices } from '../../../Tools/burgerHelperTools';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 
-const ServicesPage = () => {
+const drawerWidth = '22.5rem';
+
+type ForBurgerTypes = Omit<BurgerProp, 'handleFilter' | 'handleClose'>;
+
+export default function ServicesPage() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [services, setServices] = useState<serviceDataType[] | null>(null);
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+  const [filterState, filterDispatch] = useReducer(filterReducer, services);
+  const [serviceBurgerData, setServiceBurgerData] =
+    useState<ForBurgerTypes | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       const gettedServices = await getAllServices();
       setServices(gettedServices);
+      if (gettedServices) {
+        const dataForBurger = getDataForBurgerFromServices(gettedServices);
+        setServiceBurgerData(dataForBurger);
+      }
     };
     fetchData();
   }, []);
   console.log(services);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  const container = bodyPage();
+  //window !== undefined ? () => window().document.body : undefined;
+
   return (
-    <Box>
-      <Box sx={{ display: 'flex' }}>
-        <TemporaryFilterDrawer
-          mobileOpen={mobileOpen}
-          handleDrawerToggle={handleDrawerToggle}
-        />
-        <PermanentFilterDrawer />
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+
+      <Box
+        component="nav"
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        aria-label="services filters"
+      >
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true,
+          }}
+          sx={{
+            display: { xs: 'block', sm: 'none' },
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
+              width: drawerWidth,
+            },
+          }}
+        >
+          <Burger
+            handleClose={handleDrawerToggle}
+            therapists={serviceBurgerData?.therapists}
+            servicesData={serviceBurgerData?.servicesData}
+            maxPrice={serviceBurgerData?.maxPrice}
+          />
+        </Drawer>
+        <Drawer
+          container={document.getElementById('body-page')}
+          variant="permanent"
+          sx={{
+            display: { xs: 'none', sm: 'block' },
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
+              width: drawerWidth,
+            },
+          }}
+          open
+        >
+          <Burger
+            therapists={serviceBurgerData?.therapists}
+            servicesData={serviceBurgerData?.servicesData}
+            maxPrice={serviceBurgerData?.maxPrice}
+          />
+        </Drawer>
       </Box>
-      <Box>
-        <Typography variant="h4">TU BĘDZIE SEARCHBAR</Typography>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+        }}
+      >
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: 'none' } }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h4">SEARCH BAR</Typography>
+        </Toolbar>
         {services &&
           services.map((service) => (
             <ServiceCard key={service.id} serviceObject={service} />
@@ -41,6 +128,4 @@ const ServicesPage = () => {
       </Box>
     </Box>
   );
-};
-
-export default ServicesPage;
+}
