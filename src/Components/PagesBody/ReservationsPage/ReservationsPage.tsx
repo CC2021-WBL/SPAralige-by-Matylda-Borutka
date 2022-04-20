@@ -42,7 +42,6 @@ const ReservationsPage = () => {
             orderBy('serviceDate', 'desc'),
           ),
         );
-        console.log(snapshot);
         const reservationsArr = createReservationArray(snapshot);
         setReservations(reservationsArr);
       } catch (error) {

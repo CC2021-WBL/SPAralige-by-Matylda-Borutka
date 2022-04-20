@@ -188,6 +188,16 @@ const NavBar = () => {
               'aria-labelledby': 'rightMenu',
             }}
           >
+            {' '}
+            <MenuItem
+              onClick={() => {
+                handleCloseRight();
+                setLoginModalOpen('open');
+              }}
+              aria-label="Log in"
+            >
+              Zaloguj
+            </MenuItem>
             <MenuItem
               onClick={() => {
                 handleCloseRight();
@@ -197,7 +207,7 @@ const NavBar = () => {
             >
               Zarejestruj
             </MenuItem>
-            <MenuItem onClick={logout} aria-label="Logout">
+            <MenuItem onClick={logout} aria-label="Register">
               Wyloguj
             </MenuItem>
           </Menu>
