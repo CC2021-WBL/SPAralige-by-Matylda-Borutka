@@ -1,5 +1,4 @@
-import { Box, Grid, Typography, autocompleteClasses } from '@mui/material';
-import { flexbox } from '@mui/system';
+import { Box, Grid, Typography } from '@mui/material';
 
 import GraphicAbout from '../../../Assets/graphic-aboutUS.png';
 
@@ -10,10 +9,19 @@ const AboutPage = () => {
         <Grid item xs={12} md={7} marginRight={2}>
           {' '}
           <Box>
-            <Typography paddingTop={8} variant="h2">
+            <Typography
+              paddingTop={8}
+              variant="h2"
+              sx={{ fontSize: { xs: '3rem', md: '4rem' } }}
+            >
               Gabinet SPAralige
             </Typography>
-            <Typography variant="h3">by Matylda Borutka</Typography>
+            <Typography
+              variant="h3"
+              sx={{ fontSize: { xs: '1.5rem', md: '3rem' } }}
+            >
+              by Matylda Borutka
+            </Typography>
             <Typography paddingTop={2} paddingRight={10} variant="body1">
               Gabinet Sparalige działa już do wielu lat. Od momentu założenia
               zadbaliśmy o kondycje tysięcy naszych klientów.{' '}
@@ -49,7 +57,7 @@ const AboutPage = () => {
             src={GraphicAbout}
           />
         </Grid>
-        <Grid container>
+        <Grid container marginTop={2}>
           <Grid
             margin={1}
             md={4}
