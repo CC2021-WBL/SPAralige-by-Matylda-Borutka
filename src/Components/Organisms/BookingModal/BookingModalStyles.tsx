@@ -7,13 +7,14 @@ export const headerTypographyStyle = {
 export const paperStyle = {
   width: 60,
   height: 120,
+  borderRadius: 3,
   '@media screen and (min-width: 600px)': {
     width: 95,
     height: 140,
     padding: 4,
     borderRadius: 4,
   },
-  '@media screen and (min-width: 970px)': {
+  '@media screen and (min-width: 900px)': {
     width: 140,
     height: 140,
     padding: 4,
@@ -24,7 +25,7 @@ export const hourButtonStyle = {
   width: 60,
   height: 23,
   padding: 2,
-  borderRadius: 4,
+  borderRadius: 3,
   '@media screen and (min-width: 600px)': {
     width: 80,
     padding: 3,
@@ -35,7 +36,7 @@ export const hourButtonTitleStyle = {
   width: 120,
   height: 23,
   padding: 2,
-  borderRadius: 4,
+  borderRadius: 3,
   '@media screen and (min-width: 600px)': {
     width: 180,
     padding: 3,
@@ -54,21 +55,29 @@ export const bookingContainerStyle = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: '90vw',
-  maxWidth: 1168,
+  maxWidth: '22.1875rem',
   height: 'fit-content',
   overflow: 'auto',
   maxHeight: 'calc(100vh - 1.25rem)',
   bgcolor: 'background.paper',
   boxShadow: 24,
   p: 3,
+  '@media screen and (min-width: 600px)': {
+    maxWidth: '35.3125rem',
+  },
+  '@media screen and (min-width: 900px)': {
+    maxWidth: '52.1875rem',
+  },
 };
 
 export const stackStyle = {
   border: 'none',
   alignItems: 'center',
+
   gap: '0.1875rem',
   '@media screen and (min-width: 600px)': {
     gap: '0.3125rem',
+    maxWidth: '52.1875rem',
   },
 };
 
