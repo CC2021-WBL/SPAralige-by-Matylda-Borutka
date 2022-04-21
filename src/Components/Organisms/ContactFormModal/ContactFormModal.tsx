@@ -106,7 +106,7 @@ const ContactFormModal = (prop: { open: boolean; handleClose: () => void }) => {
                   component={TextField}
                   name="message"
                   type="message"
-                  label="Message"
+                  label="Wiadomość"
                   fullWidth
                   multiline
                   rows={5}
