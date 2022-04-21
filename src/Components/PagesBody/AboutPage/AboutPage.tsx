@@ -1,4 +1,5 @@
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography, autocompleteClasses } from '@mui/material';
+import { flexbox } from '@mui/system';
 
 import GraphicAbout from '../../../Assets/graphic-aboutUS.png';
 
@@ -28,16 +29,23 @@ const AboutPage = () => {
             </Typography>
           </Box>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid
+          item
+          xs={12}
+          md={4}
+          sx={{
+            height: { xs: '50%', md: '100%' },
+            width: { xs: '50%', md: '100%' },
+          }}
+        >
           <Box
-            component="img"
             sx={{
-              marginTop: 3,
-
-              height: '100%',
-              width: '100%',
+              marginLeft: '20%',
+              height: { xs: '50%', md: '100%' },
+              width: { xs: '50%', md: '100%' },
             }}
-            alt="relaxed woman."
+            component="img"
+            alt="exercising woman"
             src={GraphicAbout}
           />
         </Grid>
@@ -48,15 +56,15 @@ const AboutPage = () => {
             xs={12}
             item
             sx={{
-              border: '1px',
+              border: '0.0625rem',
               borderStyle: 'solid',
-              borderRadius: '8px',
+              borderRadius: '0.5rem',
               borderColor: '#999999',
             }}
             padding={3}
             textAlign={'center'}
           >
-            <Typography variant="h6">Adres: </Typography>
+            <Typography sx={{ fontSize: '1.25rem' }}>Adres: </Typography>
 
             <Typography>Adres Sparalige by Matylda Borutka</Typography>
             <Typography> ul. Tęczowa 12/13</Typography>
@@ -68,15 +76,17 @@ const AboutPage = () => {
             md={3}
             item
             sx={{
-              border: '1px',
+              border: '0.0625rem',
               borderStyle: 'solid',
-              borderRadius: '8px',
+              borderRadius: '0.5rem',
               borderColor: '#999999',
             }}
             padding={3}
             textAlign={'center'}
           >
-            <Typography variant="h6">Dane kontaktowe: </Typography>
+            <Typography sx={{ fontSize: '1.25rem' }}>
+              Dane kontaktowe:{' '}
+            </Typography>
             <Typography>mail@matyldab.pl</Typography>
             <Typography> tel: 555 555 555</Typography>
           </Grid>
@@ -86,15 +96,15 @@ const AboutPage = () => {
             md={4}
             item
             sx={{
-              border: '1px',
+              border: '0.0625rem',
               borderStyle: 'solid',
-              borderRadius: '8px',
+              borderRadius: '0.5rem',
               borderColor: '#999999',
             }}
             padding={3}
             textAlign={'center'}
           >
-            <Typography variant="h6">Dane Firmy:</Typography>
+            <Typography sx={{ fontSize: '1.25rem' }}>Dane Firmy:</Typography>
             <Typography>NIP: 555 5555 5555 555</Typography>
             <Typography>REGON: 666 6666 666</Typography>
             <Typography>KRS: 000024994</Typography>
