@@ -37,7 +37,7 @@ const LandingPage = () => {
   return (
     <main>
       <MainGraphic />
-      <Typography variant="subtitle1" sx={{ paddingTop: '24px' }}>
+      <Typography variant="subtitle1" sx={{ paddingTop: '1.5rem' }}>
         Popularne zabiegi
       </Typography>
       {serviceObjectArray && (
