@@ -11,13 +11,13 @@ const AboutPage = () => {
       <h1>Tu będą informacje o nas</h1>
       <TextCard />
       <Button
-        variant="contained"
+        variant="outlined"
         onClick={() => {
           setContactFormModalOpen('open');
         }}
         aria-label="Contact Form"
       >
-        CONTACT FORM
+        Napisz do nas
       </Button>
       {contactFormModalOpen == 'open' && (
         <ContactFormModal
