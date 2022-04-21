@@ -149,7 +149,7 @@ const BookingModal = (prop: {
             value={chosenHourMorning}
             exclusive
             onChange={handleHourMorningChange}
-            sx={{ maxWidth: 'calc(100vw - 10px)' }}
+            sx={{ maxWidth: 'calc(100vw - 10px)', alignSelf: 'flex-start' }}
           >
             <ToggleButton value={'LOL'} disabled sx={hourButtonTitleStyle}>
               <Typography color="black" sx={{ ...hourButtonTypographyStyle }}>
@@ -170,6 +170,7 @@ const BookingModal = (prop: {
             value={chosenHourAfternoon}
             exclusive
             onChange={handleHourAfternoonChange}
+            sx={{ alignSelf: 'flex-start' }}
           >
             <ToggleButton value={'LOL'} disabled sx={hourButtonTitleStyle}>
               <Typography
@@ -197,6 +198,7 @@ const BookingModal = (prop: {
             value={chosenHourEvening}
             exclusive
             onChange={handleHourEveningChange}
+            sx={{ alignSelf: 'flex-start' }}
           >
             <ToggleButton value={'LOL'} disabled sx={hourButtonTitleStyle}>
               <Typography
@@ -218,8 +220,9 @@ const BookingModal = (prop: {
           <Box
             sx={{
               width: '100%',
+              maxWidth: '835px',
               border: '1px solid rgba(0, 0, 0, 0.12)',
-              borderRadius: '1rem',
+              borderRadius: 3,
             }}
           >
             <Stack
