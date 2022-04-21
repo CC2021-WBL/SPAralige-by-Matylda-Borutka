@@ -1,5 +1,3 @@
-import Button from '@mui/material/Button';
-import React, { useEffect } from 'react';
 import {
   Box,
   Modal,
@@ -8,10 +6,9 @@ import {
   ToggleButtonGroup,
   Typography,
 } from '@mui/material';
-
-import CloseIcon from '../LoginForm/CloseIcon';
-import DateButton from './DateButton';
-import HourButton from './HourButton';
+import { FullTimetableType, TimetableType } from './BookingModalTypes';
+import React, { useEffect, useState } from 'react';
+import { Timestamp, getDocs, query, where } from 'firebase/firestore';
 import {
   bookingContainerStyle,
   headerTypographyStyle,
@@ -23,8 +20,14 @@ import {
   stackStyle,
 } from './BookingModalStyles';
 import { hourFromString, sevenDays } from './BookingModalAddons';
+
+import Button from '@mui/material/Button';
+import CloseIcon from '../LoginForm/CloseIcon';
+import DateButton from './DateButton';
+import HourButton from './HourButton';
 import { mockService } from './MockService';
 import { serviceDataType } from '../../../Types/dbDataTypes';
+import { timetablesRef } from '../../../Firebase/firebase';
 
 const BookingModal = (prop: {
   serviceObject: serviceDataType;
@@ -38,6 +41,9 @@ const BookingModal = (prop: {
   const [chosenHourMorning, setChosenHourMorning] = React.useState('');
   const [chosenHourAfternoon, setChosenHourAfternoon] = React.useState('');
   const [chosenHourEvening, setChosenHourEvening] = React.useState('');
+  const [timetablesFromDB, setTimetablesFromDB] = useState<FullTimetableType[]>(
+    [],
+  );
   const [hoursOfService, sethoursOfService] = React.useState<string[]>([
     '10:00',
     '11:00',
@@ -52,6 +58,35 @@ const BookingModal = (prop: {
     setService(prop.serviceObject.name);
     setPrice(prop.serviceObject.priceInZloty);
   });
+
+  useEffect(() => {
+    async function fetchTimetablesfromDB() {
+      const queryRef = query(
+        timetablesRef,
+        where('serviceId', '==', prop.serviceObject.id),
+      );
+      const snapshot = await getDocs(queryRef);
+      const timetables: FullTimetableType[] = [];
+
+      snapshot.docs.forEach((doc) => {
+        const rawTimetable: TimetableType<Timestamp> = {
+          ...doc.data(),
+          timetableId: doc.id,
+        };
+        if (rawTimetable.day && rawTimetable.hoursOfService) {
+          const timetable: FullTimetableType = {
+            day: rawTimetable.day.toDate(),
+            hoursOfService: rawTimetable.hoursOfService,
+            timetableId: rawTimetable.timetableId,
+          };
+          timetables.push(timetable);
+        }
+      });
+      setTimetablesFromDB(timetables);
+    }
+
+    fetchTimetablesfromDB();
+  }, []);
 
   const handleDayChange = (
     event: React.MouseEvent<HTMLElement>,
@@ -93,15 +128,20 @@ const BookingModal = (prop: {
   }, [chosenDateNumber]);
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const hoursOfServiceFromMock = mockService.timetables.find(
-      (timeInfo) =>
-        timeInfo.day.getFullYear() === chosenDate.getFullYear() &&
-        timeInfo.day.getMonth() === chosenDate.getMonth() &&
-        timeInfo.day.getDate() === chosenDate.getDate(),
-    ).hoursOfService;
-    sethoursOfService(hoursOfServiceFromMock);
+    if (timetablesFromDB.length > 0) {
+      const hoursOfServiceFromMock = timetablesFromDB.find(
+        (timeInfo) =>
+          timeInfo.day.getFullYear() === chosenDate.getFullYear() &&
+          timeInfo.day.getMonth() === chosenDate.getMonth() &&
+          timeInfo.day.getDate() === chosenDate.getDate(),
+      ).hoursOfService;
+      console.log(hoursOfServiceFromMock);
+      sethoursOfService(hoursOfServiceFromMock);
+    }
+
+    return () => {
+      // second
+    };
   }, [chosenDate]);
 
   return (
