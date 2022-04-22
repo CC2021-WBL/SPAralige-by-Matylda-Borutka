@@ -187,6 +187,7 @@ const BookingModal = (prop: {
             await updateDoc(timetableRef, {
               hoursOfService: changedArray,
             });
+            prop.handleClose();
           }
         } catch (error: any) {
           alert(error.message);
