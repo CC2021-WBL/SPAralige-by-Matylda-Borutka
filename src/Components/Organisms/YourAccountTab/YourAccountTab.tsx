@@ -1,10 +1,14 @@
 import * as Yup from 'yup';
+import React, { useState } from 'react';
 import { Box, Stack } from '@mui/material';
 import { ErrorMessage, Field, Form, Formik, useFormik } from 'formik';
-import { useState } from 'react';
 
 import BasicSelect from './BasicSelect';
 import FormCard from './FormCard';
+
+// TODO: user info will be fetched from context
+// const { state } = useContext(UserDataContext);
+// const { userId } = state;
 
 // =========== header ============ //
 type HeaderPropTypes = {
@@ -19,12 +23,12 @@ const Header = (prop: HeaderPropTypes) => {
 };
 
 const YourAccountFrame = () => {
-  const [formMode, setFormMode] = useState('display');
-  const clickHandler = (e) => {
-    console.log(e.target.className);
-    formMode == 'display' && setFormMode('edit');
-    formMode == 'edit' && setFormMode('display');
-  };
+  const [toggleName, setToggleName] = React.useState<boolean>(false);
+  const [toggleEmail, setToggleEmail] = React.useState<boolean>(false);
+  const [togglePassword, setTogglePassword] = React.useState<boolean>(false);
+
+  // console.log(toggleName, toggleEmail, togglePassword);
+
   const formik = useFormik({
     initialValues: {
       name: 'Katarynka',
@@ -36,40 +40,49 @@ const YourAccountFrame = () => {
     },
   });
   return (
-    <div className="yourAccountFrame" style={{ outline: '3px dotted red' }}>
+    <div className="yourAccountFrame" style={{ outline: '1px solid red' }}>
       <Header text="Twoje dane" />
       <FormCard
         title="imię"
         name="name"
         id="name"
-        mode={formMode}
+        toggleName={toggleName}
         placeholder="imię"
         initialValues={formik.initialValues}
         onSubmit={formik.handleSubmit}
-        onClick={clickHandler}
+        onClick={() => {
+          setToggleName(!toggleName), console.log('name clicked');
+        }}
         type="text"
+        text="zmień imię"
       />
       <FormCard
         title="email"
         name="email"
         id="email"
-        mode={formMode}
+        toggleEmail={toggleEmail}
         placeholder="email"
         initialValues={formik.initialValues}
         onSubmit={formik.handleSubmit}
-        onClick={clickHandler}
+        onClick={() => {
+          setToggleEmail(!toggleEmail), console.log('email clicked');
+        }}
         type="email"
+        text="zmień email"
       />
       <FormCard
         title="hasło"
         name="password"
         id="password"
-        mode={formMode}
+        togglePassword={togglePassword}
         placeholder="hasło"
         initialValues={formik.initialValues}
         onSubmit={formik.handleSubmit}
-        onClick={clickHandler}
-        type="text"
+        onClick={() => {
+          setTogglePassword(!togglePassword), console.log('pass clicked');
+        }}
+        type="password"
+        text="zmień hasło"
       />
     </div>
   );
