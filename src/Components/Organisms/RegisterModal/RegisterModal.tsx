@@ -1,5 +1,4 @@
 import * as Yup from 'yup';
-
 import {
   Box,
   Button,
@@ -10,14 +9,14 @@ import {
 } from '@mui/material';
 import { CheckboxWithLabel, TextField } from 'formik-mui';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
-import { AuthModalPropTypes } from '../../../Types/loginOrRegisterTypes';
 import ClosingIcon from '../LoginForm/CloseIcon';
 import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
 import FormTitle from '../Form/FormTitle';
 import SignOrResetLink from '../LoginForm/SignOrResetLink';
+import { AuthModalPropTypes } from '../../../Types/loginOrRegisterTypes';
 import { auth } from '../../../Firebase/firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 const RegisterValidation = Yup.object().shape({
   email: Yup.string()
@@ -50,6 +49,8 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
           bgcolor: '#FFFFFF',
           width: '31.25rem',
           height: 'fit-content',
+          maxHeight: '98vh',
+          overflow: 'auto',
           padding: ['2.5rem', '2.125rem'],
           '@media screen and (max-width: 600px)': {
             width: '19.625rem',
@@ -95,7 +96,6 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
                   name="email"
                   type="email"
                   label="Email"
-                  // validate={validateEmail}
                 />
                 <Field
                   component={TextField}
@@ -128,6 +128,7 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
                   color="primary"
                   disabled={isSubmitting}
                   onClick={submitForm}
+                  sx={{ height: '2.9375rem' }}
                 >
                   Zarejestruj się
                 </Button>

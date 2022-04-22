@@ -1,5 +1,7 @@
 import * as React from 'react';
-
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import MenuIcon from '@mui/icons-material/Menu';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import {
   AppBar,
   Avatar,
@@ -9,21 +11,18 @@ import {
   MenuItem,
   Toolbar,
 } from '@mui/material';
+import { Menu } from '@mui/material';
 import { NavLink as RouterLink, useNavigate } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { useState } from 'react';
 
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AuthedRightMenu from './AuthedRightMenu';
-import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
 import LoginModal from '../../Organisms/LoginForm/LoginModal';
 import LogoutRightMenu from './LogoutRightMenu';
-import { Menu } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import RegisterModal from '../../Organisms/RegisterModal/RegisterModal';
 import SPALogoNav from '../../../Assets/SPA-Logo-Nav.svg';
+import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
 import { auth } from '../../../Firebase/firebase';
-import { useState } from 'react';
 
 const LinkStyle = {
   userSelect: 'none',
@@ -105,7 +104,7 @@ const NavBar = () => {
     <AppBar
       position="static"
       sx={{
-        height: '80px',
+        height: '5rem',
         m: 0,
         p: 0,
         justifyContent: 'center',
@@ -115,7 +114,7 @@ const NavBar = () => {
       <Toolbar variant="regular" sx={{ bgcolor: 'none' }}>
         {/* // note no color stated */}
         <Container
-          style={{ padding: '0', maxWidth: '1152px' }}
+          style={{ padding: '0', maxWidth: '72rem' }}
           sx={{
             m: '0 auto',
             display: 'flex',
