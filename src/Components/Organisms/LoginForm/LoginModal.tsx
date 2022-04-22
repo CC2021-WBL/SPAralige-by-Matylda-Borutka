@@ -1,25 +1,22 @@
 import { Box, Modal, Stack, Typography } from '@mui/material';
-import { useState } from 'react';
 
+import { AuthModalPropTypes } from '../../../Types/loginOrRegisterTypes';
 import ClosingIcon from './CloseIcon';
 import EmailAndPasswordInput from './EmailAndPasswordInput';
 import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
+import FormTitle from '../Form/FormTitle';
+import { HandleInputChangeType } from '../../../Types/EventFunctions';
 import LoginButton from './LoginButton';
 import SignOrResetLink from './SignOrResetLink';
-import { HandleInputChangeType } from '../../../Types/EventFunctions';
-import FormTitle from '../Form/FormTitle';
+import { useState } from 'react';
 
-export default function LoginModal(prop: {
-  open: boolean;
-  handleClose: () => void;
-}) {
+export default function LoginModal(prop: AuthModalPropTypes) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleEmailChange: HandleInputChangeType = (event) => {
     event.preventDefault();
     setEmail(event.target.value);
-    console.log(event.target.value);
   };
 
   const handlePasswordChange: HandleInputChangeType = (event) => {
@@ -62,7 +59,11 @@ export default function LoginModal(prop: {
             handleEmailChange={handleEmailChange}
             handlePasswordChange={handlePasswordChange}
           />
-          <LoginButton email={email} password={password} />
+          <LoginButton
+            email={email}
+            password={password}
+            handleClose={prop.handleClose}
+          />
           <Typography
             variant="body1"
             sx={{
@@ -79,10 +80,12 @@ export default function LoginModal(prop: {
           <SignOrResetLink
             issueText="Nie masz konta? "
             linkText="Zarejestruj się"
+            handleOnClick={prop.handleLoginOrRegisterTransfer}
           />
           <SignOrResetLink
             issueText="Zapomniałeś hasła? "
             linkText="Zresetuj hasło"
+            handleOnClick={prop.handleFrogetPasswordTransfer}
           />
         </Stack>
       </Box>

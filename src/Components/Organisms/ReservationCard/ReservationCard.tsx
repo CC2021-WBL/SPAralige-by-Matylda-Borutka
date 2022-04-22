@@ -5,7 +5,7 @@ import {
 } from '../../../Tools/timeFunctions';
 
 import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
-import { generateDateProps } from '../../../Tools/reservationCardTools';
+import { generateDateProps } from '../../../Tools/reservationTools';
 
 export type ReservationCardTypes = {
   serviceName: string;
