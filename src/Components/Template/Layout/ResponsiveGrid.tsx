@@ -6,6 +6,7 @@ import { serviceDataType } from '../../../Types/dbDataTypes';
 
 export default function ResponsiveGrid(prop: {
   serviceObjectArray: serviceDataType[];
+  uid: string | null;
 }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -16,7 +17,7 @@ export default function ResponsiveGrid(prop: {
       >
         {Array.from(prop.serviceObjectArray).map((object, index) => (
           <Grid item xs={12} sm={12} md={6} key={index}>
-            <ServiceCard serviceObject={object} />
+            <ServiceCard serviceObject={object} uid={prop.uid} />
           </Grid>
         ))}
       </Grid>

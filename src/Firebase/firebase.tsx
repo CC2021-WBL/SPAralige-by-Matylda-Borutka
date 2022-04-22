@@ -4,7 +4,6 @@ import {
   getAuth,
 } from 'firebase/auth';
 import { collection, doc, getFirestore } from 'firebase/firestore';
-
 import { getAnalytics } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
 
@@ -48,4 +47,9 @@ export const createUserRef = (userId: string) => {
 export const createServiceRef = (serviceId: string) => {
   const serviceRef = doc(db, 'services', serviceId);
   return serviceRef;
+};
+
+export const createTimetableRef = (timetableId: string) => {
+  const timetableRef = doc(db, 'timetables', timetableId);
+  return timetableRef;
 };
