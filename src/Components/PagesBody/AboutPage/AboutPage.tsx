@@ -61,7 +61,7 @@ const AboutPage = () => {
             src={GraphicAbout}
           />
         </Grid>
-        <Grid container marginTop={2}>
+        <Grid container marginTop={2} sx={{ justifyContent: 'center' }}>
           <Grid
             margin={1}
             md={4}
