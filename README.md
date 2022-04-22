@@ -67,8 +67,8 @@ co to obedience? https://johndog.pl/blog/zyciezpsem/obi-ogole-znaczy/
 
 FRONTEND
 
+- Java Script
 - React
-- Firebase
 - Figma
 - React Router
 - Responsywność
@@ -76,17 +76,17 @@ FRONTEND
 - Atomic Design
 - By nasz kod był lepszej jakości, bardziej uporządkowany i czytelniejszy,
   używaliśmy eslint, prettier
-- Wiadomość z formularza kontaktowego pojawi się na mailu dzięki emailJS
 - Testowaliśmy aplikację przy użyciu RTL oraz Jest
 - Ikonki wstawiliśmy dzięki Font Awesome oraz React Icons
 - Pomocne okazały się również wtyczki do VSC- sort-imports oraz 'px to rem'
-- Kontrola nad propsami- propTypes
-- React hook form - do obłsugi formularzy
+- Kontrola nad propsami - Type Script propTypes
+- Formik - do obłsugi formularzy
 
 BACKEND
 
 ? heroku
 ? husky
+- Firebase
 - node
   backendzie
 - base64url
@@ -129,6 +129,7 @@ wsparcie ♥
 ![obraz](https://user-images.githubusercontent.com/96307488/164760161-5c5eb203-52d6-49d7-bfd5-e635144ba688.png)
 ![obraz](https://user-images.githubusercontent.com/96307488/164760210-1b1dc4ee-e26c-49af-a973-738c76919403.png)
 ![obraz](https://user-images.githubusercontent.com/96307488/164760294-92cbe8cd-d772-461f-bdb6-97c7fe079075.png)
+![obraz](https://user-images.githubusercontent.com/96307488/164762383-6935731d-cea0-4c17-a679-6dd239589841.png)
 
 
 
