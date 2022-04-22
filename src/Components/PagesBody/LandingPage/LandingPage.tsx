@@ -41,7 +41,7 @@ const LandingPage = () => {
         sx={{
           fontSize: '16',
           paddingTop: '1.5rem',
-          marginBottom: '10px',
+          marginBottom: '0.625rem',
           fontWeight: 'bold',
         }}
       >
