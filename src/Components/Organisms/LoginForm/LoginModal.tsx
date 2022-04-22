@@ -4,22 +4,19 @@ import { useState } from 'react';
 import ClosingIcon from './CloseIcon';
 import EmailAndPasswordInput from './EmailAndPasswordInput';
 import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
+import FormTitle from '../Form/FormTitle';
 import LoginButton from './LoginButton';
 import SignOrResetLink from './SignOrResetLink';
+import { AuthModalPropTypes } from '../../../Types/loginOrRegisterTypes';
 import { HandleInputChangeType } from '../../../Types/EventFunctions';
-import FormTitle from '../Form/FormTitle';
 
-export default function LoginModal(prop: {
-  open: boolean;
-  handleClose: () => void;
-}) {
+export default function LoginModal(prop: AuthModalPropTypes) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleEmailChange: HandleInputChangeType = (event) => {
     event.preventDefault();
     setEmail(event.target.value);
-    console.log(event.target.value);
   };
 
   const handlePasswordChange: HandleInputChangeType = (event) => {
@@ -42,6 +39,7 @@ export default function LoginModal(prop: {
           bgcolor: '#FFFFFF',
           width: '31.25rem',
           height: '40.813rem',
+          maxHeight: '98vh',
           padding: ['2.5rem', '2.125rem'],
           '@media screen and (max-width: 600px)': {
             width: '19.625rem',
@@ -49,7 +47,7 @@ export default function LoginModal(prop: {
           },
         }}
       >
-        <Stack spacing={'1.4375rem'}>
+        <Stack spacing={'1.25rem'}>
           <ClosingIcon handleClose={prop.handleClose} />
           <FormTitle
             aria-label="Sign in to SPAralige"
@@ -62,7 +60,11 @@ export default function LoginModal(prop: {
             handleEmailChange={handleEmailChange}
             handlePasswordChange={handlePasswordChange}
           />
-          <LoginButton email={email} password={password} />
+          <LoginButton
+            email={email}
+            password={password}
+            handleClose={prop.handleClose}
+          />
           <Typography
             variant="body1"
             sx={{
@@ -79,10 +81,12 @@ export default function LoginModal(prop: {
           <SignOrResetLink
             issueText="Nie masz konta? "
             linkText="Zarejestruj się"
+            handleOnClick={prop.handleLoginOrRegisterTransfer}
           />
           <SignOrResetLink
             issueText="Zapomniałeś hasła? "
             linkText="Zresetuj hasło"
+            handleOnClick={prop.handleFrogetPasswordTransfer}
           />
         </Stack>
       </Box>

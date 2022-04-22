@@ -1,9 +1,9 @@
 import { Button, Stack } from '@mui/material';
 
 import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
+import { loginOrRegisterOptions } from '../../../Types/loginOrRegisterTypes';
 import { loginWithFacebook } from '../../../Firebase/facebookLogin';
 import { loginWithGoogle } from '../../../Firebase/googleLogin';
-import { loginOrRegisterOptions } from '../../../Types/loginOrRegisterTypes';
 
 function FacebookAndGoogleBox({ loginOrRegister }: loginOrRegisterOptions) {
   const onGoogleClick: HandleOnClickButtonType = async (event) => {
@@ -38,7 +38,7 @@ function FacebookAndGoogleBox({ loginOrRegister }: loginOrRegisterOptions) {
         onClick={onGoogleClick}
       >
         {loginOrRegister === 'register' && 'ZAREJESTRUJ'}
-        {loginOrRegister === 'login' && 'ZALOGUJ'} SIĘ PRZEZ KONTO GOOGLE
+        {loginOrRegister === 'login' && 'ZALOGUJ'} SIĘ PRZEZ GOOGLE
       </Button>
     </Stack>
   );

@@ -36,6 +36,7 @@ export const facebookProvider = new FacebookAuthProvider();
 // collection ref
 export const servicesRef = collection(db, 'services');
 export const reservationsRef = collection(db, 'reservations');
+export const usersRef = collection(db, 'users');
 
 //document ref
 export const createUserRef = (userId: string) => {
