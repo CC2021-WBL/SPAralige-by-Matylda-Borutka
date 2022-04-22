@@ -15,6 +15,7 @@ import { Menu } from '@mui/material';
 import { NavLink as RouterLink, useNavigate } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import AuthedRightMenu from './AuthedRightMenu';
 import LoginModal from '../../Organisms/LoginForm/LoginModal';
@@ -57,7 +58,7 @@ const NavBar = () => {
   const [registerModalOpen, setRegisterModalOpen] = useState('closed');
   const openRightMenu = Boolean(anchorElRight);
   const openLeftMenu = Boolean(anchorElLeft);
-
+  const { t } = useTranslation('navFooter');
   const handleClickRight = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorElRight(event.currentTarget);
   };
@@ -174,7 +175,7 @@ const NavBar = () => {
               tabIndex={0}
               aria-label="services"
             >
-              NASZE ZABIEGI
+              {t('nav1').toUpperCase()}
             </Link>
             <Link
               component={RouterLink}
@@ -185,7 +186,7 @@ const NavBar = () => {
               tabIndex={0}
               aria-label="about"
             >
-              O NAS
+              {t('nav2').toUpperCase()}
             </Link>
           </Container>
           <IconButton
@@ -240,7 +241,7 @@ const NavBar = () => {
               }}
               aria-label="Services Catalogue"
             >
-              Katalog zabiegów
+              {t('nav1')}
             </MenuItem>
             <MenuItem
               onClick={() => {
@@ -249,7 +250,7 @@ const NavBar = () => {
               }}
               aria-label="About Us"
             >
-              O nas
+              {t('nav2')}
             </MenuItem>
           </Menu>
           {loginModalOpen == 'open' && (

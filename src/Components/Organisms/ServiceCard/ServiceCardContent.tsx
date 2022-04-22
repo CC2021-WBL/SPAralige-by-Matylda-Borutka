@@ -12,9 +12,6 @@ const ServiceCardContent = (prop: {
 }) => {
   const { t, i18n } = useTranslation('services');
 
-  console.log(prop.serviceObject);
-  console.log(i18n.language);
-
   return (
     <CardContent className={prop.className} sx={contentContainerStyles}>
       <Typography
