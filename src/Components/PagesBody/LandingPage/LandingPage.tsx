@@ -37,7 +37,16 @@ const LandingPage = () => {
   return (
     <main>
       <MainGraphic />
-      <Typography variant="subtitle1">Popularne zabiegi</Typography>
+      <Typography
+        sx={{
+          fontSize: '16',
+          paddingTop: '1.5rem',
+          marginBottom: '0.625rem',
+          fontWeight: 'bold',
+        }}
+      >
+        Popularne zabiegi
+      </Typography>
       {serviceObjectArray && (
         <ResponsiveGrid serviceObjectArray={serviceObjectArray} />
       )}
