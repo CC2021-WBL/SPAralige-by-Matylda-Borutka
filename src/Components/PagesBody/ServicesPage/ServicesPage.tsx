@@ -94,7 +94,7 @@ export default function ServicesPage() {
               boxSizing: 'border-box',
               width: drawerWidth,
               backgroundColor: 'red',
-              paddingTop: '80px',
+              paddingTop: '5rem',
             },
           }}
         >
@@ -109,7 +109,7 @@ export default function ServicesPage() {
         component="main"
         sx={{
           flexGrow: 1,
-          p: '24px 0',
+          p: '1.5rem 0',
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
@@ -119,7 +119,7 @@ export default function ServicesPage() {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ mr: 2, display: { md: 'none' } }}
           >
             <MenuIcon />
           </IconButton>

@@ -1,5 +1,5 @@
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Button, Stack, Typography } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 
 type propType = {
   handleClose: () => void;
@@ -9,11 +9,9 @@ function CloseFiltersButton(prop: propType) {
   return (
     <Stack
       direction="row"
-      justifyContent="flex-end"
+      justifyContent="center"
       sx={{
         marginTop: '1.5625rem',
-        marginRight: '2.0625rem',
-        marginBottom: '2.1875rem',
       }}
     >
       <Button
