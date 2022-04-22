@@ -10,7 +10,7 @@ const ServiceCardContent = (prop: {
   serviceObject: serviceDataType;
   className?: string;
 }) => {
-  const { i18n } = useTranslation('navFooter');
+  const { t, i18n } = useTranslation('services');
 
   console.log(prop.serviceObject);
   console.log(i18n.language);
@@ -24,18 +24,23 @@ const ServiceCardContent = (prop: {
         className={prop.className}
         sx={contentContainerStyles}
       >
-        {prop.serviceObject.name}
+        {/* {prop.serviceObject.name} */}
 
         {/* {localStorage.getItem('i18nextLng') === 'pl-PL' &&
-          localStorage.setItem('i18nextLng', 'pl')}
-  {i18n.language === 'pl-PL' && window.location.reload()*/}
+          localStorage.setItem('i18nextLng', 'pl')} */}
+        {/*{i18n.language === 'pl-PL' && window.location.reload()*/}
 
-        {/* {prop.serviceObject.text2[i18n.language]} */}
+        {prop.serviceObject.name[i18n.language]}
       </Typography>
+
+      {/* {t('footer.about')} */}
       {prop.className === 'modal-service' && (
         <Typography gutterBottom color="text.disabled">
-          {`Rodzaj zabiegu: ${prop.serviceObject.type}`}
-          {/* {i18n.language === 'pl' ? <p>aaa</p> : <p>fff</p>} */}
+          {/* {  t('services.type')}  */}
+          {/* {t('footer.about')} */}
+          {/* {prop.serviceObject.type} */}
+          {/* {t('footer.about')} */}
+          {`${t('type')}: ${prop.serviceObject.type2[i18n.language]}`}
         </Typography>
       )}
       <Stack direction="row" spacing={2} sx={{ paddingBottom: '0.625rem' }}>
@@ -76,7 +81,8 @@ const ServiceCardContent = (prop: {
         className={prop.className}
         sx={contentTextStyles}
       >
-        {prop.serviceObject.description}
+        {/* {prop.serviceObject.description} */}
+        {prop.serviceObject.description[i18n.language]}
       </Typography>
     </CardContent>
   );

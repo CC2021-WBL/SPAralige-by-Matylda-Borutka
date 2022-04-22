@@ -10,10 +10,11 @@
     "price": "Price",
     "from": "from",
     "to": "to",
-    "rehabilitator": "rehabilitator",
+    "therapist": "Therapist",
     "availability": "availability"
   },
   "placeholder": "Search for service",
   "more": "More information",
-  "reservation": "Book the service"
+  "reservation": "Book the service",
+  "type": "Type of service"
 }

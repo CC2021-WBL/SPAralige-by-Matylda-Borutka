@@ -12,6 +12,7 @@ import {
 import CloseIcon from '../LoginForm/CloseIcon';
 import DateButton from './DateButton';
 import HourButton from './HourButton';
+import i18n from '../../../i18n';
 import {
   bookingContainerStyle,
   headerTypographyStyle,
@@ -45,11 +46,17 @@ const BookingModal = (prop: {
     '13:00',
     '14:00',
   ]);
-  const [service, setService] = React.useState(prop.serviceObject.name);
+  const [service, setService] = React.useState(
+    // prop.serviceObject.name
+    prop.serviceObject.name[i18n.language],
+  );
   const [price, setPrice] = React.useState(prop.serviceObject.priceInZloty);
 
   useEffect(() => {
-    setService(prop.serviceObject.name);
+    setService(
+      // prop.serviceObject.name
+      prop.serviceObject.name[i18n.language],
+    );
     setPrice(prop.serviceObject.priceInZloty);
   });
 

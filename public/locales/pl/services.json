@@ -10,10 +10,11 @@
     "price": "Cena",
     "from": "od",
     "to": "do",
-    "rehabilitator": "rehabilitant",
+    "therapist": "Rehabilitant",
     "availability": "dostępność"
   },
   "placeholder": "Szukaj zabiegu",
   "more": "Więcej szczegółów",
-  "reservation": "Rezerwuj zabieg"
+  "reservation": "Rezerwuj zabieg",
+  "type": "Rodzaj zabiegu"
 }
