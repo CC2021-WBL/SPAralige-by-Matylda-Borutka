@@ -33,9 +33,7 @@ export const googleProvider = new GoogleAuthProvider();
 export const facebookProvider = new FacebookAuthProvider();
 
 // collection ref
-// export const servicesRef = collection(db, 'test');
 export const servicesRef = collection(db, 'services2');
-// export const servicesRef = collection(db, 'services');
 export const reservationsRef = collection(db, 'reservations');
 export const usersRef = collection(db, 'users');
 
@@ -47,6 +45,8 @@ export const createUserRef = (userId: string) => {
 
 export const createServiceRef = (serviceId: string) => {
   const serviceRef = doc(db, 'services', serviceId);
+
+  //you will probably need it
   // const serviceRef = doc(db, 'services2', serviceId);
   return serviceRef;
 };

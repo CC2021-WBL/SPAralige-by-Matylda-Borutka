@@ -54,10 +54,7 @@ const ServiceCard = (prop: {
           component="img"
           height="210"
           image={imgUrl}
-          alt={
-            // prop.serviceObject.altText
-            prop.serviceObject.altText2[i18n.language]
-          }
+          alt={prop.serviceObject.altText2[i18n.language]}
         />
         <ServiceCardContent serviceObject={prop.serviceObject} />
         <ServiceCardActions

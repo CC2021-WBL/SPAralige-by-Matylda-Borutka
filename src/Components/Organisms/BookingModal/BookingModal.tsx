@@ -47,16 +47,12 @@ const BookingModal = (prop: {
     '14:00',
   ]);
   const [service, setService] = React.useState(
-    // prop.serviceObject.name
     prop.serviceObject.name[i18n.language],
   );
   const [price, setPrice] = React.useState(prop.serviceObject.priceInZloty);
 
   useEffect(() => {
-    setService(
-      // prop.serviceObject.name
-      prop.serviceObject.name[i18n.language],
-    );
+    setService(prop.serviceObject.name[i18n.language]);
     setPrice(prop.serviceObject.priceInZloty);
   });
 

@@ -101,8 +101,8 @@ const ServiceDetailsModal = (prop: {
             >
               {therapistObject &&
                 `
-                ${t('drawer.therapist')}:  
-                ${therapistObject.firstname} 
+                ${t('drawer.therapist')}:
+                ${therapistObject.firstname}
                 ${therapistObject.surname}
                 `}
             </Typography>
@@ -114,9 +114,6 @@ const ServiceDetailsModal = (prop: {
               component="div"
               sx={modalShortBioStyles}
             >
-              {/* {therapistObject && 
-                therapistObject.shortBio} */}
-
               {therapistObject && therapistObject.shortBio[i18n.language]}
             </Typography>
           </Stack>

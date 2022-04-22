@@ -24,22 +24,12 @@ const ServiceCardContent = (prop: {
         className={prop.className}
         sx={contentContainerStyles}
       >
-        {/* {prop.serviceObject.name} */}
-
-        {/* {localStorage.getItem('i18nextLng') === 'pl-PL' &&
-          localStorage.setItem('i18nextLng', 'pl')} */}
-        {/*{i18n.language === 'pl-PL' && window.location.reload()*/}
-
         {prop.serviceObject.name[i18n.language]}
       </Typography>
 
       {/* {t('footer.about')} */}
       {prop.className === 'modal-service' && (
         <Typography gutterBottom color="text.disabled">
-          {/* {  t('services.type')}  */}
-          {/* {t('footer.about')} */}
-          {/* {prop.serviceObject.type} */}
-          {/* {t('footer.about')} */}
           {`${t('type')}: ${prop.serviceObject.type2[i18n.language]}`}
         </Typography>
       )}
@@ -81,7 +71,6 @@ const ServiceCardContent = (prop: {
         className={prop.className}
         sx={contentTextStyles}
       >
-        {/* {prop.serviceObject.description} */}
         {prop.serviceObject.description[i18n.language]}
       </Typography>
     </CardContent>

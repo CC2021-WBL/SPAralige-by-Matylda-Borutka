@@ -23,8 +23,6 @@ const ServiceCardActions = (prop: actionsProps) => {
             prop.handleOpenDetails();
           }}
         >
-          {/* Więcej Szczegółów */}
-          {/* {t('footer.about')} */}
           {t('more')}
         </Button>
       )}
@@ -41,7 +39,6 @@ const ServiceCardActions = (prop: actionsProps) => {
           prop.handleOpen();
         }}
       >
-        {/* Rezerwuj Zabieg */}
         {t('reservation')}
       </Button>
     </CardActions>
