@@ -1,24 +1,24 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import Burger, { BurgerProp } from '../../Organisms/Burger/Burger';
-import { useEffect, useReducer, useState } from 'react';
-
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { useEffect, useReducer, useState } from 'react';
+
+import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
+import Burger, { BurgerProp } from '../../Organisms/Burger/Burger';
 import { bodyPage } from '../../../Tools/htmlElements';
 import { filterReducer } from '../../../Reducers/filterReducer';
 import { getAllServices } from '../../../Firebase/queries';
 import { getDataForBurgerFromServices } from '../../../Tools/burgerHelperTools';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 
-const drawerWidth = '22.5rem';
+const drawerWidth = '21rem';
 
 type ForBurgerTypes = Omit<BurgerProp, 'handleFilter' | 'handleClose'>;
 
@@ -56,7 +56,11 @@ export default function ServicesPage() {
 
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{
+          display: { sm: 'none', md: 'block' },
+          width: { sm: drawerWidth },
+          flexShrink: { sm: 0 },
+        }}
         aria-label="services filters"
       >
         <Drawer
@@ -68,7 +72,6 @@ export default function ServicesPage() {
             keepMounted: true,
           }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth,
@@ -82,30 +85,31 @@ export default function ServicesPage() {
             maxPrice={serviceBurgerData?.maxPrice}
           />
         </Drawer>
-        <Drawer
-          container={document.getElementById('body-page')}
-          variant="permanent"
+        <Box
           sx={{
-            display: { xs: 'none', sm: 'block' },
+            position: 'relative',
+            zIndex: '0',
+            display: { xs: 'none', md: 'block' },
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth,
+              backgroundColor: 'red',
+              paddingTop: '80px',
             },
           }}
-          open
         >
           <Burger
             therapists={serviceBurgerData?.therapists}
             servicesData={serviceBurgerData?.servicesData}
             maxPrice={serviceBurgerData?.maxPrice}
           />
-        </Drawer>
+        </Box>
       </Box>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          p: 3,
+          p: '24px 0',
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >

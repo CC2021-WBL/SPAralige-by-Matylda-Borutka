@@ -5,6 +5,7 @@ import {
   FormGroup,
   FormLabel,
 } from '@mui/material';
+
 import { burgerCheckboxStyle, checkboxControlLabelStyle } from './BurgerStyles';
 
 export interface ServicesFilterType {
@@ -13,8 +14,8 @@ export interface ServicesFilterType {
 }
 
 type propType = {
-  servicesDataArr: ServicesFilterType[]
-}
+  servicesDataArr: ServicesFilterType[];
+};
 
 function ServiceTypesFilter(prop: propType) {
   return (
