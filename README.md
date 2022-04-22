@@ -122,15 +122,7 @@ Chcieliśmy serdecznie podziękować naszej mentorce
 wsparcie ♥
 
 ### Screeny
-
-![obraz](https://user-images.githubusercontent.com/96307488/164759988-10b59c58-4e10-46a4-b1b2-c0302af71902.png)
-![obraz](https://user-images.githubusercontent.com/96307488/164760064-c4e71721-ee17-43f7-bfb9-5be570e60c5e.png)
-![obraz](https://user-images.githubusercontent.com/96307488/164760102-63866c65-4f88-41d4-a2f1-f8591b48d296.png)
-![obraz](https://user-images.githubusercontent.com/96307488/164760161-5c5eb203-52d6-49d7-bfd5-e635144ba688.png)
-![obraz](https://user-images.githubusercontent.com/96307488/164760210-1b1dc4ee-e26c-49af-a973-738c76919403.png)
-![obraz](https://user-images.githubusercontent.com/96307488/164760294-92cbe8cd-d772-461f-bdb6-97c7fe079075.png)
-![obraz](https://user-images.githubusercontent.com/96307488/164762383-6935731d-cea0-4c17-a679-6dd239589841.png)
-
-
+![obraz](https://user-images.githubusercontent.com/96307488/164764435-5af08111-e0a4-436a-a0ab-a18be5df78f9.png)
+![obraz](https://user-images.githubusercontent.com/96307488/164764508-d47cb6db-64b6-44c5-b788-04bbc0bb32e6.png)
 
 
