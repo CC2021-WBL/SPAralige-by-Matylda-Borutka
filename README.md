@@ -122,7 +122,5 @@ Chcieliśmy serdecznie podziękować naszej mentorce
 wsparcie ♥
 
 ### Screeny
-![obraz](https://user-images.githubusercontent.com/96307488/164764435-5af08111-e0a4-436a-a0ab-a18be5df78f9.png)
-![obraz](https://user-images.githubusercontent.com/96307488/164764508-d47cb6db-64b6-44c5-b788-04bbc0bb32e6.png)
 
 
