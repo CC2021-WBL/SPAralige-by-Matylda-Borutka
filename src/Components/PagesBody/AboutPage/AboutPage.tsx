@@ -1,8 +1,12 @@
 import { Box, Grid, Typography } from '@mui/material';
+import { Button } from '@mui/material';
+import { useState } from 'react';
 
+import ContactFormModal from '../../Organisms/ContactFormModal/ContactFormModal';
 import GraphicAbout from '../../../Assets/graphic-aboutUS.png';
 
 const AboutPage = () => {
+  const [contactFormModalOpen, setContactFormModalOpen] = useState('closed');
   return (
     <main>
       <Grid container>
@@ -119,6 +123,23 @@ const AboutPage = () => {
           </Grid>
         </Grid>
       </Grid>
+      <Button
+        variant="outlined"
+        onClick={() => {
+          setContactFormModalOpen('open');
+        }}
+        aria-label="Contact Form"
+      >
+        Napisz do nas
+      </Button>
+      {contactFormModalOpen == 'open' && (
+        <ContactFormModal
+          open
+          handleClose={() => {
+            setContactFormModalOpen('closed');
+          }}
+        />
+      )}
     </main>
   );
 };
