@@ -101,6 +101,18 @@ const AboutPage = () => {
             </Typography>
             <Typography>mail@matyldab.pl</Typography>
             <Typography> tel: 555 555 555</Typography>
+            <Typography>
+              <Button
+                variant="outlined"
+                onClick={() => {
+                  setContactFormModalOpen('open');
+                }}
+                aria-label="Contact Form"
+                sx={{ marginTop: '0.625rem' }}
+              >
+                Napisz do nas
+              </Button>
+            </Typography>
           </Grid>
           <Grid
             margin={1}
@@ -123,15 +135,6 @@ const AboutPage = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Button
-        variant="outlined"
-        onClick={() => {
-          setContactFormModalOpen('open');
-        }}
-        aria-label="Contact Form"
-      >
-        Napisz do nas
-      </Button>
       {contactFormModalOpen == 'open' && (
         <ContactFormModal
           open
