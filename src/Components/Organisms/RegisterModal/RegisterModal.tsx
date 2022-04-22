@@ -9,19 +9,21 @@ import {
 } from '@mui/material';
 import { CheckboxWithLabel, TextField } from 'formik-mui';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
-import ClosingIcon from '../../Organisms/LoginForm/CloseIcon';
+import ClosingIcon from '../LoginForm/CloseIcon';
 import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
-import FormTitle from '../../Organisms/Form/FormTitle';
-import SignOrResetLink from '../../Organisms/LoginForm/SignOrResetLink';
+import FormTitle from '../Form/FormTitle';
+import SignOrResetLink from '../LoginForm/SignOrResetLink';
+import { AuthModalPropTypes } from '../../../Types/loginOrRegisterTypes';
+import { auth } from '../../../Firebase/firebase';
 
 const RegisterValidation = Yup.object().shape({
-  name: Yup.string().required('Nazwa użytkownika jest wymagana'),
   email: Yup.string()
     .required('Adres e-mail wymagany')
     .email('Niepoprawny adres e-mail'),
   password: Yup.string()
-    .min(4, 'Hasło musi składać się z conajmniej 4 znaków')
+    .min(6, 'Hasło musi składać się z conajmniej 6 znaków')
     .required('Hasło jest wymagane'),
   confirmPassword: Yup.string()
     .required('Wpisz hasło')
@@ -31,7 +33,7 @@ const RegisterValidation = Yup.object().shape({
     .oneOf([true], '* Warunki użytkowania muszę zostać zaakceptowane.'),
 });
 
-const RegisterModal = (prop: { open: boolean; handleClose: () => void }) => {
+const RegisterModal = (prop: AuthModalPropTypes) => {
   return (
     <Modal
       open={prop.open}
@@ -59,19 +61,26 @@ const RegisterModal = (prop: { open: boolean; handleClose: () => void }) => {
         <ClosingIcon handleClose={prop.handleClose} />
         <Formik
           initialValues={{
-            name: '',
             email: '',
             password: '',
             confirmPassword: '',
             termsOfService: false,
           }}
           validationSchema={RegisterValidation}
-          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              setSubmitting(false);
-              const data = JSON.stringify(values, null, 2);
-              console.log(data);
-            }, 500);
+          onSubmit={async (values, { setSubmitting }) => {
+            setSubmitting(false);
+            try {
+              const credentialObj = await createUserWithEmailAndPassword(
+                auth,
+                values.email,
+                values.password,
+              );
+              console.log(credentialObj.user);
+              alert('Rejestracja udana');
+              prop.handleClose();
+            } catch (error: any) {
+              alert(error.message);
+            }
           }}
         >
           {({ submitForm, isSubmitting }) => (
@@ -81,12 +90,6 @@ const RegisterModal = (prop: { open: boolean; handleClose: () => void }) => {
                   aria-label="Sign in to SPAralige"
                   text1="Witamy w SPAralige!"
                   text2="Uzupełnij formularz aby założyć konto."
-                />
-                <Field
-                  component={TextField}
-                  name="name"
-                  type="name"
-                  label="Nazwa użytkownika"
                 />
                 <Field
                   component={TextField}
@@ -142,20 +145,15 @@ const RegisterModal = (prop: { open: boolean; handleClose: () => void }) => {
                   lub
                 </Typography>
                 <FacebookAndGoogleBox loginOrRegister="register" />
-                <Typography align="center">
-                  Masz już konto ?
-                  <Button
-                    onClick={() => {
-                      prop.handleClose();
-                    }}
-                    sx={{ textTransform: 'none', fontSize: '1rem' }}
-                  >
-                    Zaloguj się
-                  </Button>
-                </Typography>
+                <SignOrResetLink
+                  issueText="Masz już konto?"
+                  linkText="Zaloguj się"
+                  handleOnClick={prop.handleLoginOrRegisterTransfer}
+                />
                 <SignOrResetLink
                   issueText="Zapomniałeś hasła? "
                   linkText="Zresetuj hasło"
+                  handleOnClick={prop.handleFrogetPasswordTransfer}
                 />
               </Stack>
             </Form>

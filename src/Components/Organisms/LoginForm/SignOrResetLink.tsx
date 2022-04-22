@@ -1,4 +1,4 @@
-import { Link, Stack, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 
 import { SignOrResetPropType } from './LoginTypes';
 
@@ -10,19 +10,22 @@ function SignOrResetLink(prop: SignOrResetPropType) {
         sx={{
           fontSize: '0.9rem',
           letterSpacing: '0.15px',
+          paddingTop: '0.375rem',
         }}
       >
         {prop.issueText}
-        <Link
-          role="link"
-          aria-label={`link to ${prop.linkText}`}
-          underline="none"
-          sx={{ cursor: 'pointer' }}
-          tabIndex={0}
-        >
-          {prop.linkText}
-        </Link>
       </Typography>
+      <Button
+        variant="text"
+        aria-label={`send to ${prop.linkText}`}
+        sx={{
+          cursor: 'pointer',
+        }}
+        tabIndex={0}
+        onClick={prop.handleOnClick}
+      >
+        {prop.linkText}
+      </Button>
     </Stack>
   );
 }

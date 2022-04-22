@@ -1,4 +1,5 @@
 import * as React from 'react';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MenuIcon from '@mui/icons-material/Menu';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import {
@@ -12,11 +13,16 @@ import {
 } from '@mui/material';
 import { Menu } from '@mui/material';
 import { NavLink as RouterLink, useNavigate } from 'react-router-dom';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useState } from 'react';
 
+import AuthedRightMenu from './AuthedRightMenu';
 import LoginModal from '../../Organisms/LoginForm/LoginModal';
-import RegisterModal from '../../PagesBody/RegisterPage/RegisterModal';
+import LogoutRightMenu from './LogoutRightMenu';
+import RegisterModal from '../../Organisms/RegisterModal/RegisterModal';
 import SPALogoNav from '../../../Assets/SPA-Logo-Nav.svg';
+import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
+import { auth } from '../../../Firebase/firebase';
 
 const LinkStyle = {
   userSelect: 'none',
@@ -32,11 +38,14 @@ const LinkRespoStyle = {
 };
 
 const NavBar = () => {
-  //
-  // const { state } = useContext(UserDataContext);
-  // const { isAuthenticated } = state;
-  //
-  const isAuthenticated = ''; // temporary manually assigned const in order to simulate user not logged in
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  onAuthStateChanged(auth, (currentUser) => {
+    if (currentUser) {
+      setIsAuthenticated(true);
+    }
+  });
+
   const navigate = useNavigate();
   const [anchorElRight, setAnchorElRight] = React.useState<null | HTMLElement>(
     null,
@@ -62,6 +71,35 @@ const NavBar = () => {
     setAnchorElRight(null);
   };
 
+  const handleLoginClicked: HandleOnClickButtonType = (event) => {
+    event.preventDefault();
+    handleCloseRight();
+    setLoginModalOpen('open');
+  };
+
+  const handleRegisterClicked: HandleOnClickButtonType = (event) => {
+    event.preventDefault();
+    handleCloseRight();
+    setRegisterModalOpen('open');
+  };
+
+  const handleReservationsClicked: HandleOnClickButtonType = (event) => {
+    event.preventDefault();
+    handleCloseRight();
+    navigate('/reservations');
+  };
+
+  const handleYourAccountClicked: HandleOnClickButtonType = (event) => {
+    event.preventDefault();
+    handleCloseRight();
+    navigate('/reservations');
+  };
+
+  async function handleLogout() {
+    await signOut(auth);
+    handleCloseRight();
+    setIsAuthenticated(false);
+  }
   return (
     <AppBar
       position="static"
@@ -161,41 +199,31 @@ const NavBar = () => {
           >
             {isAuthenticated ? (
               <Avatar sx={{ display: { xs: 'flex', sm: 'flex' } }}>
-                {/* TODO: {userName[0], userSurname[0]} */}
-                MB
+                <AccountCircleIcon fontSize="large" />
               </Avatar>
             ) : (
               <MoreVertIcon />
             )}
           </IconButton>
-          <Menu
-            id="rightMenu"
-            anchorEl={anchorElRight}
-            open={openRightMenu}
-            onClose={handleCloseRight}
-            MenuListProps={{
-              'aria-labelledby': 'rightMenu',
-            }}
-          >
-            <MenuItem
-              onClick={() => {
-                handleCloseRight();
-                setLoginModalOpen('open');
-              }}
-              aria-label="Log in"
-            >
-              Zaloguj
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                handleCloseRight();
-                setRegisterModalOpen('open');
-              }}
-              aria-label="Register"
-            >
-              Zarejestruj
-            </MenuItem>
-          </Menu>
+          {isAuthenticated ? (
+            <AuthedRightMenu
+              anchorElRight={anchorElRight}
+              openRightMenu={openRightMenu}
+              handleCloseRight={handleCloseRight}
+              handleLogout={handleLogout}
+              handleReservationsClicked={handleReservationsClicked}
+              handleYourAccountClicked={handleYourAccountClicked}
+            />
+          ) : (
+            <LogoutRightMenu
+              anchorElRight={anchorElRight}
+              openRightMenu={openRightMenu}
+              handleCloseRight={handleCloseRight}
+              handleLogInClicked={handleLoginClicked}
+              handleRegisterClicked={handleRegisterClicked}
+            />
+          )}
+
           <Menu
             id="leftMenu"
             anchorEl={anchorElLeft}
@@ -230,12 +258,26 @@ const NavBar = () => {
               handleClose={() => {
                 setLoginModalOpen('closed');
               }}
+              handleFrogetPasswordTransfer={() => {
+                setLoginModalOpen('closed');
+              }}
+              handleLoginOrRegisterTransfer={() => {
+                setLoginModalOpen('closed');
+                setRegisterModalOpen('open');
+              }}
             />
           )}
           {registerModalOpen == 'open' && (
             <RegisterModal
               open
               handleClose={() => {
+                setRegisterModalOpen('closed');
+              }}
+              handleLoginOrRegisterTransfer={() => {
+                setRegisterModalOpen('closed');
+                setLoginModalOpen('open');
+              }}
+              handleFrogetPasswordTransfer={() => {
                 setRegisterModalOpen('closed');
               }}
             />
