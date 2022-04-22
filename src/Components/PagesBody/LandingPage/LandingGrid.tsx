@@ -15,6 +15,7 @@ export default function LandingGrid(prop: {
         columns={{ xs: 12, sm: 12, md: 12 }}
       >
         {Array.from(prop.serviceObjectArray)
+          .sort(() => 0.5 - Math.random())
           .slice(0, 2)
           .map((object, index) => (
             <Grid item xs={12} sm={12} md={6} key={index}>
