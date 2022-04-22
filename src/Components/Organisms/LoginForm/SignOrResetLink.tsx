@@ -8,7 +8,7 @@ function SignOrResetLink(prop: SignOrResetPropType) {
       <Typography
         variant="subtitle1"
         sx={{
-          fontSize: '0.9375rem',
+          fontSize: '0.9rem',
           letterSpacing: '0.15px',
           paddingTop: '0.375rem',
         }}

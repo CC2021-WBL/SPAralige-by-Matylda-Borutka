@@ -1,14 +1,14 @@
 import { Box, Modal, Stack, Typography } from '@mui/material';
+import { useState } from 'react';
 
-import { AuthModalPropTypes } from '../../../Types/loginOrRegisterTypes';
 import ClosingIcon from './CloseIcon';
 import EmailAndPasswordInput from './EmailAndPasswordInput';
 import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
 import FormTitle from '../Form/FormTitle';
-import { HandleInputChangeType } from '../../../Types/EventFunctions';
 import LoginButton from './LoginButton';
 import SignOrResetLink from './SignOrResetLink';
-import { useState } from 'react';
+import { AuthModalPropTypes } from '../../../Types/loginOrRegisterTypes';
+import { HandleInputChangeType } from '../../../Types/EventFunctions';
 
 export default function LoginModal(prop: AuthModalPropTypes) {
   const [email, setEmail] = useState('');
@@ -39,6 +39,7 @@ export default function LoginModal(prop: AuthModalPropTypes) {
           bgcolor: '#FFFFFF',
           width: '31.25rem',
           height: '40.813rem',
+          maxHeight: '98vh',
           padding: ['2.5rem', '2.125rem'],
           '@media screen and (max-width: 600px)': {
             width: '19.625rem',
@@ -46,7 +47,7 @@ export default function LoginModal(prop: AuthModalPropTypes) {
           },
         }}
       >
-        <Stack spacing={'1.4375rem'}>
+        <Stack spacing={'1.25rem'}>
           <ClosingIcon handleClose={prop.handleClose} />
           <FormTitle
             aria-label="Sign in to SPAralige"
