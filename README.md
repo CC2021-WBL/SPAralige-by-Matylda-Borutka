@@ -123,8 +123,13 @@ wsparcie ♥
 
 ### Screeny
 
-![Android Small - 1](https://user-images.githubusercontent.com/56206231/153416062-cb61f9d8-7a6e-4d58-a3cf-cb8f90e2c87a.png)
-![Android Small - 2](https://user-images.githubusercontent.com/56206231/153416232-81c9572f-5db0-46e7-b753-42d43b1a366e.png)
-![Android Small - 3](https://user-images.githubusercontent.com/56206231/153416254-d6f6088f-7d26-402b-9c49-df2325f50148.png)
-![Android Small - 4](https://user-images.githubusercontent.com/56206231/153416296-e6ca69c7-1117-4eb4-9694-59e83bc1cbba.png)
-![Android Small - 5](https://user-images.githubusercontent.com/56206231/153416312-babefb6e-1f63-446c-8781-e9e93bf6a340.png)
+![obraz](https://user-images.githubusercontent.com/96307488/164759988-10b59c58-4e10-46a4-b1b2-c0302af71902.png)
+![obraz](https://user-images.githubusercontent.com/96307488/164760064-c4e71721-ee17-43f7-bfb9-5be570e60c5e.png)
+![obraz](https://user-images.githubusercontent.com/96307488/164760102-63866c65-4f88-41d4-a2f1-f8591b48d296.png)
+![obraz](https://user-images.githubusercontent.com/96307488/164760161-5c5eb203-52d6-49d7-bfd5-e635144ba688.png)
+![obraz](https://user-images.githubusercontent.com/96307488/164760210-1b1dc4ee-e26c-49af-a973-738c76919403.png)
+![obraz](https://user-images.githubusercontent.com/96307488/164760294-92cbe8cd-d772-461f-bdb6-97c7fe079075.png)
+
+
+
+
