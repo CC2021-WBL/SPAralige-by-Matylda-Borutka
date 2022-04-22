@@ -1,7 +1,8 @@
 {
   "nav1": "Nasze zabiegi",
   "nav2": "O nas",
-  "heading": "Popularne zabiegi",
+  "login": "Zaloguj",
+  "register": "Zarejestruj",
   "footer": {
     "about": "O nas",
     "faq": "FAQ",
