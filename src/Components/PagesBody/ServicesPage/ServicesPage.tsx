@@ -88,6 +88,7 @@ export default function ServicesPage() {
         <Box
           sx={{
             position: 'relative',
+            height: 'fit-content',
             zIndex: '0',
             display: { xs: 'none', md: 'block' },
             '& .MuiDrawer-paper': {
