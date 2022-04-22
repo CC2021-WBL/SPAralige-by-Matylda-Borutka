@@ -1,18 +1,19 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { TextField, CheckboxWithLabel } from 'formik-mui';
+import * as Yup from 'yup';
 import {
+  Box,
   Button,
   LinearProgress,
+  Modal,
   Stack,
   Typography,
-  Box,
-  Modal,
 } from '@mui/material';
-import FormTitle from '../../Organisms/Form/FormTitle';
-import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
-import SignOrResetLink from '../../Organisms/LoginForm/SignOrResetLink';
-import * as Yup from 'yup';
+import { CheckboxWithLabel, TextField } from 'formik-mui';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+
 import ClosingIcon from '../../Organisms/LoginForm/CloseIcon';
+import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
+import FormTitle from '../../Organisms/Form/FormTitle';
+import SignOrResetLink from '../../Organisms/LoginForm/SignOrResetLink';
 
 const RegisterValidation = Yup.object().shape({
   name: Yup.string().required('Nazwa użytkownika jest wymagana'),
@@ -46,6 +47,8 @@ const RegisterModal = (prop: { open: boolean; handleClose: () => void }) => {
           bgcolor: '#FFFFFF',
           width: '31.25rem',
           height: 'fit-content',
+          maxHeight: '98vh',
+          overflow: 'auto',
           padding: ['2.5rem', '2.125rem'],
           '@media screen and (max-width: 600px)': {
             width: '19.625rem',
@@ -84,14 +87,12 @@ const RegisterModal = (prop: { open: boolean; handleClose: () => void }) => {
                   name="name"
                   type="name"
                   label="Nazwa użytkownika"
-                  // validate={validateName}
                 />
                 <Field
                   component={TextField}
                   name="email"
                   type="email"
                   label="Email"
-                  // validate={validateEmail}
                 />
                 <Field
                   component={TextField}
@@ -124,6 +125,7 @@ const RegisterModal = (prop: { open: boolean; handleClose: () => void }) => {
                   color="primary"
                   disabled={isSubmitting}
                   onClick={submitForm}
+                  sx={{ height: '2.9375rem' }}
                 >
                   Zarejestruj się
                 </Button>
@@ -140,10 +142,17 @@ const RegisterModal = (prop: { open: boolean; handleClose: () => void }) => {
                   lub
                 </Typography>
                 <FacebookAndGoogleBox loginOrRegister="register" />
-                <SignOrResetLink
-                  issueText="Masz już konto?"
-                  linkText="Zaloguj się"
-                />
+                <Typography align="center">
+                  Masz już konto ?
+                  <Button
+                    onClick={() => {
+                      prop.handleClose();
+                    }}
+                    sx={{ textTransform: 'none', fontSize: '1rem' }}
+                  >
+                    Zaloguj się
+                  </Button>
+                </Typography>
                 <SignOrResetLink
                   issueText="Zapomniałeś hasła? "
                   linkText="Zresetuj hasło"

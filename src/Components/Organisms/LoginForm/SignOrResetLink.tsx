@@ -8,21 +8,21 @@ function SignOrResetLink(prop: SignOrResetPropType) {
       <Typography
         variant="subtitle1"
         sx={{
-          fontSize: '0.9375rem',
+          fontSize: '0.9rem',
           letterSpacing: '0.15px',
         }}
       >
         {prop.issueText}
+        <Link
+          role="link"
+          aria-label={`link to ${prop.linkText}`}
+          underline="none"
+          sx={{ cursor: 'pointer' }}
+          tabIndex={0}
+        >
+          {prop.linkText}
+        </Link>
       </Typography>
-      <Link
-        role="link"
-        aria-label={`link to ${prop.linkText}`}
-        underline="none"
-        sx={{ cursor: 'pointer' }}
-        tabIndex={0}
-      >
-        {prop.linkText}
-      </Link>
     </Stack>
   );
 }

@@ -15,8 +15,8 @@ import { NavLink as RouterLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 import LoginModal from '../../Organisms/LoginForm/LoginModal';
-import SPALogoNav from '../../../Assets/SPA-Logo-Nav.svg';
 import RegisterModal from '../../PagesBody/RegisterPage/RegisterModal';
+import SPALogoNav from '../../../Assets/SPA-Logo-Nav.svg';
 
 const LinkStyle = {
   userSelect: 'none',
@@ -66,7 +66,7 @@ const NavBar = () => {
     <AppBar
       position="static"
       sx={{
-        height: '80px',
+        height: '5rem',
         m: 0,
         p: 0,
         justifyContent: 'center',
@@ -76,7 +76,7 @@ const NavBar = () => {
       <Toolbar variant="regular" sx={{ bgcolor: 'none' }}>
         {/* // note no color stated */}
         <Container
-          style={{ padding: '0', maxWidth: '1152px' }}
+          style={{ padding: '0', maxWidth: '72rem' }}
           sx={{
             m: '0 auto',
             display: 'flex',

@@ -1,13 +1,13 @@
-import { Box, Modal, Stack, Typography } from '@mui/material';
+import { Box, Button, Modal, Stack, Typography } from '@mui/material';
 import { useState } from 'react';
 
 import ClosingIcon from './CloseIcon';
 import EmailAndPasswordInput from './EmailAndPasswordInput';
 import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
+import FormTitle from '../Form/FormTitle';
 import LoginButton from './LoginButton';
 import SignOrResetLink from './SignOrResetLink';
 import { HandleInputChangeType } from '../../../Types/EventFunctions';
-import FormTitle from '../Form/FormTitle';
 
 export default function LoginModal(prop: {
   open: boolean;
@@ -42,6 +42,7 @@ export default function LoginModal(prop: {
           bgcolor: '#FFFFFF',
           width: '31.25rem',
           height: '40.813rem',
+          maxHeight: '98vh',
           padding: ['2.5rem', '2.125rem'],
           '@media screen and (max-width: 600px)': {
             width: '19.625rem',
@@ -49,7 +50,7 @@ export default function LoginModal(prop: {
           },
         }}
       >
-        <Stack spacing={'1.4375rem'}>
+        <Stack spacing={'1.25rem'}>
           <ClosingIcon handleClose={prop.handleClose} />
           <FormTitle
             aria-label="Sign in to SPAralige"
@@ -76,10 +77,17 @@ export default function LoginModal(prop: {
             lub
           </Typography>
           <FacebookAndGoogleBox loginOrRegister="login" />
-          <SignOrResetLink
-            issueText="Nie masz konta? "
-            linkText="Zarejestruj się"
-          />
+          <Typography align="center" fontSize="0.9rem">
+            Nie masz konta ?
+            <Button
+              onClick={() => {
+                prop.handleClose();
+              }}
+              sx={{ textTransform: 'none' }}
+            >
+              Zarejestruj się
+            </Button>
+          </Typography>
           <SignOrResetLink
             issueText="Zapomniałeś hasła? "
             linkText="Zresetuj hasło"
