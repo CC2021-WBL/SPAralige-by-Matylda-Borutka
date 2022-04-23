@@ -16,6 +16,7 @@ const useStyles = makeStyles({
     color: '#00000094',
     borderRadius: '50%',
     boxShadow: 'none',
+    border: '0.0625rem solid #FFFFFF',
   },
   active: {
     background: '#01579B',
