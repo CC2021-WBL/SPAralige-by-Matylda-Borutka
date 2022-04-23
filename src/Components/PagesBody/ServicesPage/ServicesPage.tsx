@@ -12,6 +12,7 @@ const ServicesPage = () => {
   >(null);
 
   useEffect(() => {
+    console.log(serviceObjectArray);
     const getServiceObjectArray = async () => {
       try {
         const snapshot = await getDocs(servicesRef);
