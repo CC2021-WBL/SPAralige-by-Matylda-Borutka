@@ -1,0 +1,13 @@
+{
+  "welcome": "Welcome in",
+  "heading": "Complete the form to create an account.",
+  "password": "Password",
+  "password2": "Repeat password",
+  "privacy": "I agree to the terms of use of the website",
+  "register": "Register",
+  "or": "or",
+  "account": "Already have an account?",
+  "login": "Log in",
+  "forgot": "Forgot your password?",
+  "reset": "Reset password"
+}

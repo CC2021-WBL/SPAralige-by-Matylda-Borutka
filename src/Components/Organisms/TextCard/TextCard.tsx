@@ -7,6 +7,7 @@ import {
   Typography,
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles({
   card: {
@@ -31,6 +32,7 @@ const useStyles = makeStyles({
 
 const TextCard = () => {
   const classes = useStyles();
+  const { t } = useTranslation('landingPage');
   return (
     <Card className={classes.card} elevation={0}>
       <CardHeader
@@ -42,13 +44,7 @@ const TextCard = () => {
       />
 
       <CardContent>
-        <Typography variant="subtitle2">
-          Nazywam się Matylda Borutka, założyłam własny gabinet 7 lat temu.
-          Sparalige to miejsce wyciszenia i, relaksacji i regeneracji fizycznej
-          i psychicznej. Stawiamy na indywidualne podejście i głębokie
-          rozpoznanie problemu pacjenta. Nie wiesz od czego zacząć? Skontaktuj
-          się ze mną, doradzę:
-        </Typography>
+        <Typography variant="subtitle2">{t('aboutUs.text')}</Typography>
       </CardContent>
 
       <CardActions className={classes.cardActions}>
@@ -58,7 +54,7 @@ const TextCard = () => {
           title="aaa@wp.pl"
           href="mailto:aaa@wp.pl"
         >
-          Napisz maila
+          {t('buttons.mail')}
         </Button>
 
         <Button
@@ -67,7 +63,7 @@ const TextCard = () => {
           title="+48666-666-666"
           href="tel:+48666666666"
         >
-          Zadzwoń
+          {t('buttons.phone')}
         </Button>
       </CardActions>
     </Card>
