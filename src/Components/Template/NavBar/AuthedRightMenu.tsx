@@ -24,12 +24,16 @@ function AuthedRightMenu(prop: RightMenuType) {
         'aria-labelledby': 'rightMenu',
       }}
     >
-      {' '}
       <MenuItem
-        onClick={prop.handleReservationsClicked}
+        // onClick={prop.handleReservationsClicked}
         aria-label="Link to your reservations"
       >
-        {t('account')}
+        <a
+          href="/reservations"
+          style={{ textDecoration: 'none', color: 'inherit' }}
+        >
+          {t('account')}
+        </a>
       </MenuItem>
       {/* <MenuItem
         onClick={prop.handleYourAccountClicked}

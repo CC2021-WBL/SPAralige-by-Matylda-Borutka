@@ -89,8 +89,8 @@ const NavBar = () => {
   const handleReservationsClicked: HandleOnClickButtonType = () => {
     handleCloseRight();
     console.log('reservaition clicked');
-    console.log(navigate);
     navigate('/reservations');
+    console.log(navigate);
   };
 
   const handleYourAccountClicked: HandleOnClickButtonType = () => {
