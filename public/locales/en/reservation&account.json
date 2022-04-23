@@ -4,6 +4,8 @@
   "date": "the date of the service",
   "futureDate": "days to visit",
   "pastDate": "completed visit",
+  "null": "Reservation not made",
+  "notLogin": "Log in to view",
   "edit": "edit",
   "data": "your data",
   "name": "name",

@@ -4,6 +4,8 @@
   "date": "termin zabiegu",
   "futureDate": "dni do wizyty",
   "pastDate": "zrealizowana wizyta",
+  "null": "Nie dokonano rezerwacji",
+  "notLogin": "Zaloguj się żeby wyświetlić",
   "edit": "edytuj",
   "data": "twoje dane",
   "name": "imię",

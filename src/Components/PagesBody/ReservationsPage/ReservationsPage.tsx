@@ -1,20 +1,21 @@
 import { Box, Tab, Tabs, Typography } from '@mui/material';
+import { getDocs, orderBy, query, where } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
+import TabPanel from '../../Organisms/ReservationCard/TabPanel';
 import ReservationCard, {
   ReservationCardTypes,
 } from '../../Organisms/ReservationCard/ReservationCard';
 import { auth, reservationsRef } from '../../../Firebase/firebase';
-import { getDocs, orderBy, query, where } from 'firebase/firestore';
+import { createReservationArray } from '../../../Tools/reservationTools';
 import {
   innerContainerStyle,
   reservationCardsBoxStyle,
   reservationWrapperStyle,
   tabStyle,
 } from './ReservationPageStyles';
-import { useEffect, useState } from 'react';
-
-import TabPanel from '../../Organisms/ReservationCard/TabPanel';
-import { createReservationArray } from '../../../Tools/reservationTools';
-import { onAuthStateChanged } from 'firebase/auth';
 
 const ReservationsPage = () => {
   const [pending, setIsPending] = useState(true);
@@ -56,13 +57,15 @@ const ReservationsPage = () => {
     setValue(newValue);
   };
 
+  const { t } = useTranslation('reservation&account');
   if (!uid) {
     return (
       <main>
-        <h1>Zaloguj się żeby wyświetlić</h1>
+        <h1>{t('notLogin')}</h1>
       </main>
     );
   }
+
   return (
     <main>
       <Box sx={reservationWrapperStyle}>
@@ -73,8 +76,8 @@ const ReservationsPage = () => {
             sx={{ height: '3rem' }}
             aria-label="tabs-to-choose"
           >
-            <Tab sx={tabStyle} label="REZERWACJE" />
-            <Tab sx={tabStyle} label="TWOJE KONTO" />
+            <Tab sx={tabStyle} label={t('title1')} />
+            <Tab sx={tabStyle} label={t('title2')} />
           </Tabs>
           <TabPanel value={value} index={0}>
             <Box sx={reservationCardsBoxStyle}>
@@ -89,7 +92,7 @@ const ReservationsPage = () => {
                   />
                 ))}
               {!pending && !reservations && (
-                <Typography>Nie dokonano rezerwacji</Typography>
+                <Typography>{t('null')}</Typography>
               )}
             </Box>
           </TabPanel>
