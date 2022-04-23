@@ -107,13 +107,14 @@ const NavBar = () => {
   }
   return (
     <AppBar
-      position="static"
+      position="relative"
       sx={{
         height: '5rem',
         m: 0,
         p: 0,
         justifyContent: 'center',
         boxShadow: 'none',
+        zIndex: '100',
       }}
     >
       <Toolbar variant="regular" sx={{ bgcolor: 'none' }}>

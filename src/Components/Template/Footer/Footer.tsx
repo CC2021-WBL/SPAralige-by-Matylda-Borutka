@@ -38,6 +38,7 @@ const Footer = () => {
       sx={{
         backgroundColor: 'primary.main',
         marginTop: '1.5rem',
+        zIndex: '100',
       }}
     >
       <Container
@@ -46,7 +47,7 @@ const Footer = () => {
           display: 'flex',
           justifyContent: 'space-between',
           flexDirection: 'row',
-          height: '17.25rem',
+          height: '12rem',
         }}
       >
         <Stack
@@ -116,7 +117,7 @@ const Footer = () => {
           flexDirection="column"
           alignItems="flex-end"
           justifyContent="space-between"
-          sx={{ marginBottom: '2rem', padding: '1rem 0' }}
+          sx={{ padding: '1rem 0' }}
         >
           <Link
             component={RouterLink}
