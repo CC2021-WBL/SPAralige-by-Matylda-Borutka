@@ -54,6 +54,9 @@ const YourAccountFrame = () => {
       name: Yup.string()
         .max(5, 'imie musi być krótsze')
         .required('wpisz imię i nazwisko'),
+      email: Yup.string()
+        .email('email niepoprawny')
+        .required('wpisz poprawny email'),
     }),
     onSubmit: (v) => {
       console.log(v);
@@ -70,7 +73,7 @@ const YourAccountFrame = () => {
         id="name"
         toggleName={toggleName}
         placeholder="imię"
-        // initialValues={formik.initialValues}
+        initialValues={formik.initialValues}
         onChange={formik.handleChange}
         value={formik.values.name}
         onSubmit={formik.handleSubmit}
@@ -89,7 +92,7 @@ const YourAccountFrame = () => {
         id="email"
         toggleEmail={toggleEmail}
         placeholder="email"
-        // initialValues={formik.initialValues}
+        initialValues={formik.initialValues}
         onChange={formik.handleChange}
         value={formik.values.email}
         onSubmit={formik.handleSubmit}
@@ -107,7 +110,7 @@ const YourAccountFrame = () => {
         id="password"
         togglePassword={togglePassword}
         placeholder="hasło"
-        // initialValues={formik.initialValues}
+        initialValues={formik.initialValues}
         onChange={formik.handleChange}
         value={formik.values.password}
         onSubmit={formik.handleSubmit}

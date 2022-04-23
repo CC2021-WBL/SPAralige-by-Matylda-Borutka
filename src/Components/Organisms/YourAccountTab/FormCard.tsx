@@ -4,6 +4,17 @@ import { Field, Form, Formik, useFormik } from 'formik';
 
 import BoxWithButton from './BoxWithButton';
 
+const TitleStyle = {
+  color: 'rgba(0,0,0,.38)',
+  marginLeft: '.5rem',
+};
+
+const ErrorStyle = {
+  fontSize: '8px',
+  color: 'red',
+  marginLeft: '1rem',
+  // position: absolute is not accepted in style={}?
+};
 const FieldStyle = {
   border: 'none',
   borderBottom: '1px solid grey',
@@ -36,7 +47,7 @@ type FormCardPropTypes = {
   onClick: any;
   placeholder?: string;
   type?: string;
-  // initialValues: any;
+  initialValues: any;
   onSubmit: any;
   id: string;
   text: string;
@@ -58,7 +69,6 @@ const FormCard = (prop: FormCardPropTypes) => {
   );
 
   const BoxDisplay = () => {
-    // first display initial name from userObject if not toggled with button "edit"
     if (!prop.toggleName && prop.name == 'name')
       return (
         <BoxWithButton
@@ -97,8 +107,7 @@ const FormCard = (prop: FormCardPropTypes) => {
       return (
         <>
           <Box>
-            {/* <Field */}
-            <input
+            <Field
               name={prop.name}
               id={prop.id}
               type={prop.type}
@@ -109,7 +118,11 @@ const FormCard = (prop: FormCardPropTypes) => {
               value={prop.value}
               onChange={prop.onChange}
             />
-            {prop.formik.errors.name ? <p>error</p> : 'noError'}
+            {prop.formik.errors.name ? (
+              <p style={{ position: 'absolute', ...ErrorStyle }}>
+                {prop.formik.errors.name}
+              </p>
+            ) : null}
           </Box>
           <Button
             type="submit" // does that submit at the same time as onClick is run?
@@ -123,7 +136,7 @@ const FormCard = (prop: FormCardPropTypes) => {
       return (
         <>
           <Box>
-            <input
+            <Field
               name={prop.name}
               id={prop.id}
               type={prop.type}
@@ -134,7 +147,11 @@ const FormCard = (prop: FormCardPropTypes) => {
               value={prop.value}
               onChange={prop.onChange}
             />
-            {prop.formik.errors.email ? <p>error</p> : 'noError'}
+            {prop.formik.errors.email ? (
+              <p style={{ position: 'absolute', ...ErrorStyle }}>
+                {prop.formik.errors.email}
+              </p>
+            ) : null}
           </Box>
           <Button
             type="submit" // ?
@@ -148,7 +165,7 @@ const FormCard = (prop: FormCardPropTypes) => {
       return (
         <>
           <Box>
-            <input
+            <Field
               name={prop.name}
               id={prop.id}
               type={prop.type}
@@ -159,7 +176,9 @@ const FormCard = (prop: FormCardPropTypes) => {
               value={prop.value}
               onChange={prop.onChange}
             />
-            {prop.formik.errors.password ? <p>error</p> : 'noError'}
+            {prop.formik.errors.password ? (
+              <p style={ErrorStyle}>{prop.formik.errors.password}</p>
+            ) : null}
           </Box>
           <Button
             type="submit" // ?
@@ -174,20 +193,21 @@ const FormCard = (prop: FormCardPropTypes) => {
 
   return (
     <div className={prop.className} style={FormCardStyle}>
-      {/* <Formik initialValues={prop.initialValues} onSubmit={prop.onSubmit}> */}
-      {/* <Formik onSubmit={prop.onSubmit}> */}
-      <form>
-        {/* <Form> */}
-        <Box component="h6" color="rgba(0,0,0,.38)" marginLeft=".5rem">
-          {prop.title}
-        </Box>
-        <Stack sx={InputAndValueStyle}>
-          {/* display values stored in userObject - when not toggled by button */}
-          <BoxDisplay />
-          <BoxEdit />
-        </Stack>
-        {/* </Form> */}
-      </form>
+      <Formik
+        initialValues={prop.initialValues}
+        onSubmit={prop.onSubmit}
+        // validateOnBlur
+      >
+        <Form>
+          <Box component="h6" sx={TitleStyle}>
+            {prop.title}
+          </Box>
+          <Stack sx={InputAndValueStyle}>
+            <BoxDisplay />
+            <BoxEdit />
+          </Stack>
+        </Form>
+      </Formik>
     </div>
   );
 };
