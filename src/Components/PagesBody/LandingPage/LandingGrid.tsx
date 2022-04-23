@@ -16,7 +16,7 @@ export default function LandingGrid(prop: {
       >
         {Array.from(prop.serviceObjectArray)
           .sort(() => 0.5 - Math.random())
-          .slice(0, 2)
+          .slice(0, 4)
           .map((object, index) => (
             <Grid item xs={12} sm={12} md={6} key={index}>
               <ServiceCard serviceObject={object} />
