@@ -2,6 +2,7 @@ import { getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 
 import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
+
 import { serviceDataType } from '../../../Types/dbDataTypes';
 import { servicesRef } from '../../../Firebase/firebase';
 
