@@ -1,10 +1,14 @@
 import { Button, Typography } from '@mui/material';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 
 import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
 import { auth } from '../../../Firebase/firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
-function LoginButton(prop: { email: string; password: string }) {
+function LoginButton(prop: {
+  email: string;
+  password: string;
+  handleClose: () => void;
+}) {
   const handleLoginClick: HandleOnClickButtonType = async (event) => {
     event.preventDefault();
     try {
@@ -13,10 +17,11 @@ function LoginButton(prop: { email: string; password: string }) {
         prop.email,
         prop.password,
       );
-      console.log(userCredentialObj.user);
+      if (userCredentialObj) {
+        prop.handleClose();
+      }
     } catch (error: any) {
-      console.log(error.code);
-      console.log(error.message);
+      alert(error.message);
     }
   };
 

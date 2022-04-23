@@ -1,8 +1,9 @@
+import { Typography } from '@mui/material';
+import { getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 
+import LandingGrid from './LandingGrid';
 import MainGraphic from '../../Organisms/Main-Graphic/MainGraphic';
-import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
-import { getDocs } from 'firebase/firestore';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 import { servicesRef } from '../../../Firebase/firebase';
 
@@ -36,9 +37,18 @@ const LandingPage = () => {
   return (
     <main>
       <MainGraphic />
-      <h4>Popularne zabiegi</h4>
+      <Typography
+        sx={{
+          fontSize: '16',
+          paddingTop: '1.5rem',
+          marginBottom: '0.625rem',
+          fontWeight: 'bold',
+        }}
+      >
+        Popularne zabiegi
+      </Typography>
       {serviceObjectArray && (
-        <ResponsiveGrid serviceObjectArray={serviceObjectArray} />
+        <LandingGrid serviceObjectArray={serviceObjectArray} />
       )}
     </main>
   );
