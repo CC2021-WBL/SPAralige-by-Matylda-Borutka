@@ -25,7 +25,7 @@ function FacebookAndGoogleBox({ loginOrRegister }: loginOrRegisterOptions) {
         sx={{ height: '2.9375rem', background: '#01579B' }}
         onClick={onFbClick}
       >
-        {loginOrRegister === 'register' && 'ZAREJESTRUJ'}
+        {loginOrRegister === 'register' && t('register')}
         {loginOrRegister === 'login' && t('login')} {t('login2')}
       </Button>
       <Button
@@ -39,7 +39,7 @@ function FacebookAndGoogleBox({ loginOrRegister }: loginOrRegisterOptions) {
         }}
         onClick={onGoogleClick}
       >
-        {loginOrRegister === 'register' && 'ZAREJESTRUJ'}
+        {loginOrRegister === 'register' && t('register')}
         {loginOrRegister === 'login' && t('login')} {t('login3')}
       </Button>
     </Stack>
