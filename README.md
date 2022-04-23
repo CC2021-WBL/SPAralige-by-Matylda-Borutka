@@ -65,15 +65,19 @@ co to obedience? https://johndog.pl/blog/zyciezpsem/obi-ogole-znaczy/
 
 ### Zbudowane z użyciem
 
+DESIGN/UI/UX
+
+- Figma
+- Design z pomocą szablonów google Material UI
+
 FRONTEND
 
 - Java Script
-- React
-- Figma
+- React Signle Page Application
 - React Router
-- Responsywność
-- Komponenty Material UI
-- Atomic Design
+- Responsywność z pomocą Material UI
+- Komponenty Material UI i własne
+- Atomic Design w katalogowaniu plików i kodzie
 - By nasz kod był lepszej jakości, bardziej uporządkowany i czytelniejszy,
   używaliśmy eslint, prettier
 - Testowaliśmy aplikację przy użyciu RTL oraz Jest
@@ -88,14 +92,12 @@ BACKEND
 ? husky
 - Firebase
 - node
-  backendzie
+- express: usprawniał pracę i rozszerzał funkcjonalności node
 - base64url
 - cookie-parser: do analizy plików cookie
 - dotenv: do zarządzania zmiennymi środowiskowymi
-- express: usprawniał pracę i rozszerzał funkcjonalności node
 - helmet: pomógł zabezpieczyć aplikację
 - jsonwebtoken: wsparł nas w autoryzacji i autentykacji
-
 - passport: autoryzacja
 - swagger: automatyczna dokumentacja api
 
