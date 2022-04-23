@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import React, { useState } from 'react';
+import React from 'react';
 import { Box, Stack } from '@mui/material';
 import { ErrorMessage, Field, Form, Formik, useFormik } from 'formik';
 
@@ -10,37 +10,59 @@ import FormCard from './FormCard';
 // const { state } = useContext(UserDataContext);
 // const { userId } = state;
 
-// =========== header ============ //
+const FrameStyle = {
+  background: 'rgba(200,200,200,0.2',
+  padding: '.5rem .5rem',
+  margin: '1rem 0 0',
+  borderRadius: '1rem',
+};
+
+const HeaderStyle = {
+  fontSize: '20px',
+  color: '#616161',
+  margin: '0',
+  background: 'rgba(200,200,200,0.1)',
+};
+
+const StackStyle = {
+  margin: '.5rem',
+  background: 'rgba(200,200,200,.1)',
+};
+
 type HeaderPropTypes = {
   text: string;
 };
 const Header = (prop: HeaderPropTypes) => {
   return (
-    <Box component="h6" sx={{ fontSize: '20px', color: '#616161' }}>
+    <Box className="headerText" component="h6" sx={HeaderStyle}>
       {prop.text}
     </Box>
   );
 };
-
 const YourAccountFrame = () => {
   const [toggleName, setToggleName] = React.useState<boolean>(false);
   const [toggleEmail, setToggleEmail] = React.useState<boolean>(false);
   const [togglePassword, setTogglePassword] = React.useState<boolean>(false);
 
-  // console.log(toggleName, toggleEmail, togglePassword);
-
   const formik = useFormik({
     initialValues: {
-      name: 'Katarynka',
-      email: 'ebacis@wp.pl',
-      password: '******',
+      name: 'a',
+      email: 'b',
+      password: 'c',
     },
+    validationSchema: Yup.object({
+      name: Yup.string()
+        .max(5, 'imie musi być krótsze')
+        .required('wpisz imię i nazwisko'),
+    }),
     onSubmit: (v) => {
       console.log(v);
     },
   });
+  console.log(formik.errors.name);
+
   return (
-    <div className="yourAccountFrame" style={{ outline: '1px solid red' }}>
+    <div className="yourAccountFrame" style={FrameStyle}>
       <Header text="Twoje dane" />
       <FormCard
         title="imię"
@@ -48,13 +70,18 @@ const YourAccountFrame = () => {
         id="name"
         toggleName={toggleName}
         placeholder="imię"
-        initialValues={formik.initialValues}
+        // initialValues={formik.initialValues}
+        onChange={formik.handleChange}
+        value={formik.values.name}
         onSubmit={formik.handleSubmit}
         onClick={() => {
-          setToggleName(!toggleName), console.log('name clicked');
+          setToggleName(!toggleName);
+          formik.handleSubmit;
         }}
         type="text"
         text="zmień imię"
+        className="FormCardName"
+        formik={formik}
       />
       <FormCard
         title="email"
@@ -62,13 +89,17 @@ const YourAccountFrame = () => {
         id="email"
         toggleEmail={toggleEmail}
         placeholder="email"
-        initialValues={formik.initialValues}
+        // initialValues={formik.initialValues}
+        onChange={formik.handleChange}
+        value={formik.values.email}
         onSubmit={formik.handleSubmit}
         onClick={() => {
-          setToggleEmail(!toggleEmail), console.log('email clicked');
+          setToggleEmail(!toggleEmail);
         }}
         type="email"
         text="zmień email"
+        className="FormCardEmail"
+        formik={formik}
       />
       <FormCard
         title="hasło"
@@ -76,28 +107,32 @@ const YourAccountFrame = () => {
         id="password"
         togglePassword={togglePassword}
         placeholder="hasło"
-        initialValues={formik.initialValues}
+        // initialValues={formik.initialValues}
+        onChange={formik.handleChange}
+        value={formik.values.password}
         onSubmit={formik.handleSubmit}
         onClick={() => {
-          setTogglePassword(!togglePassword), console.log('pass clicked');
+          setTogglePassword(!togglePassword);
         }}
         type="password"
         text="zmień hasło"
+        className="FormCardPassword"
+        formik={formik}
       />
     </div>
   );
 };
 
-// settingsFrame
 const SettingsFrame = () => {
   return (
-    <div className="settingsFrame" style={{ outline: '3px dotted red' }}>
+    <div className="settingsFrame" style={FrameStyle}>
       <Header text="Ustawienia" />
       <Stack
         className="settingsFormCard"
         flexDirection="row"
         justifyContent="space-between"
-        sx={{ padding: '1rem', outline: '1px dotted grey' }}
+        alignItems="center"
+        sx={StackStyle}
       >
         <Box>Wersja językowa</Box>
         <BasicSelect langSelect />
@@ -105,7 +140,8 @@ const SettingsFrame = () => {
       <Stack
         flexDirection="row"
         justifyContent="space-between"
-        sx={{ padding: '1rem' }}
+        alignItems="center"
+        sx={StackStyle}
       >
         <Box>Zestaw kolorów</Box>
         <BasicSelect colorsSelect />
