@@ -1,4 +1,5 @@
 import { Button, Stack } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
 import { loginOrRegisterOptions } from '../../../Types/loginOrRegisterTypes';
@@ -14,6 +15,7 @@ function FacebookAndGoogleBox({ loginOrRegister }: loginOrRegisterOptions) {
     event.preventDefault();
     await loginWithFacebook();
   };
+  const { t } = useTranslation('loginModal');
   return (
     <Stack spacing={'0.6875rem'}>
       <Button
@@ -24,7 +26,7 @@ function FacebookAndGoogleBox({ loginOrRegister }: loginOrRegisterOptions) {
         onClick={onFbClick}
       >
         {loginOrRegister === 'register' && 'ZAREJESTRUJ'}
-        {loginOrRegister === 'login' && 'ZALOGUJ'} SIĘ PRZEZ FACEBOOK&#39;A
+        {loginOrRegister === 'login' && t('login')} {t('login2')}
       </Button>
       <Button
         variant="contained"
@@ -38,7 +40,7 @@ function FacebookAndGoogleBox({ loginOrRegister }: loginOrRegisterOptions) {
         onClick={onGoogleClick}
       >
         {loginOrRegister === 'register' && 'ZAREJESTRUJ'}
-        {loginOrRegister === 'login' && 'ZALOGUJ'} SIĘ PRZEZ GOOGLE
+        {loginOrRegister === 'login' && t('login')} {t('login3')}
       </Button>
     </Stack>
   );
