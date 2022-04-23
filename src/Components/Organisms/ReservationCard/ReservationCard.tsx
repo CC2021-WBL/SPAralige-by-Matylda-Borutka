@@ -1,22 +1,26 @@
 import { Box, Button, Card, Chip, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
-import { generateDateProps } from '../../../Tools/reservationCardTools';
-import { getDateFormatDdMmYyyy } from '../../../Tools/timeFunctions';
+import { generateDateProps } from '../../../Tools/reservationTools';
+import {
+  getDateFormatDdMmYyyy,
+  getDayName,
+} from '../../../Tools/timeFunctions';
 
-type ReservationCardPropTypes = {
+export type ReservationCardTypes = {
   serviceName: string;
   serviceDate: Date;
 };
 
-function ReservationCard(prop: ReservationCardPropTypes) {
+function ReservationCard(prop: ReservationCardTypes) {
   const dateObj = generateDateProps(prop.serviceDate);
 
   const onEditClick: HandleOnClickButtonType = (event) => {
     event.preventDefault();
     alert('EDIT CLICKED');
   };
-
+  const { t } = useTranslation('reservation&account');
   return (
     <Card
       sx={{
@@ -55,7 +59,9 @@ function ReservationCard(prop: ReservationCardPropTypes) {
         variant="subtitle2"
         sx={{ fontSize: '0.875rem', fontWeight: 400, marginBottom: '1rem' }}
       >
-        {`Termin zabiegu: ${getDateFormatDdMmYyyy(prop.serviceDate)}`}
+        {`${t('date')}: ${getDateFormatDdMmYyyy(
+          prop.serviceDate,
+        )} (${getDayName(prop.serviceDate)})`}
       </Typography>
       <Button
         variant="text"
@@ -64,7 +70,7 @@ function ReservationCard(prop: ReservationCardPropTypes) {
         sx={{ fontWeight: 500 }}
         onClick={onEditClick}
       >
-        EDYTUJ
+        {t('edit')}
       </Button>
     </Card>
   );

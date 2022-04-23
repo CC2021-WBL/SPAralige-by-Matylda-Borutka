@@ -1,3 +1,5 @@
+import { QuerySnapshot } from 'firebase/firestore';
+import { ReservationCardTypes } from '../Components/Organisms/ReservationCard/ReservationCard';
 import { calcDaysToEventDate } from './timeFunctions';
 
 export function generateDateProps(date: Date) {
@@ -38,4 +40,20 @@ export function generateDateProps(date: Date) {
       marginBottom: '1rem',
     },
   };
+}
+
+export function createReservationArray(snapshot: QuerySnapshot) {
+  const reservationsArr: ReservationCardTypes[] = [];
+  snapshot.forEach((reservation) => {
+    const reservationData = reservation.data();
+    const reservationObj = {
+      serviceName: reservationData.serviceName as string,
+      serviceDate: reservationData.serviceDate.toDate() as Date,
+    };
+    reservationsArr.push(reservationObj);
+  });
+  if (reservationsArr.length === 0) {
+    return null;
+  }
+  return reservationsArr;
 }

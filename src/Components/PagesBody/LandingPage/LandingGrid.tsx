@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 
-export default function ResponsiveGrid(prop: {
+export default function LandingGrid(prop: {
   serviceObjectArray: serviceDataType[];
 }) {
   return (
@@ -14,11 +14,14 @@ export default function ResponsiveGrid(prop: {
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 12, sm: 12, md: 12 }}
       >
-        {Array.from(prop.serviceObjectArray).map((object, index) => (
-          <Grid item xs={12} sm={12} md={6} key={index}>
-            <ServiceCard serviceObject={object} />
-          </Grid>
-        ))}
+        {Array.from(prop.serviceObjectArray)
+          .sort(() => 0.5 - Math.random())
+          .slice(0, 4)
+          .map((object, index) => (
+            <Grid item xs={12} sm={12} md={6} key={index}>
+              <ServiceCard serviceObject={object} />
+            </Grid>
+          ))}
       </Grid>
     </Box>
   );

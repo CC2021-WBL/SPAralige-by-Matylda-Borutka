@@ -1,7 +1,10 @@
+import { Typography } from '@mui/material';
 import { getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
+import LandingGrid from './LandingGrid';
+import MainGraphic from '../../Organisms/Main-Graphic/MainGraphic';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 import { servicesRef } from '../../../Firebase/firebase';
 
@@ -9,7 +12,7 @@ const LandingPage = () => {
   const [serviceObjectArray, setServiceObjectArray] = useState<
     serviceDataType[] | null
   >(null);
-
+  const { t } = useTranslation('landingPage');
   useEffect(() => {
     const getServiceObjectArray = async () => {
       try {
@@ -34,9 +37,19 @@ const LandingPage = () => {
 
   return (
     <main>
-      <h1 style={{ textAlign: 'center' }}>SPAralige od Matylde</h1>
+      <MainGraphic />
+      <Typography
+        sx={{
+          fontSize: '16',
+          paddingTop: '1.5rem',
+          marginBottom: '0.625rem',
+          fontWeight: 'bold',
+        }}
+      >
+        {t('heading')}
+      </Typography>
       {serviceObjectArray && (
-        <ResponsiveGrid serviceObjectArray={serviceObjectArray} />
+        <LandingGrid serviceObjectArray={serviceObjectArray} />
       )}
     </main>
   );

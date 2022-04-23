@@ -1,10 +1,12 @@
-import { Button, Stack, Typography } from '@mui/material';
+import { Button, Stack } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
+import { loginOrRegisterOptions } from '../../../Types/loginOrRegisterTypes';
 import { loginWithFacebook } from '../../../Firebase/facebookLogin';
 import { loginWithGoogle } from '../../../Firebase/googleLogin';
 
-function FacebookAndGoogleBox() {
+function FacebookAndGoogleBox({ loginOrRegister }: loginOrRegisterOptions) {
   const onGoogleClick: HandleOnClickButtonType = async (event) => {
     event.preventDefault();
     await loginWithGoogle();
@@ -13,9 +15,9 @@ function FacebookAndGoogleBox() {
     event.preventDefault();
     await loginWithFacebook();
   };
-
+  const { t } = useTranslation('loginModal');
   return (
-    <Stack spacing={1.5}>
+    <Stack spacing={'0.6875rem'}>
       <Button
         variant="contained"
         disableElevation={true}
@@ -23,14 +25,13 @@ function FacebookAndGoogleBox() {
         sx={{ height: '2.9375rem', background: '#01579B' }}
         onClick={onFbClick}
       >
-        <Typography sx={{ fontSize: '0.875rem', paddingTop: '1px' }}>
-          ZALOGUJ PRZEZ FACEBOOK&apos;A
-        </Typography>
+        {loginOrRegister === 'register' && t('register')}
+        {loginOrRegister === 'login' && t('login')} {t('login2')}
       </Button>
       <Button
         variant="contained"
         disableElevation={true}
-        aria-label="sign in with google"
+        aria-label="sig in with google"
         sx={{
           height: '2.9375rem',
           background: '#FB8C00',
@@ -38,7 +39,8 @@ function FacebookAndGoogleBox() {
         }}
         onClick={onGoogleClick}
       >
-        <Typography sx={{ paddingTop: '1px' }}>ZALOGUJ PRZEZ GOOGLE</Typography>
+        {loginOrRegister === 'register' && t('register')}
+        {loginOrRegister === 'login' && t('login')} {t('login3')}
       </Button>
     </Stack>
   );
