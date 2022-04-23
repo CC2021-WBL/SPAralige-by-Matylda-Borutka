@@ -1,4 +1,5 @@
 import { Menu, MenuItem } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
 
@@ -12,6 +13,7 @@ type RightMenuType = {
 };
 
 function AuthedRightMenu(prop: RightMenuType) {
+  const { t } = useTranslation('navFooter');
   return (
     <Menu
       id="rightMenu"
@@ -22,12 +24,16 @@ function AuthedRightMenu(prop: RightMenuType) {
         'aria-labelledby': 'rightMenu',
       }}
     >
-      {' '}
       <MenuItem
-        onClick={prop.handleReservationsClicked}
+        // onClick={prop.handleReservationsClicked}
         aria-label="Link to your reservations"
       >
-        Rezerwacje & Twój profil
+        <a
+          href="/reservations"
+          style={{ textDecoration: 'none', color: 'inherit' }}
+        >
+          {t('account')}
+        </a>
       </MenuItem>
       {/* <MenuItem
         onClick={prop.handleYourAccountClicked}
@@ -36,7 +42,7 @@ function AuthedRightMenu(prop: RightMenuType) {
         Twój Profil
       </MenuItem> */}
       <MenuItem onClick={prop.handleLogout} aria-label="Log out">
-        Wyloguj
+        {t('logout')}
       </MenuItem>
     </Menu>
   );

@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
 
 import { Box, Button, Stack, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 import errorImg from '../../../Assets/error.png';
 
 function ErrorFallback() {
+  const { t } = useTranslation('other');
   return (
     <div role="alert">
       <Stack
@@ -33,7 +35,8 @@ function ErrorFallback() {
           align="center"
           sx={{ padding: '2.5rem 0', width: '15.1875rem' }}
         >
-          Przepraszamy!<p>Nie znaleźliśmy strony, której szukasz.</p>
+          {t('error.heading1')}
+          <p>{t('error.heading2')}</p>
         </Typography>
         <Button
           disableElevation
@@ -41,7 +44,7 @@ function ErrorFallback() {
           href="/"
           aria-label="landing page"
         >
-          Wróć Do Strony Głównej
+          {t('error.back')}
         </Button>
       </Stack>
     </div>
