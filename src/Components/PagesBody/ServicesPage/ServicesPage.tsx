@@ -7,9 +7,9 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import { useEffect, useReducer, useState } from 'react';
 
+import SearchBar from '../../Atoms/SearchBar/SearchBar';
 import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
 import Burger, { BurgerProp } from '../../Organisms/Burger/Burger';
 import { bodyPage } from '../../../Tools/htmlElements';
@@ -17,6 +17,8 @@ import { filterReducer } from '../../../Reducers/filterReducer';
 import { getAllServices } from '../../../Firebase/queries';
 import { getDataForBurgerFromServices } from '../../../Tools/burgerHelperTools';
 import { serviceDataType } from '../../../Types/dbDataTypes';
+
+// import Typography from '@mui/material/Typography';
 
 const drawerWidth = '21rem';
 
@@ -124,7 +126,7 @@ export default function ServicesPage() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h4">SEARCH BAR</Typography>
+          <SearchBar />
         </Toolbar>
         {services &&
           services.map((service) => (
