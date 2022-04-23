@@ -51,7 +51,7 @@ const Footer = () => {
         <Stack
           flexDirection="column"
           className="leftSide"
-          justifyContent="space-between"
+          justifyContent="space-around"
           sx={{ padding: '1rem 0 25px 0' }}
         >
           <Link
