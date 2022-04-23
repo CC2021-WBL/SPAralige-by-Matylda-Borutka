@@ -34,6 +34,7 @@ const ReservationsPage = () => {
   });
 
   useEffect(() => {
+    console.log('useeffect')
     async function fetchReservations() {
       try {
         const snapshot = await getDocs(
