@@ -187,6 +187,7 @@ const BookingModal = (prop: {
             await updateDoc(timetableRef, {
               hoursOfService: changedArray,
             });
+            alert('Rejestracja udana');
             prop.handleClose();
           }
         } catch (error: any) {
