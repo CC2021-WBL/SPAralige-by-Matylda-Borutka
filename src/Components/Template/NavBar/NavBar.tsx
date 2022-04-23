@@ -60,9 +60,11 @@ const NavBar = () => {
   const openLeftMenu = Boolean(anchorElLeft);
   const { t } = useTranslation('navFooter');
   const handleClickRight = (event: React.MouseEvent<HTMLButtonElement>) => {
+    console.log(event.currentTarget);
     setAnchorElRight(event.currentTarget);
   };
   const handleClickLeft = (event: React.MouseEvent<HTMLButtonElement>) => {
+    console.log(event.currentTarget);
     setAnchorElLeft(event.currentTarget);
   };
   const handleCloseLeft = () => {
@@ -84,16 +86,18 @@ const NavBar = () => {
     setRegisterModalOpen('open');
   };
 
-  const handleReservationsClicked: HandleOnClickButtonType = (event) => {
-    event.preventDefault();
+  const handleReservationsClicked: HandleOnClickButtonType = () => {
     handleCloseRight();
+    console.log('reservaition clicked');
+    console.log(navigate);
     navigate('/reservations');
   };
 
   const handleYourAccountClicked: HandleOnClickButtonType = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     handleCloseRight();
     navigate('/reservations');
+    console.log('your account clicked');
   };
 
   async function handleLogout() {
