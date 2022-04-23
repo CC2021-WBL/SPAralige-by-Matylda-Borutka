@@ -93,7 +93,7 @@ const NavBar = () => {
     navigate('/reservations');
   };
 
-  const handleYourAccountClicked: HandleOnClickButtonType = (event) => {
+  const handleYourAccountClicked: HandleOnClickButtonType = () => {
     // event.preventDefault();
     handleCloseRight();
     navigate('/reservations');
