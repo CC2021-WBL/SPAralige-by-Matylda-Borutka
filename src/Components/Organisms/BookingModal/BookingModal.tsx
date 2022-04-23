@@ -8,10 +8,12 @@ import {
   ToggleButtonGroup,
   Typography,
 } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 import CloseIcon from '../LoginForm/CloseIcon';
 import DateButton from './DateButton';
 import HourButton from './HourButton';
+import i18n from '../../../i18n';
 import {
   bookingContainerStyle,
   headerTypographyStyle,
@@ -45,11 +47,13 @@ const BookingModal = (prop: {
     '13:00',
     '14:00',
   ]);
-  const [service, setService] = React.useState(prop.serviceObject.name);
+  const [service, setService] = React.useState(
+    prop.serviceObject.name[i18n.language],
+  );
   const [price, setPrice] = React.useState(prop.serviceObject.priceInZloty);
 
   useEffect(() => {
-    setService(prop.serviceObject.name);
+    setService(prop.serviceObject.name[i18n.language]);
     setPrice(prop.serviceObject.priceInZloty);
   });
 
@@ -104,6 +108,7 @@ const BookingModal = (prop: {
     sethoursOfService(hoursOfServiceFromMock);
   }, [chosenDate]);
 
+  const { t } = useTranslation('bookingModal');
   return (
     <Modal
       open={prop.open}
@@ -114,12 +119,17 @@ const BookingModal = (prop: {
         <CloseIcon handleClose={prop.handleClose} />
         <Stack spacing={2} sx={stackStyle}>
           <Typography variant="h5" component="h5" sx={headerTypographyStyle}>
-            Wybierz datę i godzinę
+            {t('heading')}
           </Typography>
           <Typography variant="h6" component="h6">
-            {today.toLocaleDateString('pl', {
-              month: 'long',
-            })}{' '}
+            {localStorage.getItem('i18nextLng') === 'pl'
+              ? today.toLocaleDateString('pl', {
+                  month: 'long',
+                })
+              : today.toLocaleDateString('en', {
+                  month: 'long',
+                })}
+
             {today.toLocaleDateString('pl', {
               year: 'numeric',
             })}
@@ -153,7 +163,7 @@ const BookingModal = (prop: {
           >
             <ToggleButton value={'LOL'} disabled sx={hourButtonTitleStyle}>
               <Typography color="black" sx={{ ...hourButtonTypographyStyle }}>
-                PORANEK
+                {t('morning')}
               </Typography>
             </ToggleButton>
             {hoursOfService
@@ -178,7 +188,7 @@ const BookingModal = (prop: {
                 color="black"
                 sx={{ ...hourButtonTypographyStyle }}
               >
-                POPOPŁUDNIE
+                {t('afternoon')}
               </Typography>
             </ToggleButton>
             {hoursOfService
@@ -206,7 +216,7 @@ const BookingModal = (prop: {
                 color="black"
                 sx={{ ...hourButtonTypographyStyle }}
               >
-                WIECZÓR
+                {t('evening')}
               </Typography>
             </ToggleButton>
             {hoursOfService
@@ -247,9 +257,13 @@ const BookingModal = (prop: {
                   variant="h6"
                   sx={{ ...modalResTypographyStyle, textAlign: 'right' }}
                 >
-                  {chosenDate.toLocaleDateString('pl', {
-                    weekday: 'long',
-                  })}
+                  {localStorage.getItem('i18nextLng') === 'pl'
+                    ? chosenDate.toLocaleDateString('pl', {
+                        weekday: 'long',
+                      })
+                    : chosenDate.toLocaleDateString('en', {
+                        weekday: 'long',
+                      })}
                   ,{' '}
                   {chosenDate.toLocaleDateString('pl', {
                     month: '2-digit',
@@ -277,7 +291,7 @@ const BookingModal = (prop: {
               });
             }}
           >
-            ZAREZERWUJ
+            {t('reservation')}
           </Button>
         </Stack>
       </Box>

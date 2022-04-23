@@ -1,9 +1,10 @@
 import { Typography } from '@mui/material';
 import { getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
+import LandingGrid from './LandingGrid';
 import MainGraphic from '../../Organisms/Main-Graphic/MainGraphic';
-import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 import { servicesRef } from '../../../Firebase/firebase';
 
@@ -11,7 +12,7 @@ const LandingPage = () => {
   const [serviceObjectArray, setServiceObjectArray] = useState<
     serviceDataType[] | null
   >(null);
-
+  const { t } = useTranslation('landingPage');
   useEffect(() => {
     const getServiceObjectArray = async () => {
       try {
@@ -45,10 +46,10 @@ const LandingPage = () => {
           fontWeight: 'bold',
         }}
       >
-        Popularne zabiegi
+        {t('heading')}
       </Typography>
       {serviceObjectArray && (
-        <ResponsiveGrid serviceObjectArray={serviceObjectArray} />
+        <LandingGrid serviceObjectArray={serviceObjectArray} />
       )}
     </main>
   );

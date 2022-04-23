@@ -2,11 +2,13 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { Grid, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import BannerLG from '../../../Assets/bannerLG.png';
 import Lines from '../../../Assets/Lines.png';
 
 function MainGraphic() {
+  const { t } = useTranslation('landingPage');
   return (
     <Box>
       <Grid container height={'100%'}>
@@ -46,7 +48,7 @@ function MainGraphic() {
             paddingBottom={2}
             variant="h2"
           >
-            Zadbaj o siebie
+            {t('title')}
           </Typography>
           <Button
             sx={{ borderRadius: '50px', padding: '15px' }}
@@ -57,7 +59,7 @@ function MainGraphic() {
             tabIndex={0}
             aria-label="Services Catalogue"
           >
-            Znajdź idealny zabieg
+            {t('subtitle')}
           </Button>
         </Grid>
       </Grid>
