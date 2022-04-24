@@ -11,6 +11,7 @@ i18n
     detection: {
       order: ['localStorage', 'cookie', 'navigator', 'htmlTag', 'querystring'],
     },
+    lng: 'pl',
     whitelist: ['pl', 'en'],
     fallbackLng: 'pl',
     debug: true,
