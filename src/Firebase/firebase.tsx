@@ -4,6 +4,7 @@ import {
   getAuth,
 } from 'firebase/auth';
 import { collection, doc, getFirestore } from 'firebase/firestore';
+
 import { getAnalytics } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
 
