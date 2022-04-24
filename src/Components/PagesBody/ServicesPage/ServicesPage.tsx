@@ -10,6 +10,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useEffect, useReducer, useState } from 'react';
 
+import ScrollButton from '../../Atoms/ScrollButton/ScrollButton';
 import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
 import Burger, { BurgerProp } from '../../Organisms/Burger/Burger';
 import { bodyPage } from '../../../Tools/htmlElements';
@@ -125,6 +126,7 @@ export default function ServicesPage() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h4">SEARCH BAR</Typography>
+          <ScrollButton showBelow={250} />
         </Toolbar>
         {services &&
           services.map((service) => (
