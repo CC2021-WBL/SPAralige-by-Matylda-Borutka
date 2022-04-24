@@ -4,9 +4,16 @@ import { useState } from 'react';
 
 import ContactFormModal from '../../Organisms/ContactFormModal/ContactFormModal';
 import GraphicAbout from '../../../Assets/graphic-aboutUS.png';
+import MessageModal from '../../Organisms/MessageModal/MessageModal';
 
 const AboutPage = () => {
   const [contactFormModalOpen, setContactFormModalOpen] = useState('closed');
+  const [messageOpen, setMessageOpen] = useState('closed');
+
+  const openModal = () => {
+    setMessageOpen('open');
+  };
+
   return (
     <main>
       <Grid container>
@@ -137,11 +144,15 @@ const AboutPage = () => {
       </Grid>
       {contactFormModalOpen == 'open' && (
         <ContactFormModal
+          stateOfParent={openModal}
           open
           handleClose={() => {
             setContactFormModalOpen('closed');
           }}
         />
+      )}
+      {messageOpen === 'open' && (
+        <MessageModal title="Twoja wiadomość została wysłana!" />
       )}
     </main>
   );
