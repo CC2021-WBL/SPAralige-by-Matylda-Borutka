@@ -20,7 +20,7 @@ function ErrorFallback() {
           component="img"
           sx={{
             border: '1px solid rgba(0, 0, 0, 0.18)',
-            borderRadius: '10.625rem',
+            borderRadius: '10.624rem',
             height: '18.75rem',
             width: '20rem',
             maxHeight: { xs: 233, md: 230 },
