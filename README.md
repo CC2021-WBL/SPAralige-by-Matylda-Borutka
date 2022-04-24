@@ -124,6 +124,8 @@ BACKEND
 ![Robert](https://user-images.githubusercontent.com/96307488/164980026-31d90a33-a3bf-492e-8445-7eaaf5db853d.png)
 ![Robert](https://user-images.githubusercontent.com/96307488/164980141-f0a3c6dc-22bc-48a2-b1db-731c423574ed.png)
 ![Robert](https://user-images.githubusercontent.com/96307488/164980243-ba54514c-1aa4-4b41-a926-d824e9c0f092.png)
+![Robert](https://user-images.githubusercontent.com/96307488/164980268-9058b211-da81-4197-b292-2deb36b172c5.png)
+
 
 
 ## Podziękowania
