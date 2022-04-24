@@ -1,14 +1,3 @@
-export interface PartialServiceDataType {
-  id?: string;
-  name: string;
-  description: string;
-  price: number;
-  duration: number;
-  priceInZloty: number;
-  durationInHours: number;
-  image: string;
-  altText: string;
-}
 export interface serviceDataType {
   id: string;
   name: string;
@@ -22,6 +11,7 @@ export interface serviceDataType {
   therapist: therapistTypes;
   therapistFullName: string;
 }
+
 export interface therapistTypes {
   id: string;
   firstname: string;
