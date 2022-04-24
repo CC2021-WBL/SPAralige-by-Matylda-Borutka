@@ -1,6 +1,5 @@
 import CreateIcon from '@mui/icons-material/Create';
 import { Button, CardActions } from '@mui/material';
-import { useTranslation } from 'react-i18next';
 
 import { btnStyles, btnsPosition } from './ServiceCardStyles';
 
@@ -11,7 +10,6 @@ export type actionsProps = {
 };
 
 const ServiceCardActions = (prop: actionsProps) => {
-  const { t } = useTranslation('services');
   return (
     <CardActions className={prop.className} disableSpacing sx={btnsPosition}>
       {prop.className !== 'modal-service-details' && (
@@ -23,7 +21,7 @@ const ServiceCardActions = (prop: actionsProps) => {
             prop.handleOpenDetails();
           }}
         >
-          {t('more')}
+          Więcej Szczegółów
         </Button>
       )}
       <Button
@@ -39,7 +37,7 @@ const ServiceCardActions = (prop: actionsProps) => {
           prop.handleOpen();
         }}
       >
-        {t('reservation')}
+        Rezerwuj Zabieg
       </Button>
     </CardActions>
   );

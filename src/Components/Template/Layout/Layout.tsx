@@ -12,7 +12,12 @@ const Layout = () => {
       <Box>
         <NavBar />
       </Box>
-      <Container maxWidth="lg" sx={{ flexGrow: 1 }}>
+      <Container
+        component="div"
+        id="body-page"
+        maxWidth="lg"
+        sx={{ flexGrow: 1 }}
+      >
         <Outlet />
       </Container>
       <Footer />

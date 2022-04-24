@@ -1,10 +1,8 @@
-import { ErrorBoundary } from 'react-error-boundary';
-import { I18nextProvider } from 'react-i18next';
 import { Route, Routes } from 'react-router-dom';
-import { Suspense, useEffect } from 'react';
-
+import { Suspense } from 'react';
 import AboutPage from './Components/PagesBody/AboutPage/AboutPage';
 import AccountPage from './Components/PagesBody/AccountPage/AccountPage';
+import { ErrorBoundary } from 'react-error-boundary';
 import ErrorFallback from './Components/PagesBody/ErrorFallback/ErrorFallback';
 import LandingPage from './Components/PagesBody/LandingPage/LandingPage';
 import Layout from './Components/Template/Layout/Layout';
