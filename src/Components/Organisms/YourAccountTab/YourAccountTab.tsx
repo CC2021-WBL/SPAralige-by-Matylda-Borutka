@@ -1,8 +1,3 @@
-import { Box, Stack } from "@mui/material";
-
-import BasicSelect from "./BasicSelect";
-import FrameStyle from "./FrameStyle";
-import Header from "./Header";
 import SettingsFrame from "./SettingsFrame";
 import YourAccountFrame from "./YourAccountFrame";
 

@@ -196,7 +196,7 @@ const FormCard = (prop: FormCardPropTypes) => {
       <Formik
         initialValues={prop.initialValues}
         onSubmit={prop.onSubmit}
-        // validateOnBlur
+        validateOnBlur
       >
         <Form>
           <Box component="h6" sx={TitleStyle}>
