@@ -121,11 +121,10 @@ BACKEND
 - [Adam Smycz](https://github.com/Smyku6) Tech Leader
 ![Adam](https://user-images.githubusercontent.com/96307488/164980020-6e8f8bdd-eb35-441a-ad73-e07507266c38.png)
 - [Robert Soldynski](https://github.com/RobertS-ki)
-![Robert](https://user-images.githubusercontent.com/96307488/164980026-31d90a33-a3bf-492e-8445-7eaaf5db853d.png)
-![Robert](https://user-images.githubusercontent.com/96307488/164980141-f0a3c6dc-22bc-48a2-b1db-731c423574ed.png)
-![Robert](https://user-images.githubusercontent.com/96307488/164980243-ba54514c-1aa4-4b41-a926-d824e9c0f092.png)
+
 ![Robert](https://user-images.githubusercontent.com/96307488/164980268-9058b211-da81-4197-b292-2deb36b172c5.png)
 
+![Robert](https://user-images.githubusercontent.com/96307488/164980340-fddee61f-7140-4bc0-9e85-2a2b91b2b0c1.png)
 
 
 ## Podziękowania
