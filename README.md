@@ -24,18 +24,18 @@ Utwórz konto użytkownika, podaj dane i rezerwuj konkretny temin.
 ## Zawartość readme
 
 - [Przegląd](#przegląd)
-  - [Funkcjonalności](#funkcjonalności)
+  - [Funkcjonalność](#funkcjonalność)
   - [Linki](#linki)
 - [Proces tworzenia](#proces)
   - [Zbudowane z](#zbudowane-z-użyciem)
   - [W przyszłości](#w-przyszłości)
 - [Autorzy](#autorzy)
 - [Podziękowania](#podziękowania)
-- [Screeny](#screeny)
+- [Zrzuty ekranu](#zrzuty-ekranu)
 
 ## Przegląd
 
-### Funkcjonalnośś
+### Funkcjonalność
 
 - Anglojęzyczna wersja językowa
 - Rejestracja użytkownika
