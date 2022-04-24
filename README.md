@@ -67,7 +67,9 @@ DESIGN/UI/UX
 FRONTEND
 
 - Java Script
+- Biblioteka React
 - React Router (React Signle Page Application)
+- TypeScript
 - Material UI (komponenty, efekty hover oraz responsywność)
 - Komponenty Material UI i własne
 - Ikony MUI
@@ -80,17 +82,9 @@ FRONTEND
 
 BACKEND
 
-- Node
 - Firebase (autentykacje/logowanie przez hasło/email, przez konto google i konto
-  facebook)
-- Express: usprawniał pracę i rozszerzał funkcjonalności node
-- Base64url
-- Cookie-parser: do analizy plików cookie
-- Dotenv: do zarządzania zmiennymi środowiskowymi
-- Helmet: pomógł zabezpieczyć aplikację
-- Jsonwebtoken: wsparł nas w autoryzacji i autentykacji
-- Passport: autoryzacja
-- Swagger: automatyczna dokumentacja api
+  facebook, serwer backendowy, baza danych noSQL, )
+- Dotenv
 
 WORKFLOW
 
