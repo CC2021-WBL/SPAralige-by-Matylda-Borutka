@@ -4,6 +4,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import ScrollButton from '../../Atoms/ScrollButton/ScrollButton';
 import TabPanel from '../../Organisms/ReservationCard/TabPanel';
 import ReservationCard, {
   ReservationCardTypes,
@@ -68,6 +69,7 @@ const ReservationsPage = () => {
 
   return (
     <main>
+      <ScrollButton showBelow={250} />
       <Box sx={reservationWrapperStyle}>
         <Box sx={innerContainerStyle}>
           <Tabs

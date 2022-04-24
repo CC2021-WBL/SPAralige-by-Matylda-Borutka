@@ -53,6 +53,7 @@ export default function ServicesPage() {
 
   return (
     <Box sx={{ display: 'flex' }}>
+      <ScrollButton showBelow={250} />
       <CssBaseline />
 
       <Box
@@ -126,7 +127,6 @@ export default function ServicesPage() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h4">SEARCH BAR</Typography>
-          <ScrollButton showBelow={250} />
         </Toolbar>
         {services &&
           services.map((service) => (
