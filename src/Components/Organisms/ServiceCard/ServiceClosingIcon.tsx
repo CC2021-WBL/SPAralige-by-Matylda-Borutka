@@ -1,7 +1,7 @@
 import CloseIcon from '@mui/icons-material/Close';
 import { IconButton } from '@mui/material';
 
-function ClosingIcon(prop: { handleCloseDetails: () => void }) {
+function ServiceClosingIcon(prop: { handleCloseDetails: () => void }) {
   return (
     <IconButton
       aria-label="close modal"
@@ -20,4 +20,4 @@ function ClosingIcon(prop: { handleCloseDetails: () => void }) {
   );
 }
 
-export default ClosingIcon;
+export default ServiceClosingIcon;

@@ -4,9 +4,9 @@ import { doc, getDoc } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import ClosingIcon from './ClosingIcon';
 import ServiceCardActions from './ServiceCardActions';
 import ServiceCardContent from './ServiceCardContent';
+import ServiceClosingIcon from './ServiceClosingIcon';
 import {
   avatarStyles,
   modalContainerStyles,
@@ -71,7 +71,7 @@ const ServiceDetailsModal = (prop: {
       aria-describedby="modal-more-service-data"
     >
       <Box sx={modalContainerStyles}>
-        <ClosingIcon handleCloseDetails={prop.handleCloseDetails} />
+        <ServiceClosingIcon handleCloseDetails={prop.handleCloseDetails} />
         <ServiceCardContent
           serviceObject={prop.serviceObject}
           className="modal-service"
