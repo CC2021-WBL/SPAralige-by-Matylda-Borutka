@@ -5,6 +5,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
+
 import { useState } from 'react';
 
 // type RangeType = number | Date;
@@ -30,11 +31,6 @@ function FilterWithRange<RangeType>(prop: RangePropType<RangeType>) {
 
   function handleOnMinChange(event: React.ChangeEvent<HTMLInputElement>) {
     event.preventDefault();
-    // mock value at setValueRange to removed eslint warning
-    setValueRange({
-      minValue: prop.minValue,
-      maxValue: prop.maxValue,
-    });
   }
   return (
     <FormControl sx={{ paddingTop: '1.5rem' }}>

@@ -11,27 +11,22 @@ export interface PartialServiceDataType {
 }
 export interface serviceDataType {
   id: string;
-  name: { pl: string; en: string };
+  name: string;
   type: string;
   filterCategory: string;
-  type2: { pl: string; en: string };
-  description: { pl: string; en: string };
+  description: string;
   priceInZloty: number;
   durationInHours: number;
   image: string;
   altText: string;
-  altText2: { pl: string; en: string };
   therapist: therapistTypes;
   therapistFullName: string;
-  text: string[];
-  text2: { pl: string; en: string };
 }
 export interface therapistTypes {
   id: string;
   firstname: string;
   surname: string;
-  shortBio: { pl: string; en: string };
+  shortBio: string;
   therapistImage: string;
   therapistAltText: string;
-  therapistAltText2: { pl: string; en: string };
 }
