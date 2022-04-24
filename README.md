@@ -16,14 +16,12 @@ Nasza aplikacja to:
 
 Czujęcie napięcie w mięsniach? Zmęczenie? Bóle karku, pleców? Kończyn? Stres? No problem - Matylda Borutka już to rozpracowała.
 
-### Zarezerwuj sobie idealny zabieg
+### Zarezerwuj sobie idealny zabieg - zadbaj o siebie
 
-Zainspirowana potrzebami i oparta na konsultacjach społecznych aplikacja
-całościowo rozwiązująca kwestię cyfryzacji tej dyscypliny sportowej,
-umożliwiająca integrację potrzeb organizatorów, sędziów i zawodników. Nie wiesz
-co to obedience? https://johndog.pl/blog/zyciezpsem/obi-ogole-znaczy/
+Jak już wybierzesz coś dla siebie, zerknij na naszych specjalistów i...
+Utwórz konto użytkownika, podaj dane i rezerwuj konkretny temin.
 
-## Zawartość
+## Zawartość readme
 
 - [Przegląd](#przegląd)
   - [Funkcjonalności](#funkcjonalności)
@@ -37,16 +35,14 @@ co to obedience? https://johndog.pl/blog/zyciezpsem/obi-ogole-znaczy/
 
 ## Przegląd
 
-### Funkcjonalności
+### Funkcjonalnośś
 
 - Anglojęzyczna wersja językowa
-- Uzupełnianie kart ocen w aplikacji mobilnej
-- Rejestracja dla zawodników i możliwość dodawania posiadanych psów
-- Zgłoszenia na zawody bez konieczności żmudnego wpisywania tych samych danych -
-  wystarczy kilka kliknięć
+- Rejestracja użytkownika
 - Profil użytkownika
-- Dostęp do wyników zawodów archiwalnych z całej Polski
-- Light & Dark mode
+- Logowanie klasyczne, z pomocą konta google oraz z konta na facebooku
+- Aplikacja SPA, która jest technicznie również SPA - single page application!
+- Responsywność z pomocą google material UI
 
 ### Linki
 
@@ -61,23 +57,20 @@ co to obedience? https://johndog.pl/blog/zyciezpsem/obi-ogole-znaczy/
 DESIGN/UI/UX
 
 - Figma
-- Design z pomocą szablonów google Material UI
+- Design z pomocą szablonów google Material UI (MUI)
 
 FRONTEND
 
 - Java Script
-- React Signle Page Application
-- React Router
-- Responsywność z pomocą Material UI
+- React Router (React Signle Page Application)
+- Material UI (komponenty, efekty hover oraz responsywność)
 - Komponenty Material UI i własne
+- Ikony MUI 
 - Atomic Design w katalogowaniu plików i kodzie
-- By nasz kod był lepszej jakości, bardziej uporządkowany i czytelniejszy,
-  używaliśmy eslint, prettier
-- Testowaliśmy aplikację przy użyciu RTL oraz Jest
-- Ikonki wstawiliśmy dzięki Font Awesome oraz React Icons
-- Pomocne okazały się również wtyczki do VSC- sort-imports oraz 'px to rem'
 - Kontrola nad propsami - Type Script propTypes
 - Formik - do obłsugi formularzy
+- Używaliśmy eslint prettier oraz wtyczki (do VSC) do sortowania importowanych plików - by nasz kod był lepszej jakości i czytelniejszy
+- Dodatkowo cała masa wtyczek do VSC, by pracowało nam się lepiej
 
 BACKEND
 
@@ -96,6 +89,8 @@ BACKEND
 - logowanie przez gmail i facebook
 
 ### W przyszłości
+
+- tryby kolorystyczne
 
 ## Autorzy
 
