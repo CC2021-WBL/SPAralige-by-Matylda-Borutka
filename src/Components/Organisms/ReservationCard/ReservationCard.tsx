@@ -1,8 +1,8 @@
 import { Box, Button, Card, Chip, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
+import { GenerateDateProps } from '../../../Tools/reservationTools';
 import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
-import { generateDateProps } from '../../../Tools/reservationTools';
 import {
   getDateFormatDdMmYyyy,
   getDayName,
@@ -14,7 +14,7 @@ export type ReservationCardTypes = {
 };
 
 function ReservationCard(prop: ReservationCardTypes) {
-  const dateObj = generateDateProps(prop.serviceDate);
+  const dateObj = GenerateDateProps(prop.serviceDate);
 
   const onEditClick: HandleOnClickButtonType = (event) => {
     event.preventDefault();

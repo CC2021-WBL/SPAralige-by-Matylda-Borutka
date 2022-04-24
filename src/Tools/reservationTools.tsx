@@ -1,12 +1,15 @@
 import { QuerySnapshot } from 'firebase/firestore';
+import { useTranslation } from 'react-i18next';
+
 import { ReservationCardTypes } from '../Components/Organisms/ReservationCard/ReservationCard';
 import { calcDaysToEventDate } from './timeFunctions';
 
-export function generateDateProps(date: Date) {
+export function GenerateDateProps(date: Date) {
+  const { t } = useTranslation('reservation&account');
   const days = calcDaysToEventDate(date);
   if (days < 0) {
     return {
-      chipLabel: 'zrealizowana wizyta',
+      chipLabel: `${t('completed')}`,
       styles: {
         backgroundColor: '#E0E0E0',
         color: '#263238',
@@ -15,7 +18,7 @@ export function generateDateProps(date: Date) {
     };
   } else if (days === 0) {
     return {
-      chipLabel: '1 dzień do zabiegu',
+      chipLabel: `${t('1day')}`,
       styles: {
         backgroundColor: '#F1F8E9',
         color: '#33691E',
@@ -24,7 +27,7 @@ export function generateDateProps(date: Date) {
     };
   } else if (days === 0 || days > 1) {
     return {
-      chipLabel: `${days} dni do zabiegu`,
+      chipLabel: `${days} ${t('moreDays')}`,
       styles: {
         backgroundColor: '#F1F8E9',
         color: '#33691E',
@@ -33,7 +36,7 @@ export function generateDateProps(date: Date) {
     };
   }
   return {
-    chipLabel: `Twój zabieg`,
+    chipLabel: `${t('treatment')}`,
     styles: {
       backgroundColor: '#F1F8E9',
       color: '#33691E',
