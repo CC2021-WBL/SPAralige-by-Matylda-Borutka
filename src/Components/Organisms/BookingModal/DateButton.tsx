@@ -31,13 +31,9 @@ const DateButton = (props: DateButtonProps) => {
   return (
     <Stack>
       <Typography sx={dayStyle}>
-        {localStorage.getItem('i18nextLng') === 'pl'
-          ? props.dateToday.toLocaleDateString('pl', {
-              weekday: 'short',
-            })
-          : props.dateToday.toLocaleDateString('en', {
-              weekday: 'short',
-            })}
+        {props.dateToday.toLocaleDateString('pl', {
+          weekday: 'short',
+        })}
       </Typography>
       <Typography sx={dateStyle}>
         {props.dateToday.toLocaleDateString('pl', {

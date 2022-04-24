@@ -9,7 +9,6 @@ import {
 } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
 import { TextField } from 'formik-mui';
-import { useTranslation } from 'react-i18next';
 
 import ClosingIcon from '../../Organisms/LoginForm/CloseIcon';
 
@@ -21,7 +20,6 @@ const ContactFormValidation = Yup.object().shape({
 });
 
 const ContactFormModal = (prop: { open: boolean; handleClose: () => void }) => {
-  const { t } = useTranslation('about&contact');
   return (
     <Modal
       open={prop.open}
@@ -85,7 +83,7 @@ const ContactFormModal = (prop: { open: boolean; handleClose: () => void }) => {
                     }}
                     variant="h5"
                   >
-                    {t('write')}
+                    Napisz do nas
                   </Typography>
                   <Typography
                     sx={{
@@ -94,7 +92,8 @@ const ContactFormModal = (prop: { open: boolean; handleClose: () => void }) => {
                     }}
                     variant="subtitle1"
                   >
-                    {t('contactDescription')}
+                    Chcesz o coś zapytać? Masz jakies spostrzeżenia i uwagi? Daj
+                    znać i wyślij nam wiadomosć przez poniższy formularz.
                   </Typography>
                 </Box>
                 <Field
@@ -107,7 +106,7 @@ const ContactFormModal = (prop: { open: boolean; handleClose: () => void }) => {
                   component={TextField}
                   name="message"
                   type="message"
-                  label={t('message')}
+                  label="Wiadomość"
                   fullWidth
                   multiline
                   rows={5}
@@ -121,7 +120,7 @@ const ContactFormModal = (prop: { open: boolean; handleClose: () => void }) => {
                   onClick={submitForm}
                   sx={{ width: '5.625rem', alignSelf: 'flex-end' }}
                 >
-                  {t('send')}
+                  Wyślij
                 </Button>
               </Stack>
             </Form>

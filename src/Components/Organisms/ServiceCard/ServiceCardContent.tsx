@@ -1,7 +1,6 @@
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { CardContent, Stack, Typography } from '@mui/material';
-import { useTranslation } from 'react-i18next';
 
 import { contentContainerStyles, contentTextStyles } from './ServiceCardStyles';
 import { serviceDataType } from '../../../Types/dbDataTypes';
@@ -10,8 +9,6 @@ const ServiceCardContent = (prop: {
   serviceObject: serviceDataType;
   className?: string;
 }) => {
-  const { t, i18n } = useTranslation('services');
-
   return (
     <CardContent className={prop.className} sx={contentContainerStyles}>
       <Typography
@@ -21,13 +18,11 @@ const ServiceCardContent = (prop: {
         className={prop.className}
         sx={contentContainerStyles}
       >
-        {prop.serviceObject.name[i18n.language]}
+        {prop.serviceObject.name}
       </Typography>
-
-      {/* {t('footer.about')} */}
       {prop.className === 'modal-service' && (
-        <Typography gutterBottom color="text.disabled">
-          {`${t('type')}: ${prop.serviceObject.type2[i18n.language]}`}
+        <Typography gutterBottom color="#616161">
+          {`Rodzaj zabiegu: ${prop.serviceObject.type}`}
         </Typography>
       )}
       <Stack direction="row" spacing={2} sx={{ paddingBottom: '0.625rem' }}>
@@ -68,7 +63,7 @@ const ServiceCardContent = (prop: {
         className={prop.className}
         sx={contentTextStyles}
       >
-        {prop.serviceObject.description[i18n.language]}
+        {prop.serviceObject.description}
       </Typography>
     </CardContent>
   );
