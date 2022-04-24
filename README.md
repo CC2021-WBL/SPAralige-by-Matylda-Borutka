@@ -122,6 +122,8 @@ BACKEND
 ![Adam](https://user-images.githubusercontent.com/96307488/164980020-6e8f8bdd-eb35-441a-ad73-e07507266c38.png)
 - [Robert Soldynski](https://github.com/RobertS-ki)
 ![Robert](https://user-images.githubusercontent.com/96307488/164980026-31d90a33-a3bf-492e-8445-7eaaf5db853d.png)
+![Robert](https://user-images.githubusercontent.com/96307488/164980141-f0a3c6dc-22bc-48a2-b1db-731c423574ed.png)
+
 
 
 ## Podziękowania
