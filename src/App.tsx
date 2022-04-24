@@ -1,3 +1,4 @@
+import { CircularProgress } from '@mui/material';
 import { ErrorBoundary } from 'react-error-boundary';
 import { I18nextProvider } from 'react-i18next';
 import { Route, Routes } from 'react-router-dom';
@@ -15,7 +16,7 @@ import i18n from './i18n';
 function App() {
   const Loader = () => (
     <div className="loading">
-      <div>loading...</div>
+      <CircularProgress />
     </div>
   );
 
