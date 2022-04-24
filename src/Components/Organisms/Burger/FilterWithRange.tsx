@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 import {
   FormControl,
   FormLabel,
@@ -32,6 +30,10 @@ function FilterWithRange<RangeType>(prop: RangePropType<RangeType>) {
 
   function handleOnMinChange(event: React.ChangeEvent<HTMLInputElement>) {
     event.preventDefault();
+    setValueRange({
+      minValue: prop.minValue,
+      maxValue: prop.maxValue,
+    });
   }
   return (
     <FormControl sx={{ paddingTop: '1.5rem' }}>
