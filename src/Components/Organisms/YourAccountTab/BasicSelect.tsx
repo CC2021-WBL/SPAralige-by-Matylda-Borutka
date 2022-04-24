@@ -20,7 +20,7 @@ function BasicSelect(prop) {
     <>
       {prop.colorsSelect && (
         <Box sx={{ minWidth: 120 }}>
-          <FormControl fullWidth>
+          <FormControl fullWidth size="small" disabled>
             <InputLabel id="demo-simple-select">Kolory</InputLabel>
             <Select
               labelId="demo-simple-select"
@@ -38,7 +38,7 @@ function BasicSelect(prop) {
 
       {prop.langSelect && (
         <Box sx={{ minWidth: 120 }}>
-          <FormControl fullWidth>
+          <FormControl fullWidth size="small">
             <InputLabel id="demo-simple-select">Język</InputLabel>
             <Select
               labelId="demo-simple-select"
