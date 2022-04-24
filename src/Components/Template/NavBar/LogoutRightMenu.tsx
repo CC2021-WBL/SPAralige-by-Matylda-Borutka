@@ -1,4 +1,5 @@
 import { Menu, MenuItem } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
 
@@ -11,6 +12,7 @@ type RightMenuType = {
 };
 
 function LogoutRightMenu(prop: RightMenuType) {
+  const { t } = useTranslation('navFooter');
   return (
     <Menu
       id="rightMenu"
@@ -23,10 +25,10 @@ function LogoutRightMenu(prop: RightMenuType) {
     >
       {' '}
       <MenuItem onClick={prop.handleLogInClicked} aria-label="Log in">
-        Zaloguj
+        {t('login')}
       </MenuItem>
       <MenuItem onClick={prop.handleRegisterClicked} aria-label="Register">
-        Zarejestruj
+        {t('register')}
       </MenuItem>
     </Menu>
   );

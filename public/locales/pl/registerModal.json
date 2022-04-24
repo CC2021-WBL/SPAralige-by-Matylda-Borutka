@@ -1,0 +1,13 @@
+{
+  "welcome": "Witamy w",
+  "heading": "Uzupełnij formularz aby założyć konto.",
+  "password": "Hasło",
+  "password2": "Powtórz hasło",
+  "privacy": "Wyrażam zgodę na warunki korzystania z serwisu",
+  "register": "Zarejestruj się",
+  "or": "lub",
+  "account": "Masz już konto?",
+  "login": "Zaloguj się",
+  "forgot": "Zapomniałeś hasła?",
+  "reset": "Zresetuj hasło"
+}

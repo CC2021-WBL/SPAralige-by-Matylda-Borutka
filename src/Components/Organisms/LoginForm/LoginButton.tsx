@@ -1,8 +1,9 @@
 import { Button, Typography } from '@mui/material';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useTranslation } from 'react-i18next';
 
 import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
 import { auth } from '../../../Firebase/firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 
 function LoginButton(prop: {
   email: string;
@@ -24,7 +25,7 @@ function LoginButton(prop: {
       alert(error.message);
     }
   };
-
+  const { t } = useTranslation('loginModal');
   return (
     <Button
       variant="contained"
@@ -36,7 +37,7 @@ function LoginButton(prop: {
       }}
       onClick={handleLoginClick}
     >
-      <Typography sx={{ paddingTop: '1px' }}>ZALOGUJ</Typography>
+      <Typography sx={{ paddingTop: '1px' }}>{t('login')}</Typography>
     </Button>
   );
 }

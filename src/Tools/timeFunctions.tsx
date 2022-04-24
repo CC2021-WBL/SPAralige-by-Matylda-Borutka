@@ -15,5 +15,7 @@ export const getDateFormatDdMmYyyy = (date: Date) => {
 };
 
 export const getDayName = (date: Date) => {
-  return date.toLocaleDateString('pl-PL', { weekday: 'long' });
+  return localStorage.getItem('i18nextLng') === 'pl'
+    ? date.toLocaleDateString('pl', { weekday: 'long' })
+    : date.toLocaleDateString('en', { weekday: 'long' });
 };
