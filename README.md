@@ -14,9 +14,9 @@ programowania webowego w Polsce.
 Nasza aplikacja to:
 # SPAraligé-by-Matylda-Borutka
 
-Czujęcie napięcie w mięsniach? Zmęczenie? Bóle karku, pleców? Kończyn?
+Czujęcie napięcie w mięsniach? Zmęczenie? Bóle karku, pleców? Kończyn? Stres? No problem - Matylda Borutka już to rozpracowała.
 
-### Rewolucyjna aplikacja, zmieniająca oblicze świata polskiego obedience.
+### Zarezerwuj sobie idealny zabieg
 
 Zainspirowana potrzebami i oparta na konsultacjach społecznych aplikacja
 całościowo rozwiązująca kwestię cyfryzacji tej dyscypliny sportowej,
