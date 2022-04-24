@@ -1,16 +1,15 @@
-import { ErrorBoundary } from 'react-error-boundary';
-import { I18nextProvider } from 'react-i18next';
-import { Route, Routes } from 'react-router-dom';
-import { Suspense, useEffect } from 'react';
+import { ErrorBoundary } from "react-error-boundary";
+import { I18nextProvider } from "react-i18next";
+import { Route, Routes } from "react-router-dom";
+import { Suspense, useEffect } from "react";
 
-import AboutPage from './Components/PagesBody/AboutPage/AboutPage';
-import AccountPage from './Components/PagesBody/AccountPage/AccountPage';
-import ErrorFallback from './Components/PagesBody/ErrorFallback/ErrorFallback';
-import LandingPage from './Components/PagesBody/LandingPage/LandingPage';
-import Layout from './Components/Template/Layout/Layout';
-import ReservationsPage from './Components/PagesBody/ReservationsPage/ReservationsPage';
-import ServicesPage from './Components/PagesBody/ServicesPage/ServicesPage';
-import i18n from './i18n';
+import AboutPage from "./Components/PagesBody/AboutPage/AboutPage";
+import ErrorFallback from "./Components/PagesBody/ErrorFallback/ErrorFallback";
+import LandingPage from "./Components/PagesBody/LandingPage/LandingPage";
+import Layout from "./Components/Template/Layout/Layout";
+import ReservationsPage from "./Components/PagesBody/ReservationsPage/ReservationsPage";
+import ServicesPage from "./Components/PagesBody/ServicesPage/ServicesPage";
+import i18n from "./i18n";
 
 function App() {
   const Loader = () => (
@@ -21,8 +20,8 @@ function App() {
 
   useEffect(() => {
     const getLanguage = () => {
-      localStorage.getItem('i18nextLng') !== ('pl' && 'en') &&
-        localStorage.setItem('i18nextLng', 'pl');
+      localStorage.getItem("i18nextLng") !== ("pl" && "en") &&
+        localStorage.setItem("i18nextLng", "pl");
     };
 
     getLanguage();
@@ -39,8 +38,6 @@ function App() {
                 <Route path="/services" element={<ServicesPage />} />
 
                 <Route path="/about" element={<AboutPage />} />
-
-                <Route path="/account" element={<AccountPage />} />
 
                 <Route path="/reservations" element={<ReservationsPage />} />
               </Route>

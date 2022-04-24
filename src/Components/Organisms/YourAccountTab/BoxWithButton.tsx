@@ -1,8 +1,8 @@
-import { Box, Button } from '@mui/material';
+import { Box, Button } from "@mui/material";
 
 type BoxWithButtonPropTypes = {
   BoxWithButtonStyle: object;
-  onClick: any;
+  onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   btnText: string;
   obj: string;
 };

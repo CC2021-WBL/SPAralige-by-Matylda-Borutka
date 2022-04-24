@@ -30,7 +30,6 @@ const YourAccountFrame = () => {
       console.log("submitting", v);
     },
   });
-  console.log(formik.errors.name);
 
   return (
     <div className="yourAccountFrame" style={FrameStyle}>
@@ -42,9 +41,7 @@ const YourAccountFrame = () => {
         toggleName={toggleName}
         placeholder="imię"
         initialValues={formik.initialValues}
-        onChange={() => {
-          null;
-        }}
+        onChange={formik.handleChange}
         value={formik.values.name}
         onSubmit={formik.handleSubmit}
         onClick={() => {
