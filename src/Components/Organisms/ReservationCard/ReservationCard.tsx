@@ -8,7 +8,7 @@ import {
   getDayName,
 } from '../../../Tools/timeFunctions';
 
-import { generateDateProps } from '../../../Tools/reservationTools';
+import { GenerateDateProps } from '../../../Tools/reservationTools';
 
 export type ReservationCardTypes = {
   serviceName: string;
@@ -16,7 +16,7 @@ export type ReservationCardTypes = {
 };
 
 function ReservationCard(prop: ReservationCardTypes) {
-  const dateObj = generateDateProps(prop.serviceDate);
+  const dateObj = GenerateDateProps(prop.serviceDate);
 
   const onEditClick: HandleOnClickButtonType = (event) => {
     event.preventDefault();
