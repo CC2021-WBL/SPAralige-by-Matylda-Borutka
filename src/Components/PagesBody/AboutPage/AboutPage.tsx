@@ -6,6 +6,10 @@ import { useTranslation } from 'react-i18next';
 import ContactFormModal from '../../Organisms/ContactFormModal/ContactFormModal';
 import GraphicAbout from '../../../Assets/graphic-aboutUS.png';
 
+const textStyles = {
+  paddingRight: { xs: 0, sm: 10 },
+};
+
 const AboutPage = () => {
   const [contactFormModalOpen, setContactFormModalOpen] = useState('closed');
   const { t } = useTranslation('about&contact');
@@ -17,7 +21,7 @@ const AboutPage = () => {
             <Typography
               paddingTop={8}
               variant="h2"
-              sx={{ fontSize: { xs: '3rem', md: '4rem' } }}
+              sx={{ fontSize: { xs: '2.5rem', md: '4rem' } }}
             >
               {t('salon')}
               SPAralige
@@ -28,13 +32,13 @@ const AboutPage = () => {
             >
               by Matylda Borutka
             </Typography>
-            <Typography paddingTop={2} paddingRight={10} variant="body1">
+            <Typography paddingTop={2} sx={textStyles} variant="body1">
               {t('subtitle1')}
             </Typography>
-            <Typography paddingTop={2} paddingRight={10} variant="body1">
+            <Typography paddingTop={2} sx={textStyles} variant="body1">
               {t('subtitle2')}
             </Typography>
-            <Typography paddingTop={2} paddingRight={10} variant="body1">
+            <Typography paddingTop={2} sx={textStyles} variant="body1">
               {t('subtitle3')}
             </Typography>
           </Box>
