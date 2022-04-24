@@ -16,12 +16,10 @@ import {
   updateDoc,
   where,
 } from 'firebase/firestore';
-import { useTranslation } from 'react-i18next';
 
 import CloseIcon from '../LoginForm/CloseIcon';
 import DateButton from './DateButton';
 import HourButton from './HourButton';
-import i18n from '../../../i18n';
 import {
   FullTimetableType,
   HandleReservationType,
@@ -65,13 +63,11 @@ const BookingModal = (prop: {
     [],
   );
   const [hoursOfService, sethoursOfService] = React.useState<string[]>([]);
-  const [service, setService] = React.useState(
-    prop.serviceObject.name[i18n.language],
-  );
+  const [service, setService] = React.useState(prop.serviceObject.name);
   const [price, setPrice] = React.useState(prop.serviceObject.priceInZloty);
 
   useEffect(() => {
-    setService(prop.serviceObject.name[i18n.language]);
+    setService(prop.serviceObject.name);
     setPrice(prop.serviceObject.priceInZloty);
   });
 
@@ -161,8 +157,6 @@ const BookingModal = (prop: {
     }
   }, [chosenDate]);
 
-  const { t } = useTranslation('bookingModal');
-
   const handleReservationClicked: HandleReservationType = async (
     event,
     chosenDate,
@@ -213,17 +207,12 @@ const BookingModal = (prop: {
         <CloseIcon handleClose={prop.handleClose} />
         <Stack spacing={2} sx={stackStyle}>
           <Typography variant="h5" component="h5" sx={headerTypographyStyle}>
-            {t('heading')}
+            Wybierz datę i godzinę
           </Typography>
           <Typography variant="h6" component="h6">
-            {localStorage.getItem('i18nextLng') === 'pl'
-              ? today.toLocaleDateString('pl', {
-                  month: 'long',
-                })
-              : today.toLocaleDateString('en', {
-                  month: 'long',
-                })}
-
+            {today.toLocaleDateString('pl', {
+              month: 'long',
+            })}{' '}
             {today.toLocaleDateString('pl', {
               year: 'numeric',
             })}
@@ -257,7 +246,7 @@ const BookingModal = (prop: {
           >
             <ToggleButton value={'LOL'} disabled sx={hourButtonTitleStyle}>
               <Typography color="black" sx={{ ...hourButtonTypographyStyle }}>
-                {t('morning')}
+                PORANEK
               </Typography>
             </ToggleButton>
             {hoursOfService
@@ -282,7 +271,7 @@ const BookingModal = (prop: {
                 color="black"
                 sx={{ ...hourButtonTypographyStyle }}
               >
-                {t('afternoon')}
+                POPOPŁUDNIE
               </Typography>
             </ToggleButton>
             {hoursOfService
@@ -310,7 +299,7 @@ const BookingModal = (prop: {
                 color="black"
                 sx={{ ...hourButtonTypographyStyle }}
               >
-                {t('evening')}
+                WIECZÓR
               </Typography>
             </ToggleButton>
             {hoursOfService
@@ -351,13 +340,9 @@ const BookingModal = (prop: {
                   variant="h6"
                   sx={{ ...modalResTypographyStyle, textAlign: 'right' }}
                 >
-                  {localStorage.getItem('i18nextLng') === 'pl'
-                    ? chosenDate.toLocaleDateString('pl', {
-                        weekday: 'long',
-                      })
-                    : chosenDate.toLocaleDateString('en', {
-                        weekday: 'long',
-                      })}
+                  {chosenDate.toLocaleDateString('pl', {
+                    weekday: 'long',
+                  })}
                   ,{' '}
                   {chosenDate.toLocaleDateString('pl', {
                     month: '2-digit',
@@ -381,7 +366,7 @@ const BookingModal = (prop: {
               handleReservationClicked(event, chosenDate, chosenHour);
             }}
           >
-            {t('reservation')}
+            ZAREZERWUJ
           </Button>
         </Stack>
       </Box>

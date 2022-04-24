@@ -15,7 +15,6 @@ import { Menu } from '@mui/material';
 import { NavLink as RouterLink, useNavigate } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import AuthedRightMenu from './AuthedRightMenu';
 import LoginModal from '../../Organisms/LoginForm/LoginModal';
@@ -58,13 +57,11 @@ const NavBar = () => {
   const [registerModalOpen, setRegisterModalOpen] = useState('closed');
   const openRightMenu = Boolean(anchorElRight);
   const openLeftMenu = Boolean(anchorElLeft);
-  const { t } = useTranslation('navFooter');
+
   const handleClickRight = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(event.currentTarget);
     setAnchorElRight(event.currentTarget);
   };
   const handleClickLeft = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(event.currentTarget);
     setAnchorElLeft(event.currentTarget);
   };
   const handleCloseLeft = () => {
@@ -86,18 +83,16 @@ const NavBar = () => {
     setRegisterModalOpen('open');
   };
 
-  const handleReservationsClicked: HandleOnClickButtonType = () => {
+  const handleReservationsClicked: HandleOnClickButtonType = (event) => {
+    event.preventDefault();
     handleCloseRight();
-    console.log('reservaition clicked');
     navigate('/reservations');
-    console.log(navigate);
   };
 
-  const handleYourAccountClicked: HandleOnClickButtonType = () => {
-    // event.preventDefault();
+  const handleYourAccountClicked: HandleOnClickButtonType = (event) => {
+    event.preventDefault();
     handleCloseRight();
     navigate('/reservations');
-    console.log('your account clicked');
   };
 
   async function handleLogout() {
@@ -107,14 +102,13 @@ const NavBar = () => {
   }
   return (
     <AppBar
-      position="relative"
+      position="static"
       sx={{
         height: '5rem',
         m: 0,
         p: 0,
         justifyContent: 'center',
         boxShadow: 'none',
-        zIndex: '100',
       }}
     >
       <Toolbar variant="regular" sx={{ bgcolor: 'none' }}>
@@ -180,7 +174,7 @@ const NavBar = () => {
               tabIndex={0}
               aria-label="services"
             >
-              {t('nav1').toUpperCase()}
+              NASZE ZABIEGI
             </Link>
             <Link
               component={RouterLink}
@@ -191,7 +185,7 @@ const NavBar = () => {
               tabIndex={0}
               aria-label="about"
             >
-              {t('nav2').toUpperCase()}
+              O NAS
             </Link>
           </Container>
           <IconButton
@@ -246,7 +240,7 @@ const NavBar = () => {
               }}
               aria-label="Services Catalogue"
             >
-              {t('nav1')}
+              Katalog zabiegów
             </MenuItem>
             <MenuItem
               onClick={() => {
@@ -255,7 +249,7 @@ const NavBar = () => {
               }}
               aria-label="About Us"
             >
-              {t('nav2')}
+              O nas
             </MenuItem>
           </Menu>
           {loginModalOpen == 'open' && (
