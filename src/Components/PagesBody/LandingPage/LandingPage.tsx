@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import LandingGrid from './LandingGrid';
 import MainGraphic from '../../Organisms/Main-Graphic/MainGraphic';
+import ScrollButton from '../../Atoms/ScrollButton/ScrollButton';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 import { servicesRef } from '../../../Firebase/firebase';
 
@@ -37,6 +38,7 @@ const LandingPage = () => {
 
   return (
     <main>
+      <ScrollButton showBelow={250} />
       <MainGraphic />
       <Typography
         sx={{
