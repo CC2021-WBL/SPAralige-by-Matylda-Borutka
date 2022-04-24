@@ -110,16 +110,29 @@ BACKEND
 ## Autorzy
 
 - [Katarzyna Chmielecka](https://github.com/KatarzynaChmielecka)
-![Kasia](https://user-images.githubusercontent.com/96307488/164979970-aa4c44db-a5f0-4d93-b247-224988604f84.png)
+![Kasia](https://user-images.githubusercontent.com/96307488/164980419-1d052ee4-b201-4925-a5e3-95d9e8257287.png)
+
 - [Alicja Kondrat](https://github.com/pierwszazlewej) UI/UX Designer, Product
   Owner
-  ![Ala](https://user-images.githubusercontent.com/96307488/164979982-f1684af6-975b-45fb-9169-3cf2425ccd7f.png)
+
+![Ala](https://user-images.githubusercontent.com/96307488/164980440-f4e0b9c0-a666-4824-958e-2d64c9d09072.png)
+
+
 - [Monika Krella](https://github.com/MonikaKrella) Tech Leader
-![Monia](https://user-images.githubusercontent.com/96307488/164980005-0d921f44-576a-464e-a871-52680e7199e8.png)
+
+![Monia](https://user-images.githubusercontent.com/96307488/164980457-d7fee3c1-4796-462a-a747-7c32ce696f8b.png)
+
+
 - [Tomasz Skrętkowski](https://github.com/n0macx) Development Manager
-![Tomek](https://user-images.githubusercontent.com/96307488/164980015-e779a957-6393-4c59-ad48-6f2ca3af0e1a.png)
+
+![Tomek](https://user-images.githubusercontent.com/96307488/164980499-ca9e750b-498a-43a4-9cde-280e0d03760c.png)
+
+
 - [Adam Smycz](https://github.com/Smyku6) Tech Leader
-![Adam](https://user-images.githubusercontent.com/96307488/164980020-6e8f8bdd-eb35-441a-ad73-e07507266c38.png)
+
+![Adam](https://user-images.githubusercontent.com/96307488/164980505-6136d984-14a1-4364-b8db-e7a4f964b523.png)
+
+
 - [Robert Soldynski](https://github.com/RobertS-ki)
 
 ![Robert](https://user-images.githubusercontent.com/96307488/164980268-9058b211-da81-4197-b292-2deb36b172c5.png)
