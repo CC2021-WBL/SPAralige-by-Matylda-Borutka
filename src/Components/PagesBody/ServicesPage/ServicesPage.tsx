@@ -8,47 +8,55 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
 import Burger, { BurgerProp } from '../../Organisms/Burger/Burger';
 import { bodyPage } from '../../../Tools/htmlElements';
-import { filterReducer } from '../../../Reducers/filterReducer';
 import { getAllServices } from '../../../Firebase/queries';
 import { getDataForBurgerFromServices } from '../../../Tools/burgerHelperTools';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 
 const drawerWidth = '21rem';
 
-type ForBurgerTypes = Omit<BurgerProp, 'handleFilter' | 'handleClose'>;
+type ForBurgerTypes = Omit<
+  BurgerProp,
+  'handleFilter' | 'handleClose' | 'setFiltered' | 'services'
+>;
 
 export default function ServicesPage() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [services, setServices] = useState<serviceDataType[] | null>(null);
+  const [filtered, setFiltered] = useState<serviceDataType[]>([]);
 
-  const [filterState, filterDispatch] = useReducer(filterReducer, services);
+  // const [filterState, filterDispatch] = useReducer(filterReducer, services);
   const [serviceBurgerData, setServiceBurgerData] =
-    useState<ForBurgerTypes | null>(null);
+    useState<Required<ForBurgerTypes> | null>(null);
+
+  const { t, i18n } = useTranslation('services');
 
   useEffect(() => {
     const fetchData = async () => {
       const gettedServices = await getAllServices();
       setServices(gettedServices);
       if (gettedServices) {
-        const dataForBurger = getDataForBurgerFromServices(gettedServices);
+        const dataForBurger = getDataForBurgerFromServices(
+          gettedServices,
+          i18n.language,
+        );
         setServiceBurgerData(dataForBurger);
+        setFiltered(gettedServices);
       }
     };
     fetchData();
   }, []);
-  console.log(services);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const container = bodyPage();
-  //window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -79,6 +87,8 @@ export default function ServicesPage() {
           }}
         >
           <Burger
+            services={services}
+            setFiltered={setFiltered}
             handleClose={handleDrawerToggle}
             therapists={serviceBurgerData?.therapists}
             servicesData={serviceBurgerData?.servicesData}
@@ -100,6 +110,8 @@ export default function ServicesPage() {
           }}
         >
           <Burger
+            services={services}
+            setFiltered={setFiltered}
             therapists={serviceBurgerData?.therapists}
             servicesData={serviceBurgerData?.servicesData}
             maxPrice={serviceBurgerData?.maxPrice}

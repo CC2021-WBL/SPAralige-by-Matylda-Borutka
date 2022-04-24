@@ -33,7 +33,6 @@ const BookingModal = (prop: {
   open: boolean;
   handleClose: () => void;
 }) => {
-  console.log(prop.serviceObject);
   const today = new Date();
   const [chosenDateNumber, setChosenDateNumber] = React.useState(0);
   const [chosenDate, setChosenDate] = React.useState(today);
