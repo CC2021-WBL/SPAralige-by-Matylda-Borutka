@@ -100,20 +100,27 @@ WORKFLOW
 
 ## Autorzy
 
-- [Katarzyna Chmielecka](https://github.com/KatarzynaChmielecka) Umie w CSS
+- [Katarzyna Chmielecka](https://github.com/KatarzynaChmielecka) 
   ![Kasia](https://user-images.githubusercontent.com/96307488/164980419-1d052ee4-b201-4925-a5e3-95d9e8257287.png) -
-  [Alicja Kondrat](https://github.com/pierwszazlewej) Product Owner
+  [Alicja Kondrat](https://github.com/pierwszazlewej) 
   ![Ala](https://user-images.githubusercontent.com/96307488/164980440-f4e0b9c0-a666-4824-958e-2d64c9d09072.png)
 
-- [Monika Krella](https://github.com/MonikaKrella) Tech Leader
+- [Monika Krella](https://github.com/MonikaKrella) 
   ![Monia](https://user-images.githubusercontent.com/96307488/164980457-d7fee3c1-4796-462a-a747-7c32ce696f8b.png) -
-  [Tomasz Skrętkowski](https://github.com/n0macx) Development Manager
+  [Tomasz Skrętkowski](https://github.com/n0macx) 
   ![Tomek](https://user-images.githubusercontent.com/96307488/164980499-ca9e750b-498a-43a4-9cde-280e0d03760c.png)
 
-- [Adam Smycz](https://github.com/Smyku6) Umie o obiekty
+- [Adam Smycz](https://github.com/Smyku6) 
   ![Adam](https://user-images.githubusercontent.com/96307488/164980505-6136d984-14a1-4364-b8db-e7a4f964b523.png) -
-  [Robert Soldynski](https://github.com/RobertS-ki) Umie centrować diva
+  [Robert Soldynski](https://github.com/RobertS-ki) 
   ![Robert](https://user-images.githubusercontent.com/96307488/164980380-97e183a0-073b-4c89-b698-678ff0e242d3.png)
+  
+Umie w CSS
+Product Owner
+Tech Leader
+Development Manager
+Umie o obiekty
+Umie centrować diva
 
 ## Podziękowania
 
