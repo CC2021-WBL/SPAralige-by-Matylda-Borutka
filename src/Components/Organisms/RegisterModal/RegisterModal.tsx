@@ -148,7 +148,7 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
                 </Typography>
                 <FacebookAndGoogleBox loginOrRegister="register" />
                 <SignOrResetLink
-                  issueText={t('privacy')}
+                  issueText={t('account')}
                   linkText={t('login')}
                   handleOnClick={prop.handleLoginOrRegisterTransfer}
                 />
