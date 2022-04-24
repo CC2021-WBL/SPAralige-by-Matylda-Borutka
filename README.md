@@ -109,10 +109,8 @@ BACKEND
 
 ## Autorzy
 
-- [Katarzyna Chmielecka](https://github.com/KatarzynaChmielecka) ![Kasia](https://user-images.githubusercontent.com/96307488/164980419-1d052ee4-b201-4925-a5e3-95d9e8257287.png) - [Alicja Kondrat](https://github.com/pierwszazlewej) UI/UX Designer, Product
-  Owner
-
-![Ala](https://user-images.githubusercontent.com/96307488/164980440-f4e0b9c0-a666-4824-958e-2d64c9d09072.png)
+- [Katarzyna Chmielecka](https://github.com/KatarzynaChmielecka) 
+![Kasia](https://user-images.githubusercontent.com/96307488/164980419-1d052ee4-b201-4925-a5e3-95d9e8257287.png) - [Alicja Kondrat](https://github.com/pierwszazlewej) UI/UX Designer, Product Owner ![Ala](https://user-images.githubusercontent.com/96307488/164980440-f4e0b9c0-a666-4824-958e-2d64c9d09072.png)
 
 - [Monika Krella](https://github.com/MonikaKrella) Tech Leader
 
