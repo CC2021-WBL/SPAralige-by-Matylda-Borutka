@@ -1,5 +1,36 @@
 import { Container, Link, Stack } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
+function Page() {
+  const { t, i18n } = useTranslation('common');
+
+  const changeLanguage = (lng: any) => {
+    i18n.changeLanguage(lng);
+  };
+
+  return (
+    <div
+      className="App"
+      style={{
+        zIndex: 111,
+        position: 'absolute',
+        color: 'black',
+        marginTop: '200px',
+      }}
+    >
+      <div className="App-header">
+        <button type="button" onClick={() => changeLanguage('pl')}>
+          pl
+        </button>
+        <button type="button" onClick={() => changeLanguage('en')}>
+          en
+        </button>
+      </div>
+      <div>{t('test2')}</div>
+    </div>
+  );
+}
 
 const Footer = () => {
   return (
@@ -12,6 +43,7 @@ const Footer = () => {
         marginTop: '1.5rem',
       }}
     >
+      <Page />
       <Container
         className="wrapper"
         sx={{
