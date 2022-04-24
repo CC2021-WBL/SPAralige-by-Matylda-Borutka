@@ -40,8 +40,8 @@ Utwórz konto użytkownika, podaj dane i rezerwuj konkretny temin.
 - Anglojęzyczna wersja językowa
 - Rejestracja użytkownika
 - Profil użytkownika
-- Logowanie klasyczne, z pomocą konta google oraz z konta na facebooku
-- Aplikacja SPA, która jest technicznie również SPA - single page application!
+- Autentykacja - jako logowanie klasyczne, z pomocą konta google oraz z konta na facebooku
+- Aplikacja SPA, która jest technicznie również SPA! (single page application)!
 - Responsywność z pomocą google material UI
 
 ### Linki
@@ -56,6 +56,7 @@ Utwórz konto użytkownika, podaj dane i rezerwuj konkretny temin.
 
 DESIGN/UI/UX
 
+- Brainstorming - Discord/Figma/Google Meet
 - Figma
 - Design z pomocą szablonów google Material UI (MUI)
 
@@ -74,23 +75,27 @@ FRONTEND
 
 BACKEND
 
-? heroku
-? husky
-- Firebase
-- node
-- express: usprawniał pracę i rozszerzał funkcjonalności node
-- base64url
-- cookie-parser: do analizy plików cookie
-- dotenv: do zarządzania zmiennymi środowiskowymi
-- helmet: pomógł zabezpieczyć aplikację
-- jsonwebtoken: wsparł nas w autoryzacji i autentykacji
-- passport: autoryzacja
-- swagger: automatyczna dokumentacja api
-- logowanie przez gmail i facebook
+- Node
+- Firebase (autentykacje/logowanie przez hasło/email, przez konto google i konto facebook)
+- Express: usprawniał pracę i rozszerzał funkcjonalności node
+- Base64url
+- Cookie-parser: do analizy plików cookie
+- Dotenv: do zarządzania zmiennymi środowiskowymi
+- Helmet: pomógł zabezpieczyć aplikację
+- Jsonwebtoken: wsparł nas w autoryzacji i autentykacji
+- Passport: autoryzacja
+- Swagger: automatyczna dokumentacja api
+
+WORKFLOW
+- Jira - workflow managment - zarzadzanie zadaniami i rozwojem projektu
+- Husky - pomoc w eleminowaniu błędów jeszcze przed zrobieniem commita
+- Google Meet/Discord/Figma - planowanie, dyskusje i rozwiązywanie problemów
 
 ### W przyszłości
 
 - tryby kolorystyczne
+- powiadomienia sms
+- aplikacja natywna na system Android
 
 ## Autorzy
 
