@@ -74,7 +74,6 @@ FRONTEND
 - Komponenty Material UI i własne
 - Ikony MUI
 - Atomic Design w katalogowaniu plików i kodzie
-- Kontrola nad propsami - Type Script propTypes
 - Formik - do obłsugi formularzy
 - Używaliśmy eslint prettier oraz wtyczki (do VSC) do sortowania importowanych oraz
   całej masy wtyczek do VSC, by pracowało nam się lepiej
@@ -83,7 +82,7 @@ FRONTEND
 BACKEND
 
 - Firebase (autentykacje/logowanie przez hasło/email, przez konto google i konto
-  facebook, serwer backendowy, baza danych noSQL, )
+  facebook, serwer backendowy, baza danych NoSQL, )
 - Dotenv
 
 WORKFLOW
