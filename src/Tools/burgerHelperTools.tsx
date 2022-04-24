@@ -1,6 +1,4 @@
-//import { RangeUnit } from '../Components/Organisms/Burger/FilterWithRange';
-
-import { ServicesFilterType } from '../Components/Organisms/Burger/ServiceTypesFilter';
+import { ServicesFilterType } from '../Components/Organisms/Burger/BurgerTypes';
 import { serviceDataType } from '../Types/dbDataTypes';
 
 export function getDataForBurgerFromServices(
@@ -77,4 +75,21 @@ export function setPrimaryFilteredTherapists(
   } else {
     return {};
   }
+};
+
+type FilterServices = (
+  filteredTypes: Record<string, unknown>,
+  filteredTherapists: Record<string, unknown>,
+  priceRange: {
+    minValue: number;
+    maxValue: number;
+  },
+  dateRange: {
+    minValue: Date;
+    maxValue: Date;
+  },
+) => void;
+
+export const filterServices: FilterServices = () =>  {
+  
 }

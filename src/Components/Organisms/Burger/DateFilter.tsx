@@ -7,16 +7,12 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 
-type RangePropType = {
-  name: string;
-  minValue: Date;
-  maxValue: Date;
-};
+import { DateProp } from './BurgerTypes';
 
-function DateFilter(prop: RangePropType) {
+function DateFilter(prop: DateProp) {
   const [valueRange, setValueRange] = useState({
-    minValue: prop.minValue,
-    maxValue: prop.maxValue,
+    minValue: prop.minValue.toISOString().split('T')[0],
+    maxValue: prop.maxValue.toISOString().split('T')[0],
   });
 
   function handleOnMinChange(
@@ -25,6 +21,10 @@ function DateFilter(prop: RangePropType) {
     event.preventDefault();
     setValueRange({
       maxValue: valueRange.maxValue,
+      minValue: event.target.value,
+    });
+    prop.setDateRange({
+      maxValue: new Date(valueRange.maxValue),
       minValue: new Date(event.target.value),
     });
   }
@@ -34,8 +34,12 @@ function DateFilter(prop: RangePropType) {
   ) {
     event.preventDefault();
     setValueRange({
-      maxValue: new Date(event.target.value),
+      maxValue: event.target.value,
       minValue: valueRange.minValue,
+    });
+    prop.setDateRange({
+      minValue: new Date(valueRange.maxValue),
+      maxValue: new Date(event.target.value),
     });
   }
   return (

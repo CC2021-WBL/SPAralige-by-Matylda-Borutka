@@ -7,7 +7,7 @@ import {
   Typography,
 } from '@mui/material';
 
-type RangePropType = {
+type PricePropType = {
   name: string;
   minValue: number;
   maxValue: number;
@@ -16,7 +16,7 @@ type RangePropType = {
   >;
 };
 
-function PriceFilter(prop: RangePropType) {
+function PriceFilter(prop: PricePropType) {
   const [valueRange, setValueRange] = useState({
     minValue: prop.minValue,
     maxValue: prop.maxValue,

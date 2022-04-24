@@ -1,25 +1,20 @@
 import { Box } from '@mui/material';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { useState } from 'react';
 
 import CloseFiltersButton from './CloseFiltersButton';
 import DateFilter from './DateFilter';
 import PriceFilter from './PriceFilter';
 import RehabilitatorFilter from './RehabilitatorFilter';
-import ServiceTypesFilter, { ServicesFilterType } from './ServiceTypesFilter';
-import { serviceDataType } from '../../../Types/dbDataTypes';
+import ServiceTypesFilter from './ServiceTypesFilter';
+import { BurgerProp } from './BurgerTypes';
 import {
   setPrimaryFilteredTherapists,
   setPrimaryFilteredTypes,
 } from '../../../Tools/burgerHelperTools';
 
-export type BurgerProp = {
-  handleFilter?: () => void;
-  handleClose?: () => void;
-  therapists?: string[];
-  servicesData?: ServicesFilterType[];
-  maxPrice?: number;
-  setFiltered: Dispatch<SetStateAction<serviceDataType[]>>;
-  services: serviceDataType[] | null;
+const primaryDateRange = {
+  minValue: new Date(),
+  maxValue: new Date(new Date().setDate(new Date().getDate() + 14)),
 };
 
 function Burger(prop: BurgerProp) {
@@ -31,10 +26,9 @@ function Burger(prop: BurgerProp) {
     maxValue: prop.maxPrice || 1500,
   });
   const primaryTherapists = setPrimaryFilteredTherapists(prop.therapists, true);
-  console.log(primaryTherapists);
   const [filteredTherapists, setFilteredTherapists] =
     useState(primaryTherapists);
-  console.log(filteredTherapists);
+  const [dateRange, setDateRange] = useState(primaryDateRange);
   return (
     <Box
       sx={{
@@ -73,8 +67,9 @@ function Burger(prop: BurgerProp) {
       {prop.servicesData && (
         <DateFilter
           name="Dostępność"
-          minValue={new Date()}
-          maxValue={new Date(new Date().setDate(new Date().getDate() + 7))}
+          minValue={primaryDateRange.minValue}
+          maxValue={primaryDateRange.maxValue}
+          setDateRange={setDateRange}
         />
       )}
     </Box>

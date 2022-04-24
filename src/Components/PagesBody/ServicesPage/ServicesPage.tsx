@@ -11,8 +11,9 @@ import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import Burger from '../../Organisms/Burger/Burger';
 import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
-import Burger, { BurgerProp } from '../../Organisms/Burger/Burger';
+import { BurgerProp } from '../../Organisms/Burger/BurgerTypes';
 import { bodyPage } from '../../../Tools/htmlElements';
 import { getAllServices } from '../../../Firebase/queries';
 import { getDataForBurgerFromServices } from '../../../Tools/burgerHelperTools';

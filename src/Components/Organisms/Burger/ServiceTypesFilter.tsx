@@ -7,14 +7,10 @@ import {
   FormLabel,
 } from '@mui/material';
 
+import { ServicesFilterType } from './BurgerTypes';
 import { burgerCheckboxStyle, checkboxControlLabelStyle } from './BurgerStyles';
 import { createServicesCheckboxesObj } from '../../../Tools/burgerHelperTools';
 import { setStateType } from '../../../Types/hookTypes';
-
-export interface ServicesFilterType {
-  serviceType: string;
-  serviceFilterCat: string;
-}
 
 type propType = {
   servicesDataArr: ServicesFilterType[];
