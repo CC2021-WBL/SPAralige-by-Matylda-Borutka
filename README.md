@@ -1,28 +1,20 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with
-[Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
+Wpisuj w konsoli
 
 ### `npm run dev`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+i zapraszamy do NASzej aplikacji.
 
 ![logo-devs-on-the-waves-stroke](https://user-images.githubusercontent.com/19845958/148255475-9f24bd68-7020-42e8-a0d7-c2ed885848e5.png)
 
-# CodersCamp 2021 - Fullstack Project
+Jesteśmy Devs On The Waves i chcemy zaprezentować nasz projekt pełnostosowy (fullstack ;) ) wykonany podczas trwania największego otwartego kurs
+programowania webowego w Polsce.
 
-**CodersCamp (https://www.coderscamp.edu.pl/) - Największy otwarty kurs
-programowania webowego**
+**CodersCamp (https://www.coderscamp.edu.pl/)**
 
-# SPAralige-by-Matylda-Borutka
+Nasza aplikacja to:
+# SPAraligé-by-Matylda-Borutka
+
+Czujęcie napięcie w mięsniach? Zmęczenie? Bóle karku, pleców? Kończyn?
 
 ### Rewolucyjna aplikacja, zmieniająca oblicze świata polskiego obedience.
 
@@ -47,6 +39,7 @@ co to obedience? https://johndog.pl/blog/zyciezpsem/obi-ogole-znaczy/
 
 ### Funkcjonalności
 
+- Anglojęzyczna wersja językowa
 - Uzupełnianie kart ocen w aplikacji mobilnej
 - Rejestracja dla zawodników i możliwość dodawania posiadanych psów
 - Zgłoszenia na zawody bez konieczności żmudnego wpisywania tych samych danych -
@@ -100,12 +93,9 @@ BACKEND
 - jsonwebtoken: wsparł nas w autoryzacji i autentykacji
 - passport: autoryzacja
 - swagger: automatyczna dokumentacja api
+- logowanie przez gmail i facebook
 
 ### W przyszłości
-
-- Anglojęzyczna wersja językowa
-
-- Logowanie przez gmail i facebook
 
 ## Autorzy
 
@@ -114,7 +104,7 @@ BACKEND
 
 - [Monika Krella](https://github.com/MonikaKrella) Tech Leader ![Monia](https://user-images.githubusercontent.com/96307488/164980457-d7fee3c1-4796-462a-a747-7c32ce696f8b.png) - [Tomasz Skrętkowski](https://github.com/n0macx) Development Manager ![Tomek](https://user-images.githubusercontent.com/96307488/164980499-ca9e750b-498a-43a4-9cde-280e0d03760c.png)
 
-- [Adam Smycz](https://github.com/Smyku6) Tech Leader ![Adam](https://user-images.githubusercontent.com/96307488/164980505-6136d984-14a1-4364-b8db-e7a4f964b523.png) - [Robert Soldynski](https://github.com/RobertS-ki) Był na projekcie... ![Robert](https://user-images.githubusercontent.com/96307488/164980380-97e183a0-073b-4c89-b698-678ff0e242d3.png)
+- [Adam Smycz](https://github.com/Smyku6) Umie o obiekty ![Adam](https://user-images.githubusercontent.com/96307488/164980505-6136d984-14a1-4364-b8db-e7a4f964b523.png) - [Robert Soldynski](https://github.com/RobertS-ki) Umie centrować diva ![Robert](https://user-images.githubusercontent.com/96307488/164980380-97e183a0-073b-4c89-b698-678ff0e242d3.png)
 
 
 ## Podziękowania
@@ -122,8 +112,11 @@ BACKEND
 Chcieliśmy serdecznie podziękować naszej mentorce
 [Weronika Boszko Lucena](https://github.com/vieraboschkova) za cierpliwość i
 wsparcie ♥
+  
+ 
 
-### Screeny
+### Zrzuty ekranu
+---
 ![obraz](https://user-images.githubusercontent.com/96307488/164765315-49044db2-d8b0-4fde-b2af-64b01d86bb22.png)
 ![obraz](https://user-images.githubusercontent.com/96307488/164765281-497a9a6b-08ee-4c98-9914-63d521312e11.png)
 ![obraz](https://user-images.githubusercontent.com/96307488/164765367-839f8291-77b3-4c34-ac08-6f42093c2c7d.png)
