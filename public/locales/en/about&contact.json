@@ -10,5 +10,8 @@
   "write": "Write to us",
   "email": "Email",
   "message": "Message",
-  "send": "send"
+  "send": "send",
+  "requiredEmail": "E-mail is required",
+  "wrongEmail": "Incorrect e-mail",
+  "requiredMessage": "Don't send an empty message"
 }

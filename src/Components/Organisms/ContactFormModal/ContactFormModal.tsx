@@ -13,15 +13,12 @@ import { useTranslation } from 'react-i18next';
 
 import ClosingIcon from '../../Organisms/LoginForm/CloseIcon';
 
-const ContactFormValidation = Yup.object().shape({
-  email: Yup.string()
-    .required('Adres e-mail wymagany')
-    .email('Niepoprawny adres e-mail'),
-  message: Yup.string().required('Nie wysyłaj pustej wiadomości!'),
-});
-
 const ContactFormModal = (prop: { open: boolean; handleClose: () => void }) => {
   const { t } = useTranslation('about&contact');
+  const ContactFormValidation = Yup.object().shape({
+    email: Yup.string().required(t('requiredEmail')).email(t('wrongEmail')),
+    message: Yup.string().required(t('requiredMessage')),
+  });
   return (
     <Modal
       open={prop.open}

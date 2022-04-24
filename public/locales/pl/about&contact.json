@@ -10,5 +10,8 @@
   "contactDescription": "Chcesz o coś zapytać? Masz jakieś spostrzeżenia i uwagi? Daj znać i wyślij nam wiadomość przez poniższy formularz.",
   "email": "Email",
   "message": "Wiadomość",
-  "send": "wyślij"
+  "send": "wyślij",
+  "requiredEmail": "Adres e-mail jest wymagany",
+  "wrongEmail": "Niepoprawny adres e-mail",
+  "requiredMessage": "Nie wysyłaj pustej wiadomości"
 }
