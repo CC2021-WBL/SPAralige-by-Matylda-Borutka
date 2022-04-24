@@ -19,23 +19,18 @@ import SignOrResetLink from '../LoginForm/SignOrResetLink';
 import { AuthModalPropTypes } from '../../../Types/loginOrRegisterTypes';
 import { auth } from '../../../Firebase/firebase';
 
-const RegisterValidation = Yup.object().shape({
-  email: Yup.string()
-    .required('Adres e-mail wymagany')
-    .email('Niepoprawny adres e-mail'),
-  password: Yup.string()
-    .min(6, 'Hasło musi składać się z conajmniej 6 znaków')
-    .required('Hasło jest wymagane'),
-  confirmPassword: Yup.string()
-    .required('Wpisz hasło')
-    .oneOf([Yup.ref('password')], 'Podane hasła różnią się'),
-  termsOfService: Yup.boolean()
-    .required('* Warunki użytkowania muszę zostać zaakceptowane.')
-    .oneOf([true], '* Warunki użytkowania muszę zostać zaakceptowane.'),
-});
-
 const RegisterModal = (prop: AuthModalPropTypes) => {
   const { t } = useTranslation('registerModal');
+  const RegisterValidation = Yup.object().shape({
+    email: Yup.string().required(t('requiredEmail')).email(t('wrongEmail')),
+    password: Yup.string().min(6, t('passwordYup')).required(t('passwordYup2')),
+    confirmPassword: Yup.string()
+      .required(t('confirmPasswordYup'))
+      .oneOf([Yup.ref('password')], t('confirmPasswordYup2')),
+    termsOfService: Yup.boolean()
+      .required(`* ${t('policy')}`)
+      .oneOf([true], `* ${t('policy')}`),
+  });
   return (
     <Modal
       open={prop.open}

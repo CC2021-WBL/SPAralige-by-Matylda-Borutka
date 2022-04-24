@@ -9,5 +9,12 @@
   "account": "Masz już konto?",
   "login": "Zaloguj się",
   "forgot": "Zapomniałeś hasła?",
-  "reset": "Zresetuj hasło"
+  "reset": "Zresetuj hasło",
+  "requiredEmail": "Adres e-mail jest wymagany",
+  "wrongEmail": "Niepoprawny adres e-mail",
+  "passwordYup": "Hasło musi składać się z co najmniej 6 znaków",
+  "passwordYup2": "Hasło jest wymagane",
+  "confirmPasswordYup": "Wpisz hasło",
+  "confirmPasswordYup2": "Podane hasła różnią się",
+  "policy": "Warunki użytkowania muszę zostać zaakceptowane."
 }
