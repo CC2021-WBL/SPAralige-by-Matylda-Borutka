@@ -110,12 +110,19 @@ BACKEND
 ## Autorzy
 
 - [Katarzyna Chmielecka](https://github.com/KatarzynaChmielecka)
+![Kasia](https://user-images.githubusercontent.com/96307488/164979970-aa4c44db-a5f0-4d93-b247-224988604f84.png)
 - [Alicja Kondrat](https://github.com/pierwszazlewej) UI/UX Designer, Product
   Owner
+  ![Ala](https://user-images.githubusercontent.com/96307488/164979982-f1684af6-975b-45fb-9169-3cf2425ccd7f.png)
 - [Monika Krella](https://github.com/MonikaKrella) Tech Leader
+![Monia](https://user-images.githubusercontent.com/96307488/164980005-0d921f44-576a-464e-a871-52680e7199e8.png)
 - [Tomasz Skrętkowski](https://github.com/n0macx) Development Manager
+![Tomek](https://user-images.githubusercontent.com/96307488/164980015-e779a957-6393-4c59-ad48-6f2ca3af0e1a.png)
 - [Adam Smycz](https://github.com/Smyku6) Tech Leader
+![Adam](https://user-images.githubusercontent.com/96307488/164980020-6e8f8bdd-eb35-441a-ad73-e07507266c38.png)
 - [Robert Soldynski](https://github.com/RobertS-ki)
+![Robert](https://user-images.githubusercontent.com/96307488/164980026-31d90a33-a3bf-492e-8445-7eaaf5db853d.png)
+
 
 ## Podziękowania
 
