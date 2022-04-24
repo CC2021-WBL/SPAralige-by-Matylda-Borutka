@@ -40,7 +40,7 @@ konto użytkownika, podaj dane i rezerwuj konkretny temin.
 
 ### Funkcjonalność
 
-- Anglojęzyczna wersja językowa
+- Angielska wersja językowa
 - Rejestracja użytkownika
 - Profil użytkownika
 - Autentykacja - jako logowanie klasyczne, z pomocą konta google oraz z konta na
@@ -76,9 +76,9 @@ FRONTEND
 - Atomic Design w katalogowaniu plików i kodzie
 - Kontrola nad propsami - Type Script propTypes
 - Formik - do obłsugi formularzy
-- Używaliśmy eslint prettier oraz wtyczki (do VSC) do sortowania importowanych
+- Używaliśmy eslint prettier oraz wtyczki (do VSC) do sortowania importowanych oraz
+  całej masy wtyczek do VSC, by pracowało nam się lepiej
   plików - by nasz kod był lepszej jakości i czytelniejszy
-- Dodatkowo cała masa wtyczek do VSC, by pracowało nam się lepiej
 
 BACKEND
 
