@@ -1,3 +1,4 @@
+import { Box } from '@mui/system';
 import { ExpandLess } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import { useEffect, useState } from 'react';
@@ -31,13 +32,13 @@ const ScrollButton = (prop: { showBelow: number | boolean }) => {
     window['scrollTo']({ top: 0, behavior: 'smooth' });
   };
   return (
-    <div className="dupa">
+    <Box>
       {show && (
         <IconButton onClick={handleClick} sx={styles}>
           <ExpandLess />
         </IconButton>
       )}
-    </div>
+    </Box>
   );
 };
 
