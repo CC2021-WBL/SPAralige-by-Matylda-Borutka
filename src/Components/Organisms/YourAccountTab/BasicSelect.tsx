@@ -4,6 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import React from 'react';
 import Select from '@mui/material/Select';
 import { Box } from '@mui/system';
+import { useTranslation } from 'react-i18next';
 
 function BasicSelect(prop) {
   const [colors, setColors] = React.useState('');
@@ -16,6 +17,13 @@ function BasicSelect(prop) {
     setLanguage(event.target.value as string);
   };
 
+  const {
+    // t,
+    i18n,
+  } = useTranslation('navFooter');
+  const changeLanguage = (lng: any) => {
+    i18n.changeLanguage(lng);
+  };
   return (
     <>
       {prop.colorsSelect && (
@@ -47,8 +55,22 @@ function BasicSelect(prop) {
               label="lang"
               onChange={handleLanguageChange}
             >
-              <MenuItem value={'polish'}>polski</MenuItem>
-              <MenuItem value={'english'}>english</MenuItem>
+              <MenuItem
+                value={'polish'}
+                onClick={() => {
+                  changeLanguage('pl');
+                }}
+              >
+                polski
+              </MenuItem>
+              <MenuItem
+                value={'english'}
+                onClick={() => {
+                  changeLanguage('en');
+                }}
+              >
+                english
+              </MenuItem>
             </Select>
           </FormControl>
         </Box>
