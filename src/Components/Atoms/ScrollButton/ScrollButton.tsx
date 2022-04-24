@@ -1,14 +1,17 @@
+import ExpandCircleDownRoundedIcon from '@mui/icons-material/ExpandCircleDownRounded';
 import { Box } from '@mui/system';
-import { ExpandLess } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 const styles = {
   zIndex: 1000,
   position: 'fixed',
+  right: '3%',
   bottom: '2vh',
-  bgColor: '#DCDCDC',
-  right: '5%',
+  transform: 'rotate(180deg)',
+  '@media screen and (min-width: 1280px)': {
+    right: 'calc((100vw - 1150px) / 2)',
+  },
 };
 
 const ScrollButton = (prop: { showBelow: number | boolean }) => {
@@ -35,7 +38,9 @@ const ScrollButton = (prop: { showBelow: number | boolean }) => {
     <Box>
       {show && (
         <IconButton onClick={handleClick} sx={styles}>
-          <ExpandLess />
+          <ExpandCircleDownRoundedIcon
+            sx={{ fontSize: '3rem', opacity: '0.5' }}
+          />
         </IconButton>
       )}
     </Box>
