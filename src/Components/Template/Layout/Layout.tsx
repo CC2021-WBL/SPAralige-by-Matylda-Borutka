@@ -1,6 +1,7 @@
 import { Box, Container } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 
+import CookiesBanner from '../../Organisms/CookiesBanner/CookiesBanner';
 import Footer from '../../Template/Footer/Footer';
 import MainWrapper from './MainWrapper';
 import NavBar from '../NavBar/NavBar';
@@ -11,10 +12,16 @@ const Layout = () => {
       <Box>
         <NavBar />
       </Box>
-      <Container maxWidth="lg" sx={{ flexGrow: 1 }}>
+      <Container
+        component="div"
+        id="body-page"
+        maxWidth="lg"
+        sx={{ flexGrow: 1 }}
+      >
         <Outlet />
       </Container>
       <Footer />
+      <CookiesBanner />
     </MainWrapper>
   );
 };

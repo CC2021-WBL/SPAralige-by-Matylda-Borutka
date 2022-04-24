@@ -1,32 +1,30 @@
 import { Box, Modal, Stack, Typography } from '@mui/material';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import ClosingIcon from './CloseIcon';
 import EmailAndPasswordInput from './EmailAndPasswordInput';
 import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
+import FormTitle from '../Form/FormTitle';
 import LoginButton from './LoginButton';
 import SignOrResetLink from './SignOrResetLink';
+import { AuthModalPropTypes } from '../../../Types/loginOrRegisterTypes';
 import { HandleInputChangeType } from '../../../Types/EventFunctions';
-import FormTitle from '../Form/FormTitle';
 
-export default function LoginModal(prop: {
-  open: boolean;
-  handleClose: () => void;
-}) {
+export default function LoginModal(prop: AuthModalPropTypes) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleEmailChange: HandleInputChangeType = (event) => {
     event.preventDefault();
     setEmail(event.target.value);
-    console.log(event.target.value);
   };
 
   const handlePasswordChange: HandleInputChangeType = (event) => {
     event.preventDefault();
     setPassword(event.target.value);
   };
-
+  const { t } = useTranslation('loginModal');
   return (
     <Modal
       open={prop.open}
@@ -42,6 +40,7 @@ export default function LoginModal(prop: {
           bgcolor: '#FFFFFF',
           width: '31.25rem',
           height: '40.813rem',
+          maxHeight: '98vh',
           padding: ['2.5rem', '2.125rem'],
           '@media screen and (max-width: 600px)': {
             width: '19.625rem',
@@ -49,12 +48,12 @@ export default function LoginModal(prop: {
           },
         }}
       >
-        <Stack spacing={'1.4375rem'}>
+        <Stack spacing={'1.25rem'}>
           <ClosingIcon handleClose={prop.handleClose} />
           <FormTitle
             aria-label="Sign in to SPAralige"
-            text1="Witamy w SPAralige!"
-            text2="Zaloguj się wpisując login i hasło"
+            text1={`${t('welcome')} SPAralige!`}
+            text2={`${t('heading')}`}
           />
           <EmailAndPasswordInput
             email={email}
@@ -62,7 +61,11 @@ export default function LoginModal(prop: {
             handleEmailChange={handleEmailChange}
             handlePasswordChange={handlePasswordChange}
           />
-          <LoginButton email={email} password={password} />
+          <LoginButton
+            email={email}
+            password={password}
+            handleClose={prop.handleClose}
+          />
           <Typography
             variant="body1"
             sx={{
@@ -73,16 +76,18 @@ export default function LoginModal(prop: {
               letterSpacing: '0.5px',
             }}
           >
-            lub
+            {t('or')}
           </Typography>
           <FacebookAndGoogleBox loginOrRegister="login" />
           <SignOrResetLink
-            issueText="Nie masz konta? "
-            linkText="Zarejestruj się"
+            issueText={t('account')}
+            linkText={t('register')}
+            handleOnClick={prop.handleLoginOrRegisterTransfer}
           />
           <SignOrResetLink
-            issueText="Zapomniałeś hasła? "
-            linkText="Zresetuj hasło"
+            issueText={t('forgot')}
+            linkText={t('reset')}
+            handleOnClick={prop.handleFrogetPasswordTransfer}
           />
         </Stack>
       </Box>

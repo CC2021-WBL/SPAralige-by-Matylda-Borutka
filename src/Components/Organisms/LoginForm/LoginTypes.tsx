@@ -7,4 +7,8 @@ export type LoginInputsProps = {
   handlePasswordChange: HandleInputChangeType;
 };
 
-export type SignOrResetPropType = { issueText: string; linkText: string };
+export type SignOrResetPropType = {
+  issueText: string;
+  linkText: string;
+  handleOnClick: () => void;
+};
