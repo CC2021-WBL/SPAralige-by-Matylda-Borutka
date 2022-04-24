@@ -99,8 +99,8 @@ WORKFLOW
 
 ## Autorzy
 
-- [Katarzyna Chmielecka](https://github.com/KatarzynaChmielecka) 
-![Kasia](https://user-images.githubusercontent.com/96307488/164980419-1d052ee4-b201-4925-a5e3-95d9e8257287.png) - [Alicja Kondrat](https://github.com/pierwszazlewej) UI/UX Designer, Product Owner ![Ala](https://user-images.githubusercontent.com/96307488/164980440-f4e0b9c0-a666-4824-958e-2d64c9d09072.png)
+- [Katarzyna Chmielecka](https://github.com/KatarzynaChmielecka) Umie w CSS
+![Kasia](https://user-images.githubusercontent.com/96307488/164980419-1d052ee4-b201-4925-a5e3-95d9e8257287.png) - [Alicja Kondrat](https://github.com/pierwszazlewej) Product Owner ![Ala](https://user-images.githubusercontent.com/96307488/164980440-f4e0b9c0-a666-4824-958e-2d64c9d09072.png)
 
 - [Monika Krella](https://github.com/MonikaKrella) Tech Leader ![Monia](https://user-images.githubusercontent.com/96307488/164980457-d7fee3c1-4796-462a-a747-7c32ce696f8b.png) - [Tomasz Skrętkowski](https://github.com/n0macx) Development Manager ![Tomek](https://user-images.githubusercontent.com/96307488/164980499-ca9e750b-498a-43a4-9cde-280e0d03760c.png)
 
