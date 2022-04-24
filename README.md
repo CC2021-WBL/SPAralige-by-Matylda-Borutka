@@ -115,12 +115,14 @@ WORKFLOW
   [Robert Soldynski](https://github.com/RobertS-ki) 
   ![Robert](https://user-images.githubusercontent.com/96307488/164980380-97e183a0-073b-4c89-b698-678ff0e242d3.png)
   
-Umie w CSS
-Product Owner
-Tech Leader
-Development Manager
-Umie o obiekty
-Umie centrować diva
+Dodatkowe funkcje na projekcie przyjęli:
+
+Ala: Product Owner
+
+Monika: Tech Leader
+
+Tomek: Development Manager
+
 
 ## Podziękowania
 
