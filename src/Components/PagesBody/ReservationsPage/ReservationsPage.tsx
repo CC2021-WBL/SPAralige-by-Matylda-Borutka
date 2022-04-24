@@ -1,4 +1,5 @@
 import { Box, Tab, Tabs, Typography } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import { getDocs, orderBy, query, where } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
@@ -81,7 +82,7 @@ const ReservationsPage = () => {
           </Tabs>
           <TabPanel value={value} index={0}>
             <Box sx={reservationCardsBoxStyle}>
-              {pending && <h2>Loading...</h2>}
+              {pending && <CircularProgress />}
               {!pending &&
                 reservations &&
                 reservations.map((reservation, index) => (
