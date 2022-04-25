@@ -86,7 +86,6 @@ export const filterServices: FilterServices = (
   let filteredArr: serviceDataType[] = [];
 
   filteredArr = filterPriceRange(services, priceRange);
-  console.log(filteredArr);
   if (Object.entries(filteredTypes).length > 0 && filteredArr.length > 0) {
     filteredArr = filterWithObjects(services, filteredTypes, 'filterCategory');
   }

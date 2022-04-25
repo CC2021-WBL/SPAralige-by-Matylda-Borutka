@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import ScrollButton from '../../Atoms/ScrollButton.tsx/ScrollButton';
 import Stop from '../../Molecules/Stop/Stop';
 import TabPanel from '../../Organisms/ReservationCard/TabPanel';
+import YourAccountTab from './../../Organisms/YourAccountTab/YourAccountTab';
 import ReservationCard, {
   ReservationCardTypes,
 } from '../../Organisms/ReservationCard/ReservationCard';
@@ -33,7 +34,6 @@ const ReservationsPage = () => {
       setUid(currentUser.uid);
     }
   });
-
   useEffect(() => {
     async function fetchReservations() {
       try {
@@ -93,7 +93,7 @@ const ReservationsPage = () => {
             </Box>
           </TabPanel>
           <TabPanel value={value} index={1}>
-            YOUR ACCOUNT
+            <YourAccountTab />
           </TabPanel>
         </Box>
       </Box>
