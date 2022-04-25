@@ -164,7 +164,11 @@ export default function ServicesPage() {
           filtered.map((service) => (
             <ServiceCard key={service.id} serviceObject={service} uid={uid} />
           ))}
-        {!pending && !filtered && <Typography variant='h3'>Aktualnie nie mamy zabiegów, których potrzebujesz</Typography>}
+        {!pending && !filtered && (
+          <Typography variant="h3">
+            Aktualnie nie mamy zabiegów, których potrzebujesz
+          </Typography>
+        )}
       </Box>
     </Box>
   );
