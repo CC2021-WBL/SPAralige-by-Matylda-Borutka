@@ -105,14 +105,17 @@ const filterWithObjects = (
   filtersObj: Record<string, unknown>,
   filteredField: string,
 ) => {
-  const filters = getKeysByValue(filtersObj, true);
-  const filteredServices: serviceDataType[] = [];
-  services.forEach((service) => {
-    if (filters.includes(service[filteredField])) {
-      filteredServices.push(service);
-    }
-  });
-  return filteredServices;
+  if (checkIfIsAnyTrue(filtersObj)) {
+    const filters = getKeysByValue(filtersObj, true);
+    const filteredServices: serviceDataType[] = [];
+    services.forEach((service) => {
+      if (filters.includes(service[filteredField])) {
+        filteredServices.push(service);
+      }
+    });
+    return filteredServices;
+  }
+  return services;
 };
 
 const filterPriceRange = (
@@ -137,4 +140,18 @@ const filterPriceRange = (
 
 const getKeysByValue = (obj: Record<string, unknown>, value: any) => {
   return Object.keys(obj).filter((key) => obj[key] === value);
+};
+
+const checkIfIsAnyTrue = (object: Record<string, unknown>) => {
+  const set = new Set<unknown>();
+  for (const key in object) {
+    if (Object.prototype.hasOwnProperty.call(object, key)) {
+      const element = object[key];
+      set.add(element);
+    }
+  }
+  if (set.has(true)) {
+    return true;
+  }
+  return false;
 };

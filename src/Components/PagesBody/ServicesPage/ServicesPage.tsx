@@ -163,6 +163,9 @@ export default function ServicesPage() {
           filtered.map((service) => (
             <ServiceCard key={service.id} serviceObject={service} uid={uid} />
           ))}
+        {!pending && filtered.length === 0 && (
+          <Typography>Nie znaleźliśmy zabiegu którego potrzebujesz</Typography>
+        )}
       </Box>
     </Box>
   );
