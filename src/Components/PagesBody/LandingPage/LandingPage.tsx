@@ -3,8 +3,8 @@ import { getDocs } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 
+import LandingGrid from './LandingGrid';
 import MainGraphic from '../../Organisms/Main-Graphic/MainGraphic';
-import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
 import { auth, servicesRef } from '../../../Firebase/firebase';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 
@@ -58,7 +58,7 @@ const LandingPage = () => {
         Popularne zabiegi
       </Typography>
       {serviceObjectArray && (
-        <ResponsiveGrid serviceObjectArray={serviceObjectArray} uid={uid} />
+        <LandingGrid serviceObjectArray={serviceObjectArray} uid={uid} />
       )}
     </main>
   );
