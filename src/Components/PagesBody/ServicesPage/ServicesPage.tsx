@@ -34,7 +34,6 @@ export default function ServicesPage() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [services, setServices] = useState<serviceDataType[] | null>(null);
   const [filtered, setFiltered] = useState<serviceDataType[]>(services || []);
-  console.log(filtered);
   const [serviceBurgerData, setServiceBurgerData] =
     useState<Required<ForBurgerTypes> | null>(null);
 
@@ -164,11 +163,6 @@ export default function ServicesPage() {
           filtered.map((service) => (
             <ServiceCard key={service.id} serviceObject={service} uid={uid} />
           ))}
-        {!pending && !filtered && (
-          <Typography variant="h3">
-            Aktualnie nie mamy zabiegów, których potrzebujesz
-          </Typography>
-        )}
       </Box>
     </Box>
   );

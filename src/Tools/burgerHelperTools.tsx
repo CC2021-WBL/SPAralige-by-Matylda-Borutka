@@ -83,36 +83,21 @@ export const filterServices: FilterServices = (
   filteredTherapists,
   priceRange,
 ) => {
-  console.log(services);
-  console.log(filteredTypes);
-  console.log(filteredTherapists);
-  console.log(priceRange);
-  const aferTypesFilterArr = filterWithObjects(
-    services,
-    filteredTypes,
-    'filterCategory',
-  );
-  if (aferTypesFilterArr.length > 0) {
-    const afterPriceFilterArr = filterPriceRange(
-      aferTypesFilterArr,
-      priceRange,
-    );
-    console.log(aferTypesFilterArr);
-    if (
-      afterPriceFilterArr.length > 0 &&
-      Object.entries(filteredTherapists).length > 0
-    ) {
-      const afterTherapistsFilterArr = filterWithObjects(
-        afterPriceFilterArr,
-        filteredTherapists,
-        'therapistFullName',
-      );
-      return afterTherapistsFilterArr;
-    } else {
-      return afterPriceFilterArr;
-    }
+  let filteredArr: serviceDataType[] = [];
+
+  filteredArr = filterPriceRange(services, priceRange);
+  if (Object.entries(filteredTypes).length > 0 && filteredArr.length > 0) {
+    filteredArr = filterWithObjects(services, filteredTypes, 'filterCategory');
   }
-  return aferTypesFilterArr;
+
+  if (filteredArr.length > 0 && Object.entries(filteredTherapists).length > 0) {
+    filteredArr = filterWithObjects(
+      filteredArr,
+      filteredTherapists,
+      'therapistFullName',
+    );
+  }
+  return filteredArr;
 };
 
 const filterWithObjects = (
