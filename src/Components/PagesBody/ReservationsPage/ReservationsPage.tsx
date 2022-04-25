@@ -53,7 +53,7 @@ const ReservationsPage = () => {
     }
     fetchReservations();
   }, [uid]);
-  
+
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };

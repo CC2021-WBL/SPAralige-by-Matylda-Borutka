@@ -1,11 +1,10 @@
-import * as Yup from "yup";
-import React from "react";
-import {useFormik} from "formik";
+import * as Yup from 'yup';
+import React from 'react';
+import { useFormik } from 'formik';
 
-import FormCard from "./FormCard";
-import FrameStyle from "./FrameStyle";
-import Header from "./Header";
-import  {auth}  from '../../../Firebase/firebase';
+import FormCard from './FormCard';
+import FrameStyle from './FrameStyle';
+import Header from './Header';
 
 const YourAccountFrame = () => {
   const [toggleName, setToggleName] = React.useState<boolean>(false);
@@ -14,28 +13,27 @@ const YourAccountFrame = () => {
 
   const formik = useFormik({
     initialValues: {
-      name: "Podaj nam swoje imię",
+      name: 'Podaj nam swoje imię',
       // get this from firebase
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
     validationSchema: Yup.object({
       name: Yup.string()
-        .min(2, "imie i nazwisko muszą być dłuższe")
-        .required("wpisz imię lub nick"),
+        .min(2, 'imie i nazwisko muszą być dłuższe')
+        .required('wpisz imię lub nick'),
       email: Yup.string()
-        .email("email niepoprawny")
-        .required("wpisz poprawny email"),
+        .email('email niepoprawny')
+        .required('wpisz poprawny email'),
     }),
     onSubmit: (v) => {
-      console.log("submitting", v);
+      console.log('submitting', v);
     },
   });
   const handleOnClick = () => {
     setToggleName(!toggleName);
     formik.handleSubmit;
   };
-
 
   return (
     <div className="yourAccountFrame" style={FrameStyle}>

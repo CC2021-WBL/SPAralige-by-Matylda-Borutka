@@ -1,5 +1,5 @@
-import SettingsFrame from "./SettingsFrame";
-import YourAccountFrame from "./YourAccountFrame";
+import SettingsFrame from './SettingsFrame';
+import YourAccountFrame from './YourAccountFrame';
 
 // TODO: user info will be fetched from context
 // const { state } = useContext(UserDataContext);

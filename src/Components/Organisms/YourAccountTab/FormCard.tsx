@@ -1,37 +1,38 @@
-import { Box } from "@mui/system";
-import { Button, Stack } from "@mui/material";
-import { Field, Form, Formik } from "formik";
+/* eslint-disable no-unused-vars */
+import { Box } from '@mui/system';
+import { Button, Stack } from '@mui/material';
+import { Field, Form, Formik } from 'formik';
 
-import BoxWithButton from "./BoxWithButton";
+import BoxWithButton from './BoxWithButton';
 
 const TitleStyle = {
-  color: "rgba(0,0,0,.38)",
-  marginLeft: ".5rem",
+  color: 'rgba(0,0,0,.38)',
+  marginLeft: '.5rem',
 };
 
 const ErrorStyle = {
-  fontSize: "8px",
-  color: "red",
-  marginLeft: "1rem",
+  fontSize: '8px',
+  color: 'red',
+  marginLeft: '1rem',
 };
 const FieldStyle = {
-  border: "none",
-  borderBottom: "1px solid grey",
-  marginLeft: "1rem",
+  border: 'none',
+  borderBottom: '1px solid grey',
+  marginLeft: '1rem',
 };
 
 const InputAndValueStyle = {
-  margin: "0 .5rem",
-  flexDirection: "row",
-  justifyContent: "space-between",
-  alignItems: "center",
+  margin: '0 .5rem',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
 };
 
 const BoxWithButtonStyle = {
-  padding: "0 1rem",
-  flexDirection: "row",
-  justifyContent: "space-between",
-  alignItems: "center",
+  padding: '0 1rem',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
 };
 
 type FormCardPropTypes = {
@@ -63,8 +64,7 @@ type BoxDisplayPropTypes = {
 };
 
 const BoxDisplay = (prop: BoxDisplayPropTypes) => {
-
-  if (!prop.toggleName && prop.name == "name")
+  if (!prop.toggleName && prop.name == 'name')
     return (
       <BoxWithButton
         btnText="zmień"
@@ -73,7 +73,7 @@ const BoxDisplay = (prop: BoxDisplayPropTypes) => {
         BoxWithButtonStyle={BoxWithButtonStyle}
       />
     );
-  else if (!prop.toggleEmail && prop.name == "email")
+  else if (!prop.toggleEmail && prop.name == 'email')
     return (
       <BoxWithButton
         btnText="zmień"
@@ -82,7 +82,7 @@ const BoxDisplay = (prop: BoxDisplayPropTypes) => {
         BoxWithButtonStyle={BoxWithButtonStyle}
       />
     );
-  else if (!prop.togglePassword && prop.name == "password")
+  else if (!prop.togglePassword && prop.name == 'password')
     return (
       <BoxWithButton
         btnText="zmień"
@@ -95,8 +95,7 @@ const BoxDisplay = (prop: BoxDisplayPropTypes) => {
 };
 
 const BoxEdit = (prop: FormCardPropTypes) => {
-
-  if (prop.toggleName && prop.name == "name")
+  if (prop.toggleName && prop.name == 'name')
     return (
       <>
         <Box>
@@ -112,20 +111,17 @@ const BoxEdit = (prop: FormCardPropTypes) => {
             onChange={prop.onChange}
           />
           {prop.formik.errors.name ? (
-            <p style={{ position: "absolute", ...ErrorStyle }}>
+            <p style={{ position: 'absolute', ...ErrorStyle }}>
               {prop.formik.errors.name}
             </p>
           ) : null}
         </Box>
-        <Button
-          type="submit"
-          onClick={prop.onClick}
-        >
+        <Button type="submit" onClick={prop.onClick}>
           zapisz
         </Button>
       </>
     );
-  else if (prop.toggleEmail && prop.name == "email")
+  else if (prop.toggleEmail && prop.name == 'email')
     return (
       <>
         <Box>
@@ -141,20 +137,17 @@ const BoxEdit = (prop: FormCardPropTypes) => {
             onChange={prop.onChange}
           />
           {prop.formik.errors.email ? (
-            <p style={{ position: "absolute", ...ErrorStyle }}>
+            <p style={{ position: 'absolute', ...ErrorStyle }}>
               {prop.formik.errors.email}
             </p>
           ) : null}
         </Box>
-        <Button
-          type="submit"
-          onClick={prop.onClick}
-        >
+        <Button type="submit" onClick={prop.onClick}>
           zapisz
         </Button>
       </>
     );
-  else if (prop.togglePassword && prop.name == "password")
+  else if (prop.togglePassword && prop.name == 'password')
     return (
       <>
         <Box>
@@ -173,10 +166,7 @@ const BoxEdit = (prop: FormCardPropTypes) => {
             <p style={ErrorStyle}>{prop.formik.errors.password}</p>
           ) : null}
         </Box>
-        <Button
-          type="submit"
-          onClick={prop.onClick}
-        >
+        <Button type="submit" onClick={prop.onClick}>
           zapisz
         </Button>
       </>
@@ -185,7 +175,6 @@ const BoxEdit = (prop: FormCardPropTypes) => {
 };
 
 const FormCard = (prop: FormCardPropTypes) => {
-
   return (
     <div className={prop.className}>
       <Formik
