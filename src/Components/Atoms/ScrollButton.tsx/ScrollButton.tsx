@@ -10,10 +10,10 @@ const styles = {
   bottom: '2vh',
   transform: 'rotate(180deg)',
   '@media screen and (min-width: 1280px)': {
-    right: 'calc((100vw - 1150px) / 2)',
+    right: 'calc((100vw - 71.875rem) / 2)',
   },
   '@media screen and (min-width: 1300px)': {
-    right: 'calc((100vw - 1150px) / 3)',
+    right: 'calc((100vw - 71.875rem) / 3)',
   },
 };
 
@@ -40,9 +40,9 @@ const ScrollButton = (prop: { showBelow: number | boolean }) => {
   return (
     <Box>
       {show && (
-        <IconButton onClick={handleClick} sx={styles}>
+        <IconButton onClick={handleClick} sx={styles} aria-label="scroll up">
           <ExpandCircleDownRoundedIcon
-            sx={{ fontSize: '3rem', opacity: '0.5' }}
+            sx={{ fontSize: '3rem', opacity: '0.7' }}
           />
         </IconButton>
       )}
