@@ -33,7 +33,7 @@ function PriceFilter(prop: PricePropType) {
     prop.setPriceRange({
       maxValue: valueRange.maxValue,
       minValue: parseInt(event.target.value),
-    })
+    });
   }
 
   function handleOnMaxChange(
@@ -47,7 +47,7 @@ function PriceFilter(prop: PricePropType) {
     prop.setPriceRange({
       maxValue: parseInt(event.target.value),
       minValue: valueRange.minValue,
-    })
+    });
   }
   return (
     <FormControl sx={{ paddingTop: '1.5rem' }}>
