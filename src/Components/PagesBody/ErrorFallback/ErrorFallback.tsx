@@ -10,10 +10,7 @@ function ErrorFallback() {
       <Stack
         alignItems="center"
         sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
+          padding: { xs: '2.5rem', lg: '3.75rem' },
         }}
       >
         <Box
@@ -21,27 +18,27 @@ function ErrorFallback() {
           sx={{
             border: '1px solid rgba(0, 0, 0, 0.18)',
             borderRadius: '10.625rem',
-            height: '18.75rem',
-            width: '20rem',
-            maxHeight: { xs: 233, md: 230 },
+            height: { xs: '13.75rem', sm: '18.75rem' },
+            width: { xs: '20rem', sm: '20rem' },
+            maxHeight: { xs: 233, sm: 230 },
           }}
           alt="surprised woman with head towel"
           src={errorImg}
         />
         <Typography
-          variant="h5"
+          variant="h6"
           align="center"
           sx={{ padding: '2.5rem 0', width: '15.1875rem' }}
         >
-          Przepraszamy!<p>Nie znaleźliśmy strony, której szukasz.</p>
+          Przepraszamy!<p>Coś poszło nie tak.</p>
         </Typography>
         <Button
           disableElevation
           variant="contained"
-          href="/"
-          aria-label="landing page"
+          onClick={() => window.location.reload()}
+          aria-label="refresh"
         >
-          Wróć Do Strony Głównej
+          Kliknij aby odświeżyć
         </Button>
       </Stack>
     </div>

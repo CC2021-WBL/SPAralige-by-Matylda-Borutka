@@ -4,10 +4,11 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import { Stack } from '@mui/material';
+import { LinearProgress, Stack } from '@mui/material';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 
+import ScrollButton from '../../Atoms/ScrollButton.tsx/ScrollButton';
 import SearchBar from '../../Atoms/SearchBar/SearchBar';
 import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
 import Burger, { BurgerProp } from '../../Organisms/Burger/Burger';
@@ -22,6 +23,7 @@ const drawerWidth = '21rem';
 type ForBurgerTypes = Omit<BurgerProp, 'handleFilter' | 'handleClose'>;
 
 export default function ServicesPage() {
+  const [pending, setIsPending] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [services, setServices] = useState<serviceDataType[] | null>(null);
 
@@ -40,16 +42,20 @@ export default function ServicesPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const gettedServices = await getAllServices();
-      setServices(gettedServices);
-      if (gettedServices) {
-        const dataForBurger = getDataForBurgerFromServices(gettedServices);
-        setServiceBurgerData(dataForBurger);
+      try {
+        const gettedServices = await getAllServices();
+        setServices(gettedServices);
+        if (gettedServices) {
+          const dataForBurger = getDataForBurgerFromServices(gettedServices);
+          setServiceBurgerData(dataForBurger);
+        }
+      } catch (error) {
+        alert('Oops, coś poszło nie tak, spróbuj jescze raz');
       }
+      setIsPending(false);
     };
     fetchData();
   }, []);
-  console.log(services);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -59,6 +65,7 @@ export default function ServicesPage() {
 
   return (
     <Box sx={{ display: 'flex' }}>
+      <ScrollButton showBelow={250} />
       <CssBaseline />
 
       <Box
@@ -117,8 +124,13 @@ export default function ServicesPage() {
         component="main"
         sx={{
           flexGrow: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.5rem',
           p: '1.5rem 0',
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          width: {
+            sm: `calc(100% - ${drawerWidth})`,
+          },
         }}
       >
         <Toolbar
@@ -141,9 +153,10 @@ export default function ServicesPage() {
           </IconButton>
           <SearchBar />
         </Toolbar>
-
+        {pending && <LinearProgress />}
         <Stack sx={{ gap: '1.25rem' }}>
-          {services &&
+          {!pending &&
+            services &&
             services.map((service) => (
               <ServiceCard key={service.id} serviceObject={service} uid={uid} />
             ))}

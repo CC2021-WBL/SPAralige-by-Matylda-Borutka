@@ -56,7 +56,7 @@ const ServiceDetailsModal = (prop: {
           }
         }
       } catch (error) {
-        console.log(error);
+        alert('Oops, coś poszło nie tak, spróbuj jescze raz');
       }
     };
     getTherapistObject();
