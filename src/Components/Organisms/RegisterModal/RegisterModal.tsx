@@ -75,7 +75,9 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
                 values.email,
                 values.password,
               );
-              alert('Rejestracja udana');
+              if (credentialObj) {
+                alert('Rejestracja udana');
+              }
               prop.handleClose();
             } catch (error: any) {
               alert(error.message);
