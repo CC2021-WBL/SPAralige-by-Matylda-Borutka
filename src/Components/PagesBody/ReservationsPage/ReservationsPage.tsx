@@ -4,6 +4,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 
 import ScrollButton from '../../Atoms/ScrollButton.tsx/ScrollButton';
+import Stop from '../../Molecules/Stop/Stop';
 import TabPanel from '../../Organisms/ReservationCard/TabPanel';
 import ReservationCard, {
   ReservationCardTypes,
@@ -58,11 +59,7 @@ const ReservationsPage = () => {
   };
 
   if (!uid) {
-    return (
-      <main>
-        <h1>Zaloguj się żeby wyświetlić</h1>
-      </main>
-    );
+    return <Stop />;
   }
   return (
     <main>
