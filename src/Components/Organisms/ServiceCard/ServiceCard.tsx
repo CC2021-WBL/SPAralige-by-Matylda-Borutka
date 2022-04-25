@@ -2,13 +2,12 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import { useEffect, useState } from 'react';
 
-import BookingModal from '../BookingModal/BookingModal';
 import ServiceCardActions from './ServiceCardActions';
 import ServiceCardContent from './ServiceCardContent';
 import ServiceDetailsModal from './ServiceDetailsModal';
-import i18n from '../../../i18n';
 import { cardStyles } from './ServiceCardStyles';
 import { serviceDataType } from '../../../Types/dbDataTypes';
+import BookingModal from '../BookingModal/BookingModal';
 
 const ServiceCard = (prop: {
   serviceObject: serviceDataType;
@@ -55,7 +54,7 @@ const ServiceCard = (prop: {
           component="img"
           height="210"
           image={imgUrl}
-          alt={prop.serviceObject.altText2[i18n.language]}
+          alt={prop.serviceObject.altText}
         />
         <ServiceCardContent serviceObject={prop.serviceObject} />
         <ServiceCardActions

@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid';
 import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 
-export default function LandingGrid(prop: {
+export default function ResponsiveGrid(prop: {
   serviceObjectArray: serviceDataType[];
   uid: string | null;
 }) {
