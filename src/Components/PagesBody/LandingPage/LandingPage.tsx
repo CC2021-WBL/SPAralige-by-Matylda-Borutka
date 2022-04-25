@@ -1,16 +1,26 @@
 import { Typography } from '@mui/material';
 import { getDocs } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 
 import MainGraphic from '../../Organisms/Main-Graphic/MainGraphic';
 import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
+import { auth, servicesRef } from '../../../Firebase/firebase';
 import { serviceDataType } from '../../../Types/dbDataTypes';
-import { servicesRef } from '../../../Firebase/firebase';
 
 const LandingPage = () => {
   const [serviceObjectArray, setServiceObjectArray] = useState<
     serviceDataType[] | null
   >(null);
+  const [uid, setUid] = useState<string | null>(null);
+
+  onAuthStateChanged(auth, async (currentUser) => {
+    if (!currentUser) {
+      setUid(null);
+    } else if (currentUser.uid !== uid) {
+      setUid(currentUser.uid);
+    }
+  });
 
   useEffect(() => {
     const getServiceObjectArray = async () => {
@@ -48,7 +58,7 @@ const LandingPage = () => {
         Popularne zabiegi
       </Typography>
       {serviceObjectArray && (
-        <ResponsiveGrid serviceObjectArray={serviceObjectArray} />
+        <ResponsiveGrid serviceObjectArray={serviceObjectArray} uid={uid} />
       )}
     </main>
   );

@@ -8,10 +8,12 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useReducer, useState } from 'react';
 
 import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
 import Burger, { BurgerProp } from '../../Organisms/Burger/Burger';
+import { auth } from '../../../Firebase/firebase';
 import { bodyPage } from '../../../Tools/htmlElements';
 import { filterReducer } from '../../../Reducers/filterReducer';
 import { getAllServices } from '../../../Firebase/queries';
@@ -29,6 +31,16 @@ export default function ServicesPage() {
   const [filterState, filterDispatch] = useReducer(filterReducer, services);
   const [serviceBurgerData, setServiceBurgerData] =
     useState<ForBurgerTypes | null>(null);
+
+  const [uid, setUid] = useState<string | null>(null);
+
+  onAuthStateChanged(auth, async (currentUser) => {
+    if (!currentUser) {
+      setUid(null);
+    } else if (currentUser.uid !== uid) {
+      setUid(currentUser.uid);
+    }
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -128,7 +140,7 @@ export default function ServicesPage() {
         </Toolbar>
         {services &&
           services.map((service) => (
-            <ServiceCard key={service.id} serviceObject={service} />
+            <ServiceCard key={service.id} serviceObject={service} uid={uid} />
           ))}
       </Box>
     </Box>

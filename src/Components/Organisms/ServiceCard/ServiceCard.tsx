@@ -12,6 +12,7 @@ import BookingModal from '../BookingModal/BookingModal';
 const ServiceCard = (prop: {
   serviceObject: serviceDataType;
   className?: string;
+  uid: string | null;
 }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -72,6 +73,7 @@ const ServiceCard = (prop: {
         open={open}
         handleClose={handleClose}
         serviceObject={prop.serviceObject}
+        uid={prop.uid}
       />
     </>
   );
