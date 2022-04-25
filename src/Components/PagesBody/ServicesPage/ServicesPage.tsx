@@ -1,26 +1,21 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import { Stack } from '@mui/material';
 import { onAuthStateChanged } from 'firebase/auth';
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import SearchBar from '../../Atoms/SearchBar/SearchBar';
 import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
 import Burger, { BurgerProp } from '../../Organisms/Burger/Burger';
 import { auth } from '../../../Firebase/firebase';
 import { bodyPage } from '../../../Tools/htmlElements';
-import { filterReducer } from '../../../Reducers/filterReducer';
 import { getAllServices } from '../../../Firebase/queries';
 import { getDataForBurgerFromServices } from '../../../Tools/burgerHelperTools';
 import { serviceDataType } from '../../../Types/dbDataTypes';
-
-// import Typography from '@mui/material/Typography';
 
 const drawerWidth = '21rem';
 
@@ -30,7 +25,6 @@ export default function ServicesPage() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [services, setServices] = useState<serviceDataType[] | null>(null);
 
-  const [filterState, filterDispatch] = useReducer(filterReducer, services);
   const [serviceBurgerData, setServiceBurgerData] =
     useState<ForBurgerTypes | null>(null);
 
@@ -62,7 +56,6 @@ export default function ServicesPage() {
   };
 
   const container = bodyPage();
-  //window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -144,7 +137,7 @@ export default function ServicesPage() {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { md: 'none' }, color: '#1976d2' }}
           >
-            FILTER
+            <MenuIcon sx={{ color: '#6A6A6A' }} />
           </IconButton>
           <SearchBar />
         </Toolbar>
