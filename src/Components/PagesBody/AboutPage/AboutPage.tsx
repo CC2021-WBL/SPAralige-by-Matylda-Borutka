@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import ContactFormModal from '../../Organisms/ContactFormModal/ContactFormModal';
 import GraphicAbout from '../../../Assets/graphic-aboutUS.png';
+import ScrollButton from '../../Atoms/ScrollButton.tsx/ScrollButton';
 
 const textStyles = {
   paddingRight: { xs: 0, sm: 10 },
@@ -20,6 +21,7 @@ const AboutPage = () => {
   return (
     <main>
       <Grid container>
+        <ScrollButton showBelow={250} />
         <Grid item xs={12} md={7} marginRight={2}>
           <Box>
             <Typography

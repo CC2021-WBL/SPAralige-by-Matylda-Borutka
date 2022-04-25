@@ -12,6 +12,9 @@ const styles = {
   '@media screen and (min-width: 1280px)': {
     right: 'calc((100vw - 1150px) / 2)',
   },
+  '@media screen and (min-width: 1300px)': {
+    right: 'calc((100vw - 1150px) / 3)',
+  },
 };
 
 const ScrollButton = (prop: { showBelow: number | boolean }) => {

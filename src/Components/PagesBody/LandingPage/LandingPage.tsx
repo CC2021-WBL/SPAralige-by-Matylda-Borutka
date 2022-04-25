@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 
 import LandingGrid from './LandingGrid';
 import MainGraphic from '../../Organisms/Main-Graphic/MainGraphic';
+import ScrollButton from '../../Atoms/ScrollButton.tsx/ScrollButton';
 import { auth, servicesRef } from '../../../Firebase/firebase';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 
@@ -46,6 +47,7 @@ const LandingPage = () => {
 
   return (
     <main>
+      <ScrollButton showBelow={250} />
       <MainGraphic />
       <Typography
         sx={{

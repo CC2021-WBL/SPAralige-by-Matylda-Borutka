@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useReducer, useState } from 'react';
 
+import ScrollButton from '../../Atoms/ScrollButton.tsx/ScrollButton';
 import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
 import Burger, { BurgerProp } from '../../Organisms/Burger/Burger';
 import { auth } from '../../../Firebase/firebase';
@@ -63,6 +64,7 @@ export default function ServicesPage() {
 
   return (
     <Box sx={{ display: 'flex' }}>
+      <ScrollButton showBelow={250} />
       <CssBaseline />
 
       <Box
