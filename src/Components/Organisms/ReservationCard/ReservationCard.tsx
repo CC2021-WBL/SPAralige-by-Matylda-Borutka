@@ -1,11 +1,11 @@
 import { Box, Button, Card, Chip, Typography } from '@mui/material';
+
+import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
+import { generateDateProps } from '../../../Tools/reservationTools';
 import {
   getDateFormatDdMmYyyy,
   getDayName,
 } from '../../../Tools/timeFunctions';
-
-import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
-import { generateDateProps } from '../../../Tools/reservationTools';
 
 export type ReservationCardTypes = {
   serviceName: string;

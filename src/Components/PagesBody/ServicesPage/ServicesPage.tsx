@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-
+/* eslint-disable no-unused-vars */
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Drawer from '@mui/material/Drawer';
@@ -8,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { LinearProgress } from '@mui/material';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useReducer, useState } from 'react';
 
@@ -26,6 +26,7 @@ const drawerWidth = '21rem';
 type ForBurgerTypes = Omit<BurgerProp, 'handleFilter' | 'handleClose'>;
 
 export default function ServicesPage() {
+  const [pending, setIsPending] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [services, setServices] = useState<serviceDataType[] | null>(null);
 
@@ -45,12 +46,17 @@ export default function ServicesPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const gettedServices = await getAllServices();
-      setServices(gettedServices);
-      if (gettedServices) {
-        const dataForBurger = getDataForBurgerFromServices(gettedServices);
-        setServiceBurgerData(dataForBurger);
+      try {
+        const gettedServices = await getAllServices();
+        setServices(gettedServices);
+        if (gettedServices) {
+          const dataForBurger = getDataForBurgerFromServices(gettedServices);
+          setServiceBurgerData(dataForBurger);
+        }
+      } catch (error) {
+        alert('Oops, coś poszło nie tak, spróbuj jescze raz');
       }
+      setIsPending(false);
     };
     fetchData();
   }, []);
@@ -144,7 +150,9 @@ export default function ServicesPage() {
           </IconButton>
           <Typography variant="h4">SEARCH BAR</Typography>
         </Toolbar>
-        {services &&
+        {pending && <LinearProgress />}
+        {!pending &&
+          services &&
           services.map((service) => (
             <ServiceCard key={service.id} serviceObject={service} uid={uid} />
           ))}
