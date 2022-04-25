@@ -12,7 +12,7 @@ const Stop = () => {
         justifyContent: 'space-around',
       }}
     >
-      <BlockIcon sx={{ fontSize: '12.5rem', color: 'red' }} />
+      <BlockIcon sx={{ fontSize: '9.375rem', color: '#1976d2' }} />
       <Typography
         sx={{
           fontSize: '2rem',
