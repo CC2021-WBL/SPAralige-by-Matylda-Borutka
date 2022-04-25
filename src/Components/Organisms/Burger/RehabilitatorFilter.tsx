@@ -41,7 +41,6 @@ function RehabilitatorFilter(prop: PropType) {
         therapistsChecks[person] = event.target.checked;
       }
     }
-    console.log(therapistsChecks);
     setTherapistsChecks(therapistsChecks);
     setIsAllChecked(event.target.checked);
     prop.setFilteredTherapists(therapistsChecks);

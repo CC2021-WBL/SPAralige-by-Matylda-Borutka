@@ -32,7 +32,6 @@ function Burger(prop: BurgerProp) {
         filteredTherapists,
         priceRange,
       );
-      console.log(filteredServices);
       prop.setFiltered(filteredServices);
     }
   }, [filteredTypes, filteredTherapists, priceRange]);
