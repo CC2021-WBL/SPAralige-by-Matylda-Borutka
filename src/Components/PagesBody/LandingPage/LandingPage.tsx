@@ -3,8 +3,9 @@ import { getDocs } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 
+import LandingGrid from './LandingGrid';
 import MainGraphic from '../../Organisms/Main-Graphic/MainGraphic';
-import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
+import ScrollButton from '../../Atoms/ScrollButton.tsx/ScrollButton';
 import { auth, servicesRef } from '../../../Firebase/firebase';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 
@@ -46,6 +47,7 @@ const LandingPage = () => {
 
   return (
     <main>
+      <ScrollButton showBelow={250} />
       <MainGraphic />
       <Typography
         sx={{
@@ -58,7 +60,7 @@ const LandingPage = () => {
         Popularne zabiegi
       </Typography>
       {serviceObjectArray && (
-        <ResponsiveGrid serviceObjectArray={serviceObjectArray} uid={uid} />
+        <LandingGrid serviceObjectArray={serviceObjectArray} uid={uid} />
       )}
     </main>
   );

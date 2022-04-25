@@ -3,6 +3,7 @@ import { getDocs, orderBy, query, where } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 
+import ScrollButton from '../../Atoms/ScrollButton.tsx/ScrollButton';
 import Stop from '../../Molecules/Stop/Stop';
 import TabPanel from '../../Organisms/ReservationCard/TabPanel';
 import ReservationCard, {
@@ -58,15 +59,11 @@ const ReservationsPage = () => {
   };
 
   if (!uid) {
-    return (
-      // <main>
-      //   <h1>Zaloguj się żeby wyświetlić</h1>
-      // </main>
-      <Stop />
-    );
+    return <Stop />;
   }
   return (
     <main>
+      <ScrollButton showBelow={250} />
       <Box sx={reservationWrapperStyle}>
         <Box sx={innerContainerStyle}>
           <Tabs

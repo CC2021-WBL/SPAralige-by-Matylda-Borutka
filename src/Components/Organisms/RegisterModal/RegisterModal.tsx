@@ -49,12 +49,12 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
           bgcolor: '#FFFFFF',
           width: '31.25rem',
           height: 'fit-content',
-          maxHeight: '98vh',
+          maxHeight: '100vh',
           overflow: 'auto',
           padding: ['2.5rem', '2.125rem'],
           '@media screen and (max-width: 600px)': {
-            width: '19.625rem',
-            padding: ['2.5rem', '2.125rem'],
+            width: '100%',
+            padding: ['.8rem 1.5rem', '1.5rem'],
           },
         }}
       >
