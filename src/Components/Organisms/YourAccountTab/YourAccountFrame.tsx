@@ -10,22 +10,21 @@ import { auth } from '../../../Firebase/firebase';
 
 const YourAccountFrame = () => {
 
-  
   const [toggleName, setToggleName] = React.useState<boolean>(false);
   const [toggleEmail, setToggleEmail] = React.useState<boolean>(false);
   const [togglePassword, setTogglePassword] = React.useState<boolean>(false);
 
   const formik = useFormik({
     initialValues: {
+      name: "Podaj nam swoje imię",
       // get this from firebase
-      name: "",
       email: "",
       password: "",
     },
     validationSchema: Yup.object({
       name: Yup.string()
         .min(2, "imie i nazwisko muszą być dłuższe")
-        .required("wpisz imię i nazwisko"),
+        .required("wpisz imię lub nick"),
       email: Yup.string()
         .email("email niepoprawny")
         .required("wpisz poprawny email"),
@@ -37,7 +36,7 @@ const YourAccountFrame = () => {
   const handleOnClick = () => {
     setToggleName(!toggleName);
     formik.handleSubmit;
-  } 
+  };
 
   return (
     <div className="yourAccountFrame" style={FrameStyle}>
