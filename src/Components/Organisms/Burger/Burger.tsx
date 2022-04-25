@@ -1,9 +1,9 @@
-import ServiceTypesFilter, { ServicesFilterType } from './ServiceTypesFilter';
-
 import { Box } from '@mui/material';
+
 import CloseFiltersButton from './CloseFiltersButton';
 import FilterWithRange from './FilterWithRange';
 import RehabilitatorFilter from './RehabilitatorFilter';
+import ServiceTypesFilter, { ServicesFilterType } from './ServiceTypesFilter';
 
 export type BurgerProp = {
   handleFilter?: () => void;

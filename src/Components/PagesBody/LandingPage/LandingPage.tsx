@@ -1,14 +1,16 @@
-import { Typography } from '@mui/material';
+import { LinearProgress, Typography } from '@mui/material';
 import { getDocs } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 
+import LandingGrid from './LandingGrid';
 import MainGraphic from '../../Organisms/Main-Graphic/MainGraphic';
-import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
+import ScrollButton from '../../Atoms/ScrollButton.tsx/ScrollButton';
 import { auth, servicesRef } from '../../../Firebase/firebase';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 
 const LandingPage = () => {
+  const [pending, setIsPending] = useState(true);
   const [serviceObjectArray, setServiceObjectArray] = useState<
     serviceDataType[] | null
   >(null);
@@ -38,14 +40,16 @@ const LandingPage = () => {
           setServiceObjectArray(serviceArray);
         }
       } catch (error) {
-        console.log(error);
+        alert('Oops, coś poszło nie tak, spróbuj jescze raz');
       }
+      setIsPending(false);
     };
     getServiceObjectArray();
   }, []);
 
   return (
     <main>
+      <ScrollButton showBelow={250} />
       <MainGraphic />
       <Typography
         sx={{
@@ -57,8 +61,9 @@ const LandingPage = () => {
       >
         Popularne zabiegi
       </Typography>
-      {serviceObjectArray && (
-        <ResponsiveGrid serviceObjectArray={serviceObjectArray} uid={uid} />
+      {pending && <LinearProgress />}
+      {!pending && serviceObjectArray && (
+        <LandingGrid serviceObjectArray={serviceObjectArray} uid={uid} />
       )}
     </main>
   );
