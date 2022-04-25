@@ -7,33 +7,39 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 
-// type RangeType = number | Date;
-type RangePropType<RangeType> = {
-  name: string;
-  minValue: RangeType;
-  maxValue: RangeType;
-};
+import { DateProp } from './BurgerTypes';
 
-function genTypeOfInput(value: any) {
-  if (typeof value === 'number') {
-    return 'number';
-  } else if (value instanceof Date) {
-    return 'date';
-  }
-}
-
-function FilterWithRange<RangeType>(prop: RangePropType<RangeType>) {
+function DateFilter(prop: DateProp) {
   const [valueRange, setValueRange] = useState({
-    minValue: prop.minValue,
-    maxValue: prop.maxValue,
+    minValue: prop.minValue.toISOString().split('T')[0],
+    maxValue: prop.maxValue.toISOString().split('T')[0],
   });
 
-  function handleOnMinChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function handleOnMinChange(
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  ) {
     event.preventDefault();
-    // mock value at setValueRange to removed eslint warning
     setValueRange({
-      minValue: prop.minValue,
-      maxValue: prop.maxValue,
+      maxValue: valueRange.maxValue,
+      minValue: event.target.value,
+    });
+    prop.setDateRange({
+      maxValue: new Date(valueRange.maxValue),
+      minValue: new Date(event.target.value),
+    });
+  }
+
+  function handleOnMaxChange(
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  ) {
+    event.preventDefault();
+    setValueRange({
+      maxValue: event.target.value,
+      minValue: valueRange.minValue,
+    });
+    prop.setDateRange({
+      minValue: new Date(valueRange.maxValue),
+      maxValue: new Date(event.target.value),
     });
   }
   return (
@@ -50,7 +56,7 @@ function FilterWithRange<RangeType>(prop: RangePropType<RangeType>) {
         <Typography>od</Typography>
 
         <TextField
-          type={genTypeOfInput(prop.minValue)}
+          type="date"
           InputProps={{
             sx: { width: '95.5px', height: '24px' },
           }}
@@ -59,12 +65,14 @@ function FilterWithRange<RangeType>(prop: RangePropType<RangeType>) {
             max: prop.maxValue,
           }}
           value={valueRange.minValue}
-          onChange={handleOnMinChange}
+          onChange={(event) => {
+            handleOnMinChange(event);
+          }}
         ></TextField>
 
         <Typography>do</Typography>
         <TextField
-          type={genTypeOfInput(prop.minValue)}
+          type="date"
           InputProps={{
             sx: { width: '95.5px', height: '24px' },
           }}
@@ -73,10 +81,13 @@ function FilterWithRange<RangeType>(prop: RangePropType<RangeType>) {
             max: prop.maxValue,
           }}
           value={valueRange.maxValue}
+          onChange={(event) => {
+            handleOnMaxChange(event);
+          }}
         ></TextField>
       </Stack>
     </FormControl>
   );
 }
 
-export default FilterWithRange;
+export default DateFilter;

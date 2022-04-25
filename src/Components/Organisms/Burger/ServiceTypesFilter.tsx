@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
   Checkbox,
   FormControl,
@@ -6,18 +7,41 @@ import {
   FormLabel,
 } from '@mui/material';
 
+import { ServicesFilterType } from './BurgerTypes';
 import { burgerCheckboxStyle, checkboxControlLabelStyle } from './BurgerStyles';
-
-export interface ServicesFilterType {
-  serviceType: string;
-  serviceFilterCat: string;
-}
+import { createServicesCheckboxesObj } from '../../../Tools/burgerHelperTools';
+import { setStateType } from '../../../Types/hookTypes';
 
 type propType = {
   servicesDataArr: ServicesFilterType[];
+  setFilteredTypes: setStateType;
 };
 
 function ServiceTypesFilter(prop: propType) {
+  const [isAllChecked, setIsAllChecked] = useState(false);
+  const [servicesTypes, setServicesTypes] = useState(
+    createServicesCheckboxesObj(prop.servicesDataArr, false),
+  );
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    category: string,
+  ) => {
+    setServicesTypes({ ...servicesTypes, [category]: event.target.checked });
+    prop.setFilteredTypes({
+      ...servicesTypes,
+      [category]: event.target.checked,
+    });
+  };
+
+  const handleAllClicked = (event: React.ChangeEvent<HTMLInputElement>) => {
+    for (const type in servicesTypes) {
+      if (Object.prototype.hasOwnProperty.call(servicesTypes, type)) {
+        servicesTypes[type] = event.target.checked;
+      }
+    }
+    setIsAllChecked(event.target.checked);
+    prop.setFilteredTypes(servicesTypes);
+  };
   return (
     <FormControl sx={{ paddingTop: '1.5rem' }}>
       <FormLabel
@@ -41,6 +65,10 @@ function ServiceTypesFilter(prop: propType) {
               <Checkbox
                 value={service.serviceFilterCat}
                 sx={burgerCheckboxStyle}
+                checked={servicesTypes[service.serviceType]}
+                onChange={(event) =>
+                  handleChange(event, service.serviceFilterCat)
+                }
               />
             }
           />
@@ -48,7 +76,14 @@ function ServiceTypesFilter(prop: propType) {
         <FormControlLabel
           label="Wszystkie zabiegi"
           sx={checkboxControlLabelStyle}
-          control={<Checkbox value="all" sx={burgerCheckboxStyle} />}
+          control={
+            <Checkbox
+              value="all"
+              sx={burgerCheckboxStyle}
+              checked={isAllChecked}
+              onChange={handleAllClicked}
+            />
+          }
         />
       </FormGroup>
     </FormControl>

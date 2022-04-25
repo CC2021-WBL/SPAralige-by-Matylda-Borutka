@@ -2,7 +2,6 @@ import { Avatar, Modal, Stack, Typography, useMediaQuery } from '@mui/material';
 import { Box } from '@mui/system';
 import { doc, getDoc } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import ClosingIcon from './ClosingIcon';
 import ServiceCardActions from './ServiceCardActions';
@@ -28,12 +27,12 @@ const ServiceDetailsModal = (prop: {
     null,
   );
   const matchesMedia = useMediaQuery('(min-width:650px)');
-  const { t, i18n } = useTranslation('services');
+
   useEffect(() => {
     const getTherapistObject = async () => {
       const therapistsRef = doc(
         db,
-        'therapists2',
+        'therapists',
         prop.serviceObject.therapist.id,
       );
       try {
@@ -57,7 +56,7 @@ const ServiceDetailsModal = (prop: {
           }
         }
       } catch (error) {
-        console.log(error);
+        alert('Oops, coś poszło nie tak, spróbuj jescze raz');
       }
     };
     getTherapistObject();
@@ -100,11 +99,7 @@ const ServiceDetailsModal = (prop: {
               sx={{ padding: '0.3125rem' }}
             >
               {therapistObject &&
-                `
-                ${t('drawer.therapist')}:
-                ${therapistObject.firstname}
-                ${therapistObject.surname}
-                `}
+                `Terapeuta:  ${therapistObject.firstname} ${therapistObject.surname}`}
             </Typography>
             <Typography
               paragraph
@@ -114,7 +109,7 @@ const ServiceDetailsModal = (prop: {
               component="div"
               sx={modalShortBioStyles}
             >
-              {therapistObject && therapistObject.shortBio[i18n.language]}
+              {therapistObject && therapistObject.shortBio}
             </Typography>
           </Stack>
         </Stack>

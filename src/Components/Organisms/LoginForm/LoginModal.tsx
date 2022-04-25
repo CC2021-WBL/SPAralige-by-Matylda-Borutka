@@ -1,6 +1,5 @@
 import { Box, Modal, Stack, Typography } from '@mui/material';
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import ClosingIcon from './CloseIcon';
 import EmailAndPasswordInput from './EmailAndPasswordInput';
@@ -24,7 +23,7 @@ export default function LoginModal(prop: AuthModalPropTypes) {
     event.preventDefault();
     setPassword(event.target.value);
   };
-  const { t } = useTranslation('loginModal');
+
   return (
     <Modal
       open={prop.open}
@@ -39,21 +38,22 @@ export default function LoginModal(prop: AuthModalPropTypes) {
           transform: 'translate(-50%, -50%)',
           bgcolor: '#FFFFFF',
           width: '31.25rem',
-          height: '40.813rem',
-          maxHeight: '98vh',
+          height: 'fit-content',
+          maxHeight: '100vh',
+          overflow: 'auto',
           padding: ['2.5rem', '2.125rem'],
           '@media screen and (max-width: 600px)': {
-            width: '19.625rem',
-            padding: ['2.5rem', '2.125rem'],
+            width: '100%',
+            padding: ['.8rem 1.5rem', '1.5rem'],
           },
         }}
       >
-        <Stack spacing={'1.25rem'}>
+        <Stack spacing={{ xs: '1rem', sm: '1.25rem' }}>
           <ClosingIcon handleClose={prop.handleClose} />
           <FormTitle
             aria-label="Sign in to SPAralige"
-            text1={`${t('welcome')} SPAralige!`}
-            text2={`${t('heading')}`}
+            text1="Witamy w SPAralige!"
+            text2="Zaloguj się wpisując login i hasło"
           />
           <EmailAndPasswordInput
             email={email}
@@ -76,17 +76,20 @@ export default function LoginModal(prop: AuthModalPropTypes) {
               letterSpacing: '0.5px',
             }}
           >
-            {t('or')}
+            lub
           </Typography>
-          <FacebookAndGoogleBox loginOrRegister="login" />
+          <FacebookAndGoogleBox
+            loginOrRegisterOptions="login"
+            handleClose={prop.handleClose}
+          />
           <SignOrResetLink
-            issueText={t('account')}
-            linkText={t('register')}
+            issueText="Nie masz konta? "
+            linkText="Zarejestruj się"
             handleOnClick={prop.handleLoginOrRegisterTransfer}
           />
           <SignOrResetLink
-            issueText={t('forgot')}
-            linkText={t('reset')}
+            issueText="Zapomniałeś hasła? "
+            linkText="Zresetuj hasło"
             handleOnClick={prop.handleFrogetPasswordTransfer}
           />
         </Stack>

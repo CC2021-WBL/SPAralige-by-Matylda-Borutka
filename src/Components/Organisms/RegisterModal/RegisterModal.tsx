@@ -10,7 +10,6 @@ import {
 import { CheckboxWithLabel, TextField } from 'formik-mui';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { useTranslation } from 'react-i18next';
 
 import ClosingIcon from '../LoginForm/CloseIcon';
 import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
@@ -35,7 +34,6 @@ const RegisterValidation = Yup.object().shape({
 });
 
 const RegisterModal = (prop: AuthModalPropTypes) => {
-  const { t } = useTranslation('registerModal');
   return (
     <Modal
       open={prop.open}
@@ -51,12 +49,12 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
           bgcolor: '#FFFFFF',
           width: '31.25rem',
           height: 'fit-content',
-          maxHeight: '98vh',
+          maxHeight: '100vh',
           overflow: 'auto',
           padding: ['2.5rem', '2.125rem'],
           '@media screen and (max-width: 600px)': {
-            width: '19.625rem',
-            padding: ['2.5rem', '2.125rem'],
+            width: '100%',
+            padding: ['.8rem 1.5rem', '1.5rem'],
           },
         }}
       >
@@ -77,8 +75,9 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
                 values.email,
                 values.password,
               );
-              console.log(credentialObj.user);
-              alert('Rejestracja udana');
+              if (credentialObj) {
+                alert('Rejestracja udana');
+              }
               prop.handleClose();
             } catch (error: any) {
               alert(error.message);
@@ -90,8 +89,8 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
               <Stack spacing={'1.4375rem'}>
                 <FormTitle
                   aria-label="Sign in to SPAralige"
-                  text1={`${t('welcome')} SPAralige!`}
-                  text2={t('heading')}
+                  text1="Witamy w SPAralige!"
+                  text2="Uzupełnij formularz aby założyć konto."
                 />
                 <Field
                   component={TextField}
@@ -102,13 +101,13 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
                 <Field
                   component={TextField}
                   type="password"
-                  label={t('password')}
+                  label="Hasło"
                   name="password"
                 />
                 <Field
                   component={TextField}
                   type="password"
-                  label={t('password2')}
+                  label="Powtórz hasło"
                   name="confirmPassword"
                 />
                 <Field
@@ -116,7 +115,7 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
                   type="checkbox"
                   name="termsOfService"
                   Label={{
-                    label: `${t('privacy')}`,
+                    label: 'Wyrażam zgodę na warunki korzystania z serwisu',
                   }}
                 />
                 <ErrorMessage
@@ -132,7 +131,7 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
                   onClick={submitForm}
                   sx={{ height: '2.9375rem' }}
                 >
-                  {t('register')}
+                  Zarejestruj się
                 </Button>
                 <Typography
                   variant="body1"
@@ -144,17 +143,20 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
                     letterSpacing: '0.5px',
                   }}
                 >
-                  {t('or')}
+                  lub
                 </Typography>
-                <FacebookAndGoogleBox loginOrRegister="register" />
+                <FacebookAndGoogleBox
+                  loginOrRegisterOptions="register"
+                  handleClose={prop.handleClose}
+                />
                 <SignOrResetLink
-                  issueText={t('privacy')}
-                  linkText={t('login')}
+                  issueText="Masz już konto?"
+                  linkText="Zaloguj się"
                   handleOnClick={prop.handleLoginOrRegisterTransfer}
                 />
                 <SignOrResetLink
-                  issueText={t('forgot')}
-                  linkText={t('reset')}
+                  issueText="Zapomniałeś hasła? "
+                  linkText="Zresetuj hasło"
                   handleOnClick={prop.handleFrogetPasswordTransfer}
                 />
               </Stack>

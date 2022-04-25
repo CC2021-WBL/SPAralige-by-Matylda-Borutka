@@ -1,19 +1,41 @@
-import ServiceTypesFilter, { ServicesFilterType } from './ServiceTypesFilter';
-
 import { Box } from '@mui/material';
-import CloseFiltersButton from './CloseFiltersButton';
-import FilterWithRange from './FilterWithRange';
-import RehabilitatorFilter from './RehabilitatorFilter';
+import { useEffect, useState } from 'react';
 
-export type BurgerProp = {
-  handleFilter?: () => void;
-  handleClose?: () => void;
-  therapists?: string[];
-  servicesData?: ServicesFilterType[];
-  maxPrice?: number;
-};
+import CloseFiltersButton from './CloseFiltersButton';
+import PriceFilter from './PriceFilter';
+import RehabilitatorFilter from './RehabilitatorFilter';
+import ServiceTypesFilter from './ServiceTypesFilter';
+import { BurgerProp } from './BurgerTypes';
+import {
+  filterServices,
+  setPrimaryFilteredTherapists,
+  setPrimaryFilteredTypes,
+} from '../../../Tools/burgerHelperTools';
 
 function Burger(prop: BurgerProp) {
+  const [filteredTypes, setFilteredTypes] = useState(
+    setPrimaryFilteredTypes(prop.servicesData, true),
+  );
+  const [priceRange, setPriceRange] = useState({
+    minValue: 0,
+    maxValue: prop.maxPrice || 1500,
+  });
+  const [filteredTherapists, setFilteredTherapists] = useState(
+    setPrimaryFilteredTherapists(prop.therapists, true),
+  );
+
+  useEffect(() => {
+    if (prop.services) {
+      const filteredServices = filterServices(
+        prop.services,
+        filteredTypes,
+        filteredTherapists,
+        priceRange,
+      );
+      prop.setFiltered(filteredServices);
+    }
+  }, [filteredTypes, filteredTherapists, priceRange]);
+
   return (
     <Box
       sx={{
@@ -29,20 +51,24 @@ function Burger(prop: BurgerProp) {
         <CloseFiltersButton handleClose={prop.handleClose} />
       )}
       {prop.servicesData && (
-        <ServiceTypesFilter servicesDataArr={prop.servicesData} />
+        <ServiceTypesFilter
+          servicesDataArr={prop.servicesData}
+          setFilteredTypes={setFilteredTypes}
+        />
       )}
       {prop.maxPrice && (
-        <FilterWithRange<number> name="Cena" minValue={0} maxValue={1500} />
+        <PriceFilter
+          name="Cena"
+          minValue={0}
+          maxValue={prop.maxPrice}
+          setPriceRange={setPriceRange}
+        />
       )}
 
       {prop.therapists && (
-        <RehabilitatorFilter therapistNameArr={prop.therapists} />
-      )}
-      {prop.servicesData && (
-        <FilterWithRange<Date>
-          name="Dostępność"
-          minValue={new Date()}
-          maxValue={new Date(new Date().setDate(new Date().getDate() + 7))}
+        <RehabilitatorFilter
+          therapistNameArr={prop.therapists}
+          setFilteredTherapists={setFilteredTherapists}
         />
       )}
     </Box>
