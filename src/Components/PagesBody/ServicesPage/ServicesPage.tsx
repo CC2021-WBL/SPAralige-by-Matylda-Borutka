@@ -1,19 +1,16 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-vars */
-
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import { LinearProgress } from '@mui/material';
+import { LinearProgress, Stack, Typography } from '@mui/material';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 
 import Burger from '../../Organisms/Burger/Burger';
 import ScrollButton from '../../Atoms/ScrollButton.tsx/ScrollButton';
+import SearchBar from '../../Atoms/SearchBar/SearchBar';
 import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
 import { BurgerProp } from '../../Organisms/Burger/BurgerTypes';
 import { auth } from '../../../Firebase/firebase';
@@ -145,24 +142,34 @@ export default function ServicesPage() {
           },
         }}
       >
-        <Toolbar>
+        <Toolbar
+          sx={{
+            margin: '0 0 1.25rem 0',
+            padding: 0,
+            '@media screen and (min-width: 600px)': {
+              padding: 0,
+            },
+          }}
+        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { md: 'none' } }}
+            sx={{ mr: 2, display: { md: 'none' }, color: '#1976d2' }}
           >
-            <MenuIcon />
+            <MenuIcon sx={{ color: '#6A6A6A' }} />
           </IconButton>
-          <Typography variant="h4">SEARCH BAR</Typography>
+          <SearchBar />
         </Toolbar>
         {pending && <LinearProgress />}
-        {!pending &&
-          filtered &&
-          filtered.map((service) => (
-            <ServiceCard key={service.id} serviceObject={service} uid={uid} />
-          ))}
+        <Stack sx={{ gap: '1.25rem' }}>
+          {!pending &&
+            filtered &&
+            filtered.map((service) => (
+              <ServiceCard key={service.id} serviceObject={service} uid={uid} />
+            ))}
+        </Stack>
         {!pending && filtered.length === 0 && (
           <Typography>Nie znaleźliśmy zabiegu którego potrzebujesz</Typography>
         )}

@@ -145,7 +145,10 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
                 >
                   lub
                 </Typography>
-                <FacebookAndGoogleBox loginOrRegister="register" />
+                <FacebookAndGoogleBox
+                  loginOrRegisterOptions="register"
+                  handleClose={prop.handleClose}
+                />
                 <SignOrResetLink
                   issueText="Masz już konto?"
                   linkText="Zaloguj się"
