@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 import { Dispatch, SetStateAction } from 'react';
 
 import { serviceDataType } from '../../../Types/dbDataTypes';
@@ -24,4 +26,14 @@ export type DateProp = {
   setDateRange: Dispatch<SetStateAction<{ minValue: Date; maxValue: Date }>>;
 };
 
+export type UnionFromServiceKeys = keyof serviceDataType;
 
+export type FilterServices = (
+  services: serviceDataType[],
+  filteredTypes: Record<string, unknown>,
+  filteredTherapists: Record<string, unknown>,
+  priceRange: {
+    minValue: number;
+    maxValue: number;
+  },
+) => serviceDataType[];

@@ -30,9 +30,8 @@ type ForBurgerTypes = Omit<
 export default function ServicesPage() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [services, setServices] = useState<serviceDataType[] | null>(null);
-  const [filtered, setFiltered] = useState<serviceDataType[]>([]);
-
-  // const [filterState, filterDispatch] = useReducer(filterReducer, services);
+  const [filtered, setFiltered] = useState<serviceDataType[]>(services || []);
+  console.log(filtered);
   const [serviceBurgerData, setServiceBurgerData] =
     useState<Required<ForBurgerTypes> | null>(null);
 
@@ -51,10 +50,7 @@ export default function ServicesPage() {
       const gettedServices = await getAllServices();
       setServices(gettedServices);
       if (gettedServices) {
-        const dataForBurger = getDataForBurgerFromServices(
-          gettedServices,
-          i18n.language,
-        );
+        const dataForBurger = getDataForBurgerFromServices(gettedServices);
         setServiceBurgerData(dataForBurger);
         setFiltered(gettedServices);
       }
@@ -148,8 +144,8 @@ export default function ServicesPage() {
           </IconButton>
           <Typography variant="h4">SEARCH BAR</Typography>
         </Toolbar>
-        {services &&
-          services.map((service) => (
+        {filtered &&
+          filtered.map((service) => (
             <ServiceCard key={service.id} serviceObject={service} uid={uid} />
           ))}
       </Box>

@@ -21,7 +21,6 @@ function PriceFilter(prop: PricePropType) {
     minValue: prop.minValue,
     maxValue: prop.maxValue,
   });
-  console.log(valueRange);
 
   function handleOnMinChange(
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,

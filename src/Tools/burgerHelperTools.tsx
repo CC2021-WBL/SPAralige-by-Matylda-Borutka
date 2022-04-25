@@ -1,10 +1,10 @@
-import { ServicesFilterType } from '../Components/Organisms/Burger/BurgerTypes';
+import {
+  FilterServices,
+  ServicesFilterType,
+} from '../Components/Organisms/Burger/BurgerTypes';
 import { serviceDataType } from '../Types/dbDataTypes';
 
-export function getDataForBurgerFromServices(
-  services: serviceDataType[],
-  language: string,
-) {
+export function getDataForBurgerFromServices(services: serviceDataType[]) {
   const servicesArr: ServicesFilterType[] = [];
   const servicesSet = new Set<string>();
   const therapistsSet = new Set<string>();
@@ -13,7 +13,7 @@ export function getDataForBurgerFromServices(
     if (!servicesSet.has(service.filterCategory)) {
       servicesSet.add(service.filterCategory);
       servicesArr.push({
-        serviceType: service.type2[language],
+        serviceType: service.type,
         serviceFilterCat: service.filterCategory,
       });
     }
@@ -75,21 +75,81 @@ export function setPrimaryFilteredTherapists(
   } else {
     return {};
   }
+}
+
+export const filterServices: FilterServices = (
+  services,
+  filteredTypes,
+  filteredTherapists,
+  priceRange,
+) => {
+  console.log(services);
+  console.log(filteredTypes);
+  console.log(filteredTherapists);
+  console.log(priceRange);
+  const aferTypesFilterArr = filterWithObjects(
+    services,
+    filteredTypes,
+    'filterCategory',
+  );
+  if (aferTypesFilterArr.length > 0) {
+    const afterPriceFilterArr = filterPriceRange(
+      aferTypesFilterArr,
+      priceRange,
+    );
+    console.log(aferTypesFilterArr);
+    if (
+      afterPriceFilterArr.length > 0 &&
+      Object.entries(filteredTherapists).length > 0
+    ) {
+      const afterTherapistsFilterArr = filterWithObjects(
+        afterPriceFilterArr,
+        filteredTherapists,
+        'therapistFullName',
+      );
+      return afterTherapistsFilterArr;
+    } else {
+      return afterPriceFilterArr;
+    }
+  }
+  return aferTypesFilterArr;
 };
 
-type FilterServices = (
-  filteredTypes: Record<string, unknown>,
-  filteredTherapists: Record<string, unknown>,
-  priceRange: {
+const filterWithObjects = (
+  services: serviceDataType[],
+  filtersObj: Record<string, unknown>,
+  filteredField: string,
+) => {
+  const filters = getKeysByValue(filtersObj, true);
+  const filteredServices: serviceDataType[] = [];
+  services.forEach((service) => {
+    if (filters.includes(service[filteredField])) {
+      filteredServices.push(service);
+    }
+  });
+  return filteredServices;
+};
+
+const filterPriceRange = (
+  services: serviceDataType[],
+  range: {
     minValue: number;
     maxValue: number;
   },
-  dateRange: {
-    minValue: Date;
-    maxValue: Date;
-  },
-) => void;
+) => {
+  const filteredServices: serviceDataType[] = [];
+  services.forEach((service) => {
+    if (
+      service.priceInZloty <= range.maxValue &&
+      service.priceInZloty >= range.minValue
+    ) {
+      filteredServices.push(service);
+    }
+  });
 
-export const filterServices: FilterServices = () =>  {
-  
-}
+  return filteredServices;
+};
+
+const getKeysByValue = (obj: Record<string, unknown>, value: any) => {
+  return Object.keys(obj).filter((key) => obj[key] === value);
+};

@@ -1,21 +1,16 @@
 import { Box } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import CloseFiltersButton from './CloseFiltersButton';
-import DateFilter from './DateFilter';
 import PriceFilter from './PriceFilter';
 import RehabilitatorFilter from './RehabilitatorFilter';
 import ServiceTypesFilter from './ServiceTypesFilter';
 import { BurgerProp } from './BurgerTypes';
 import {
+  filterServices,
   setPrimaryFilteredTherapists,
   setPrimaryFilteredTypes,
 } from '../../../Tools/burgerHelperTools';
-
-const primaryDateRange = {
-  minValue: new Date(),
-  maxValue: new Date(new Date().setDate(new Date().getDate() + 14)),
-};
 
 function Burger(prop: BurgerProp) {
   const [filteredTypes, setFilteredTypes] = useState(
@@ -25,10 +20,23 @@ function Burger(prop: BurgerProp) {
     minValue: 0,
     maxValue: prop.maxPrice || 1500,
   });
-  const primaryTherapists = setPrimaryFilteredTherapists(prop.therapists, true);
-  const [filteredTherapists, setFilteredTherapists] =
-    useState(primaryTherapists);
-  const [dateRange, setDateRange] = useState(primaryDateRange);
+  const [filteredTherapists, setFilteredTherapists] = useState(
+    setPrimaryFilteredTherapists(prop.therapists, true),
+  );
+
+  useEffect(() => {
+    if (prop.services) {
+      const filteredServices = filterServices(
+        prop.services,
+        filteredTypes,
+        filteredTherapists,
+        priceRange,
+      );
+      console.log(filteredServices);
+      prop.setFiltered(filteredServices);
+    }
+  }, [filteredTypes, filteredTherapists, priceRange]);
+
   return (
     <Box
       sx={{
@@ -62,14 +70,6 @@ function Burger(prop: BurgerProp) {
         <RehabilitatorFilter
           therapistNameArr={prop.therapists}
           setFilteredTherapists={setFilteredTherapists}
-        />
-      )}
-      {prop.servicesData && (
-        <DateFilter
-          name="Dostępność"
-          minValue={primaryDateRange.minValue}
-          maxValue={primaryDateRange.maxValue}
-          setDateRange={setDateRange}
         />
       )}
     </Box>

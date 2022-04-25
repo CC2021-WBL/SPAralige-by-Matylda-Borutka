@@ -16,6 +16,7 @@ type PropType = {
 };
 
 function RehabilitatorFilter(prop: PropType) {
+  const [isAllChecked, setIsAllChecked] = useState(false);
   const [therapistsChecks, setTherapistsChecks] = useState(
     createTherapistsCheckboxesObj(prop.therapistNameArr, false),
   );
@@ -33,6 +34,17 @@ function RehabilitatorFilter(prop: PropType) {
       [therapist]: event.target.checked,
     });
   };
+
+  const handleAllClicked = (event: React.ChangeEvent<HTMLInputElement>) => {
+    for (const person in therapistsChecks) {
+      if (Object.prototype.hasOwnProperty.call(therapistsChecks, person)) {
+        therapistsChecks[person] = event.target.checked;
+      }
+    }
+    setIsAllChecked(event.target.checked);
+    prop.setFilteredTherapists(therapistsChecks);
+  };
+
   return (
     <FormControl sx={{ paddingTop: '1.5rem' }}>
       <FormLabel sx={{ fontSize: '20px', color: '#000000' }}>
@@ -52,6 +64,16 @@ function RehabilitatorFilter(prop: PropType) {
             }
           />
         ))}
+        <FormControlLabel
+          label="Wszyscy terapeuci"
+          control={
+            <Checkbox
+              value="all"
+              checked={isAllChecked}
+              onChange={handleAllClicked}
+            />
+          }
+        />
       </FormGroup>
     </FormControl>
   );
