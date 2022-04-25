@@ -1,8 +1,8 @@
 import { Button, Typography } from '@mui/material';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 import { HandleOnClickButtonType } from '../../../Types/EventFunctions';
 import { auth } from '../../../Firebase/firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 
 function LoginButton(prop: {
   email: string;

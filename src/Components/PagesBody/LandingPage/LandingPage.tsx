@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { LinearProgress, Typography } from '@mui/material';
 import { getDocs } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
@@ -10,6 +10,7 @@ import { auth, servicesRef } from '../../../Firebase/firebase';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 
 const LandingPage = () => {
+  const [pending, setIsPending] = useState(true);
   const [serviceObjectArray, setServiceObjectArray] = useState<
     serviceDataType[] | null
   >(null);
@@ -39,8 +40,9 @@ const LandingPage = () => {
           setServiceObjectArray(serviceArray);
         }
       } catch (error) {
-        console.log(error);
+        alert('Oops, coś poszło nie tak, spróbuj jescze raz');
       }
+      setIsPending(false);
     };
     getServiceObjectArray();
   }, []);
@@ -59,7 +61,8 @@ const LandingPage = () => {
       >
         Popularne zabiegi
       </Typography>
-      {serviceObjectArray && (
+      {pending && <LinearProgress />}
+      {!pending && serviceObjectArray && (
         <LandingGrid serviceObjectArray={serviceObjectArray} uid={uid} />
       )}
     </main>
