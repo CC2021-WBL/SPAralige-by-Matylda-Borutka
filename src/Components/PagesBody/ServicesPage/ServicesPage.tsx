@@ -4,14 +4,15 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import { LinearProgress, Stack } from '@mui/material';
+import { LinearProgress, Stack, Typography } from '@mui/material';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 
+import Burger from '../../Organisms/Burger/Burger';
 import ScrollButton from '../../Atoms/ScrollButton.tsx/ScrollButton';
 import SearchBar from '../../Atoms/SearchBar/SearchBar';
 import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
-import Burger, { BurgerProp } from '../../Organisms/Burger/Burger';
+import { BurgerProp } from '../../Organisms/Burger/BurgerTypes';
 import { auth } from '../../../Firebase/firebase';
 import { bodyPage } from '../../../Tools/htmlElements';
 import { getAllServices } from '../../../Firebase/queries';
@@ -20,15 +21,18 @@ import { serviceDataType } from '../../../Types/dbDataTypes';
 
 const drawerWidth = '21rem';
 
-type ForBurgerTypes = Omit<BurgerProp, 'handleFilter' | 'handleClose'>;
+type ForBurgerTypes = Omit<
+  BurgerProp,
+  'handleFilter' | 'handleClose' | 'setFiltered' | 'services'
+>;
 
 export default function ServicesPage() {
   const [pending, setIsPending] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [services, setServices] = useState<serviceDataType[] | null>(null);
-
+  const [filtered, setFiltered] = useState<serviceDataType[]>(services || []);
   const [serviceBurgerData, setServiceBurgerData] =
-    useState<ForBurgerTypes | null>(null);
+    useState<Required<ForBurgerTypes> | null>(null);
 
   const [uid, setUid] = useState<string | null>(null);
 
@@ -48,6 +52,7 @@ export default function ServicesPage() {
         if (gettedServices) {
           const dataForBurger = getDataForBurgerFromServices(gettedServices);
           setServiceBurgerData(dataForBurger);
+          setFiltered(gettedServices);
         }
       } catch (error) {
         alert('Oops, coś poszło nie tak, spróbuj jescze raz');
@@ -93,6 +98,8 @@ export default function ServicesPage() {
           }}
         >
           <Burger
+            services={services}
+            setFiltered={setFiltered}
             handleClose={handleDrawerToggle}
             therapists={serviceBurgerData?.therapists}
             servicesData={serviceBurgerData?.servicesData}
@@ -114,6 +121,8 @@ export default function ServicesPage() {
           }}
         >
           <Burger
+            services={services}
+            setFiltered={setFiltered}
             therapists={serviceBurgerData?.therapists}
             servicesData={serviceBurgerData?.servicesData}
             maxPrice={serviceBurgerData?.maxPrice}
@@ -156,11 +165,14 @@ export default function ServicesPage() {
         {pending && <LinearProgress />}
         <Stack sx={{ gap: '1.25rem' }}>
           {!pending &&
-            services &&
-            services.map((service) => (
+            filtered &&
+            filtered.map((service) => (
               <ServiceCard key={service.id} serviceObject={service} uid={uid} />
             ))}
         </Stack>
+        {!pending && filtered.length === 0 && (
+          <Typography>Nie znaleźliśmy zabiegu którego potrzebujesz</Typography>
+        )}
       </Box>
     </Box>
   );
