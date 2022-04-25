@@ -7,6 +7,7 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
+import { Stack } from '@mui/material';
 import { useEffect, useReducer, useState } from 'react';
 
 import SearchBar from '../../Atoms/SearchBar/SearchBar';
@@ -116,22 +117,32 @@ export default function ServicesPage() {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
-        <Toolbar>
+        <Toolbar
+          sx={{
+            margin: '0 0 1.25rem 0',
+            padding: 0,
+            '@media screen and (min-width: 600px)': {
+              padding: 0,
+            },
+          }}
+        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { md: 'none' } }}
+            sx={{ mr: 2, display: { md: 'none' }, color: '#1976d2' }}
           >
-            <MenuIcon />
+            {/* <MenuIcon /> */} FILTER
           </IconButton>
           <SearchBar />
         </Toolbar>
-        {services &&
-          services.map((service) => (
-            <ServiceCard key={service.id} serviceObject={service} />
-          ))}
+        <Stack sx={{ gap: '1.25rem' }}>
+          {services &&
+            services.map((service) => (
+              <ServiceCard key={service.id} serviceObject={service} />
+            ))}
+        </Stack>
       </Box>
     </Box>
   );

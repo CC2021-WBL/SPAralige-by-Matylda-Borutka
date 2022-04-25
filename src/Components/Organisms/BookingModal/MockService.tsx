@@ -3,11 +3,11 @@ export const mockService = {
   priceInZloty: 150,
   timetables: [
     {
-      day: new Date(2022, 3, 17),
+      day: new Date(2022, 3, 25),
       hoursOfService: ['10:00', '11:00', '12:00', '13:00', '14:00'],
     },
     {
-      day: new Date(2022, 3, 18),
+      day: new Date(2022, 3, 26),
       hoursOfService: [
         '7:30',
         '8:30',
@@ -24,19 +24,19 @@ export const mockService = {
       ],
     },
     {
-      day: new Date(2022, 3, 19),
+      day: new Date(2022, 3, 27),
       hoursOfService: ['10:00', '11:00', '12:00', '13:00', '14:00'],
     },
     {
-      day: new Date(2022, 3, 20),
+      day: new Date(2022, 3, 28),
       hoursOfService: ['10:00', '11:00', '12:00', '13:00', '14:00'],
     },
     {
-      day: new Date(2022, 3, 21),
+      day: new Date(2022, 3, 29),
       hoursOfService: ['10:00', '11:00', '17:00', '18:00', '19:00'],
     },
     {
-      day: new Date(2022, 3, 22),
+      day: new Date(2022, 3, 30),
       hoursOfService: [
         '5:00',
         '6:00',
@@ -48,11 +48,11 @@ export const mockService = {
       ],
     },
     {
-      day: new Date(2022, 3, 23),
+      day: new Date(2022, 4, 1),
       hoursOfService: ['10:00', '11:00', '12:00', '13:00', '14:00'],
     },
     {
-      day: new Date(2022, 3, 24),
+      day: new Date(2022, 4, 2),
       hoursOfService: [
         '10:00',
         '11:00',
