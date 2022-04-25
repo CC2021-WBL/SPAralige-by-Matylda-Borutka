@@ -2,6 +2,7 @@ import { LinearProgress, Typography } from '@mui/material';
 import { getDocs } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import LandingGrid from './LandingGrid';
 import MainGraphic from '../../Organisms/Main-Graphic/MainGraphic';
@@ -47,6 +48,7 @@ const LandingPage = () => {
     getServiceObjectArray();
   }, []);
 
+  const { t } = useTranslation('landingPage');
   return (
     <main>
       <ScrollButton showBelow={250} />
@@ -59,7 +61,7 @@ const LandingPage = () => {
           fontWeight: 'bold',
         }}
       >
-        Popularne zabiegi
+        {t('heading')}
       </Typography>
       {pending && <LinearProgress />}
       {!pending && serviceObjectArray && (

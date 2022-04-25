@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 function Page() {
-  const { t, i18n } = useTranslation('common');
+  const { t, i18n } = useTranslation('navFooter');
 
   const changeLanguage = (lng: any) => {
     i18n.changeLanguage(lng);
@@ -33,6 +33,7 @@ function Page() {
 }
 
 const Footer = () => {
+  const { t } = useTranslation('navFooter');
   return (
     <Container
       maxWidth={false}
@@ -93,7 +94,7 @@ const Footer = () => {
             tabIndex={0}
             aria-label="about us"
           >
-            O nas
+            {t('footer.about')}
           </Link>
           <Link
             href="https://github.com/orgs/CC2021-WBL/"
@@ -115,7 +116,7 @@ const Footer = () => {
             tabIndex={0}
             aria-label="term and conditions"
           >
-            Warunki korzystania z serwisu
+            {t('footer.terms')}
           </Link>
           <Link
             href="https://github.com/orgs/CC2021-WBL/"
@@ -126,7 +127,7 @@ const Footer = () => {
             tabIndex={0}
             aria-label="privacy policy"
           >
-            Polityka prywatności
+            {t('footer.privacy')}
           </Link>
         </Stack>
       </Container>
