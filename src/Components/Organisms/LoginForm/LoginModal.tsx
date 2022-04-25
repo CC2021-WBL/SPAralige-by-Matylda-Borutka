@@ -1,5 +1,6 @@
 import { Box, Modal, Stack, Typography } from '@mui/material';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import ClosingIcon from './CloseIcon';
 import EmailAndPasswordInput from './EmailAndPasswordInput';
@@ -23,7 +24,7 @@ export default function LoginModal(prop: AuthModalPropTypes) {
     event.preventDefault();
     setPassword(event.target.value);
   };
-
+  const { t } = useTranslation('loginModal');
   return (
     <Modal
       open={prop.open}
@@ -51,8 +52,8 @@ export default function LoginModal(prop: AuthModalPropTypes) {
           <ClosingIcon handleClose={prop.handleClose} />
           <FormTitle
             aria-label="Sign in to SPAralige"
-            text1="Witamy w SPAralige!"
-            text2="Zaloguj się wpisując login i hasło"
+            text1={`${t('welcome')} SPAralige!`}
+            text2={`${t('heading')}`}
           />
           <EmailAndPasswordInput
             email={email}
@@ -75,17 +76,17 @@ export default function LoginModal(prop: AuthModalPropTypes) {
               letterSpacing: '0.5px',
             }}
           >
-            lub
+            {t('or')}
           </Typography>
           <FacebookAndGoogleBox loginOrRegister="login" />
           <SignOrResetLink
-            issueText="Nie masz konta? "
-            linkText="Zarejestruj się"
+            issueText={t('account')}
+            linkText={t('register')}
             handleOnClick={prop.handleLoginOrRegisterTransfer}
           />
           <SignOrResetLink
-            issueText="Zapomniałeś hasła? "
-            linkText="Zresetuj hasło"
+            issueText={t('forgot')}
+            linkText={t('reset')}
             handleOnClick={prop.handleFrogetPasswordTransfer}
           />
         </Stack>

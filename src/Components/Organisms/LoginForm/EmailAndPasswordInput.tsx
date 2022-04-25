@@ -1,8 +1,10 @@
 import { Stack, TextField } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 import { LoginInputsProps } from './LoginTypes';
 
 export default function EmailAndPasswordInput(loginProps: LoginInputsProps) {
+  const { t } = useTranslation('loginModal');
   return (
     <Stack spacing={'1.4375rem'}>
       <TextField
@@ -22,7 +24,7 @@ export default function EmailAndPasswordInput(loginProps: LoginInputsProps) {
       />
 
       <TextField
-        label="Hasło"
+        label={`${t('password')}`}
         type={'password'}
         aria-label="Input for password to sign in"
         value={loginProps.password}

@@ -10,6 +10,7 @@ import {
 import { CheckboxWithLabel, TextField } from 'formik-mui';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useTranslation } from 'react-i18next';
 
 import ClosingIcon from '../LoginForm/CloseIcon';
 import FacebookAndGoogleBox from '../../Molecules/FacebookAndGoogleBox/FacebookAndGoogleBox';
@@ -34,6 +35,7 @@ const RegisterValidation = Yup.object().shape({
 });
 
 const RegisterModal = (prop: AuthModalPropTypes) => {
+  const { t } = useTranslation('registerModal');
   return (
     <Modal
       open={prop.open}
@@ -88,8 +90,8 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
               <Stack spacing={'1.4375rem'}>
                 <FormTitle
                   aria-label="Sign in to SPAralige"
-                  text1="Witamy w SPAralige!"
-                  text2="Uzupełnij formularz aby założyć konto."
+                  text1={`${t('welcome')} SPAralige!`}
+                  text2={t('heading')}
                 />
                 <Field
                   component={TextField}
@@ -100,13 +102,13 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
                 <Field
                   component={TextField}
                   type="password"
-                  label="Hasło"
+                  label={t('password')}
                   name="password"
                 />
                 <Field
                   component={TextField}
                   type="password"
-                  label="Powtórz hasło"
+                  label={t('password2')}
                   name="confirmPassword"
                 />
                 <Field
@@ -114,7 +116,7 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
                   type="checkbox"
                   name="termsOfService"
                   Label={{
-                    label: 'Wyrażam zgodę na warunki korzystania z serwisu',
+                    label: `${t('privacy')}`,
                   }}
                 />
                 <ErrorMessage
@@ -130,7 +132,7 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
                   onClick={submitForm}
                   sx={{ height: '2.9375rem' }}
                 >
-                  Zarejestruj się
+                  {t('register')}
                 </Button>
                 <Typography
                   variant="body1"
@@ -142,17 +144,17 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
                     letterSpacing: '0.5px',
                   }}
                 >
-                  lub
+                  {t('or')}
                 </Typography>
                 <FacebookAndGoogleBox loginOrRegister="register" />
                 <SignOrResetLink
-                  issueText="Masz już konto?"
-                  linkText="Zaloguj się"
+                  issueText={t('privacy')}
+                  linkText={t('login')}
                   handleOnClick={prop.handleLoginOrRegisterTransfer}
                 />
                 <SignOrResetLink
-                  issueText="Zapomniałeś hasła? "
-                  linkText="Zresetuj hasło"
+                  issueText={t('forgot')}
+                  linkText={t('reset')}
                   handleOnClick={prop.handleFrogetPasswordTransfer}
                 />
               </Stack>

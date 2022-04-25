@@ -1,7 +1,35 @@
+// import LanguageDetector from 'i18next-browser-languagedetector';
+
 import { Container, Link, Stack } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
+import { makeStyles } from '@mui/styles';
+import { useTranslation } from 'react-i18next';
 
+import LanguageButton from '../../Atoms/LanguageButton/LanguageButton';
+
+const useStyles = makeStyles({
+  button: {
+    minWidth: '2.5rem',
+    maxWidth: '2.5rem',
+    height: '2.5rem',
+    background: '#FFFFFF',
+    color: '#00000094',
+    borderRadius: '50%',
+    boxShadow: 'none',
+    border: '0.0625rem solid #FFFFFF',
+  },
+  active: {
+    background: '#01579B',
+    color: '#FFFFFF',
+    border: '0.0625rem solid #82B1FF',
+  },
+});
 const Footer = () => {
+  const { t, i18n } = useTranslation('navFooter');
+  const changeLanguage = (lng: any) => {
+    i18n.changeLanguage(lng);
+  };
+  const classes = useStyles();
   return (
     <Container
       maxWidth={false}
@@ -10,6 +38,7 @@ const Footer = () => {
       sx={{
         backgroundColor: 'primary.main',
         marginTop: '1.5rem',
+        zIndex: '100',
       }}
     >
       <Container
@@ -18,14 +47,14 @@ const Footer = () => {
           display: 'flex',
           justifyContent: 'space-between',
           flexDirection: 'row',
-          height: '17.25rem',
+          height: '12rem',
         }}
       >
         <Stack
           flexDirection="column"
           className="leftSide"
-          justifyContent="space-between"
-          sx={{ padding: '1rem 0' }}
+          justifyContent="space-around"
+          sx={{ padding: '1rem 0 25px 0' }}
         >
           <Link
             href="https://github.com/orgs/CC2021-WBL/people"
@@ -43,13 +72,52 @@ const Footer = () => {
           >
             DevsOnTheWaves <br /> @2022
           </Link>
+          <Container
+            sx={{
+              display: 'flex',
+              gap: '0.625rem',
+              padding: 0,
+              '@media screen and (min-width: 600px)': {
+                padding: 0,
+              },
+            }}
+          >
+            {
+              <>
+                <LanguageButton
+                  onClick={() => {
+                    changeLanguage('pl');
+                  }}
+                  className={
+                    i18n.language === 'pl'
+                      ? `${classes.active} ${classes.button}`
+                      : classes.button
+                  }
+                >
+                  PL
+                </LanguageButton>
+                <LanguageButton
+                  onClick={() => {
+                    changeLanguage('en');
+                  }}
+                  className={
+                    i18n.language === 'en'
+                      ? `${classes.active} ${classes.button}`
+                      : classes.button
+                  }
+                >
+                  EN
+                </LanguageButton>
+              </>
+            }
+          </Container>
         </Stack>
         <Stack
           className="rightSide"
           flexDirection="column"
           alignItems="flex-end"
           justifyContent="space-between"
-          sx={{ marginBottom: '2rem', padding: '1rem 0' }}
+          sx={{ padding: '1rem 0' }}
         >
           <Link
             component={RouterLink}
@@ -60,7 +128,7 @@ const Footer = () => {
             tabIndex={0}
             aria-label="about us"
           >
-            O nas
+            {t('footer.about')}
           </Link>
           <Link
             component={RouterLink}
@@ -83,7 +151,7 @@ const Footer = () => {
             tabIndex={0}
             aria-label="term and conditions"
           >
-            Warunki korzystania z serwisu
+            {t('footer.terms')}
           </Link>
           <Link
             href="https://github.com/orgs/CC2021-WBL/people"
@@ -94,7 +162,7 @@ const Footer = () => {
             tabIndex={0}
             aria-label="privacy policy"
           >
-            Polityka prywatności
+            {t('footer.privacy')}
           </Link>
         </Stack>
       </Container>
