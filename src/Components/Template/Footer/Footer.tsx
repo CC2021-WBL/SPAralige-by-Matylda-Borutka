@@ -9,7 +9,7 @@ const Footer = () => {
       disableGutters
       sx={{
         backgroundColor: 'primary.main',
-        marginTop: '1.5rem',
+        marginTop: '2rem',
         zIndex: '100',
       }}
     >
@@ -64,8 +64,7 @@ const Footer = () => {
             O nas
           </Link>
           <Link
-            component={RouterLink}
-            to="https://github.com/orgs/CC2021-WBL/people"
+            href="https://github.com/orgs/CC2021-WBL/"
             color="primary.contrastText"
             underline="none"
             variant="body1"
@@ -76,7 +75,7 @@ const Footer = () => {
             FAQ
           </Link>
           <Link
-            href="https://github.com/orgs/CC2021-WBL/people"
+            href="https://github.com/orgs/CC2021-WBL/"
             color="primary.contrastText"
             underline="none"
             variant="body1"
@@ -87,7 +86,7 @@ const Footer = () => {
             Warunki korzystania z serwisu
           </Link>
           <Link
-            href="https://github.com/orgs/CC2021-WBL/people"
+            href="https://github.com/orgs/CC2021-WBL/"
             color="primary.contrastText"
             underline="none"
             variant="body1"

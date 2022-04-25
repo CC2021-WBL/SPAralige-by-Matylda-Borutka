@@ -49,12 +49,12 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
           bgcolor: '#FFFFFF',
           width: '31.25rem',
           height: 'fit-content',
-          maxHeight: '98vh',
+          maxHeight: '100vh',
           overflow: 'auto',
           padding: ['2.5rem', '2.125rem'],
           '@media screen and (max-width: 600px)': {
-            width: '19.625rem',
-            padding: ['2.5rem', '2.125rem'],
+            width: '100%',
+            padding: ['.8rem 1.5rem', '1.5rem'],
           },
         }}
       >
@@ -75,8 +75,9 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
                 values.email,
                 values.password,
               );
-              console.log(credentialObj.user);
-              alert('Rejestracja udana');
+              if (credentialObj) {
+                alert('Rejestracja udana');
+              }
               prop.handleClose();
             } catch (error: any) {
               alert(error.message);
@@ -144,7 +145,10 @@ const RegisterModal = (prop: AuthModalPropTypes) => {
                 >
                   lub
                 </Typography>
-                <FacebookAndGoogleBox loginOrRegister="register" />
+                <FacebookAndGoogleBox
+                  loginOrRegisterOptions="register"
+                  handleClose={prop.handleClose}
+                />
                 <SignOrResetLink
                   issueText="Masz już konto?"
                   linkText="Zaloguj się"

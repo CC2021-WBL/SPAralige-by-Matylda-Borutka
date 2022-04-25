@@ -38,16 +38,17 @@ export default function LoginModal(prop: AuthModalPropTypes) {
           transform: 'translate(-50%, -50%)',
           bgcolor: '#FFFFFF',
           width: '31.25rem',
-          height: '40.813rem',
-          maxHeight: '98vh',
+          height: 'fit-content',
+          maxHeight: '100vh',
+          overflow: 'auto',
           padding: ['2.5rem', '2.125rem'],
           '@media screen and (max-width: 600px)': {
-            width: '19.625rem',
-            padding: ['2.5rem', '2.125rem'],
+            width: '100%',
+            padding: ['.8rem 1.5rem', '1.5rem'],
           },
         }}
       >
-        <Stack spacing={'1.25rem'}>
+        <Stack spacing={{ xs: '1rem', sm: '1.25rem' }}>
           <ClosingIcon handleClose={prop.handleClose} />
           <FormTitle
             aria-label="Sign in to SPAralige"
@@ -77,7 +78,10 @@ export default function LoginModal(prop: AuthModalPropTypes) {
           >
             lub
           </Typography>
-          <FacebookAndGoogleBox loginOrRegister="login" />
+          <FacebookAndGoogleBox
+            loginOrRegisterOptions="login"
+            handleClose={prop.handleClose}
+          />
           <SignOrResetLink
             issueText="Nie masz konta? "
             linkText="Zarejestruj się"
