@@ -9,7 +9,7 @@ const Footer = () => {
       disableGutters
       sx={{
         backgroundColor: 'primary.main',
-        marginTop: '1.5rem',
+        marginTop: '2rem',
         zIndex: '100',
       }}
     >
