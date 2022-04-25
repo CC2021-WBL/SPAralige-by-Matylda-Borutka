@@ -1,11 +1,10 @@
-import * as Yup from "yup";
-import Box from "@mui/material/Box";
-import React from "react";
-import { ErrorMessage, Field, Form, Formik, useFormik } from "formik";
+import * as Yup from 'yup';
+import React from 'react';
+import { useFormik } from 'formik';
 
-import FormCard from "./FormCard";
-import FrameStyle from "./FrameStyle";
-import Header from "./Header";
+import FormCard from './FormCard';
+import FrameStyle from './FrameStyle';
+import Header from './Header';
 
 const YourAccountFrame = () => {
   const [toggleName, setToggleName] = React.useState<boolean>(false);
@@ -14,20 +13,20 @@ const YourAccountFrame = () => {
 
   const formik = useFormik({
     initialValues: {
-      name: "a",
-      email: "b",
-      password: "c",
+      name: 'a',
+      email: 'b',
+      password: 'c',
     },
     validationSchema: Yup.object({
       name: Yup.string()
-        .max(5, "imie musi być krótsze")
-        .required("wpisz imię i nazwisko"),
+        .max(5, 'imie musi być krótsze')
+        .required('wpisz imię i nazwisko'),
       email: Yup.string()
-        .email("email niepoprawny")
-        .required("wpisz poprawny email"),
+        .email('email niepoprawny')
+        .required('wpisz poprawny email'),
     }),
     onSubmit: (v) => {
-      console.log("submitting", v);
+      console.log('submitting', v);
     },
   });
 

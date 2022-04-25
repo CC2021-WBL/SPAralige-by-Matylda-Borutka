@@ -1,22 +1,22 @@
-import { Box, Tab, Tabs, Typography } from "@mui/material";
-import { getDocs, orderBy, query, where } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
-import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { Box, Tab, Tabs, Typography } from '@mui/material';
+import { getDocs, orderBy, query, where } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import TabPanel from "../../Organisms/ReservationCard/TabPanel";
-import YourAccountTab from "./../../Organisms/YourAccountTab/YourAccountTab";
+import TabPanel from '../../Organisms/ReservationCard/TabPanel';
+import YourAccountTab from './../../Organisms/YourAccountTab/YourAccountTab';
 import ReservationCard, {
   ReservationCardTypes,
-} from "../../Organisms/ReservationCard/ReservationCard";
-import { auth, reservationsRef } from "../../../Firebase/firebase";
-import { createReservationArray } from "../../../Tools/reservationTools";
+} from '../../Organisms/ReservationCard/ReservationCard';
+import { auth, reservationsRef } from '../../../Firebase/firebase';
+import { createReservationArray } from '../../../Tools/reservationTools';
 import {
   innerContainerStyle,
   reservationCardsBoxStyle,
   reservationWrapperStyle,
   tabStyle,
-} from "./ReservationPageStyles";
+} from './ReservationPageStyles';
 
 const ReservationsPage = () => {
   const [pending, setIsPending] = useState(true);
@@ -40,14 +40,14 @@ const ReservationsPage = () => {
         const snapshot = await getDocs(
           query(
             reservationsRef,
-            where("uid", "==", uid),
-            orderBy("serviceDate", "desc")
-          )
+            where('uid', '==', uid),
+            orderBy('serviceDate', 'desc'),
+          ),
         );
         const reservationsArr = createReservationArray(snapshot);
         setReservations(reservationsArr);
       } catch (error) {
-        alert("Oops, coś poszło nie tak, spróbuj jescze raz");
+        alert('Oops, coś poszło nie tak, spróbuj jescze raz');
       }
       setIsPending(false);
     }
@@ -58,11 +58,11 @@ const ReservationsPage = () => {
     setValue(newValue);
   };
 
-  const { t } = useTranslation("reservation&account");
+  const { t } = useTranslation('reservation&account');
   if (!uid) {
     return (
       <main>
-        <h1>{t("notLogin")}</h1>
+        <h1>{t('notLogin')}</h1>
       </main>
     );
   }
@@ -74,11 +74,11 @@ const ReservationsPage = () => {
           <Tabs
             value={value}
             onChange={handleChange}
-            sx={{ height: "3rem" }}
+            sx={{ height: '3rem' }}
             aria-label="tabs-to-choose"
           >
-            <Tab sx={tabStyle} label={t("title1")} />
-            <Tab sx={tabStyle} label={t("title2")} />
+            <Tab sx={tabStyle} label={t('title1')} />
+            <Tab sx={tabStyle} label={t('title2')} />
           </Tabs>
           <TabPanel value={value} index={0}>
             <Box sx={reservationCardsBoxStyle}>
@@ -93,7 +93,7 @@ const ReservationsPage = () => {
                   />
                 ))}
               {!pending && !reservations && (
-                <Typography>{t("null")}</Typography>
+                <Typography>{t('null')}</Typography>
               )}
             </Box>
           </TabPanel>

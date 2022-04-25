@@ -1,44 +1,43 @@
-import { Box } from "@mui/system";
-import { Button, Stack, TextField } from "@mui/material";
-import { Field, Form, Formik, useFormik } from "formik";
+import { Box } from '@mui/system';
+import { Button, Stack } from '@mui/material';
+import { Field, Form, Formik } from 'formik';
 
-import BoxWithButton from "./BoxWithButton";
+import BoxWithButton from './BoxWithButton';
 
 const TitleStyle = {
-  color: "rgba(0,0,0,.38)",
-  marginLeft: ".5rem",
+  color: 'rgba(0,0,0,.38)',
+  marginLeft: '.5rem',
 };
 
 const ErrorStyle = {
-  fontSize: "8px",
-  color: "red",
-  marginLeft: "1rem",
-  // position: absolute is not accepted in style={}?
+  fontSize: '8px',
+  color: 'red',
+  marginLeft: '1rem',
 };
 const FieldStyle = {
-  border: "none",
-  borderBottom: "1px solid grey",
-  marginLeft: "1rem",
+  border: 'none',
+  borderBottom: '1px solid grey',
+  marginLeft: '1rem',
 };
 
 const FormCardStyle = {
-  background: "rgba(200,200,200, 0.1)",
+  background: 'rgba(200,200,200, 0.1)',
 };
 
 const InputAndValueStyle = {
-  margin: "0 .5rem",
-  flexDirection: "row",
-  justifyContent: "space-between",
-  alignItems: "center",
-  background: "rgba(200, 200, 200, 0.1)",
-  borderRadius: "1rem",
+  margin: '0 .5rem',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  background: 'rgba(200, 200, 200, 0.1)',
+  borderRadius: '1rem',
 };
 
 const BoxWithButtonStyle = {
-  padding: "0 1rem",
-  flexDirection: "row",
-  justifyContent: "space-between",
-  alignItems: "center",
+  padding: '0 1rem',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
 };
 
 type FormCardPropTypes = {
@@ -70,9 +69,9 @@ type BoxDisplayPropTypes = {
 };
 
 const BoxDisplay = (prop: BoxDisplayPropTypes) => {
-  console.log("onClick", prop.onClick);
+  console.log('onClick', prop.onClick);
 
-  if (!prop.toggleName && prop.name == "name")
+  if (!prop.toggleName && prop.name == 'name')
     return (
       <BoxWithButton
         btnText="zmień imię"
@@ -81,7 +80,7 @@ const BoxDisplay = (prop: BoxDisplayPropTypes) => {
         BoxWithButtonStyle={BoxWithButtonStyle}
       />
     );
-  else if (!prop.toggleEmail && prop.name == "email")
+  else if (!prop.toggleEmail && prop.name == 'email')
     return (
       <BoxWithButton
         btnText="zmień email"
@@ -90,7 +89,7 @@ const BoxDisplay = (prop: BoxDisplayPropTypes) => {
         BoxWithButtonStyle={BoxWithButtonStyle}
       />
     );
-  else if (!prop.togglePassword && prop.name == "password")
+  else if (!prop.togglePassword && prop.name == 'password')
     return (
       <BoxWithButton
         btnText="zmień hasło"
@@ -106,7 +105,7 @@ const BoxEdit = (prop: FormCardPropTypes) => {
   // first display edit field
   // then button with changed onClick and text "save"
 
-  if (prop.toggleName && prop.name == "name")
+  if (prop.toggleName && prop.name == 'name')
     return (
       <>
         <Box>
@@ -122,7 +121,7 @@ const BoxEdit = (prop: FormCardPropTypes) => {
             onChange={prop.onChange}
           />
           {prop.formik.errors.name ? (
-            <p style={{ position: "absolute", ...ErrorStyle }}>
+            <p style={{ position: 'absolute', ...ErrorStyle }}>
               {prop.formik.errors.name}
             </p>
           ) : null}
@@ -135,7 +134,7 @@ const BoxEdit = (prop: FormCardPropTypes) => {
         </Button>
       </>
     );
-  else if (prop.toggleEmail && prop.name == "email")
+  else if (prop.toggleEmail && prop.name == 'email')
     return (
       <>
         <Box>
@@ -151,7 +150,7 @@ const BoxEdit = (prop: FormCardPropTypes) => {
             onChange={prop.onChange}
           />
           {prop.formik.errors.email ? (
-            <p style={{ position: "absolute", ...ErrorStyle }}>
+            <p style={{ position: 'absolute', ...ErrorStyle }}>
               {prop.formik.errors.email}
             </p>
           ) : null}
@@ -164,7 +163,7 @@ const BoxEdit = (prop: FormCardPropTypes) => {
         </Button>
       </>
     );
-  else if (prop.togglePassword && prop.name == "password")
+  else if (prop.togglePassword && prop.name == 'password')
     return (
       <>
         <Box>
@@ -196,10 +195,10 @@ const BoxEdit = (prop: FormCardPropTypes) => {
 
 const FormCard = (prop: FormCardPropTypes) => {
   console.log(
-    "FormCard",
+    'FormCard',
     prop.toggleName,
     prop.toggleEmail,
-    prop.togglePassword
+    prop.togglePassword,
   );
 
   return (
