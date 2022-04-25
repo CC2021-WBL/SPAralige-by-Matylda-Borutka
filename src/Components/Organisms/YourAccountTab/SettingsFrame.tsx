@@ -21,7 +21,7 @@ const SettingsFrame = () => {
         sx={StackStyle}
       >
         <Box>Wersja językowa</Box>
-        <BasicSelect langSelect/>
+        <BasicSelect langSelect />
       </Stack>
       <Stack
         flexDirection="row"

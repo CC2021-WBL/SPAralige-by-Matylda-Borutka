@@ -1,4 +1,6 @@
-import { Box, Button } from "@mui/material";
+/* eslint-disable no-unused-vars */
+
+import { Box, Button } from '@mui/material';
 
 type BoxWithButtonPropTypes = {
   BoxWithButtonStyle: object;
