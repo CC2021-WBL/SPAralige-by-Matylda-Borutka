@@ -1,6 +1,6 @@
 import { Box } from "@mui/system";
-import { Button, Stack, TextField } from "@mui/material";
-import { Field, Form, Formik, useFormik } from "formik";
+import { Button, Stack } from "@mui/material";
+import { Field, Form, Formik } from "formik";
 
 import BoxWithButton from "./BoxWithButton";
 
@@ -25,8 +25,6 @@ const InputAndValueStyle = {
   flexDirection: "row",
   justifyContent: "space-between",
   alignItems: "center",
-  // background: "rgba(200, 200, 200, 0.1)",
-  // borderRadius: "1rem",
 };
 
 const BoxWithButtonStyle = {
@@ -120,7 +118,7 @@ const BoxEdit = (prop: FormCardPropTypes) => {
           ) : null}
         </Box>
         <Button
-          type="submit" // does that submit at the same time as onClick is run?
+          type="submit"
           onClick={prop.onClick}
         >
           zapisz
@@ -149,7 +147,7 @@ const BoxEdit = (prop: FormCardPropTypes) => {
           ) : null}
         </Box>
         <Button
-          type="submit" // ?
+          type="submit"
           onClick={prop.onClick}
         >
           zapisz
