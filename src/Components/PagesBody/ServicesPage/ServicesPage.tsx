@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-
+/* eslint-disable no-unused-vars */
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Drawer from '@mui/material/Drawer';
@@ -8,10 +7,14 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { LinearProgress } from '@mui/material';
+import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useReducer, useState } from 'react';
 
+import ScrollButton from '../../Atoms/ScrollButton.tsx/ScrollButton';
 import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
 import Burger, { BurgerProp } from '../../Organisms/Burger/Burger';
+import { auth } from '../../../Firebase/firebase';
 import { bodyPage } from '../../../Tools/htmlElements';
 import { filterReducer } from '../../../Reducers/filterReducer';
 import { getAllServices } from '../../../Firebase/queries';
@@ -23,6 +26,7 @@ const drawerWidth = '21rem';
 type ForBurgerTypes = Omit<BurgerProp, 'handleFilter' | 'handleClose'>;
 
 export default function ServicesPage() {
+  const [pending, setIsPending] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [services, setServices] = useState<serviceDataType[] | null>(null);
 
@@ -30,18 +34,32 @@ export default function ServicesPage() {
   const [serviceBurgerData, setServiceBurgerData] =
     useState<ForBurgerTypes | null>(null);
 
+  const [uid, setUid] = useState<string | null>(null);
+
+  onAuthStateChanged(auth, async (currentUser) => {
+    if (!currentUser) {
+      setUid(null);
+    } else if (currentUser.uid !== uid) {
+      setUid(currentUser.uid);
+    }
+  });
+
   useEffect(() => {
     const fetchData = async () => {
-      const gettedServices = await getAllServices();
-      setServices(gettedServices);
-      if (gettedServices) {
-        const dataForBurger = getDataForBurgerFromServices(gettedServices);
-        setServiceBurgerData(dataForBurger);
+      try {
+        const gettedServices = await getAllServices();
+        setServices(gettedServices);
+        if (gettedServices) {
+          const dataForBurger = getDataForBurgerFromServices(gettedServices);
+          setServiceBurgerData(dataForBurger);
+        }
+      } catch (error) {
+        alert('Oops, coś poszło nie tak, spróbuj jescze raz');
       }
+      setIsPending(false);
     };
     fetchData();
   }, []);
-  console.log(services);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -52,6 +70,7 @@ export default function ServicesPage() {
 
   return (
     <Box sx={{ display: 'flex' }}>
+      <ScrollButton showBelow={250} />
       <CssBaseline />
 
       <Box
@@ -110,8 +129,13 @@ export default function ServicesPage() {
         component="main"
         sx={{
           flexGrow: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.5rem',
           p: '1.5rem 0',
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          width: {
+            sm: `calc(100% - ${drawerWidth})`,
+          },
         }}
       >
         <Toolbar>
@@ -126,9 +150,11 @@ export default function ServicesPage() {
           </IconButton>
           <Typography variant="h4">SEARCH BAR</Typography>
         </Toolbar>
-        {services &&
+        {pending && <LinearProgress />}
+        {!pending &&
+          services &&
           services.map((service) => (
-            <ServiceCard key={service.id} serviceObject={service} />
+            <ServiceCard key={service.id} serviceObject={service} uid={uid} />
           ))}
       </Box>
     </Box>

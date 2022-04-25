@@ -30,7 +30,6 @@ function FilterWithRange<RangeType>(prop: RangePropType<RangeType>) {
 
   function handleOnMinChange(event: React.ChangeEvent<HTMLInputElement>) {
     event.preventDefault();
-    // mock value at setValueRange to removed eslint warning
     setValueRange({
       minValue: prop.minValue,
       maxValue: prop.maxValue,
