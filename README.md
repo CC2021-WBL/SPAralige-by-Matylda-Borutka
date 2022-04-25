@@ -7,7 +7,7 @@ i zapraszamy do NASzej aplikacji.
 ![logo-devs-on-the-waves-stroke](https://user-images.githubusercontent.com/19845958/148255475-9f24bd68-7020-42e8-a0d7-c2ed885848e5.png)
 
 Jesteśmy Devs On The Waves i chcemy zaprezentować nasz projekt pełnostosowy
-(fullstack ;) ) wykonany podczas trwania największego otwartego kurs
+(fullstack ;) ) wykonany podczas trwania największego otwartego kursu
 programowania webowego w Polsce.
 
 **CodersCamp (https://www.coderscamp.edu.pl/)**
@@ -16,7 +16,7 @@ Nasza aplikacja to:
 
 # SPAraligé-by-Matylda-Borutka
 
-Czujęcie napięcie w mięsniach? Zmęczenie? Bóle karku, pleców? Kończyn? Stres? No
+Czujecie napięcie w mięśniach? Zmęczenie? Bóle karku, pleców? Kończyn? Stres? No
 problem - Matylda Borutka już to rozpracowała.
 
 ### Zarezerwuj sobie idealny zabieg - zadbaj o siebie
@@ -40,7 +40,6 @@ konto użytkownika, podaj dane i rezerwuj konkretny temin.
 
 ### Funkcjonalność
 
-- Angielska wersja językowa
 - Rejestracja użytkownika
 - Profil użytkownika
 - Autentykacja - jako logowanie klasyczne, z pomocą konta google oraz z konta na
@@ -52,7 +51,6 @@ konto użytkownika, podaj dane i rezerwuj konkretny temin.
 
 - [Demo](https://sparalige.web.app/)
 - [Design](https://www.figma.com/file/60G2roW2LTZSytHhK4jx4c/SPAralige_rework?node-id=25%3A1121)
-- [Wiki](https://github.com/CC2021-WBL/SPAralige-by-Matylda-Borutka/wiki)
 
 ## Proces
 
@@ -66,7 +64,7 @@ DESIGN/UI/UX
 
 FRONTEND
 
-- Java Script
+- JavaScript
 - Biblioteka React
 - React Router (React Signle Page Application)
 - TypeScript
@@ -75,9 +73,9 @@ FRONTEND
 - Ikony MUI
 - Atomic Design w katalogowaniu plików i kodzie
 - Formik - do obłsugi formularzy
-- Używaliśmy eslint prettier oraz wtyczki (do VSC) do sortowania importowanych oraz
+- Używaliśmy eslint, prettier oraz wtyczki (do VSC) do sortowania importowanych plików oraz
   całej masy wtyczek do VSC, by pracowało nam się lepiej
-  plików - by nasz kod był lepszej jakości i czytelniejszy
+   - by nasz kod był lepszej jakości i czytelniejszy
 
 BACKEND
 
@@ -93,6 +91,7 @@ WORKFLOW
 
 ### W przyszłości
 
+- angielska wersja językowa (już blisko)
 - tryby kolorystyczne
 - powiadomienia sms
 - aplikacja natywna na system Android
@@ -111,7 +110,7 @@ WORKFLOW
 
 - [Adam Smycz](https://github.com/Smyku6) 
   ![Adam](https://user-images.githubusercontent.com/96307488/164980505-6136d984-14a1-4364-b8db-e7a4f964b523.png) -
-  [Robert Soldynski](https://github.com/RobertS-ki) 
+  [Robert Sołdyński](https://github.com/RobertS-ki) 
   ![Robert](https://user-images.githubusercontent.com/96307488/164980380-97e183a0-073b-4c89-b698-678ff0e242d3.png)
   
 Dodatkowe funkcje na projekcie przyjęli:
