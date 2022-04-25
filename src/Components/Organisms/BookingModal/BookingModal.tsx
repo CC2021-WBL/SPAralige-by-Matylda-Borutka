@@ -73,13 +73,14 @@ const BookingModal = (prop: {
 
   useEffect(() => {
     async function fetchTimetablesfromDB() {
+      console.log(prop.serviceObject.id);
       const queryRef = query(
         timetablesRef,
         where('serviceId', '==', prop.serviceObject.id),
       );
+      console.log(queryRef);
       const snapshot = await getDocs(queryRef);
       const timetables: FullTimetableType[] = [];
-
       snapshot.docs.forEach((doc) => {
         const rawTimetable: TimetableType<Timestamp> = {
           ...doc.data(),
