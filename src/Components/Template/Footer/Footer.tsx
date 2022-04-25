@@ -40,7 +40,8 @@ const Footer = () => {
       disableGutters
       sx={{
         backgroundColor: 'primary.main',
-        marginTop: '1.5rem',
+        marginTop: '2rem',
+        zIndex: '100',
       }}
     >
       <Page />
@@ -50,7 +51,7 @@ const Footer = () => {
           display: 'flex',
           justifyContent: 'space-between',
           flexDirection: 'row',
-          height: '17.25rem',
+          height: '12rem',
         }}
       >
         <Stack
@@ -81,7 +82,7 @@ const Footer = () => {
           flexDirection="column"
           alignItems="flex-end"
           justifyContent="space-between"
-          sx={{ marginBottom: '2rem', padding: '1rem 0' }}
+          sx={{ padding: '1rem 0' }}
         >
           <Link
             component={RouterLink}
@@ -95,8 +96,7 @@ const Footer = () => {
             O nas
           </Link>
           <Link
-            component={RouterLink}
-            to="https://github.com/orgs/CC2021-WBL/people"
+            href="https://github.com/orgs/CC2021-WBL/"
             color="primary.contrastText"
             underline="none"
             variant="body1"
@@ -107,7 +107,7 @@ const Footer = () => {
             FAQ
           </Link>
           <Link
-            href="https://github.com/orgs/CC2021-WBL/people"
+            href="https://github.com/orgs/CC2021-WBL/"
             color="primary.contrastText"
             underline="none"
             variant="body1"
@@ -118,7 +118,7 @@ const Footer = () => {
             Warunki korzystania z serwisu
           </Link>
           <Link
-            href="https://github.com/orgs/CC2021-WBL/people"
+            href="https://github.com/orgs/CC2021-WBL/"
             color="primary.contrastText"
             underline="none"
             variant="body1"

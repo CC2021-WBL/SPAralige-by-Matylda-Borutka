@@ -4,7 +4,6 @@ import {
   getAuth,
 } from 'firebase/auth';
 import { collection, doc, getFirestore } from 'firebase/firestore';
-
 import { getAnalytics } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
 
@@ -37,6 +36,7 @@ export const facebookProvider = new FacebookAuthProvider();
 export const servicesRef = collection(db, 'services');
 export const reservationsRef = collection(db, 'reservations');
 export const usersRef = collection(db, 'users');
+export const timetablesRef = collection(db, 'timetables2');
 
 //document ref
 export const createUserRef = (userId: string) => {
@@ -47,4 +47,9 @@ export const createUserRef = (userId: string) => {
 export const createServiceRef = (serviceId: string) => {
   const serviceRef = doc(db, 'services', serviceId);
   return serviceRef;
+};
+
+export const createTimetableRef = (timetableId: string) => {
+  const timetableRef = doc(db, 'timetables2', timetableId);
+  return timetableRef;
 };
