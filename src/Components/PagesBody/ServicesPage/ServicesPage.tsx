@@ -8,12 +8,13 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import Burger from '../../Organisms/Burger/Burger';
 import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
 import { BurgerProp } from '../../Organisms/Burger/BurgerTypes';
+import { auth } from '../../../Firebase/firebase';
 import { bodyPage } from '../../../Tools/htmlElements';
 import { getAllServices } from '../../../Firebase/queries';
 import { getDataForBurgerFromServices } from '../../../Tools/burgerHelperTools';
@@ -35,7 +36,15 @@ export default function ServicesPage() {
   const [serviceBurgerData, setServiceBurgerData] =
     useState<Required<ForBurgerTypes> | null>(null);
 
-  const { t, i18n } = useTranslation('services');
+  const [uid, setUid] = useState<string | null>(null);
+
+  onAuthStateChanged(auth, async (currentUser) => {
+    if (!currentUser) {
+      setUid(null);
+    } else if (currentUser.uid !== uid) {
+      setUid(currentUser.uid);
+    }
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -141,7 +150,7 @@ export default function ServicesPage() {
         </Toolbar>
         {services &&
           services.map((service) => (
-            <ServiceCard key={service.id} serviceObject={service} />
+            <ServiceCard key={service.id} serviceObject={service} uid={uid} />
           ))}
       </Box>
     </Box>

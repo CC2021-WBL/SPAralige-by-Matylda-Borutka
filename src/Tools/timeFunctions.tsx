@@ -15,7 +15,17 @@ export const getDateFormatDdMmYyyy = (date: Date) => {
 };
 
 export const getDayName = (date: Date) => {
-  return localStorage.getItem('i18nextLng') === 'pl'
-    ? date.toLocaleDateString('pl', { weekday: 'long' })
-    : date.toLocaleDateString('en', { weekday: 'long' });
+  return date.toLocaleDateString('pl-PL', { weekday: 'long' });
 };
+
+export function createDateWithHour(date: Date, hour: string) {
+  const timeArr = hour.split(':');
+  const newDate = new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate(),
+    parseInt(timeArr[0]),
+    parseInt(timeArr[1]),
+  );
+  return newDate;
+}

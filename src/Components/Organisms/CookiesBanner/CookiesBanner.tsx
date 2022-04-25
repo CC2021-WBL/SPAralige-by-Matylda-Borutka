@@ -1,15 +1,13 @@
 import CookieConsent from 'react-cookie-consent';
-import { useTranslation } from 'react-i18next';
 
 const CookiesBanner = () => {
-  const { t } = useTranslation('other');
   return (
     <CookieConsent
       enableDeclineButton
       onDecline={() => {
-        alert(t('alert'));
+        alert('Twoje ciasteczka nie będą zapisywane!');
       }}
-      declineButtonText={t('deleteCookies')}
+      declineButtonText="Odrzuć ciasteczka"
       declineButtonStyle={{
         borderRadius: '3.125rem',
         color: '#565656',
@@ -18,7 +16,7 @@ const CookiesBanner = () => {
         background: '#dddddd',
       }}
       location="bottom"
-      buttonText={t('acceptCookies')}
+      buttonText="Akceptuj ciasteczka"
       cookieName="Ciasteczko"
       style={{ background: '#1565c0' }}
       buttonStyle={{
@@ -29,7 +27,8 @@ const CookiesBanner = () => {
       }}
       expires={150}
     >
-      {t('cookie')}
+      Ta strona używa ciasteczek abyśmy mogli zapewnic Ci treści dostosowane do
+      Twoich potrzeb{' '}
     </CookieConsent>
   );
 };

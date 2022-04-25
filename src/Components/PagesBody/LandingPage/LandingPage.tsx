@@ -1,18 +1,27 @@
 import { Typography } from '@mui/material';
 import { getDocs } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 
-import LandingGrid from './LandingGrid';
 import MainGraphic from '../../Organisms/Main-Graphic/MainGraphic';
+import ResponsiveGrid from '../../Template/Layout/ResponsiveGrid';
+import { auth, servicesRef } from '../../../Firebase/firebase';
 import { serviceDataType } from '../../../Types/dbDataTypes';
-import { servicesRef } from '../../../Firebase/firebase';
 
 const LandingPage = () => {
   const [serviceObjectArray, setServiceObjectArray] = useState<
     serviceDataType[] | null
   >(null);
-  const { t } = useTranslation('landingPage');
+  const [uid, setUid] = useState<string | null>(null);
+
+  onAuthStateChanged(auth, async (currentUser) => {
+    if (!currentUser) {
+      setUid(null);
+    } else if (currentUser.uid !== uid) {
+      setUid(currentUser.uid);
+    }
+  });
+
   useEffect(() => {
     const getServiceObjectArray = async () => {
       try {
@@ -46,10 +55,10 @@ const LandingPage = () => {
           fontWeight: 'bold',
         }}
       >
-        {t('heading')}
+        Popularne zabiegi
       </Typography>
       {serviceObjectArray && (
-        <LandingGrid serviceObjectArray={serviceObjectArray} />
+        <ResponsiveGrid serviceObjectArray={serviceObjectArray} uid={uid} />
       )}
     </main>
   );
