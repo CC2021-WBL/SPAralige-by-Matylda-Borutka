@@ -78,7 +78,10 @@ export default function LoginModal(prop: AuthModalPropTypes) {
           >
             lub
           </Typography>
-          <FacebookAndGoogleBox loginOrRegister="login" />
+          <FacebookAndGoogleBox
+            loginOrRegisterOptions="login"
+            handleClose={prop.handleClose}
+          />
           <SignOrResetLink
             issueText="Nie masz konta? "
             linkText="Zarejestruj się"
