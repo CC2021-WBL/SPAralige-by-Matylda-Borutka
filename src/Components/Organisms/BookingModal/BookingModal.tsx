@@ -1,5 +1,5 @@
 import Button from '@mui/material/Button';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Modal,
@@ -8,10 +8,23 @@ import {
   ToggleButtonGroup,
   Typography,
 } from '@mui/material';
+import {
+  Timestamp,
+  addDoc,
+  getDocs,
+  query,
+  updateDoc,
+  where,
+} from 'firebase/firestore';
 
 import CloseIcon from '../LoginForm/CloseIcon';
 import DateButton from './DateButton';
 import HourButton from './HourButton';
+import {
+  FullTimetableType,
+  HandleReservationType,
+  TimetableType,
+} from './BookingModalTypes';
 import {
   bookingContainerStyle,
   headerTypographyStyle,
@@ -22,29 +35,34 @@ import {
   paperStyle,
   stackStyle,
 } from './BookingModalStyles';
+import { createDateWithHour } from '../../../Tools/timeFunctions';
+import {
+  createTimetableRef,
+  reservationsRef,
+  timetablesRef,
+} from '../../../Firebase/firebase';
 import { hourFromString, sevenDays } from './BookingModalAddons';
-import { mockService } from './MockService';
+import { removeValueFromArray } from '../../../Tools/arrayTools';
 import { serviceDataType } from '../../../Types/dbDataTypes';
 
 const BookingModal = (prop: {
   serviceObject: serviceDataType;
   open: boolean;
   handleClose: () => void;
+  uid: string | null;
 }) => {
-  console.log(prop.serviceObject);
   const today = new Date();
   const [chosenDateNumber, setChosenDateNumber] = React.useState(0);
   const [chosenDate, setChosenDate] = React.useState(today);
   const [chosenHourMorning, setChosenHourMorning] = React.useState('');
   const [chosenHourAfternoon, setChosenHourAfternoon] = React.useState('');
   const [chosenHourEvening, setChosenHourEvening] = React.useState('');
-  const [hoursOfService, sethoursOfService] = React.useState<string[]>([
-    '10:00',
-    '11:00',
-    '12:00',
-    '13:00',
-    '14:00',
-  ]);
+  const [chosenTimetable, setChosenTimetable] =
+    useState<FullTimetableType | null>(null);
+  const [timetablesFromDB, setTimetablesFromDB] = useState<FullTimetableType[]>(
+    [],
+  );
+  const [hoursOfService, sethoursOfService] = React.useState<string[]>([]);
   const [service, setService] = React.useState(prop.serviceObject.name);
   const [price, setPrice] = React.useState(prop.serviceObject.priceInZloty);
 
@@ -52,6 +70,36 @@ const BookingModal = (prop: {
     setService(prop.serviceObject.name);
     setPrice(prop.serviceObject.priceInZloty);
   });
+
+  useEffect(() => {
+    async function fetchTimetablesfromDB() {
+      console.log(prop.serviceObject.id);
+      const queryRef = query(
+        timetablesRef,
+        where('serviceId', '==', prop.serviceObject.id),
+      );
+      console.log(queryRef);
+      const snapshot = await getDocs(queryRef);
+      const timetables: FullTimetableType[] = [];
+      snapshot.docs.forEach((doc) => {
+        const rawTimetable: TimetableType<Timestamp> = {
+          ...doc.data(),
+          timetableId: doc.id,
+        };
+        if (rawTimetable.day && rawTimetable.hoursOfService) {
+          const timetable: FullTimetableType = {
+            day: rawTimetable.day.toDate(),
+            hoursOfService: rawTimetable.hoursOfService,
+            timetableId: rawTimetable.timetableId,
+          };
+          timetables.push(timetable);
+        }
+      });
+      setTimetablesFromDB(timetables);
+    }
+
+    fetchTimetablesfromDB();
+  }, []);
 
   const handleDayChange = (
     event: React.MouseEvent<HTMLElement>,
@@ -93,16 +141,62 @@ const BookingModal = (prop: {
   }, [chosenDateNumber]);
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const hoursOfServiceFromMock = mockService.timetables.find(
-      (timeInfo) =>
-        timeInfo.day.getFullYear() === chosenDate.getFullYear() &&
-        timeInfo.day.getMonth() === chosenDate.getMonth() &&
-        timeInfo.day.getDate() === chosenDate.getDate(),
-    ).hoursOfService;
-    sethoursOfService(hoursOfServiceFromMock);
+    if (timetablesFromDB.length > 0) {
+      const timetable = timetablesFromDB.find(
+        (timeInfo) =>
+          timeInfo.day.getFullYear() === chosenDate.getFullYear() &&
+          timeInfo.day.getMonth() === chosenDate.getMonth() &&
+          timeInfo.day.getDate() === chosenDate.getDate(),
+      );
+      if (timetable) {
+        sethoursOfService(timetable.hoursOfService);
+        setChosenTimetable(timetable);
+      } else {
+        sethoursOfService([]);
+        setChosenTimetable(null);
+      }
+    }
   }, [chosenDate]);
+
+  const handleReservationClicked: HandleReservationType = async (
+    event,
+    chosenDate,
+    chosenHour,
+  ) => {
+    event.preventDefault();
+    if (prop.uid === null) {
+      alert('Zaloguj się by kontynuować');
+    } else {
+      if (chosenHour.length === 0) {
+        alert('Wybierz godzinę');
+      } else {
+        try {
+          const docRef = await addDoc(reservationsRef, {
+            serviceDate: createDateWithHour(chosenDate, chosenHour),
+            serviceName: service,
+            serviceRef: prop.serviceObject.id,
+            uid: prop.uid,
+          });
+          if (docRef.id && chosenTimetable) {
+            const timetableRef = createTimetableRef(
+              chosenTimetable.timetableId,
+            );
+            const changedArray = removeValueFromArray<string>(
+              chosenTimetable.hoursOfService,
+              chosenHour,
+            );
+            await updateDoc(timetableRef, {
+              hoursOfService: changedArray,
+            });
+            alert('Rejestracja udana');
+            prop.handleClose();
+          }
+        } catch (error: any) {
+          alert(error.message);
+        }
+      }
+    }
+  };
 
   return (
     <Modal
@@ -268,13 +362,9 @@ const BookingModal = (prop: {
             size="large"
             sx={{ minWidth: 200, borderRadius: 50 }}
             aria-label="make reservation"
-            onClick={() => {
-              console.log({
-                service,
-                price,
-                chosenDate,
-                chosenHour: `${chosenHourMorning}${chosenHourAfternoon}${chosenHourEvening}`,
-              });
+            onClick={(event) => {
+              const chosenHour = `${chosenHourMorning}${chosenHourAfternoon}${chosenHourEvening}`;
+              handleReservationClicked(event, chosenDate, chosenHour);
             }}
           >
             ZAREZERWUJ

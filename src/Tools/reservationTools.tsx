@@ -1,4 +1,5 @@
 import { QuerySnapshot } from 'firebase/firestore';
+
 import { ReservationCardTypes } from '../Components/Organisms/ReservationCard/ReservationCard';
 import { calcDaysToEventDate } from './timeFunctions';
 
@@ -13,7 +14,7 @@ export function generateDateProps(date: Date) {
         marginBottom: '1rem',
       },
     };
-  } else if (days === 0) {
+  } else if (days === 1) {
     return {
       chipLabel: '1 dzień do zabiegu',
       styles: {
