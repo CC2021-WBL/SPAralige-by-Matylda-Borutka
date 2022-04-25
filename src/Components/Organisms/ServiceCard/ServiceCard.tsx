@@ -2,12 +2,12 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import { useEffect, useState } from 'react';
 
+import BookingModal from '../BookingModal/BookingModal';
 import ServiceCardActions from './ServiceCardActions';
 import ServiceCardContent from './ServiceCardContent';
 import ServiceDetailsModal from './ServiceDetailsModal';
 import { cardStyles } from './ServiceCardStyles';
 import { serviceDataType } from '../../../Types/dbDataTypes';
-import BookingModal from '../BookingModal/BookingModal';
 
 const ServiceCard = (prop: {
   serviceObject: serviceDataType;

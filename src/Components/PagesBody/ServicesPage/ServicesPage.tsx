@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -8,10 +8,12 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { LinearProgress } from '@mui/material';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 
 import Burger from '../../Organisms/Burger/Burger';
+import ScrollButton from '../../Atoms/ScrollButton.tsx/ScrollButton';
 import ServiceCard from '../../Organisms/ServiceCard/ServiceCard';
 import { BurgerProp } from '../../Organisms/Burger/BurgerTypes';
 import { auth } from '../../../Firebase/firebase';
@@ -28,6 +30,7 @@ type ForBurgerTypes = Omit<
 >;
 
 export default function ServicesPage() {
+  const [pending, setIsPending] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [services, setServices] = useState<serviceDataType[] | null>(null);
   const [filtered, setFiltered] = useState<serviceDataType[]>(services || []);
@@ -47,13 +50,18 @@ export default function ServicesPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const gettedServices = await getAllServices();
-      setServices(gettedServices);
-      if (gettedServices) {
-        const dataForBurger = getDataForBurgerFromServices(gettedServices);
-        setServiceBurgerData(dataForBurger);
-        setFiltered(gettedServices);
+      try {
+        const gettedServices = await getAllServices();
+        setServices(gettedServices);
+        if (gettedServices) {
+          const dataForBurger = getDataForBurgerFromServices(gettedServices);
+          setServiceBurgerData(dataForBurger);
+          setFiltered(gettedServices);
+        }
+      } catch (error) {
+        alert('Oops, coś poszło nie tak, spróbuj jescze raz');
       }
+      setIsPending(false);
     };
     fetchData();
   }, []);
@@ -66,6 +74,7 @@ export default function ServicesPage() {
 
   return (
     <Box sx={{ display: 'flex' }}>
+      <ScrollButton showBelow={250} />
       <CssBaseline />
 
       <Box
@@ -128,8 +137,13 @@ export default function ServicesPage() {
         component="main"
         sx={{
           flexGrow: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.5rem',
           p: '1.5rem 0',
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          width: {
+            sm: `calc(100% - ${drawerWidth})`,
+          },
         }}
       >
         <Toolbar>
@@ -144,10 +158,13 @@ export default function ServicesPage() {
           </IconButton>
           <Typography variant="h4">SEARCH BAR</Typography>
         </Toolbar>
-        {filtered &&
+        {pending && <LinearProgress />}
+        {!pending &&
+          filtered &&
           filtered.map((service) => (
             <ServiceCard key={service.id} serviceObject={service} uid={uid} />
           ))}
+        {!pending && !filtered && <Typography variant='h3'>Aktualnie nie mamy zabiegów, których potrzebujesz</Typography>}
       </Box>
     </Box>
   );

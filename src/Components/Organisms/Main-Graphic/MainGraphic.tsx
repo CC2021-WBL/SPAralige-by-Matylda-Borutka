@@ -30,8 +30,7 @@ function MainGraphic() {
           <Box
             component="img"
             sx={{
-              marginTop: 3,
-
+              marginTop: '2rem',
               height: '100%',
               width: '100%',
             }}
