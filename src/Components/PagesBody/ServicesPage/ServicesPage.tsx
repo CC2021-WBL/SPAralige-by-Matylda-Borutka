@@ -53,7 +53,6 @@ export default function ServicesPage() {
     };
     fetchData();
   }, []);
-  console.log(services);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -122,8 +121,13 @@ export default function ServicesPage() {
         component="main"
         sx={{
           flexGrow: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.5rem',
           p: '1.5rem 0',
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          width: {
+            sm: `calc(100% - ${drawerWidth})`,
+          },
         }}
       >
         <Toolbar>
