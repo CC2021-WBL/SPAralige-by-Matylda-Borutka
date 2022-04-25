@@ -6,10 +6,9 @@ import { ErrorMessage, Field, Form, Formik, useFormik } from "formik";
 import FormCard from "./FormCard";
 import FrameStyle from "./FrameStyle";
 import Header from "./Header";
-import { auth } from '../../../Firebase/firebase';
+import  {auth}  from '../../../Firebase/firebase';
 
 const YourAccountFrame = () => {
-
   const [toggleName, setToggleName] = React.useState<boolean>(false);
   const [toggleEmail, setToggleEmail] = React.useState<boolean>(false);
   const [togglePassword, setTogglePassword] = React.useState<boolean>(false);
@@ -37,6 +36,7 @@ const YourAccountFrame = () => {
     setToggleName(!toggleName);
     formik.handleSubmit;
   };
+
 
   return (
     <div className="yourAccountFrame" style={FrameStyle}>
