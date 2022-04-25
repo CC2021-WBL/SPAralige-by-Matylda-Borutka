@@ -8,6 +8,12 @@ import GraphicAbout from '../../../Assets/graphic-aboutUS.png';
 const textStyles = {
   paddingRight: { xs: 0, sm: 10 },
 };
+const dataStyles = {
+  border: '0.0625rem',
+  borderStyle: 'solid',
+  borderRadius: '0.5rem',
+  borderColor: '#999999',
+};
 
 const AboutPage = () => {
   const [contactFormModalOpen, setContactFormModalOpen] = useState('closed');
@@ -70,12 +76,7 @@ const AboutPage = () => {
             md={4}
             xs={12}
             item
-            sx={{
-              border: '0.0625rem',
-              borderStyle: 'solid',
-              borderRadius: '0.5rem',
-              borderColor: '#999999',
-            }}
+            sx={dataStyles}
             padding={3}
             textAlign={'center'}
           >
@@ -89,12 +90,7 @@ const AboutPage = () => {
             xs={12}
             md={3}
             item
-            sx={{
-              border: '0.0625rem',
-              borderStyle: 'solid',
-              borderRadius: '0.5rem',
-              borderColor: '#999999',
-            }}
+            sx={dataStyles}
             padding={3}
             textAlign={'center'}
           >
@@ -121,12 +117,7 @@ const AboutPage = () => {
             xs={12}
             md={4}
             item
-            sx={{
-              border: '0.0625rem',
-              borderStyle: 'solid',
-              borderRadius: '0.5rem',
-              borderColor: '#999999',
-            }}
+            sx={dataStyles}
             padding={3}
             textAlign={'center'}
           >
