@@ -47,7 +47,8 @@ const ReservationsPage = () => {
         const reservationsArr = createReservationArray(snapshot);
         setReservations(reservationsArr);
       } catch (error) {
-        alert('Oops, coś poszło nie tak, spróbuj jescze raz');
+        console.log(error);
+        //alert('Oops, coś poszło nie tak, spróbuj jescze raz');
       }
       setIsPending(false);
     }
